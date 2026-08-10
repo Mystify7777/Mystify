@@ -1,0 +1,4407 @@
+Page Title: Claude
+URL: https://claude.ai/share/4e503401-32c2-48a8-8cc1-cf0c6212cb03
+Recent events:
+- [2026-06-11T01:22:24.473Z] (requestFailed) POST request to https://www.google.com/ccm/collect?rcb=2&frm=2&auid=11706183.1781140814&en=page_view&dl=https%3A%2F%2Fa.claude.ai%2Fisolated-segment.html&top=https%3A%2F%2Fclaude.ai&scrsrc=www.googletagmanager.com&rnd=10719320.1781140944&navt=n&npa=0&gtm=45be6691v9196940227za200zd9196940227xec&gcs=G111&gcd=13t3t3t3t5l1&dma=0&tag_exp=0~115616985~115938466~115938469~117776793&apve=1&apvf=f&apvc=1&tids=AW-16632748715&tid=AW-16632748715&tft=1781140944367&tfd=54 failed: "net::ERR_ABORTED"
+- [2026-06-11T01:22:24.483Z] (requestFailed) POST request to https://www.google.com/ccm/collect?rcb=1&frm=2&auid=11706183.1781140814&en=page_view&dl=https%3A%2F%2Fa.claude.ai%2Fisolated-segment.html&top=https%3A%2F%2Fclaude.ai&scrsrc=www.googletagmanager.com&rnd=10719320.1781140944&navt=n&npa=0&gtm=45fe6691v9227220020za200zb9196940227zd9196940227xec&gcs=G111&gcd=13t3t3t3t5l1&dma=0&tag_exp=0~115616985~115938466~115938469&apve=1&apvf=f&apvc=0&tids=DC-15684265&tid=DC-15684265&tft=1781140944379&tfd=66 failed: "net::ERR_ABORTED"
+- [2026-06-11T01:22:24.514Z] (requestFailed) POST request to https://ad.doubleclick.net/ccm/s/collect?auid=11706183.1781140814&gtm=45be6691v9196940227za200zd9196940227xec failed: "net::ERR_ABORTED"
+Snapshot: 
+- <changed> generic [ref=e3]:
+  - generic [ref=e12]:
+    - banner [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e17]: Context transfer and wireframe review
+        - generic [ref=e19]: Shared by Aryan
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - img [ref=e26]
+            - paragraph [ref=e28]: This is a copy of a chat between Claude and Aryan. Content may include unverified or unsafe content that do not represent the views of Anthropic. Shared snapshot may contain attachments and data not displayed here.
+          - button "Report" [ref=e29]
+        - generic [ref=e32]:
+          - 'heading "You said: Read this context transfer doc to get the context, and here are the current notifications and command pallete wireframes." [level=2] [ref=e33]'
+          - generic [ref=e37]:
+            - heading "Files hidden in shared chats" [level=3] [ref=e39]
+            - img [ref=e45]
+          - generic [ref=e47]:
+            - paragraph [ref=e52]: Read this context transfer doc to get the context, and here are the current notifications and command pallete wireframes. review them. If everything is fine thne we move to the next one
+            - group "Message actions" [ref=e53]:
+              - generic [ref=e55]:
+                - generic [ref=e56]: Jun 1
+                - button "Copy" [ref=e57]:
+                  - generic [ref=e60]:
+                    - generic [ref=e61]: 
+                    - generic [ref=e62]: 
+        - generic [ref=e64]:
+          - generic [ref=e66]:
+            - 'heading "Claude responded: Both wireframes are excellent — clean, thorough, and fully aligned with the spec." [level=2] [ref=e67]'
+            - generic [ref=e70]:
+              - paragraph [ref=e71]: Both wireframes are excellent — clean, thorough, and fully aligned with the spec. Let me call out what's working well and flag anything worth noting.
+              - separator [ref=e72]
+              - paragraph [ref=e73]:
+                - strong [ref=e74]: Notifications Wireframe v1.0
+                - text: ✓
+              - paragraph [ref=e75]: "Solid across all 10 sections. A few highlights:"
+              - list [ref=e76]:
+                - listitem [ref=e77]: Severity model, aging visuals, and unread state are all rendered correctly
+                - listitem [ref=e78]: Per-mode panel behavior captures the key distinctions well — Engineer's category grouping, Explorer's flat list, Recruiter's minimal chrome
+                - listitem [ref=e79]: Toast anatomy and stacking rules are clear
+                - listitem [ref=e80]: Animation summary (open/minimize/close by mode + frequency) is clean and implementation-ready
+                - listitem [ref=e81]: "One minor observation: the toast color callout at bottom-right of section 5 shows Performance = Amber, System = Violet, Observatory = Cyan — this is fine as an internal category color, but worth confirming these are icon/accent colors only, not background fills, since the spec says mode color drives all accent. As long as that's understood during implementation, no change needed."
+              - paragraph [ref=e82]:
+                - strong [ref=e83]: Ready for implementation. ✓
+              - separator [ref=e84]
+              - paragraph [ref=e85]:
+                - strong [ref=e86]: Command Palette Wireframe v0.3
+                - text: ✓
+              - paragraph [ref=e87]: "This one is particularly well-executed. Highlights:"
+              - list [ref=e88]:
+                - listitem [ref=e89]: Three-mode column layout is immediately readable
+                - listitem [ref=e90]: Badge/command type system (NAV, LAY, DIS, SYS, ENT) is clean and universally applied
+                - listitem [ref=e91]: Explorer's locked/uncatalogued sectors and mysterious entities section is a great touch — atmospheric without being cluttered
+                - listitem [ref=e92]: Engineer's chaos controls section with the DISABLED state shown is exactly right
+                - listitem [ref=e93]: Footer states per mode nail the personality difference
+                - listitem [ref=e94]: Result item anatomy with fixed 48px row height is implementation-ready
+                - listitem [ref=e95]: Mobile sheet behavior is appropriately simplified
+              - paragraph [ref=e96]: "One thing to confirm: the \"New Window\" indicator (Shift+Enter) appears on hover for window-capable commands. The wireframe shows this correctly, but during implementation make sure it only appears on hover — not by default — so it doesn't add visual noise to every row."
+              - paragraph [ref=e97]:
+                - strong [ref=e98]: Ready for implementation. ✓
+              - separator [ref=e99]
+              - paragraph [ref=e100]: Both are locked. What's next on the list — Explorer Workspace, or something else you want to tackle first?
+          - group "Message actions" [ref=e101]:
+            - button "Copy" [ref=e104]:
+              - generic [ref=e107]:
+                - generic [ref=e108]: 
+                - generic [ref=e109]: 
+        - generic [ref=e112]:
+          - 'heading "You said: the observatory index." [level=2] [ref=e113]'
+          - generic [ref=e117]:
+            - heading "Files hidden in shared chats" [level=3] [ref=e119]
+            - img [ref=e125]
+          - generic [ref=e127]:
+            - paragraph [ref=e132]: "the observatory index. that will contain the whole map of the observatory. here is an overview:"
+            - group "Message actions" [ref=e133]:
+              - generic [ref=e135]:
+                - generic [ref=e136]: Jun 1
+                - button "Copy" [ref=e137]:
+                  - generic [ref=e140]:
+                    - generic [ref=e141]: 
+                    - generic [ref=e142]: 
+        - generic [ref=e144]:
+          - generic [ref=e146]:
+            - 'heading "Claude responded: This wireframe is exceptional." [level=2] [ref=e147]'
+            - generic [ref=e150]:
+              - paragraph [ref=e151]: This wireframe is exceptional. The concept has translated beautifully into something visually coherent and genuinely unique. Let me review it properly.
+              - separator [ref=e152]
+              - paragraph [ref=e153]:
+                - strong [ref=e154]: What's Working Perfectly
+              - paragraph [ref=e155]:
+                - strong [ref=e156]: Section 1 — Spatial Hierarchy
+                - text: The Engine Room as the central dominant node surrounded by secondary layers (Identity, Application, Knowledge) with tertiary nodes below (Terminal, Lab, Observatory Guide) and the "Unknown Sector" locked out — this is exactly right. The hierarchy is immediately readable. The dashed connection lines feel appropriately systemic without being noisy.
+              - paragraph [ref=e157]:
+                - strong [ref=e158]: Section 2 — Mode Transformation
+                - text: "This is the strongest section. Same structure, three lenses:"
+              - list [ref=e159]:
+                - listitem [ref=e160]: "Recruiter: clean, amber, sparse connections, large nodes"
+                - listitem [ref=e161]: "Explorer: violet, atmospheric dots, mysterious energy"
+                - listitem [ref=e162]: "Engineer: cyan, denser connections, Engine Room visually dominant"
+              - paragraph [ref=e163]: The "structure stays, personality changes" principle is executed cleanly here.
+              - paragraph [ref=e164]:
+                - strong [ref=e165]: Section 3 — Engine Room Panel
+                - text: This went further than expected — in a good way. The deep technical readout with System Overview, Architecture Diagram, and Real-Time Metrics when a node is opened is excellent. This answers what happens
+                - emphasis [ref=e166]: inside
+                - text: a node without needing a separate window for everything. The recent events log is a strong touch.
+              - paragraph [ref=e167]:
+                - strong [ref=e168]: Section 4 — Interaction States
+                - text: The four states (Default → Hover Projects → Selected → Hover Terminal) clearly show the map coming alive. The connection logic key (Direct / Indirect / Data Flow / Dependency) with different line styles solves a real problem — how do you show
+                - emphasis [ref=e169]: types
+                - text: of relationships without clutter? This does it cleanly.
+              - paragraph [ref=e170]:
+                - strong [ref=e171]: Section 5 — Philosophy Cards
+                - text: "\"Not a Menu. Not a Launcher. Not a Sitemap.\" — these four cards (Not a Menu, Context First, Layers Not Links, Discoverable) are worth keeping as implementation guardrails. They should probably live in the context doc going forward."
+              - paragraph [ref=e172]:
+                - strong [ref=e173]: Section 6 — Engine Room Deep Dive (Terminal)
+                - text: The terminal sub-panel with live logs, filter, auto-scroll, processes/connections/resources sidebar, and system health is detailed and implementation-ready. The ERROR line in red in the logs is the one place to flag — the spec says no red anywhere, amber pulsing for critical instead. That needs to change to amber before implementation.
+              - paragraph [ref=e174]:
+                - strong [ref=e175]: Section 7 — Design Language
+                - text: Minimal noise, subtle glows, monospace typography, dark foundation, meaningful animation — all confirmed and consistent with the established system.
+              - separator [ref=e176]
+              - paragraph [ref=e177]:
+                - strong [ref=e178]: One Flag
+              - paragraph [ref=e179]:
+                - text: The
+                - code [ref=e180]: "[ERROR]"
+                - text: log line in Section 6 renders in red. Per spec, red is removed entirely — replace with amber for critical/error states in the terminal log as well.
+              - separator [ref=e181]
+              - paragraph [ref=e182]:
+                - strong [ref=e183]: Overall
+              - paragraph [ref=e184]: This is the strongest wireframe yet. The Observatory Index concept has fully arrived — it genuinely feels like a system map, not a launcher. The mode transformation section alone communicates the entire philosophy of the project.
+              - paragraph [ref=e185]:
+                - strong [ref=e186]: Ready for implementation. ✓
+              - paragraph [ref=e187]: What's next — Explorer Workspace, or do you want to tackle the individual app modules first?
+          - group "Message actions" [ref=e188]:
+            - button "Copy" [ref=e191]:
+              - generic [ref=e194]:
+                - generic [ref=e195]: 
+                - generic [ref=e196]: 
+        - generic [ref=e199]:
+          - 'heading "You said: Nope error in red in terminal is fine." [level=2] [ref=e200]'
+          - generic [ref=e204]:
+            - heading "Files hidden in shared chats" [level=3] [ref=e206]
+            - img [ref=e212]
+          - generic [ref=e214]:
+            - generic [ref=e218]:
+              - paragraph [ref=e219]: Nope error in red in terminal is fine. We are just makit it so that red doesn't pops in user's face. In terminal logs It should be red for critical errors.
+              - paragraph [ref=e220]: So now, generate a complete descriptio on the observatory Index.
+            - group "Message actions" [ref=e221]:
+              - generic [ref=e223]:
+                - generic [ref=e224]: Jun 1
+                - button "Copy" [ref=e225]:
+                  - generic [ref=e228]:
+                    - generic [ref=e229]: 
+                    - generic [ref=e230]: 
+        - generic [ref=e232]:
+          - generic [ref=e234]:
+            - 'heading "Claude responded: Good call — terminal logs are a technical readout, not a UI element screaming at the user." [level=2] [ref=e235]'
+            - generic [ref=e238]:
+              - paragraph [ref=e239]: Good call — terminal logs are a technical readout, not a UI element screaming at the user. Red in that context is correct and expected. Noted, spec updated.
+              - separator [ref=e240]
+              - heading "Observatory Index — Complete Specification" [level=2] [ref=e241]
+              - paragraph [ref=e242]:
+                - strong [ref=e243]: "\"The master map mounted on the wall of the observatory.\""
+              - separator [ref=e244]
+              - heading "What It Is" [level=3] [ref=e245]
+              - paragraph [ref=e246]: "The Observatory Index is the spatial navigation system of the portfolio. It is not an app drawer, not a sitemap, not a launcher. It is a living system map that answers one question:"
+              - blockquote [ref=e247]:
+                - paragraph [ref=e248]: "\"How is this universe connected?\""
+              - paragraph [ref=e249]:
+                - text: "Opening it should make a recruiter think:"
+                - emphasis [ref=e250]: "\"I understand how this place is organized.\""
+                - text: "Opening it should make an explorer think:"
+                - emphasis [ref=e251]: "\"There are parts of this place I haven't seen yet.\""
+                - text: "Opening it should make an engineer think:"
+                - emphasis [ref=e252]: "\"I can see the topology of this entire system.\""
+              - separator [ref=e253]
+              - heading "Trigger & Overlay Behavior" [level=3] [ref=e254]
+              - list [ref=e255]:
+                - listitem [ref=e256]:
+                  - strong [ref=e257]: "Trigger:"
+                  - text: Click the ◈ Index button in the dock (leftmost), or Command Palette
+                  - code [ref=e258]: "[NAV] Observatory Index"
+                  - text: ", or keyboard shortcut ⌘K → Index"
+                - listitem [ref=e259]:
+                  - strong [ref=e260]: "Overlay:"
+                  - text: Full viewport minus the status bar. Renders above all windows, below modals. Does not close other windows — it layers over them.
+                - listitem [ref=e261]:
+                  - strong [ref=e262]: "Close:"
+                  - text: ESC, click the ◈ button again, or click outside the map canvas area
+                - listitem [ref=e263]:
+                  - strong [ref=e264]: "Animation open:"
+                  - text: Fade in + nodes materialize from center outward, 220ms ease-out, staggered per layer (Core first, then Layer 1, then Layer 2)
+                - listitem [ref=e265]:
+                  - strong [ref=e266]: "Animation close:"
+                  - text: Reverse — nodes dissolve inward toward Core, 180ms ease-in
+              - separator [ref=e267]
+              - heading "Core Structure — The Map" [level=3] [ref=e268]
+              - heading "Observatory Core (Center Node)" [level=4] [ref=e269]
+              - paragraph [ref=e270]: The heart of the map. Everything connects to it.
+              - list [ref=e271]:
+                - listitem [ref=e272]: Always rendered at center
+                - listitem [ref=e273]: Larger than all other nodes — visually dominant
+                - listitem [ref=e274]: "Icon: ◈ (the observatory symbol)"
+                - listitem [ref=e275]: "Label: \"Observatory Core\" / \"Engine Room\" in Engineer mode"
+                - listitem [ref=e276]:
+                  - strong [ref=e277]: Not immediately interactive in Explorer mode
+                  - text: — feels important before it becomes accessible
+                - listitem [ref=e278]: "In Recruiter and Engineer: clickable, opens Engine Room panel"
+                - listitem [ref=e279]: "In Explorer: initially locked, pulses faintly. Becomes accessible after sufficient discovery"
+              - heading "Layer 1 — Primary Sectors (directly connected to Core)" [level=4] [ref=e280]
+              - paragraph [ref=e281]: "Three nodes orbit the Core:"
+              - group "Code" [ref=e282]:
+                - button "Copy to clipboard" [ref=e284]:
+                  - generic [ref=e285]:
+                    - img [ref=e287]
+                    - img [ref=e291]
+                - code [ref=e295]:
+                  - generic [ref=e296]: Identity Layer ←→ Core ←→ Application Layer
+                  - text: ↕ Knowledge Layer
+              - list [ref=e297]:
+                - listitem [ref=e298]:
+                  - strong [ref=e299]: Identity Layer
+                  - text: "— Who Aryan is. Contains: Profile, Philosophy, Timeline, Contact"
+                - listitem [ref=e300]:
+                  - strong [ref=e301]: Application Layer
+                  - text: "— What he built. Contains: all projects (CyberShield, RenderStream, Auth Nexus, HaloTask, AquaVeda, Mini Works)"
+                - listitem [ref=e302]:
+                  - strong [ref=e303]: Knowledge Layer
+                  - text: "— What he knows. Contains: Certifications, Skills, Learning log"
+              - heading "Layer 2 — Secondary Sectors (connected to Layer 1 nodes)" [level=4] [ref=e304]
+              - paragraph [ref=e305]: "Orbit the primary sectors:"
+              - list [ref=e306]:
+                - listitem [ref=e307]:
+                  - strong [ref=e308]: System Sector
+                  - text: — Terminal, Logs, Runtime. Connected to Core directly also.
+                - listitem [ref=e309]:
+                  - strong [ref=e310]: Research Sector
+                  - text: — Lab, Experiments, Prototypes. Connected to Application Layer.
+                - listitem [ref=e311]:
+                  - strong [ref=e312]: Observatory Guide
+                  - text: — Assistant system. Connected to Identity Layer.
+                - listitem [ref=e313]:
+                  - strong [ref=e314]: Unknown Sector
+                  - text: — Locked. Visible but inaccessible. No label until discovered. (Explorer mode only — in Recruiter/Engineer it simply doesn't appear.)
+              - heading "Connection Lines" [level=4] [ref=e315]
+              - paragraph [ref=e316]: "Four line types — each communicates a different relationship:"
+              - group "Code" [ref=e317]:
+                - button "Copy to clipboard" [ref=e319]:
+                  - generic [ref=e320]:
+                    - img [ref=e322]
+                    - img [ref=e326]
+                - code [ref=e330]:
+                  - generic [ref=e331]: ——————— Direct Connection (solid line)
+                  - text: "- - - - Indirect Connection (dashed line) ····· Data Flow (dotted line, animated in Engineer) ·-·-· Dependency (dash-dot line)"
+              - paragraph [ref=e332]: Lines are not decorative. They teach the structure.
+              - separator [ref=e333]
+              - heading "Mode Behavior" [level=3] [ref=e334]
+              - heading "Recruiter Mode — Clear & Focused" [level=4] [ref=e335]
+              - list [ref=e336]:
+                - listitem [ref=e337]: "Map simplified to 5 nodes: Profile, Projects, Experience, Certifications, Contact"
+                - listitem [ref=e338]: No secondary layers visible
+                - listitem [ref=e339]: No connection complexity — single solid lines only
+                - listitem [ref=e340]: Large labels, large nodes, amber accent
+                - listitem [ref=e341]: No unknown sectors, no locked nodes
+                - listitem [ref=e342]: Opens with a subtle guided highlight on Profile node first (300ms, then fades)
+                - listitem [ref=e343]: "Footer: \"7 sectors available · Ready to assist.\""
+              - heading "Explorer Mode — Atmospheric & Mysterious" [level=4] [ref=e344]
+              - list [ref=e345]:
+                - listitem [ref=e346]: Full map visible but not all nodes are readable
+                - listitem [ref=e347]:
+                  - text: Some nodes render as
+                  - code [ref=e348]: ██████
+                  - text: — uncatalogued, identity unknown
+                - listitem [ref=e349]: Unknown Sector appears in peripheral area, no label, faint violet pulse
+                - listitem [ref=e350]: Observatory Core pulses slowly — present but not yet fully accessible
+                - listitem [ref=e351]: "\"Entity Trace Detected\" may appear faintly on a distant node (session-triggered, not always)"
+                - listitem [ref=e352]: "\"Unknown Signal\" may appear in an empty area of the map between nodes — no interaction, just presence"
+                - listitem [ref=e353]: "Discovery progress shown in footer: \"Observed: 12 / 47 sectors\""
+                - listitem [ref=e354]: "After 8s idle: \"not all sectors are indexed.\" fades in faintly at bottom, then out"
+                - listitem [ref=e355]: Nodes discovered through exploration fill in their labels progressively
+                - listitem [ref=e356]: Connection lines animate very slowly — breathing, not static
+              - heading "Engineer Mode — Technical & Systemic" [level=4] [ref=e357]
+              - list [ref=e358]:
+                - listitem [ref=e359]: Full map, full information density
+                - listitem [ref=e360]:
+                  - text: "Every node shows live counts:"
+                  - list [ref=e361]:
+                    - listitem [ref=e362]:
+                      - code [ref=e363]: Identity · 4 datasets
+                    - listitem [ref=e364]:
+                      - code [ref=e365]: Projects · 12 items
+                    - listitem [ref=e366]:
+                      - code [ref=e367]: Terminal · 2 active sessions
+                    - listitem [ref=e368]:
+                      - code [ref=e369]: Archive · 241 records
+                - listitem [ref=e370]: Connection lines are denser, directional arrows on data flow lines
+                - listitem [ref=e371]: "Optional diagnostics overlay toggle (same ⚙ debug toggle from status bar): shows Node Count, Connection Count, Discovery Count, Session State, Render Time over the map"
+                - listitem [ref=e372]: Engine Room node is visually dominant — larger, brighter, most connections
+                - listitem [ref=e373]: No mystery, no locked nodes, no atmospheric effects
+                - listitem [ref=e374]: "Footer: \"Session: 20m · Commands: 112 · Systems nominal.\""
+              - separator [ref=e375]
+              - heading "Interaction States" [level=3] [ref=e376]
+              - heading "Default State" [level=4] [ref=e377]
+              - paragraph [ref=e378]: Map renders. All nodes visible per mode rules. Core pulses very gently at center. Connection lines at rest.
+              - heading "Hover — Any Node" [level=4] [ref=e379]
+              - list [ref=e380]:
+                - listitem [ref=e381]: Node scales up slightly (1.05×, 150ms)
+                - listitem [ref=e382]: Connected nodes highlight (brighten to full opacity)
+                - listitem [ref=e383]: Unconnected nodes dim (to 30% opacity)
+                - listitem [ref=e384]: Connection lines from hovered node brighten, others fade
+                - listitem [ref=e385]: "Tooltip appears after 200ms: node name + brief description"
+              - heading "Hover — Application Layer (Projects)" [level=4] [ref=e386]
+              - list [ref=e387]:
+                - listitem [ref=e388]: Layer 1 node expands — sub-nodes emerge below it
+                - listitem [ref=e389]: "Projects appear as smaller orbiting nodes: CyberShield, RenderStream, Auth Nexus, HaloTask, AquaVeda, Mini Works"
+                - listitem [ref=e390]: Map doesn't navigate — it grows. The zoom stays, the map expands.
+                - listitem [ref=e391]: Relationship lines appear between projects that share technologies (e.g. CyberShield and Auth Nexus both connect to a "Security" tag node)
+              - heading "Selected — Any Node" [level=4] [ref=e392]
+              - list [ref=e393]:
+                - listitem [ref=e394]: Node locks to active state (border brightens, glow intensifies)
+                - listitem [ref=e395]: "If the node has an associated window: panel slides in from right (320px) showing node summary"
+                - listitem [ref=e396]: "Panel contains: name, description, key contents, quick-open button"
+                - listitem [ref=e397]: Other nodes don't disappear — map stays visible, panel overlays right side
+              - heading "Engine Room Node — Selected" [level=4] [ref=e398]
+              - list [ref=e399]:
+                - listitem [ref=e400]: Full Engine Room panel opens (as shown in wireframe Section 3)
+                - listitem [ref=e401]: System Overview + Architecture Diagram + Real-Time Metrics
+                - listitem [ref=e402]: Recent events log
+                - listitem [ref=e403]: "\"View Full Logs →\" links to Terminal"
+              - separator [ref=e404]
+              - heading "Node Panel (Right Side Panel on Selection)" [level=3] [ref=e405]
+              - paragraph [ref=e406]: "Width: 320px. Slides in from right over the map, 200ms ease-out."
+              - paragraph [ref=e407]: "Anatomy:"
+              - group "Code" [ref=e408]:
+                - button "Copy to clipboard" [ref=e410]:
+                  - generic [ref=e411]:
+                    - img [ref=e413]
+                    - img [ref=e417]
+                - code [ref=e421]:
+                  - generic [ref=e422]: "[Node Icon] Node Name"
+                  - text: "Node type tag Description (2-3 lines max) Contents: · Item 1 · Item 2 · Item 3 [Open →] [Close ×]"
+              - list [ref=e423]:
+                - listitem [ref=e424]: "Background: rgba(10,10,16,0.97)"
+                - listitem [ref=e425]: "Border-left: 1px mode color"
+                - listitem [ref=e426]: "Close: click ×, click outside panel area, or ESC"
+                - listitem [ref=e427]: "\"Open →\" launches the associated app/window and closes the Index"
+              - separator [ref=e428]
+              - heading "Discovery System (Explorer Only)" [level=3] [ref=e429]
+              - paragraph [ref=e430]: "Hidden nodes and sectors emerge through behavior:"
+              - list [ref=e431]:
+                - listitem [ref=e432]:
+                  - strong [ref=e433]: "Dwell trigger:"
+                  - text: Stay on a node for 4+ seconds → reveals one additional connection or a faint nearby node
+                - listitem [ref=e434]:
+                  - strong [ref=e435]: "Revisit trigger:"
+                  - text: Return to same node 3+ times across a session → node label deepens, additional description appears
+                - listitem [ref=e436]:
+                  - strong [ref=e437]: "Terminal trigger:"
+                  - text: Certain terminal commands cause nodes to appear on the map mid-session
+                - listitem [ref=e438]:
+                  - strong [ref=e439]: "Entity trigger:"
+                  - text: After a Fairy or Knight appearance, a trace remains on the map — a faint dotted line from their origin sector
+              - paragraph [ref=e440]: Discovery state is stored in localStorage. Returning visitors see what they previously catalogued.
+              - paragraph [ref=e441]: Progress counter in footer updates in real time as nodes are revealed.
+              - separator [ref=e442]
+              - heading "Observatory Core — Special Behavior" [level=3] [ref=e443]
+              - paragraph [ref=e444]: The center node is the most important element in the entire map.
+              - paragraph [ref=e445]:
+                - strong [ref=e446]: "Recruiter:"
+                - text: Clickable immediately. Opens a brief "System Overview" card — who Aryan is, what he does, three flagship projects, contact. A summary of the whole observatory in one panel.
+              - paragraph [ref=e447]:
+                - strong [ref=e448]: "Engineer:"
+                - text: Clickable immediately. Opens Engine Room in full canvas mode (Type 3 window). Index closes.
+              - paragraph [ref=e449]:
+                - strong [ref=e450]: "Explorer:"
+              - list [ref=e451]:
+                - listitem [ref=e452]: "First visit: Core is visible, pulsing, but not labeled. Hovering shows no tooltip. Clicking does nothing — cursor changes to indicate presence, not interaction."
+                - listitem [ref=e453]: "After 20% discovery: Core label appears — \"Observatory Core\""
+                - listitem [ref=e454]: "After 50% discovery: Core becomes interactive — click opens a special \"Observatory Memory\" panel showing everything the observer has catalogued so far, rendered as a personal map fragment"
+                - listitem [ref=e455]: "After 100%: Core unlocks something. What exactly — to be decided in hidden systems spec."
+              - paragraph [ref=e456]: The Core should always feel like there is more to it than is currently visible.
+              - separator [ref=e457]
+              - heading "Footer States" [level=3] [ref=e458]
+              - paragraph [ref=e459]:
+                - strong [ref=e460]: "Recruiter:"
+                - code [ref=e461]: ◈ Observatory Index · 7 sectors available · Ready to assist.
+              - paragraph [ref=e462]:
+                - strong [ref=e463]: "Explorer:"
+                - code [ref=e464]: "◈ 4 observations catalogued · The observatory remembers. · Observed: 12/47"
+              - paragraph [ref=e465]:
+                - strong [ref=e466]: "Engineer:"
+                - code [ref=e467]: "◈ Session: 20m · Commands: 112 · All nodes: mapped · Systems nominal."
+              - separator [ref=e468]
+              - heading "Animation Principles" [level=3] [ref=e469]
+              - list [ref=e470]:
+                - listitem [ref=e471]: "Node materialization on open: staggered outward from Core, 40ms per layer"
+                - listitem [ref=e472]: "Connection lines draw in after nodes: 80ms delay post-node, left-to-right draw animation, 200ms"
+                - listitem [ref=e473]: "Explorer connection lines: very slow ambient movement, not static, breathing quality (4-6s cycle)"
+                - listitem [ref=e474]: "Engineer data flow lines: directional particle movement along dotted lines, slow (one particle per 3s per line), subtle"
+                - listitem [ref=e475]: No transitions should feel urgent. This is an observatory, not a dashboard.
+                - listitem [ref=e476]: "All node interactions: 150-200ms ease-out standard"
+              - separator [ref=e477]
+              - heading "What It Is Not (Implementation Guardrails)" [level=3] [ref=e478]
+              - list [ref=e479]:
+                - listitem [ref=e480]: Not a grid of app icons
+                - listitem [ref=e481]: Not a sitemap with links
+                - listitem [ref=e482]: Not a mind map with random branching
+                - listitem [ref=e483]: Not an achievement system or XP tracker
+                - listitem [ref=e484]: Not a launcher (the dock does that)
+                - listitem [ref=e485]: Not a search interface (the command palette does that)
+                - listitem [ref=e486]: Not navigable by arrow keys in Explorer (it's spatial, not linear) — Engineer supports keyboard navigation for accessibility
+              - separator [ref=e487]
+              - heading "Status" [level=3] [ref=e488]
+              - paragraph [ref=e489]:
+                - strong [ref=e490]: "Concept:"
+                - text: Locked
+                - strong [ref=e491]: "Wireframe:"
+                - text: Locked (v1.0)
+                - strong [ref=e492]: "Specification:"
+                - text: Complete — ready for implementation
+          - group "Message actions" [ref=e493]:
+            - button "Copy" [ref=e496]:
+              - generic [ref=e499]:
+                - generic [ref=e500]: 
+                - generic [ref=e501]: 
+        - generic [ref=e504]:
+          - 'heading "You said: let me sketch is." [level=2] [ref=e505]'
+          - generic [ref=e506]:
+            - paragraph [ref=e511]: let me sketch is.. while you work on the next most critical thing.
+            - group "Message actions" [ref=e512]:
+              - generic [ref=e514]:
+                - generic [ref=e515]: Jun 1
+                - button "Copy" [ref=e516]:
+                  - generic [ref=e519]:
+                    - generic [ref=e520]: 
+                    - generic [ref=e521]: 
+        - generic [ref=e523]:
+          - generic [ref=e525]:
+            - 'heading "Claude responded: Good split." [level=2] [ref=e526]'
+            - generic [ref=e529]:
+              - paragraph [ref=e530]: Good split. You sketch the Index interactions while I work ahead.
+              - paragraph [ref=e531]:
+                - text: The next most critical thing — by your own ordering from the context doc — is the
+                - strong [ref=e532]: Explorer Workspace
+                - text: .
+              - paragraph [ref=e533]:
+                - text: It's also the most complex remaining design problem. Recruiter is done. Engineer can't be fully designed without Explorer existing first (they share the same desktop layer, just different lenses). And the hidden systems, entities, and discovery mechanics all
+                - emphasis [ref=e534]: originate
+                - text: from the Explorer workspace.
+              - paragraph [ref=e535]: Give me a moment to think through it properly and I'll come back with a complete description you can sketch against — same format as the Observatory Index spec.
+              - paragraph [ref=e536]:
+                - text: "One question before I start: do you want the Explorer Workspace spec to cover"
+                - strong [ref=e537]: initial desktop state + entity system + discovery mechanics + environmental reactions
+                - text: all in one doc, or split across multiple focused docs the way the status bar and dock were handled separately?
+          - group "Message actions" [ref=e538]:
+            - button "Copy" [ref=e541]:
+              - generic [ref=e544]:
+                - generic [ref=e545]: 
+                - generic [ref=e546]: 
+        - generic [ref=e549]:
+          - 'heading "You said: the sketch is ready." [level=2] [ref=e550]'
+          - generic [ref=e554]:
+            - heading "Files hidden in shared chats" [level=3] [ref=e556]
+            - img [ref=e562]
+          - generic [ref=e564]:
+            - paragraph [ref=e569]: the sketch is ready.. seems like needs some revision but is probably mostly fine.
+            - group "Message actions" [ref=e570]:
+              - generic [ref=e572]:
+                - generic [ref=e573]: Jun 1
+                - button "Copy" [ref=e574]:
+                  - generic [ref=e577]:
+                    - generic [ref=e578]: 
+                    - generic [ref=e579]: 
+        - generic [ref=e581]:
+          - generic [ref=e583]:
+            - 'heading "Claude responded: This is excellent work — clean, comprehensive, and mostly locked." [level=2] [ref=e584]'
+            - generic [ref=e587]:
+              - paragraph [ref=e588]: This is excellent work — clean, comprehensive, and mostly locked. Let me go section by section quickly.
+              - separator [ref=e589]
+              - paragraph [ref=e590]:
+                - strong [ref=e591]: What's Perfect — No Changes Needed
+              - paragraph [ref=e592]: Sections 1, 2, 4, 5, 6, 8, 10, 11, 12 — all accurate to spec. The map structure in Section 2 especially is beautifully rendered. Connection legend, node types, discovery progress circle, footer states, animation principles — all correct.
+              - separator [ref=e593]
+              - paragraph [ref=e594]:
+                - strong [ref=e595]: Two Things To Revise
+              - paragraph [ref=e596]:
+                - strong [ref=e597]: Section 7 — Observatory Core (Explorer)
+              - paragraph [ref=e598]:
+                - text: "The progression shown is:"
+                - code [ref=e599]: Locked → 20% → 50% → 100% → ?
+              - paragraph [ref=e600]:
+                - text: The 100% state shows a
+                - code [ref=e601]: "?"
+                - text: with "unlocks something, hidden systems spec." That's correct in intent but the wireframe should mark it more deliberately. Change the
+                - code [ref=e602]: "?"
+                - text: "to a distinct \"◈ LOCKED — Hidden Systems\" placeholder with a note:"
+                - emphasis [ref=e603]: "\"Defined in hidden systems spec. Do not implement until that spec is complete.\""
+                - text: This prevents a developer from guessing what goes there.
+              - paragraph [ref=e604]:
+                - strong [ref=e605]: Section 9 — Diagnostics Overlay (Engineer)
+              - paragraph [ref=e606]:
+                - text: The overlay shows FPS, Memory Usage, Uptime — these are good. But it's missing
+                - strong [ref=e607]: "\"Follow Data Flow\""
+                - text: as a toggle at the bottom (which you've actually included, good) — just make sure the implementation note clarifies this animates the dotted data flow lines with directional particles when toggled, not just highlights them statically.
+              - separator [ref=e608]
+              - paragraph [ref=e609]:
+                - strong [ref=e610]: One Small Flag
+              - paragraph [ref=e611]:
+                - text: Section 3 — Explorer Mode column says "Core locked initially." This is accurate but should also note
+                - emphasis [ref=e612]: "\"Core pulses visibly — present, not absent.\""
+                - text: The lock shouldn't feel like the node is missing, just not yet accessible. Worth adding as an annotation.
+              - separator [ref=e613]
+              - paragraph [ref=e614]:
+                - strong [ref=e615]: Verdict
+              - paragraph [ref=e616]:
+                - strong [ref=e617]: Wireframe v1.0 — Ready for implementation with two minor annotation updates.
+                - text: No redraw needed — these are annotation-level changes you can mark directly on the sheet.
+              - paragraph [ref=e618]: Observatory Index is fully locked. Shall I start on the Explorer Workspace spec now?
+          - group "Message actions" [ref=e619]:
+            - button "Copy" [ref=e622]:
+              - generic [ref=e625]:
+                - generic [ref=e626]: 
+                - generic [ref=e627]: 
+        - generic [ref=e630]:
+          - 'heading "You said: covering all in one would be too lengthy, one per section would make it easier to understand and maintain." [level=2] [ref=e631]'
+          - generic [ref=e635]:
+            - heading "Files hidden in shared chats" [level=3] [ref=e637]
+            - img [ref=e643]
+          - generic [ref=e645]:
+            - paragraph [ref=e650]: covering all in one would be too lengthy, one per section would make it easier to understand and maintain.
+            - group "Message actions" [ref=e651]:
+              - generic [ref=e653]:
+                - generic [ref=e654]: Jun 1
+                - button "Copy" [ref=e655]:
+                  - generic [ref=e658]:
+                    - generic [ref=e659]: 
+                    - generic [ref=e660]: 
+        - generic [ref=e662]:
+          - generic [ref=e664]:
+            - 'heading "Claude responded: Agreed — one doc per section keeps things focused and sketchable." [level=2] [ref=e665]'
+            - generic [ref=e668]:
+              - paragraph [ref=e669]: Agreed — one doc per section keeps things focused and sketchable.
+              - paragraph [ref=e670]: "Here's the proposed split for Explorer Workspace:"
+              - group "Code" [ref=e671]:
+                - button "Copy to clipboard" [ref=e673]:
+                  - generic [ref=e674]:
+                    - img [ref=e676]
+                    - img [ref=e680]
+                - code [ref=e684]:
+                  - generic [ref=e685]: 1. Explorer Desktop — Initial State
+                  - text: 2. Entity System — Fairy & Knight 3. Discovery Mechanics 4. Environmental Reactions 5. Explorer Terminal (Passive + Active integration)
+              - paragraph [ref=e686]: Each becomes its own spec doc, its own wireframe, locked independently before moving to the next.
+              - paragraph [ref=e687]:
+                - text: Starting with
+                - strong [ref=e688]: Explorer Desktop — Initial State
+                - text: since everything else depends on knowing what the base state looks like. Give me a moment.
+              - separator [ref=e689]
+              - heading "Explorer Desktop — Initial State" [level=2] [ref=e690]
+              - paragraph [ref=e691]:
+                - strong [ref=e692]: Specification v1.0
+              - paragraph [ref=e693]:
+                - emphasis [ref=e694]: "\"The observatory becomes aware of you.\""
+              - separator [ref=e695]
+              - heading "Philosophy" [level=3] [ref=e696]
+              - paragraph [ref=e697]: The Explorer desktop is not a blank canvas waiting for input. It is an environment that already exists when the visitor arrives. Things are already happening. The observatory was running before they got here, and it will continue after they leave.
+              - paragraph [ref=e698]: The visitor doesn't launch the experience. They enter it.
+              - separator [ref=e699]
+              - heading "Entry Sequence" [level=3] [ref=e700]
+              - paragraph [ref=e701]: The Explorer workspace doesn't snap into existence. It initializes — deliberately, in layers.
+              - paragraph [ref=e702]:
+                - strong [ref=e703]: Step 1 — Desktop surface appears (0ms)
+                - text: Background fades in. Pure
+                - code [ref=e704]: "#07070b"
+                - text: . Nothing else yet.
+              - paragraph [ref=e706]:
+                - strong [ref=e707]: Step 2 — Status bar initializes (200ms)
+                - text: "Slides down from top. Center text reads:"
+                - emphasis [ref=e708]: "\"initializing observatory...\""
+                - text: in violet, low opacity.
+              - paragraph [ref=e709]:
+                - strong [ref=e710]: Step 3 — Connection lines appear (400ms)
+                - text: Faint violet connection lines draw across the desktop — like a star chart being plotted. These are not UI elements. They are ambient background geometry. They fade to about 4% opacity and stay.
+              - paragraph [ref=e711]:
+                - strong [ref=e712]: Step 4 — Dock materializes (600ms)
+                - text: Icons fade in left to right, 40ms stagger. Glow line on top edge brightens last.
+              - paragraph [ref=e713]:
+                - strong [ref=e714]: Step 5 — Desktop widgets appear (900ms)
+                - text: Two ambient widgets fade in — not with a pop, with a drift upward of 4px over 300ms.
+              - paragraph [ref=e715]:
+                - strong [ref=e716]: Step 6 — Status bar center text transitions (1200ms)
+                - emphasis [ref=e717]: "\"initializing observatory...\""
+                - text: "fades out. First ambient message fades in:"
+                - emphasis [ref=e718]: "\"the observatory is watching.\""
+              - paragraph [ref=e719]:
+                - strong [ref=e720]: Step 7 — First subtle event (2000ms)
+                - text: One of the background connection lines brightens very briefly — a single pulse, 800ms, then returns to rest. No explanation. No label. The observatory noticed the visitor arrived.
+              - paragraph [ref=e721]: "Total entry: approximately 2 seconds. Never feels like loading. Feels like waking up."
+              - separator [ref=e722]
+              - heading "Desktop Surface" [level=3] [ref=e723]
+              - paragraph [ref=e724]:
+                - strong [ref=e725]: "Background:"
+                - code [ref=e726]: "#07070b"
+                - text: — deep, near-black. Not pure black. There is depth.
+              - paragraph [ref=e728]:
+                - strong [ref=e729]: "Ambient geometry:"
+                - text: Faint connection lines at 3-5% opacity, violet tint. Not a grid. Not a pattern. Organic — like a star map or neural network fragment. Static by default. Occasionally one line pulses (see Environmental Reactions spec). These lines are not interactive.
+              - paragraph [ref=e730]:
+                - strong [ref=e731]: "Depth layers:"
+              - list [ref=e732]:
+                - listitem [ref=e733]: "Far layer: ambient geometry (3% opacity, no interaction)"
+                - listitem [ref=e734]: "Mid layer: desktop widgets, folders (interactive)"
+                - listitem [ref=e735]: "Near layer: windows (interactive, stackable)"
+                - listitem [ref=e736]: "Surface layer: dock, status bar (always present)"
+              - separator [ref=e737]
+              - heading "Desktop Widgets — Initial State" [level=3] [ref=e738]
+              - paragraph [ref=e739]: Two widgets appear on first entry. They are not pinned in a grid. They have default positions but can be dragged freely.
+              - heading "Widget 1 — Observatory Pulse" [level=4] [ref=e740]
+              - paragraph [ref=e741]: "Position: Upper right area of desktop, away from dock."
+              - paragraph [ref=e742]: A single ambient element. Not a card. Not a panel.
+              - paragraph [ref=e743]: "Visually: A soft violet orb, 48px diameter, breathing slowly (3.5–5.5s irregular cycle, same rhythm as the status bar pulse dot). Opacity 20-35% during breath cycle."
+              - paragraph [ref=e744]:
+                - text: "No label. No tooltip on first visit. On hover after the observer has been in Explorer mode for 60+ seconds: a single line fades in beneath it —"
+                - emphasis [ref=e745]: "\"the observatory is aware of you.\""
+                - text: Then fades out after 3s. Never appears again.
+              - paragraph [ref=e746]: This widget is not functional. It is presence.
+              - heading "Widget 2 — Recent Activity" [level=4] [ref=e747]
+              - paragraph [ref=e748]: "Position: Lower left area of desktop, above dock."
+              - paragraph [ref=e749]: A minimal card. 280px wide. Dark surface rgba(13,13,22,0.9). Violet top border 1px.
+              - paragraph [ref=e750]: "Content:"
+              - group "Code" [ref=e751]:
+                - button "Copy to clipboard" [ref=e753]:
+                  - generic [ref=e754]:
+                    - img [ref=e756]
+                    - img [ref=e760]
+                - code [ref=e764]:
+                  - generic [ref=e765]: ◈ Observatory Activity
+                  - text: ───────────────────────── [tag] message... just now [tag] message... 2m ago [tag] message... 8m ago
+              - paragraph [ref=e766]: "Messages are ambient system events — same source as the bottom bar log. Format matches bottom bar: lowercase, observatory language. Examples:"
+              - list [ref=e767]:
+                - listitem [ref=e768]:
+                  - code [ref=e769]: "[observatory] observer connected."
+                - listitem [ref=e770]:
+                  - code [ref=e771]: "[memory] previous visit detected."
+                - listitem [ref=e772]:
+                  - code [ref=e773]: "[signal] identity layer: active."
+              - paragraph [ref=e774]: "On first visit (no localStorage): shows 3 placeholder entries with faint opacity — the observatory has no history yet, but it's already logging."
+              - paragraph [ref=e775]: "On return visit: shows actual previous session events. The observatory remembers."
+              - paragraph [ref=e776]: Widget can be dismissed by dragging it off-screen edge. It does not reappear in that session. Does not reappear on next visit if dismissed.
+              - separator [ref=e777]
+              - heading "What Is Not On The Desktop Initially" [level=3] [ref=e778]
+              - paragraph [ref=e779]: No folders. No files. No pinned app shortcuts. No clock widget. No weather widget on desktop (weather is in status bar).
+              - paragraph [ref=e780]: The desktop is not a workspace surface covered in things. It is an environment. Sparse by design.
+              - paragraph [ref=e781]: If a visitor expects a traditional desktop, this will feel different. That is intentional.
+              - separator [ref=e782]
+              - heading "First-Time vs Return Visitor" [level=3] [ref=e783]
+              - paragraph [ref=e784]:
+                - strong [ref=e785]: "First visit (no localStorage):"
+              - list [ref=e786]:
+                - listitem [ref=e787]: Entry sequence plays in full
+                - listitem [ref=e788]: Observatory Pulse widget present
+                - listitem [ref=e789]: Recent Activity widget shows placeholder entries
+                - listitem [ref=e790]: "Bottom bar hint trigger: one cryptic hint available this session"
+                - listitem [ref=e791]: No entity appearances yet — the observatory is observing first
+              - paragraph [ref=e792]:
+                - strong [ref=e793]: "Return visit (localStorage present):"
+              - list [ref=e794]:
+                - listitem [ref=e795]: Entry sequence abbreviated — desktop surface and dock appear together (400ms total), no individual stagger
+                - listitem [ref=e796]:
+                  - text: "Status bar center text on entry:"
+                  - emphasis [ref=e797]: "\"the observatory remembers.\""
+                  - text: (stays 3s, then cycles to normal)
+                - listitem [ref=e798]: Recent Activity widget shows real events from last session
+                - listitem [ref=e799]: Discovery state restored — previously found nodes, catalogued sectors, entity history all intact
+                - listitem [ref=e800]: Entity appearance threshold lowered slightly — the observatory is more comfortable with a known observer
+              - separator [ref=e801]
+              - heading "Window Behavior in Explorer Desktop" [level=3] [ref=e802]
+              - paragraph [ref=e803]: "Per the Window Manager spec:"
+              - list [ref=e804]:
+                - listitem [ref=e805]: "Default window size: 16:9 centered"
+                - listitem [ref=e806]: Max 4 windows open simultaneously
+                - listitem [ref=e807]: Freeform positioning + layout presets
+                - listitem [ref=e808]: "First close: glass shatter animation (350-400ms)"
+                - listitem [ref=e809]: "Drag opacity: 90%"
+              - paragraph [ref=e810]: No additions needed here — Window Manager spec covers this fully.
+              - separator [ref=e811]
+              - heading "Idle States" [level=3] [ref=e812]
+              - paragraph [ref=e813]:
+                - strong [ref=e814]: "After 30s no interaction:"
+              - list [ref=e815]:
+                - listitem [ref=e816]: One ambient connection line on desktop pulses slowly (not the same one as entry)
+                - listitem [ref=e817]: Bottom bar hint dot dims slightly and re-brightens — a gentle reminder it exists
+              - paragraph [ref=e818]:
+                - strong [ref=e819]: "After 2 minutes no interaction:"
+              - list [ref=e820]:
+                - listitem [ref=e821]: Observatory Pulse widget breathing slows further (longer cycle, lower opacity)
+                - listitem [ref=e822]:
+                  - text: "Status bar center text:"
+                  - emphasis [ref=e823]: "\"the observatory is patient.\""
+                - listitem [ref=e824]: Clock in status bar dims to 20% opacity
+              - paragraph [ref=e825]:
+                - strong [ref=e826]: "After 5 minutes no interaction:"
+              - list [ref=e827]:
+                - listitem [ref=e828]: Desktop ambient geometry very slowly begins a drift animation — the connection lines shift position by 2-3px over 60s, imperceptibly slow
+                - listitem [ref=e829]: Nothing else changes. The observatory continues existing without the observer.
+              - paragraph [ref=e830]:
+                - strong [ref=e831]: "On return from idle (any interaction):"
+              - list [ref=e832]:
+                - listitem [ref=e833]: Everything snaps back to normal state within 200ms
+                - listitem [ref=e834]: One connection line pulses once — the observatory noticed the return
+                - listitem [ref=e835]:
+                  - text: "Status bar center text:"
+                  - emphasis [ref=e836]: "\"it noticed you opened this.\""
+                  - text: (if a window is opened)
+              - separator [ref=e837]
+              - heading "Status" [level=3] [ref=e838]
+              - paragraph [ref=e839]:
+                - strong [ref=e840]: "Concept:"
+                - text: Locked
+                - strong [ref=e841]: "Specification:"
+                - text: Complete
+                - strong [ref=e842]: "Wireframe:"
+                - text: Pending your sketch
+                - strong [ref=e843]: "Next:"
+                - text: Entity System spec
+          - group "Message actions" [ref=e844]:
+            - button "Copy" [ref=e847]:
+              - generic [ref=e850]:
+                - generic [ref=e851]: 
+                - generic [ref=e852]: 
+        - generic [ref=e855]:
+          - generic [ref=e859]:
+            - heading "Files hidden in shared chats" [level=3] [ref=e861]
+            - img [ref=e867]
+          - group "Message actions" [ref=e870]:
+            - generic [ref=e872]:
+              - generic [ref=e873]: Jun 1
+              - button "Copy" [ref=e874]:
+                - generic [ref=e877]:
+                  - generic [ref=e878]: 
+                  - generic [ref=e879]: 
+        - generic [ref=e881]:
+          - generic [ref=e883]:
+            - 'heading "Claude responded: This feedback is sharp." [level=2] [ref=e884]'
+            - generic [ref=e887]:
+              - paragraph [ref=e888]: "This feedback is sharp. Accepting all of it. Here's what changes in the spec before v1.0 locks:"
+              - separator [ref=e889]
+              - paragraph [ref=e890]:
+                - strong [ref=e891]: Four Updates
+              - paragraph [ref=e892]:
+                - strong [ref=e893]: 1. Observatory Fragment — added to desktop
+              - paragraph [ref=e894]: A faint node cluster, 120-160px, positioned lower center-left. Not interactive. Not labeled. Renders at 6-8% opacity — visible only when the eye looks for it. Looks like an unfinished constellation or half-mapped topology fragment. Gives the eye an anchor without demanding attention. It simply exists.
+              - paragraph [ref=e895]:
+                - strong [ref=e896]: 2. Entry sequence timing — compressed
+              - group "Code" [ref=e897]:
+                - button "Copy to clipboard" [ref=e899]:
+                  - generic [ref=e900]:
+                    - img [ref=e902]
+                    - img [ref=e906]
+                - code [ref=e910]:
+                  - generic [ref=e911]: 0ms Desktop surface
+                  - text: 150ms Status bar 300ms Ambient geometry 450ms Dock 700ms Widgets 900ms Status text transition 1500ms First observatory pulse
+              - paragraph [ref=e912]: Same feeling. Eliminates the 1500ms+ "still loading?" risk.
+              - paragraph [ref=e913]:
+                - strong [ref=e914]: 3. Recent Activity — occasional uncertainty
+              - paragraph [ref=e915]:
+                - text: Not lies. Not fake data. Uncertainty. Once per session, at random, one entry may read something slightly off — not wrong, just slightly ahead of reality.
+                - code [ref=e916]: "[memory] observer has been here before."
+                - text: on a first visit. The observatory doesn't explain itself.
+              - paragraph [ref=e917]:
+                - strong [ref=e918]: 4. Environmental Focus Events — new subsection added
+              - separator [ref=e919]
+              - heading "Environmental Focus Events" [level=3] [ref=e920]
+              - paragraph [ref=e921]: The observatory reacts to attention, not only to action.
+              - paragraph [ref=e922]:
+                - strong [ref=e923]: Cursor proximity
+                - text: When the cursor moves toward an area containing a hidden or uncatalogued node — without hovering, without clicking — an ambient connection line in that region may brighten slightly. 40ms transition. Returns to rest if cursor moves away. No tooltip. No label. Just a signal that something is there.
+              - paragraph [ref=e924]:
+                - strong [ref=e925]: Repeated observation
+                - text: If the cursor circles or returns to the same desktop region 3+ times within 90 seconds, a transient node may appear — faint, 3-4% opacity, 4-6 seconds, then gone. Not always. Not guaranteed. The observatory noticed the attention. It doesn't always respond.
+              - paragraph [ref=e926]:
+                - strong [ref=e927]: Cursor stillness
+                - text: If the cursor sits completely still for 8+ seconds on the desktop (not over a widget or window), the nearest ambient connection line shifts its pulse rhythm slightly — as if the observatory is listening more carefully.
+              - paragraph [ref=e928]:
+                - strong [ref=e929]: "Rules for implementation:"
+              - list [ref=e930]:
+                - listitem [ref=e931]: No progression tracking on these events
+                - listitem [ref=e932]: No rewards, no counters, no achievements
+                - listitem [ref=e933]: Triggers are probabilistic, not guaranteed — same behavior doesn't always produce same result
+                - listitem [ref=e934]: These are observations, not puzzles. The visitor should never feel they are solving something.
+              - separator [ref=e935]
+              - paragraph [ref=e936]:
+                - strong [ref=e937]: Restraint Warning — added as permanent implementation note
+              - blockquote [ref=e938]:
+                - paragraph [ref=e939]: "Explorer should feel like archaeology, not quest progression. Nothing on this desktop asks for attention. It simply exists. Every future addition must pass this test: does it reward curiosity, or does it create a chore?"
+              - separator [ref=e940]
+              - paragraph [ref=e941]:
+                - strong [ref=e942]: "Status: Explorer Desktop — v1.0 Locked"
+              - paragraph [ref=e943]:
+                - text: "Ready to sketch. Next up:"
+                - strong [ref=e944]: Entity System — Fairy & Knight.
+          - group "Message actions" [ref=e945]:
+            - button "Copy" [ref=e948]:
+              - generic [ref=e951]:
+                - generic [ref=e952]: 
+                - generic [ref=e953]: 
+        - generic [ref=e956]:
+          - 'heading "You said: yes, the most sensitive system of the observatory." [level=2] [ref=e957]'
+          - generic [ref=e958]:
+            - paragraph [ref=e963]: yes, the most sensitive system of the observatory.. So what are your thoughts?
+            - group "Message actions" [ref=e964]:
+              - generic [ref=e966]:
+                - generic [ref=e967]: Jun 1
+                - button "Copy" [ref=e968]:
+                  - generic [ref=e971]:
+                    - generic [ref=e972]: 
+                    - generic [ref=e973]: 
+        - generic [ref=e975]:
+          - generic [ref=e977]:
+            - 'heading "Claude responded: The entity system is the most dangerous thing in the entire project." [level=2] [ref=e978]'
+            - generic [ref=e981]:
+              - paragraph [ref=e982]: The entity system is the most dangerous thing in the entire project.
+              - paragraph [ref=e983]: Not technically. Conceptually.
+              - paragraph [ref=e984]: "Because it lives exactly on the boundary between:"
+              - group "Code" [ref=e985]:
+                - button "Copy to clipboard" [ref=e987]:
+                  - generic [ref=e988]:
+                    - img [ref=e990]
+                    - img [ref=e994]
+                - code [ref=e998]:
+                  - generic [ref=e999]: "\"that was magical\""
+              - paragraph [ref=e1000]: and
+              - group "Code" [ref=e1001]:
+                - button "Copy to clipboard" [ref=e1003]:
+                  - generic [ref=e1004]:
+                    - img [ref=e1006]
+                    - img [ref=e1010]
+                - code [ref=e1014]:
+                  - generic [ref=e1015]: "\"that was annoying\""
+              - paragraph [ref=e1016]: One wrong decision and the whole atmosphere collapses. So before I write a single spec line, here are my honest thoughts.
+              - separator [ref=e1017]
+              - heading "The Core Tension" [level=3] [ref=e1018]
+              - paragraph [ref=e1019]: "Every entity system in interactive experiences fails in one of two ways:"
+              - paragraph [ref=e1020]:
+                - strong [ref=e1021]: Failure Mode 1 — Too Present
+              - group "Code" [ref=e1022]:
+                - button "Copy to clipboard" [ref=e1024]:
+                  - generic [ref=e1025]:
+                    - img [ref=e1027]
+                    - img [ref=e1031]
+                - code [ref=e1035]:
+                  - generic [ref=e1036]: Entity appears
+                  - text: "User sees it User thinks: \"oh a character\" User tries to interact Nothing happens or it's shallow Immersion breaks"
+              - paragraph [ref=e1037]:
+                - strong [ref=e1038]: Failure Mode 2 — Too Hidden
+              - group "Code" [ref=e1039]:
+                - button "Copy to clipboard" [ref=e1041]:
+                  - generic [ref=e1042]:
+                    - img [ref=e1044]
+                    - img [ref=e1048]
+                - code [ref=e1052]:
+                  - generic [ref=e1053]: Entity appears
+                  - text: User never notices System wasted Observatory feels empty anyway
+              - paragraph [ref=e1054]:
+                - text: Your current spec walks right between them — entity appears, looks toward cursor, disappears, no explanation — but that single behavior needs to be the
+                - emphasis [ref=e1055]: ceiling
+                - text: ", not the floor. The temptation will be to add more. More appearances, more interactions, more payoff. That temptation must be resisted almost completely."
+              - separator [ref=e1056]
+              - heading "What Makes Entities Work Here" [level=3] [ref=e1057]
+              - paragraph [ref=e1058]: "The observatory has one structural advantage most interactive experiences don't:"
+              - paragraph [ref=e1059]:
+                - strong [ref=e1060]: The entities don't need to do anything.
+              - paragraph [ref=e1061]:
+                - text: They just need to
+                - emphasis [ref=e1062]: exist convincingly.
+              - paragraph [ref=e1063]: A Knight that appears for 1.5 seconds, looks toward you, and vanishes — with no explanation ever given — is more powerful than a Knight with dialogue, lore, and an unlock condition. Because the human brain will invent something far more interesting than anything we could write.
+              - paragraph [ref=e1064]: The spec already understands this. The risk is in execution details.
+              - separator [ref=e1065]
+              - heading "My Honest Concerns" [level=3] [ref=e1066]
+              - paragraph [ref=e1067]:
+                - strong [ref=e1068]: Concern 1 — Trigger symmetry
+              - paragraph [ref=e1069]:
+                - text: Currently both entities share the 7-click trigger. That's one trigger for two entities. That's fine for the Easter egg case. But entities need
+                - emphasis [ref=e1070]: organic
+                - text: triggers too — behaviors that make them feel like inhabitants, not rewards. A Knight that only appears when you spam-click the center text isn't an inhabitant. It's a secret.
+              - paragraph [ref=e1071]:
+                - strong [ref=e1072]: Concern 2 — The "seen it" problem
+              - paragraph [ref=e1073]:
+                - text: localStorage tracks
+                - code [ref=e1074]: knight_seen=true
+                - text: and reduces future appearances. Good. But
+                - emphasis [ref=e1075]: how
+                - text: it reduces matters enormously. If appearances become too rare after first sighting, the entity feels like a one-time trick. If they stay common, the magic evaporates. There's a specific frequency curve that feels right — I have thoughts on this.
+              - paragraph [ref=e1076]:
+                - strong [ref=e1077]: Concern 3 — Fairy vs Knight distinction
+              - paragraph [ref=e1078]:
+                - text: Right now they're mechanically almost identical — same trigger (60/40 split), same behavior (appear, look, disappear). They need to feel genuinely different in
+                - emphasis [ref=e1079]: character
+                - text: ", not just visually. Otherwise why have two?"
+              - paragraph [ref=e1080]:
+                - strong [ref=e1081]: Concern 4 — No entity should feel summoned
+              - paragraph [ref=e1082]:
+                - text: The 7-click trigger is fine as a hidden Easter egg. But the organic triggers — the ones that make Explorer feel alive — must feel like
+                - emphasis [ref=e1083]: the entity decided to appear
+                - text: ", not like the user"
+                - emphasis [ref=e1084]: caused
+                - text: the entity to appear. That's a subtle but critical distinction in how triggers are designed.
+              - separator [ref=e1085]
+              - heading "My Proposed Framework" [level=3] [ref=e1086]
+              - paragraph [ref=e1087]: "Before writing the full spec, I think we need to agree on three things:"
+              - paragraph [ref=e1088]:
+                - strong [ref=e1089]: 1. Entity purpose distinction
+              - group "Code" [ref=e1090]:
+                - button "Copy to clipboard" [ref=e1092]:
+                  - generic [ref=e1093]:
+                    - img [ref=e1095]
+                    - img [ref=e1099]
+                - code [ref=e1103]:
+                  - generic [ref=e1104]: Knight = the observatory's discipline
+                  - text: appears when something is being stressed or broken presence is a warning, not a reward Fairy = the observatory's curiosity appears when something is being genuinely explored presence is acknowledgment, not a reward
+              - paragraph [ref=e1105]: Neither is friendly. Neither is hostile. Both are indifferent to the observer — they have their own concerns.
+              - paragraph [ref=e1106]:
+                - strong [ref=e1107]: 2. Appearance feel
+              - group "Code" [ref=e1108]:
+                - button "Copy to clipboard" [ref=e1110]:
+                  - generic [ref=e1111]:
+                    - img [ref=e1113]
+                    - img [ref=e1117]
+                - code [ref=e1121]:
+                  - generic [ref=e1122]: Knight = you suddenly feel watched
+                  - text: angular, still, deliberate Fairy = something moved at the edge of vision fragmented, brief, slightly unstable
+              - paragraph [ref=e1123]:
+                - strong [ref=e1124]: 3. The silence rule
+              - group "Code" [ref=e1125]:
+                - button "Copy to clipboard" [ref=e1127]:
+                  - generic [ref=e1128]:
+                    - img [ref=e1130]
+                    - img [ref=e1134]
+                - code [ref=e1138]:
+                  - generic [ref=e1139]: No entity ever communicates directly with the observer.
+                  - text: No text. No sound. No reaction to being clicked. No acknowledgment that the observer exists. They are not here for the observer. They are here because the observatory exists.
+              - separator [ref=e1140]
+              - heading "One Big Idea" [level=3] [ref=e1141]
+              - paragraph [ref=e1142]:
+                - text: The entities should have
+                - emphasis [ref=e1143]: locations they prefer.
+              - paragraph [ref=e1144]: Not random screen positions. Not always top-right corner.
+              - paragraph [ref=e1145]: "The Knight prefers:"
+              - group "Code" [ref=e1146]:
+                - button "Copy to clipboard" [ref=e1148]:
+                  - generic [ref=e1149]:
+                    - img [ref=e1151]
+                    - img [ref=e1155]
+                - code [ref=e1159]:
+                  - generic [ref=e1160]: Near the Terminal
+                  - text: Near the Engine Room node Near system-critical areas
+              - paragraph [ref=e1161]: "The Fairy prefers:"
+              - group "Code" [ref=e1162]:
+                - button "Copy to clipboard" [ref=e1164]:
+                  - generic [ref=e1165]:
+                    - img [ref=e1167]
+                    - img [ref=e1171]
+                - code [ref=e1175]:
+                  - generic [ref=e1176]: Near uncatalogued nodes
+                  - text: Near the Observatory Fragment on the desktop Near areas the observer has been circling
+              - paragraph [ref=e1177]:
+                - text: This makes them feel like
+                - emphasis [ref=e1178]: inhabitants with habits
+                - text: ", not"
+                - emphasis [ref=e1179]: popups with skins.
+              - paragraph [ref=e1180]: And it connects perfectly to the Observatory Index — the entities originate from specific sectors. Their appearances near those sectors feel internally consistent.
+              - separator [ref=e1181]
+              - paragraph [ref=e1182]: So — do you agree with this framework before I write the full spec? Particularly the purpose distinction between Knight and Fairy, and the location preference system. Those two decisions shape everything else.
+          - group "Message actions" [ref=e1183]:
+            - button "Copy" [ref=e1186]:
+              - generic [ref=e1189]:
+                - generic [ref=e1190]: 
+                - generic [ref=e1191]: 
+        - generic [ref=e1194]:
+          - 'heading "You said: Hmm, I agree with it." [level=2] [ref=e1195]'
+          - generic [ref=e1196]:
+            - paragraph [ref=e1201]: Hmm, I agree with it. One more thing that I would like to add is that the entities might have the ability to disable the cursor activities for the user, for certain durations like 2 -3 seconds, when they try to spam or repeat tasks that they did to summon them. Or if they try to braek something.
+            - group "Message actions" [ref=e1202]:
+              - generic [ref=e1204]:
+                - generic [ref=e1205]: Jun 1
+                - button "Copy" [ref=e1206]:
+                  - generic [ref=e1209]:
+                    - generic [ref=e1210]: 
+                    - generic [ref=e1211]: 
+        - generic [ref=e1213]:
+          - generic [ref=e1215]:
+            - 'heading "Claude responded: That''s a brilliant addition." [level=2] [ref=e1216]'
+            - generic [ref=e1219]:
+              - paragraph [ref=e1220]: That's a brilliant addition. And it's perfectly in character for both entities.
+              - paragraph [ref=e1221]: Let me think through it carefully before it goes into spec.
+              - separator [ref=e1222]
+              - heading "What This Actually Is" [level=3] [ref=e1223]
+              - paragraph [ref=e1224]: This isn't a punishment system. It's the observatory enforcing its own rules through its inhabitants.
+              - paragraph [ref=e1225]: "The framing matters enormously for implementation:"
+              - group "Code" [ref=e1226]:
+                - button "Copy to clipboard" [ref=e1228]:
+                  - generic [ref=e1229]:
+                    - img [ref=e1231]
+                    - img [ref=e1235]
+                - code [ref=e1239]:
+                  - generic [ref=e1240]: "WRONG FRAMING:"
+                  - text: "\"User misbehaved → penalty applied\" RIGHT FRAMING: \"Observer disturbed something → the observatory responded\""
+              - paragraph [ref=e1241]: The cursor doesn't freeze because the user did something wrong. The cursor freezes because the Knight noticed, and the Knight has authority here.
+              - separator [ref=e1242]
+              - heading "How It Should Feel Per Entity" [level=3] [ref=e1243]
+              - paragraph [ref=e1244]:
+                - strong [ref=e1245]: Knight — Cursor Freeze
+              - paragraph [ref=e1246]: "The Knight is discipline. When it freezes cursor activity, it should feel like:"
+              - group "Code" [ref=e1247]:
+                - button "Copy to clipboard" [ref=e1249]:
+                  - generic [ref=e1250]:
+                    - img [ref=e1252]
+                    - img [ref=e1256]
+                - code [ref=e1260]:
+                  - generic [ref=e1261]: A hand placed firmly on your shoulder.
+                  - text: "Not violent. Not angry. Simply: stop."
+              - paragraph [ref=e1262]: "Implementation feel:"
+              - list [ref=e1263]:
+                - listitem [ref=e1264]: Cursor continues to move visually — the pointer still tracks
+                - listitem [ref=e1265]: But all click events, hover events, interactive triggers are suppressed
+                - listitem [ref=e1266]: "Duration: 2-3 seconds, Knight's choice (randomized 2.0-3.2s)"
+                - listitem [ref=e1267]: "During freeze: Knight remains visible, still, watching"
+                - listitem [ref=e1268]: "When freeze lifts: Knight disappears first, then interactivity returns 400ms later"
+                - listitem [ref=e1269]: No UI indicator that freeze is happening. The observer figures it out.
+              - paragraph [ref=e1270]:
+                - strong [ref=e1271]: Fairy — Cursor Misdirection
+              - paragraph [ref=e1272]: The Fairy is curiosity, not discipline. A Fairy wouldn't freeze you. That's too blunt for its character.
+              - paragraph [ref=e1273]: "Instead — misdirection:"
+              - group "Code" [ref=e1274]:
+                - button "Copy to clipboard" [ref=e1276]:
+                  - generic [ref=e1277]:
+                    - img [ref=e1279]
+                    - img [ref=e1283]
+                - code [ref=e1287]:
+                  - generic [ref=e1288]: Cursor input works.
+                  - text: But cursor visual drifts slightly. 2-4px offset, slow oscillation. Like something is gently pulling attention elsewhere.
+              - list [ref=e1289]:
+                - listitem [ref=e1290]: Click events still register — but at slightly wrong coordinates
+                - listitem [ref=e1291]: Hover states trigger on adjacent elements unexpectedly
+                - listitem [ref=e1292]: "Duration: 2-3 seconds"
+                - listitem [ref=e1293]: Fairy flickers at edge of screen during this period
+                - listitem [ref=e1294]: Returns to normal gradually, not snapping — 600ms ease back
+              - paragraph [ref=e1295]: This distinction is important. Knight stops you. Fairy confuses you. Same authority, completely different character.
+              - separator [ref=e1296]
+              - heading "Trigger Conditions" [level=3] [ref=e1297]
+              - paragraph [ref=e1298]: When does this activate?
+              - group "Code" [ref=e1299]:
+                - button "Copy to clipboard" [ref=e1301]:
+                  - generic [ref=e1302]:
+                    - img [ref=e1304]
+                    - img [ref=e1308]
+                - code [ref=e1312]:
+                  - generic [ref=e1313]: "KNIGHT triggers cursor suppression when:"
+                  - text: "- 7-click Easter egg attempted a second time within same session - Chaos controls spammed in Engineer mode (3+ toggles in 4s) - Same failed terminal command repeated 4+ times - Attempting to interact with Observatory Core before it's accessible (Explorer) FAIRY triggers cursor misdirection when: - Observer tries to directly chase/click a Fairy appearance - Same hidden area probed repeatedly (5+ times, same region, 60s window) - Attempting to force a discovery trigger artificially"
+              - separator [ref=e1314]
+              - heading "The Rule That Prevents This Becoming Annoying" [level=3] [ref=e1315]
+              - paragraph [ref=e1316]: One intervention per entity per session.
+              - paragraph [ref=e1317]: After the Knight suppresses once — it won't do it again that session. It made its point. After the Fairy misdirects once — same rule.
+              - paragraph [ref=e1318]: "Second offenses: entity appears briefly, looks, leaves. No intervention. The observatory has already said what it needed to say."
+              - paragraph [ref=e1319]: This keeps it feeling like a meaningful moment, not a recurring punishment.
+              - separator [ref=e1320]
+              - heading "One More Thought" [level=3] [ref=e1321]
+              - paragraph [ref=e1322]: "After the cursor freeze lifts — after the Knight leaves — the status bar center text should read, once, quietly:"
+              - group "Code" [ref=e1323]:
+                - button "Copy to clipboard" [ref=e1325]:
+                  - generic [ref=e1326]:
+                    - img [ref=e1328]
+                    - img [ref=e1332]
+                - code [ref=e1336]:
+                  - generic [ref=e1337]: "\"the system has boundaries.\""
+              - paragraph [ref=e1338]: Stays 4 seconds. Fades. Never repeats in that session.
+              - paragraph [ref=e1339]: "For the Fairy equivalent, after misdirection ends:"
+              - group "Code" [ref=e1340]:
+                - button "Copy to clipboard" [ref=e1342]:
+                  - generic [ref=e1343]:
+                    - img [ref=e1345]
+                    - img [ref=e1349]
+                - code [ref=e1353]:
+                  - generic [ref=e1354]: "\"it was only curious.\""
+              - paragraph [ref=e1355]: No attribution. No entity name. Just the observatory, observing.
+              - separator [ref=e1356]
+              - paragraph [ref=e1357]: Do you want me to fold all of this — the full entity behavior, location preferences, trigger system, cursor intervention, and the silence rule — into the complete Entity System spec now?
+          - group "Message actions" [ref=e1358]:
+            - button "Copy" [ref=e1361]:
+              - generic [ref=e1364]:
+                - generic [ref=e1365]: 
+                - generic [ref=e1366]: 
+        - generic [ref=e1369]:
+          - 'heading "You said: yes please" [level=2] [ref=e1370]'
+          - generic [ref=e1371]:
+            - paragraph [ref=e1376]: yes please
+            - group "Message actions" [ref=e1377]:
+              - generic [ref=e1379]:
+                - generic [ref=e1380]: Jun 1
+                - button "Copy" [ref=e1381]:
+                  - generic [ref=e1384]:
+                    - generic [ref=e1385]: 
+                    - generic [ref=e1386]: 
+        - generic [ref=e1388]:
+          - generic [ref=e1390]:
+            - 'heading "Claude responded: Entity System — Fairy & Knight" [level=2] [ref=e1391]'
+            - generic [ref=e1394]:
+              - heading "Entity System — Fairy & Knight" [level=2] [ref=e1395]
+              - paragraph [ref=e1396]:
+                - strong [ref=e1397]: Specification v1.0
+              - paragraph [ref=e1398]:
+                - emphasis [ref=e1399]: "\"They are not here for the observer. They are here because the observatory exists.\""
+              - separator [ref=e1400]
+              - heading "What The Entities Are" [level=3] [ref=e1401]
+              - paragraph [ref=e1402]: The Knight and the Fairy are inhabitants of the observatory. Not characters. Not NPCs. Not rewards. Not Easter eggs — though they can be triggered that way.
+              - paragraph [ref=e1403]: They are presences that existed before the observer arrived and will continue after they leave. They have their own concerns. They do not acknowledge the observer directly. They are not friendly. They are not hostile. They are indifferent — except when the observatory is being stressed, broken, or genuinely explored.
+              - paragraph [ref=e1404]: Their appearances are never random. Everything has a location. Everything belongs somewhere.
+              - separator [ref=e1405]
+              - heading "The Silence Rule" [level=3] [ref=e1406]
+              - paragraph [ref=e1407]: "This rule governs every entity decision in this spec and every future addition:"
+              - group "Code" [ref=e1408]:
+                - button "Copy to clipboard" [ref=e1410]:
+                  - generic [ref=e1411]:
+                    - img [ref=e1413]
+                    - img [ref=e1417]
+                - code [ref=e1421]:
+                  - generic [ref=e1422]: No entity ever communicates directly with the observer.
+                  - text: No text spoken to the observer. No sound. No reaction to being clicked. No acknowledgment that the observer exists. No dialogue. No lore dumps. No explanations. Ever.
+              - paragraph [ref=e1423]: The observer may form their own understanding. The observatory will not confirm or deny it.
+              - separator [ref=e1424]
+              - heading "Entity Identities" [level=3] [ref=e1425]
+              - heading "The Knight" [level=4] [ref=e1426]
+              - paragraph [ref=e1427]:
+                - strong [ref=e1428]: "What it represents:"
+                - text: The observatory's discipline. Engineering integrity. System protection.
+              - paragraph [ref=e1429]:
+                - strong [ref=e1430]: "Character:"
+                - text: Angular. Still. Deliberate. When the Knight appears, something has been noticed — something being stressed, broken, or forced. Its presence is not a warning in the communicative sense. It is simply the Knight doing what the Knight does.
+              - paragraph [ref=e1431]:
+                - strong [ref=e1432]: "Visual:"
+                - text: Dark angular silhouette. Sharp geometry. No soft edges. No glow. Defined by absence of light more than presence of it. Slight desaturation of everything behind it — as if it absorbs ambient light.
+              - paragraph [ref=e1433]:
+                - strong [ref=e1434]: "Movement:"
+                - text: Minimal. Appears already still. May turn slowly toward cursor over 1.5s. Disappears without transition — present, then not.
+              - paragraph [ref=e1435]:
+                - strong [ref=e1436]: "Preferred locations:"
+              - group "Code" [ref=e1437]:
+                - button "Copy to clipboard" [ref=e1439]:
+                  - generic [ref=e1440]:
+                    - img [ref=e1442]
+                    - img [ref=e1446]
+                - code [ref=e1450]:
+                  - generic [ref=e1451]: Near the Terminal (dock icon + passive terminal area)
+                  - text: Near Engine Room node in Observatory Index Near system-critical desktop areas Top-right corner (Easter egg trigger only)
+              - separator [ref=e1452]
+              - heading "The Fairy" [level=4] [ref=e1453]
+              - paragraph [ref=e1454]:
+                - strong [ref=e1455]: "What it represents:"
+                - text: The observatory's curiosity. Playful exploration. The acknowledgment that something genuine is being discovered.
+              - paragraph [ref=e1456]:
+                - strong [ref=e1457]: "Character:"
+                - text: Fragmented light. Slightly unstable geometry — as if not fully committed to a single form. Brief. It doesn't stay long because staying isn't its nature.
+              - paragraph [ref=e1458]:
+                - strong [ref=e1459]: "Visual:"
+                - text: Soft fragmented light, violet-adjacent. Not a solid form — more like a cluster of light fragments that almost coheres into a shape. Edges undefined. Faintly luminous. Never fully still — very subtle internal shimmer, not animated movement.
+              - paragraph [ref=e1460]:
+                - strong [ref=e1461]: "Movement:"
+                - text: Appears at edge of vision. May drift 2-3px over its duration — not purposeful movement, just instability. Disappears by fragmenting further until invisible, 400ms.
+              - paragraph [ref=e1462]:
+                - strong [ref=e1463]: "Preferred locations:"
+              - group "Code" [ref=e1464]:
+                - button "Copy to clipboard" [ref=e1466]:
+                  - generic [ref=e1467]:
+                    - img [ref=e1469]
+                    - img [ref=e1473]
+                - code [ref=e1477]:
+                  - generic [ref=e1478]: Near uncatalogued nodes (Observatory Index)
+                  - text: Near the Observatory Fragment widget on desktop Near areas the observer has been circling or dwelling Edge of screen — peripheral, never center
+              - separator [ref=e1479]
+              - heading "Appearance Behavior" [level=3] [ref=e1480]
+              - paragraph [ref=e1481]: "Both entities share the same core appearance rules:"
+              - paragraph [ref=e1482]:
+                - strong [ref=e1483]: "Duration:"
+                - text: 1.2-1.8s visible (randomized per appearance, never exactly the same)
+              - paragraph [ref=e1484]:
+                - strong [ref=e1485]: "Position:"
+                - text: Always at preferred location for that entity. Never center screen. Never over an open window. Never over the dock or status bar.
+              - paragraph [ref=e1486]:
+                - strong [ref=e1487]: "During appearance:"
+              - list [ref=e1488]:
+                - listitem [ref=e1489]: Entity is visible
+                - listitem [ref=e1490]: No tooltip
+                - listitem [ref=e1491]: No label
+                - listitem [ref=e1492]: No interaction response if clicked
+                - listitem [ref=e1493]: "Cursor click events over entity: silently suppressed (click registers nowhere)"
+              - paragraph [ref=e1494]:
+                - strong [ref=e1495]: "Disappearance:"
+              - list [ref=e1496]:
+                - listitem [ref=e1497]: "Knight: present, then not. 0ms transition. Blink-and-miss."
+                - listitem [ref=e1498]: "Fairy: fragments outward over 400ms, then gone."
+              - paragraph [ref=e1499]:
+                - strong [ref=e1500]: "After disappearance:"
+              - list [ref=e1501]:
+                - listitem [ref=e1502]: No achievement
+                - listitem [ref=e1503]: No notification
+                - listitem [ref=e1504]: No confirmation it happened
+                - listitem [ref=e1505]: localStorage updated silently
+              - paragraph [ref=e1506]:
+                - strong [ref=e1507]: "Status bar center text — after appearance:"
+              - list [ref=e1508]:
+                - listitem [ref=e1509]:
+                  - text: "Knight:"
+                  - emphasis [ref=e1510]: "\"the system noticed.\""
+                  - text: — 3s, fades, never repeats that session
+                - listitem [ref=e1511]:
+                  - text: "Fairy:"
+                  - emphasis [ref=e1512]: "\"something was here.\""
+                  - text: — 3s, fades, never repeats that session
+              - paragraph [ref=e1513]: These are the only words the observatory offers. It does not explain further.
+              - separator [ref=e1514]
+              - heading "Trigger System" [level=3] [ref=e1515]
+              - heading "Easter Egg Trigger (All Modes)" [level=4] [ref=e1516]
+              - paragraph [ref=e1517]: 7 clicks on the status bar center text within 4 seconds.
+              - group "Code" [ref=e1518]:
+                - button "Copy to clipboard" [ref=e1520]:
+                  - generic [ref=e1521]:
+                    - img [ref=e1523]
+                    - img [ref=e1527]
+                - code [ref=e1531]:
+                  - generic [ref=e1532]: "Recruiter: Knight appears. Always."
+                  - text: "Engineer: Status bar reads \"stop.\" No entity. The system has no patience for games. Explorer: 60% Fairy / 40% Knight"
+              - paragraph [ref=e1533]: "This trigger works once per session cleanly. Second attempt same session: entity appears for 0.8s only, no status bar text. Third attempt: nothing. The observatory has already responded."
+              - separator [ref=e1534]
+              - heading "Organic Triggers — Knight" [level=4] [ref=e1535]
+              - paragraph [ref=e1536]: These make the Knight feel like an inhabitant, not a secret.
+              - paragraph [ref=e1537]:
+                - strong [ref=e1538]: "Chaos overload (Engineer):"
+                - text: 3+ chaos controls toggled within 4 seconds → Knight appears near Engine Room node. Not immediately — 800ms delay, as if it took a moment to notice.
+              - paragraph [ref=e1539]:
+                - strong [ref=e1540]: "Repeated failed commands (Terminal):"
+                - text: Same invalid terminal command entered 4+ times → Knight appears near Terminal. Stays at upper end of duration range (1.6-1.8s).
+              - paragraph [ref=e1541]:
+                - strong [ref=e1542]: "Observatory Core forced (Explorer):"
+                - text: Observer clicks Observatory Core before it's accessible (pre-20% discovery) → Knight appears near Core node in Index, or near Observatory Fragment on desktop if Index is closed. This is the Knight protecting something.
+              - paragraph [ref=e1543]:
+                - strong [ref=e1544]: "System stress (Engineer):"
+                - text: FPS drops below 44 for 8+ consecutive seconds while chaos controls are active → Knight appears briefly near Engine Room. No cursor intervention — this time it's not the observer's fault. The Knight is simply present during a difficult moment.
+              - separator [ref=e1545]
+              - heading "Organic Triggers — Fairy" [level=4] [ref=e1546]
+              - paragraph [ref=e1547]:
+                - strong [ref=e1548]: "Genuine dwell (Explorer):"
+                - text: Observer stays on an uncatalogued node in Observatory Index for 6+ seconds without clicking → Fairy appears near that node peripherally. The observatory acknowledged genuine attention.
+              - paragraph [ref=e1549]:
+                - strong [ref=e1550]: "Repeated area return (Explorer):"
+                - text: Observer returns cursor to same desktop region 4+ times within 90 seconds (Environmental Focus Events) → Fairy may appear at edge of that region. Probabilistic — 40% chance per qualifying event. Not guaranteed. Never guaranteed.
+              - paragraph [ref=e1551]:
+                - strong [ref=e1552]: "Terminal exploration without commands (Explorer):"
+                - text: Observer opens Signal Interface (terminal) and reads logs without entering any commands for 45+ seconds → Fairy appears near terminal briefly. It noticed the quiet observation.
+              - paragraph [ref=e1553]:
+                - strong [ref=e1554]: "Post-discovery (Explorer):"
+                - text: Immediately after a new node is catalogued in Observatory Index → Fairy appears near that node. Very brief (1.0-1.2s). Acknowledges the discovery without celebrating it.
+              - separator [ref=e1555]
+              - heading "Cursor Intervention System" [level=3] [ref=e1556]
+              - paragraph [ref=e1557]:
+                - emphasis [ref=e1558]: "\"The observatory enforcing its own rules through its inhabitants.\""
+              - heading "The Rule That Prevents Annoyance" [level=4] [ref=e1559]
+              - paragraph [ref=e1560]:
+                - strong [ref=e1561]: One intervention per entity per session.
+              - paragraph [ref=e1562]: "After Knight intervenes once — it will not intervene again that session. It made its point. Subsequent offenses: Knight appears briefly, looks, leaves. No intervention. The observatory has already spoken."
+              - paragraph [ref=e1563]: Same rule applies to Fairy.
+              - separator [ref=e1564]
+              - heading "Knight — Cursor Suppression" [level=4] [ref=e1565]
+              - paragraph [ref=e1566]:
+                - strong [ref=e1567]: "Trigger conditions:"
+              - group "Code" [ref=e1568]:
+                - button "Copy to clipboard" [ref=e1570]:
+                  - generic [ref=e1571]:
+                    - img [ref=e1573]
+                    - img [ref=e1577]
+                - code [ref=e1581]:
+                  - generic [ref=e1582]: "- Easter egg attempted second time within same session"
+                  - text: "- Chaos controls spammed (3+ toggles in 4s) — second offense - Same failed terminal command repeated 6+ times (after Knight already appeared at 4) - Attempting to interact with Observatory Core before accessible — repeated (3+ attempts)"
+              - paragraph [ref=e1583]:
+                - strong [ref=e1584]: "What happens:"
+              - list [ref=e1585]:
+                - listitem [ref=e1586]: Cursor continues to move visually — pointer still tracks normally
+                - listitem [ref=e1587]: All click events suppressed silently
+                - listitem [ref=e1588]: All hover events suppressed — nothing highlights, nothing responds
+                - listitem [ref=e1589]: All interactive triggers disabled
+                - listitem [ref=e1590]: "Duration: 2.0-3.2s (randomized, Knight's choice)"
+              - paragraph [ref=e1591]:
+                - strong [ref=e1592]: "During suppression:"
+              - list [ref=e1593]:
+                - listitem [ref=e1594]: Knight remains visible for entire suppression duration — longer than normal appearance
+                - listitem [ref=e1595]: Faces cursor direction. Does not move toward it. Watches.
+                - listitem [ref=e1596]: No UI indicator that suppression is active
+                - listitem [ref=e1597]: Observer figures it out
+              - paragraph [ref=e1598]:
+                - strong [ref=e1599]: "Suppression lift sequence:"
+              - list [ref=e1600]:
+                - listitem [ref=e1601]: Knight disappears (0ms transition — blink)
+                - listitem [ref=e1602]: 400ms of continued suppression after Knight leaves
+                - listitem [ref=e1603]: Interactivity returns
+                - listitem [ref=e1604]:
+                  - text: "Status bar center text:"
+                  - emphasis [ref=e1605]: "\"the system has boundaries.\""
+                  - text: — 4s, fades
+                - listitem [ref=e1606]: Never repeats that session
+              - separator [ref=e1607]
+              - heading "Fairy — Cursor Misdirection" [level=4] [ref=e1608]
+              - paragraph [ref=e1609]:
+                - strong [ref=e1610]: "Trigger conditions:"
+              - group "Code" [ref=e1611]:
+                - button "Copy to clipboard" [ref=e1613]:
+                  - generic [ref=e1614]:
+                    - img [ref=e1616]
+                    - img [ref=e1620]
+                - code [ref=e1624]:
+                  - generic [ref=e1625]: "- Observer attempts to click directly on a Fairy appearance"
+                  - text: "- Same hidden desktop area probed 5+ times within 60s - Attempting to force a discovery trigger artificially (rapid area switching)"
+              - paragraph [ref=e1626]:
+                - strong [ref=e1627]: "What happens:"
+              - list [ref=e1628]:
+                - listitem [ref=e1629]: Cursor input continues working — pointer moves, clicks register
+                - listitem [ref=e1630]: "Cursor visual drifts: 2-4px offset from actual position, slow oscillation"
+                - listitem [ref=e1631]: Click events register at slightly wrong coordinates — hover states trigger on adjacent elements unexpectedly
+                - listitem [ref=e1632]: Not broken. Just imprecise. Like something is gently pulling attention elsewhere.
+                - listitem [ref=e1633]: "Duration: 2.0-3.0s"
+              - paragraph [ref=e1634]:
+                - strong [ref=e1635]: "During misdirection:"
+              - list [ref=e1636]:
+                - listitem [ref=e1637]: Fairy flickers at peripheral screen edge — not fully visible, not gone
+                - listitem [ref=e1638]: No UI indicator
+                - listitem [ref=e1639]: Observer may not immediately realize what's happening
+              - paragraph [ref=e1640]:
+                - strong [ref=e1641]: "Misdirection lift sequence:"
+              - list [ref=e1642]:
+                - listitem [ref=e1643]: Fairy fragments and disappears (400ms)
+                - listitem [ref=e1644]: Cursor drift eases back gradually — 600ms ease, not a snap
+                - listitem [ref=e1645]:
+                  - text: "Status bar center text:"
+                  - emphasis [ref=e1646]: "\"it was only curious.\""
+                  - text: — 4s, fades
+                - listitem [ref=e1647]: Never repeats that session
+              - separator [ref=e1648]
+              - heading "Frequency & Persistence" [level=3] [ref=e1649]
+              - heading "Session Frequency" [level=4] [ref=e1650]
+              - group "Code" [ref=e1651]:
+                - button "Copy to clipboard" [ref=e1653]:
+                  - generic [ref=e1654]:
+                    - img [ref=e1656]
+                    - img [ref=e1660]
+                - code [ref=e1664]:
+                  - generic [ref=e1665]: "First session: Max 2 entity appearances total (any combination)"
+                  - text: "Return sessions: Max 3 appearances per session After 5 visits: Max 4 appearances per session"
+              - paragraph [ref=e1666]: Appearances feel rarer when they're actually rare. Scarcity is the mechanism. Not artificial scarcity — genuine restraint.
+              - heading "localStorage State" [level=4] [ref=e1667]
+              - group "javascript code" [ref=e1668]:
+                - button "Copy to clipboard" [ref=e1670]:
+                  - generic [ref=e1671]:
+                    - img [ref=e1673]
+                    - img [ref=e1677]
+                - generic [ref=e1679]: javascript
+                - code [ref=e1682]:
+                  - generic [ref=e1683]: "knight_seen: boolean"
+                  - generic [ref=e1684]: "fairy_seen: boolean"
+                  - generic [ref=e1685]: "explorer_entity_seen: \"fairy\" | \"knight\" | \"both\" | null"
+                  - generic [ref=e1686]: "entity_appearances_total: number"
+                  - generic [ref=e1687]: "visit_count: number"
+                  - generic [ref=e1688]: "knight_intervention_lifetime: number // how many times Knight has intervened ever"
+                  - generic [ref=e1689]: "fairy_intervention_lifetime: number"
+              - paragraph [ref=e1690]:
+                - text: Returning visitors with high
+                - code [ref=e1691]: entity_appearances_total
+                - text: see entities slightly less frequently. The observatory is comfortable with them now. Less need to appear.
+              - heading "The Rarity Curve" [level=4] [ref=e1692]
+              - group "Code" [ref=e1693]:
+                - button "Copy to clipboard" [ref=e1695]:
+                  - generic [ref=e1696]:
+                    - img [ref=e1698]
+                    - img [ref=e1702]
+                - code [ref=e1706]:
+                  - generic [ref=e1707]: "Visit 1: Appearances possible, not guaranteed"
+                  - text: "Visit 2-3: Slightly more likely (observatory knows observer now) Visit 4-5: Peak frequency — observatory most engaged Visit 6+: Gradual reduction — relationship established, less to prove"
+              - paragraph [ref=e1708]: Not a mechanical curve. A behavioral one. The observatory's interest in a known observer slowly becomes familiarity.
+              - separator [ref=e1709]
+              - heading "Mode Restrictions" [level=3] [ref=e1710]
+              - group "Code" [ref=e1711]:
+                - button "Copy to clipboard" [ref=e1713]:
+                  - generic [ref=e1714]:
+                    - img [ref=e1716]
+                    - img [ref=e1720]
+                - code [ref=e1724]:
+                  - generic [ref=e1725]: "RECRUITER:"
+                  - text: "Knight only. Fairy never appears in Recruiter mode. Max 1 appearance per session. Only Easter egg trigger active — no organic triggers. Rationale: Recruiter mode is clarity. Fairy would confuse the wrong audience. EXPLORER: Both entities. Full trigger system active. Full frequency curve. All cursor interventions available. ENGINEER: Knight only. Fairy never appears. Easter egg trigger replaced by \"stop.\" text — no entity. Organic triggers active (chaos, terminal, system stress). Cursor suppression available. Rationale: Engineer mode is truth. Fairy is mystery. They are incompatible."
+              - separator [ref=e1726]
+              - heading "What Entities Never Do" [level=3] [ref=e1727]
+              - group "Code" [ref=e1728]:
+                - button "Copy to clipboard" [ref=e1730]:
+                  - generic [ref=e1731]:
+                    - img [ref=e1733]
+                    - img [ref=e1737]
+                - code [ref=e1741]:
+                  - generic [ref=e1742]: Never speak to the observer
+                  - text: Never respond to being clicked Never appear twice in the same location in the same session Never appear during window open/close animations Never appear while Observatory Index is transitioning Never appear on mobile (mobile spec handles atmosphere differently) Never appear more than once per 4-minute window Never overlap with toast notifications Never appear during the entry sequence
+              - separator [ref=e1743]
+              - heading "Connection To Observatory Index" [level=3] [ref=e1744]
+              - paragraph [ref=e1745]: Every entity has an origin sector. Their appearances near those sectors are internally consistent — the observatory is not placing them randomly, it is showing where they live.
+              - group "Code" [ref=e1746]:
+                - button "Copy to clipboard" [ref=e1748]:
+                  - generic [ref=e1749]:
+                    - img [ref=e1751]
+                    - img [ref=e1755]
+                - code [ref=e1759]:
+                  - generic [ref=e1760]: "Knight origin: System Sector (Terminal, Engine Room)"
+                  - text: "Fairy origin: Research Sector / Unknown Sector boundary"
+              - paragraph [ref=e1761]: When entities appear on the desktop, they are near the desktop equivalent of their home sector. When entities appear during Observatory Index sessions, they appear near their origin node specifically.
+              - paragraph [ref=e1762]: "This means an observer who maps the Observatory Index carefully will eventually notice: the Knight always appears near the same cluster. The Fairy always appears near the edges of undiscovered space."
+              - paragraph [ref=e1763]: No one will tell them this. They will discover it or they won't.
+              - separator [ref=e1764]
+              - heading "Status" [level=3] [ref=e1765]
+              - paragraph [ref=e1766]:
+                - strong [ref=e1767]: "Concept:"
+                - text: Locked
+                - strong [ref=e1768]: "Specification:"
+                - text: Complete — v1.0
+                - strong [ref=e1769]: "Wireframe:"
+                - text: Pending sketch
+                - strong [ref=e1770]: "Next:"
+                - text: Discovery Mechanics spec
+          - group "Message actions" [ref=e1771]:
+            - button "Copy" [ref=e1774]:
+              - generic [ref=e1777]:
+                - generic [ref=e1778]: 
+                - generic [ref=e1779]: 
+        - generic [ref=e1782]:
+          - 'heading "You said: what''s your review for this one?" [level=2] [ref=e1783]'
+          - generic [ref=e1787]:
+            - heading "Files hidden in shared chats" [level=3] [ref=e1789]
+            - img [ref=e1795]
+          - generic [ref=e1797]:
+            - paragraph [ref=e1802]: what's your review for this one?
+            - group "Message actions" [ref=e1803]:
+              - generic [ref=e1805]:
+                - generic [ref=e1806]: Jun 1
+                - button "Copy" [ref=e1807]:
+                  - generic [ref=e1810]:
+                    - generic [ref=e1811]: 
+                    - generic [ref=e1812]: 
+        - generic [ref=e1814]:
+          - generic [ref=e1816]:
+            - 'heading "Claude responded: This is the strongest wireframe in the project so far." [level=2] [ref=e1817]'
+            - generic [ref=e1820]:
+              - paragraph [ref=e1821]: This is the strongest wireframe in the project so far. The jump in quality from v0.2 label is underselling it — this reads like a v1.0-ready document. Let me go through it properly.
+              - separator [ref=e1822]
+              - heading "What's Excellent" [level=3] [ref=e1823]
+              - paragraph [ref=e1824]:
+                - strong [ref=e1825]: Layer Architecture (top-left)
+              - paragraph [ref=e1826]:
+                - text: "Four layers clearly defined — Surface, Near, Mid, Far — with the critical rule called out explicitly:"
+                - emphasis [ref=e1827]: "\"Far layer never intercepts interaction.\""
+                - text: This one annotation will save a developer hours of debugging z-index issues. Perfect.
+              - paragraph [ref=e1828]:
+                - strong [ref=e1829]: Entry Sequence Timeline
+              - paragraph [ref=e1830]: "The compressed timing is correctly implemented here:"
+              - group "Code" [ref=e1831]:
+                - button "Copy to clipboard" [ref=e1833]:
+                  - generic [ref=e1834]:
+                    - img [ref=e1836]
+                    - img [ref=e1840]
+                - code [ref=e1844]:
+                  - generic [ref=e1845]: 0ms → 150ms → 300ms → 450ms → 700ms → 900ms → 1500ms
+              - paragraph [ref=e1846]: Total ~1.5 seconds. Matches the revised spec exactly. The dot-timeline format is clean and implementation-friendly.
+              - paragraph [ref=e1847]:
+                - strong [ref=e1848]: Desktop Canvas Rule
+              - paragraph [ref=e1849]: "The callout at the top center is exactly right:"
+              - group "Code" [ref=e1850]:
+                - button "Copy to clipboard" [ref=e1852]:
+                  - generic [ref=e1853]:
+                    - img [ref=e1855]
+                    - img [ref=e1859]
+                - code [ref=e1863]:
+                  - generic [ref=e1864]: No persistent panels on the right edge.
+                  - text: Overlays slide over the canvas when opened. Everything on the canvas is part of the observatory floor.
+              - paragraph [ref=e1865]: This is the single most important architectural decision for Explorer mode and it's front-and-center where a developer will see it first.
+              - paragraph [ref=e1866]:
+                - strong [ref=e1867]: Status Bar — Explorer Mode
+              - paragraph [ref=e1868]:
+                - text: "All seven right-zone elements correctly placed and labeled: Weather, Search, Discovery Indicator, Motion Toggle, Notifications, Profile, Clock. The Discovery Indicator shown as"
+                - code [ref=e1869]: ●··
+                - text: (partially filled) is exactly right. The dot pulse element is present. Good.
+              - paragraph [ref=e1870]:
+                - strong [ref=e1871]: Secret Click Counter
+              - paragraph [ref=e1872]:
+                - text: The 7-click Easter egg mechanic is documented cleanly — requirement, window, reset condition, result. The filled dot progress visualization
+                - code [ref=e1873]: ●●●●●●●
+                - text: is a smart wireframe choice. Shows the mechanic without needing prose.
+              - paragraph [ref=e1874]:
+                - strong [ref=e1875]: Bottom Bar
+              - paragraph [ref=e1876]:
+                - text: Pulse trio with unsynchronized periods (3.8s / 4.6s / 5.1s) explicitly labeled —
+                - emphasis [ref=e1877]: "\"Sometimes align. Usually don't.\""
+                - text: That annotation is doing important work. A developer without it would synchronize them. The hint trigger documentation is correct.
+              - paragraph [ref=e1878]:
+                - strong [ref=e1879]: Dock
+              - paragraph [ref=e1880]: "Explorer language correctly applied throughout:"
+              - group "Code" [ref=e1881]:
+                - button "Copy to clipboard" [ref=e1883]:
+                  - generic [ref=e1884]:
+                    - img [ref=e1886]
+                    - img [ref=e1890]
+                - code [ref=e1894]:
+                  - generic [ref=e1895]: Identity Archive / Project Archive / Observatory Core /
+                  - text: Signal Interface / Experiment Lab / Observatory Guide / Archive Vault
+              - paragraph [ref=e1896]: Locked order noted. localStorage reset conditions noted. All correct.
+              - paragraph [ref=e1897]:
+                - strong [ref=e1898]: Environment Reactions Panel
+              - paragraph [ref=e1899]: "All four reactions from spec present:"
+              - list [ref=e1900]:
+                - listitem [ref=e1901]: Cursor Proximity
+                - listitem [ref=e1902]: Repeated Observation
+                - listitem [ref=e1903]: Idle Time
+                - listitem [ref=e1904]: Status Bar Interaction
+              - paragraph [ref=e1905]: Clean, scannable, accurate.
+              - paragraph [ref=e1906]:
+                - strong [ref=e1907]: Overlay Panels
+              - paragraph [ref=e1908]: Discovery Panel, Notifications Panel, Assistant Panel — all three correctly documented as sliding over canvas from right, none replacing the desktop. The "None replace the desktop" note is the right emphasis.
+              - paragraph [ref=e1909]:
+                - strong [ref=e1910]: Visual Style Guide
+              - paragraph [ref=e1911]: "Color values correct:"
+              - group "Code" [ref=e1912]:
+                - button "Copy to clipboard" [ref=e1914]:
+                  - generic [ref=e1915]:
+                    - img [ref=e1917]
+                    - img [ref=e1921]
+                - code [ref=e1925]:
+                  - generic [ref=e1926]: "Surface: #07070b"
+                  - text: "Surface2: #0d0c12 (slight variation — acceptable, within spirit) Border: #1a1b22 Accent: #9b7fd4 (violet — correct)"
+              - paragraph [ref=e1927]:
+                - strong [ref=e1928]: Interaction Rules (bottom center)
+              - paragraph [ref=e1929]: "These four lines should be printed and pinned during implementation:"
+              - group "Code" [ref=e1930]:
+                - button "Copy to clipboard" [ref=e1932]:
+                  - generic [ref=e1933]:
+                    - img [ref=e1935]
+                    - img [ref=e1939]
+                - code [ref=e1943]:
+                  - generic [ref=e1944]: Hover reveals, never explains.
+                  - text: No instructions, only observations. Nothing is handed to the visitor. The observatory reacts to attention, not actions.
+              - separator [ref=e1945]
+              - heading "Two Things To Address" [level=3] [ref=e1946]
+              - paragraph [ref=e1947]:
+                - strong [ref=e1948]: 1. Observatory Fragment positioning
+              - paragraph [ref=e1949]: The wireframe shows Observatory Fragment in the upper-right desktop area. The spec places it lower center-left — specifically to act as a visual anchor for the eye in that region of the desktop, balancing the Recent Activity widget which sits lower-left.
+              - paragraph [ref=e1950]: Upper-right conflicts with where overlay panels slide in from. A Discovery Panel or Assistant Panel opening from the right will overlap it constantly. Move it to lower center-left as specced.
+              - paragraph [ref=e1951]:
+                - strong [ref=e1952]: 2. Widget 1 tooltip copy
+              - paragraph [ref=e1953]: "The Observatory Pulse tooltip in the wireframe reads:"
+              - group "Code" [ref=e1954]:
+                - button "Copy to clipboard" [ref=e1956]:
+                  - generic [ref=e1957]:
+                    - img [ref=e1959]
+                    - img [ref=e1963]
+                - code [ref=e1967]:
+                  - generic [ref=e1968]: "\"Presence detected."
+                  - text: Observatory is aware of you."
+              - paragraph [ref=e1969]:
+                - text: "The spec says this tooltip appears only after 60+ seconds in Explorer mode, and reads:"
+                - emphasis [ref=e1970]: "\"the observatory is aware of you.\""
+              - paragraph [ref=e1971]: "Two things: it should be a single line, lowercase, observatory voice. And the trigger condition (60s dwell) should be annotated on the wireframe so the developer doesn't show it immediately on hover."
+              - separator [ref=e1972]
+              - heading "One Small Flag" [level=3] [ref=e1973]
+              - paragraph [ref=e1974]: The dock shows "Observatory Core" as a dock item. Per the Window Manager spec, Engine Room is a Type 3 window — full canvas, no chrome. In Explorer mode it's called "Observatory Core" which is correct. Just confirm during implementation that clicking this in Explorer triggers the full canvas experience, not a standard window. Worth a note on the dock section.
+              - separator [ref=e1975]
+              - heading "Verdict" [level=3] [ref=e1976]
+              - paragraph [ref=e1977]:
+                - strong [ref=e1978]: Explorer Environment Wireframe v0.2 — Ready for implementation with two annotation updates.
+              - paragraph [ref=e1979]: No redraw needed. Fix Observatory Fragment position to lower center-left, update the Pulse tooltip to single-line lowercase with the 60s trigger noted. Both are annotation-level changes.
+              - paragraph [ref=e1980]:
+                - text: This is locked. Shall we move to
+                - strong [ref=e1981]: Discovery Mechanics
+                - text: spec next?
+          - group "Message actions" [ref=e1982]:
+            - button "Copy" [ref=e1985]:
+              - generic [ref=e1988]:
+                - generic [ref=e1989]: 
+                - generic [ref=e1990]: 
+        - generic [ref=e1993]:
+          - 'heading "You said: yes" [level=2] [ref=e1994]'
+          - generic [ref=e1995]:
+            - paragraph [ref=e2000]: "yes"
+            - group "Message actions" [ref=e2001]:
+              - generic [ref=e2003]:
+                - generic [ref=e2004]: Jun 1
+                - button "Copy" [ref=e2005]:
+                  - generic [ref=e2008]:
+                    - generic [ref=e2009]: 
+                    - generic [ref=e2010]: 
+        - generic [ref=e2012]:
+          - generic [ref=e2014]:
+            - 'heading "Claude responded: Discovery Mechanics" [level=2] [ref=e2015]'
+            - generic [ref=e2018]:
+              - heading "Discovery Mechanics" [level=2] [ref=e2019]
+              - paragraph [ref=e2020]:
+                - strong [ref=e2021]: Specification v1.0
+              - paragraph [ref=e2022]:
+                - emphasis [ref=e2023]: "\"The observatory does not hide things. It simply doesn't announce them.\""
+              - separator [ref=e2024]
+              - heading "What Discovery Is" [level=3] [ref=e2025]
+              - paragraph [ref=e2026]: Discovery is not a game system. It is not an achievement system. It is not a progression tracker with rewards.
+              - paragraph [ref=e2027]: Discovery is the natural consequence of genuine attention.
+              - paragraph [ref=e2028]: An observer who moves quickly through the observatory, clicking obvious things, will discover very little. An observer who dwells, returns, reads, and explores will find the observatory gradually revealing more of itself — not because they completed conditions, but because the observatory noticed the quality of their attention.
+              - paragraph [ref=e2029]: "The distinction is critical for implementation:"
+              - group "Code" [ref=e2030]:
+                - button "Copy to clipboard" [ref=e2032]:
+                  - generic [ref=e2033]:
+                    - img [ref=e2035]
+                    - img [ref=e2039]
+                - code [ref=e2043]:
+                  - generic [ref=e2044]: "WRONG: Observer triggered condition X → reward Y unlocked"
+                  - text: "RIGHT: Observer demonstrated behavior X → observatory responded"
+              - paragraph [ref=e2045]: No observer should ever feel they are collecting things. They should feel they are learning about a place.
+              - separator [ref=e2046]
+              - heading "What Can Be Discovered" [level=3] [ref=e2047]
+              - paragraph [ref=e2048]: "Discovery exists across four categories:"
+              - heading "1. Nodes (Observatory Index)" [level=4] [ref=e2049]
+              - paragraph [ref=e2050]:
+                - text: Uncatalogued nodes in the Observatory Index that become readable through dwell, return visits, or specific behaviors. Initially rendered as
+                - code [ref=e2051]: ██████
+                - text: or faint geometry with no label.
+              - group "Code" [ref=e2052]:
+                - button "Copy to clipboard" [ref=e2054]:
+                  - generic [ref=e2055]:
+                    - img [ref=e2057]
+                    - img [ref=e2061]
+                - code [ref=e2065]:
+                  - generic [ref=e2066]: "Total discoverable nodes: 47"
+                  - text: "Visible from start: 12 (labeled) Visible but unreadable: 8 (██████) Hidden — become visible: 19 (appear through behavior) Permanently hidden: 8 (require specific conditions, some may never be found)"
+              - heading "2. Signals" [level=4] [ref=e2067]
+              - paragraph [ref=e2068]: Transient events on the desktop or Observatory Index. Brief appearances of text, geometry, or light that carry no explanation. Not interactive. Cannot be saved or captured. Exist for seconds then are gone.
+              - group "Code" [ref=e2069]:
+                - button "Copy to clipboard" [ref=e2071]:
+                  - generic [ref=e2072]:
+                    - img [ref=e2074]
+                    - img [ref=e2078]
+                - code [ref=e2082]:
+                  - generic [ref=e2083]: "Examples:"
+                  - text: "\"unknown artifact indexed.\" (bottom bar, appears once) A connection line that briefly (desktop ambient geometry) connects to nothing visible A node label that reads (Observatory Index, 3 seconds) \"[REDACTED]\" before going blank"
+              - heading "3. Entity Traces" [level=4] [ref=e2084]
+              - paragraph [ref=e2085]: After a Fairy or Knight appearance, a trace remains. Not visible immediately — appears 30-60 seconds after the entity leaves. A faint dotted line from the entity's origin sector, barely visible, 4-6% opacity. Persists for the session only.
+              - paragraph [ref=e2086]: Observers who notice these traces and follow them in the Observatory Index will find they lead toward the entity's home sector. No confirmation. No reward. Just the map becoming slightly more legible.
+              - heading "4. Observatory Memory Fragments" [level=4] [ref=e2087]
+              - paragraph [ref=e2088]: Deep discovery. Only accessible after 50% node cataloguing in Explorer mode. The Observatory Core becomes interactive and opens a personal map fragment — a visualization of everything the observer has catalogued rendered as their own partial version of the observatory map. Not a progress screen. Not a completion tracker. A record. The observatory showing the observer what they've found, in the observatory's own visual language.
+              - separator [ref=e2089]
+              - heading "How Discovery Happens" [level=3] [ref=e2090]
+              - heading "Dwell Trigger" [level=4] [ref=e2091]
+              - paragraph [ref=e2092]:
+                - strong [ref=e2093]: "Condition:"
+                - text: Cursor remains within 40px of a hidden or uncatalogued node for 4+ consecutive seconds without clicking.
+              - paragraph [ref=e2094]:
+                - strong [ref=e2095]: "Response:"
+                - text: The node's opacity increases slightly — from invisible or near-invisible to 4-6%. If the observer maintains position for 8+ seconds, a fragment of the node label appears — not the full label, one or two characters, as if partially decoding.
+              - paragraph [ref=e2096]:
+                - strong [ref=e2097]: "Full reveal:"
+                - text: Requires either multiple dwell sessions across the same node, or a return visit with dwell. Never instant. The observatory is patient.
+              - paragraph [ref=e2098]:
+                - strong [ref=e2099]: "Important:"
+                - text: Clicking during dwell resets it. The observatory rewards stillness, not action.
+              - separator [ref=e2100]
+              - heading "Revisit Trigger" [level=4] [ref=e2101]
+              - paragraph [ref=e2102]:
+                - strong [ref=e2103]: "Condition:"
+                - text: Observer returns cursor to the same region or node 3+ times within a session, or returns to the same node across multiple visits.
+              - paragraph [ref=e2104]:
+                - strong [ref=e2105]: "Response:"
+                - text: Node label deepens. Description becomes more complete. Connection lines from that node become slightly more visible.
+              - paragraph [ref=e2106]:
+                - strong [ref=e2107]: "Cross-session behavior:"
+                - text: localStorage tracks which nodes have received dwell/revisit attention. Returning visitors find nodes in the state they left them — partially revealed, further along the decode.
+              - separator [ref=e2108]
+              - heading "Terminal Trigger" [level=4] [ref=e2109]
+              - paragraph [ref=e2110]:
+                - strong [ref=e2111]: "Condition:"
+                - text: Specific commands entered in Signal Interface (terminal).
+              - paragraph [ref=e2112]:
+                - strong [ref=e2113]: "Response:"
+                - text: Nodes appear on Observatory Index map that weren't there before. The terminal and the map are connected. What you query in one surfaces in the other.
+              - paragraph [ref=e2114]:
+                - strong [ref=e2115]: "Examples (to be fully specced in Terminal System doc):"
+              - group "Code" [ref=e2116]:
+                - button "Copy to clipboard" [ref=e2118]:
+                  - generic [ref=e2119]:
+                    - img [ref=e2121]
+                    - img [ref=e2125]
+                - code [ref=e2129]:
+                  - generic [ref=e2130]: "> scan → reveals one hidden node location (not label)"
+                  - text: "> trace [node] → shows connection lines from named node > observe → increments dwell on currently dwelled node"
+              - paragraph [ref=e2131]: These commands are not documented anywhere in the UI. Observers who think to try them will find they work. Observers who don't will not miss them — the observatory has other paths.
+              - separator [ref=e2132]
+              - heading "Attention Trigger (Environmental Focus Events)" [level=4] [ref=e2133]
+              - paragraph [ref=e2134]:
+                - strong [ref=e2135]: "Condition:"
+                - text: Cursor circles or returns to same desktop area without the observer taking any action — pure proximity behavior.
+              - paragraph [ref=e2136]:
+                - strong [ref=e2137]: "Response:"
+                - text: Probabilistic. 40% chance of a transient signal appearing. A brief brightening of ambient geometry. A faint node at the edge of the area, present for 3-5 seconds, then gone.
+              - paragraph [ref=e2138]:
+                - strong [ref=e2139]: No tracking on these.
+                - text: They are not stored. They are not counted toward discovery progress. They are the observatory noticing attention and occasionally responding. Sometimes it doesn't respond at all. The observer cannot know which behavior triggers response.
+              - separator [ref=e2140]
+              - heading "Behavioral Trigger" [level=4] [ref=e2141]
+              - paragraph [ref=e2142]:
+                - strong [ref=e2143]: "Condition:"
+                - text: Specific sequences of behavior that demonstrate genuine engagement rather than surface-level clicking.
+              - paragraph [ref=e2144]:
+                - strong [ref=e2145]: "Examples:"
+              - group "Code" [ref=e2146]:
+                - button "Copy to clipboard" [ref=e2148]:
+                  - generic [ref=e2149]:
+                    - img [ref=e2151]
+                    - img [ref=e2155]
+                - code [ref=e2159]:
+                  - generic [ref=e2160]: Reading passive terminal logs for 45+ seconds without input
+                  - text: "→ Fairy appears, entity trace placed Opening the same project in Projects app twice in same session → A secondary connection line appears from that project node in Observatory Index, leading toward Knowledge Layer Staying in Observatory Index for 3+ minutes total across session → Unknown Sector label partially reveals: \"U██████ S█████\" Dismissing Recent Activity widget without reading it → Nothing. The observatory noticed but says nothing. (Internally: dismissal_unread flagged in session state. May affect future Observatory Memory fragment content.)"
+              - paragraph [ref=e2161]: Behavioral triggers are the deepest layer. Most observers will never consciously identify them. They will simply find that the observatory feels more complete than they expected.
+              - separator [ref=e2162]
+              - heading "Discovery State" [level=3] [ref=e2163]
+              - heading "What Gets Stored (localStorage)" [level=4] [ref=e2164]
+              - group "javascript code" [ref=e2165]:
+                - button "Copy to clipboard" [ref=e2167]:
+                  - generic [ref=e2168]:
+                    - img [ref=e2170]
+                    - img [ref=e2174]
+                - generic [ref=e2176]: javascript
+                - code [ref=e2179]:
+                  - generic [ref=e2180]: "discovery: {"
+                  - generic [ref=e2181]: "nodes_catalogued: string[], // array of node IDs confirmed visible"
+                  - generic [ref=e2182]: "nodes_partially_revealed: { // nodes in progress"
+                  - generic [ref=e2183]: "[nodeId]: {"
+                  - generic [ref=e2184]: "dwell_seconds: number,"
+                  - generic [ref=e2185]: "visit_count: number,"
+                  - generic [ref=e2186]: "label_chars_revealed: number"
+                  - generic [ref=e2187]: "}"
+                  - generic [ref=e2188]: "},"
+                  - generic [ref=e2189]: "signals_witnessed: string[], // transient signals the observer was present for"
+                  - generic [ref=e2190]: "entity_traces_seen: boolean, // whether observer noticed a trace"
+                  - generic [ref=e2191]: "terminal_commands_used: string[], // discovery-relevant commands"
+                  - generic [ref=e2192]: "dismissal_unread: boolean,"
+                  - generic [ref=e2193]: "session_count: number,"
+                  - generic [ref=e2194]: "total_dwell_time: number // seconds spent in Observatory Index total"
+                  - generic [ref=e2195]: "}"
+              - heading "What Does Not Get Stored" [level=4] [ref=e2196]
+              - paragraph [ref=e2197]: Individual attention trigger responses. Probabilistic events. The observatory's internal reactions to cursor proximity. These are ephemeral. They happened. They are gone. The observer either noticed or they didn't.
+              - separator [ref=e2198]
+              - heading "Discovery Progress Display" [level=3] [ref=e2199]
+              - heading "Explorer Footer" [level=4] [ref=e2200]
+              - group "Code" [ref=e2201]:
+                - button "Copy to clipboard" [ref=e2203]:
+                  - generic [ref=e2204]:
+                    - img [ref=e2206]
+                    - img [ref=e2210]
+                - code [ref=e2214]:
+                  - generic [ref=e2215]: "◈ 4 observations catalogued · The observatory remembers. · Observed: 12 / 47"
+              - paragraph [ref=e2216]:
+                - text: The
+                - code [ref=e2217]: 12 / 47
+                - text: counter updates in real time as nodes are catalogued. No animation on the number change — it simply updates, as a system counter would.
+              - paragraph [ref=e2218]:
+                - strong [ref=e2219]: "What counts toward the 47:"
+              - list [ref=e2220]:
+                - listitem [ref=e2221]: Fully revealed and labeled nodes only
+                - listitem [ref=e2222]: Partially revealed nodes do not count
+                - listitem [ref=e2223]: Transient signals do not count
+                - listitem [ref=e2224]: Entity traces do not count
+              - paragraph [ref=e2225]: The 47 is achievable in theory. In practice, 8 nodes have conditions that make them extremely difficult to find. An observer who reaches 39/47 has seen nearly everything. Whether the final 8 exist will feel uncertain. The observatory will not confirm.
+              - heading "Discovery Panel (Overlay, Explorer only)" [level=4] [ref=e2226]
+              - paragraph [ref=e2227]:
+                - text: Accessible via the Discovery Indicator in the status bar (the
+                - code [ref=e2228]: ◌◌◌◌
+                - text: element that fills as discoveries are made).
+              - paragraph [ref=e2229]: "Panel contents:"
+              - group "Code" [ref=e2230]:
+                - button "Copy to clipboard" [ref=e2232]:
+                  - generic [ref=e2233]:
+                    - img [ref=e2235]
+                    - img [ref=e2239]
+                - code [ref=e2243]:
+                  - generic [ref=e2244]: ◈ Observatory Discovery Log
+                  - text: ───────────────────────────────────── CATALOGUED (12) ● Identity Layer ● Application Layer ● Knowledge Layer ● [9 more...] PARTIALLY OBSERVED (3) ◐ [████████] — sector unknown ◐ [R███████] — identity partial ◐ System Sector — connections unclear SIGNALS WITNESSED (2) ∿ unknown artifact indexed. ∿ [REDACTED] ENTITY ACTIVITY ◈ Knight observed · near Terminal ✦ Fairy trace · active ─────────────────────────────────────
+              - paragraph [ref=e2245]:
+                - strong [ref=e2246]: "Important:"
+                - text: The panel uses observatory language throughout. Nothing says "achievements" or "unlocked" or "found." Items are catalogued, observed, witnessed. The observer is a scientist, not a collector.
+              - paragraph [ref=e2247]:
+                - strong [ref=e2248]: Partially observed nodes show redacted labels
+                - text: — the observer knows something is there but not what it is. This is more motivating than showing nothing.
+              - separator [ref=e2249]
+              - heading "Discovery Indicator (Status Bar)" [level=3] [ref=e2250]
+              - paragraph [ref=e2251]:
+                - text: The
+                - code [ref=e2252]: ◌◌◌◌
+                - text: element in the Explorer status bar right zone.
+              - paragraph [ref=e2253]:
+                - strong [ref=e2254]: Four circles.
+                - text: "Each fills as discovery thresholds are crossed:"
+              - group "Code" [ref=e2255]:
+                - button "Copy to clipboard" [ref=e2257]:
+                  - generic [ref=e2258]:
+                    - img [ref=e2260]
+                    - img [ref=e2264]
+                - code [ref=e2268]:
+                  - generic [ref=e2269]: ◌◌◌◌ → 0-11 catalogued
+                  - text: ●◌◌◌ → 12-23 catalogued ●●◌◌ → 24-35 catalogued ●●●◌ → 36-46 catalogued ●●●● → 47/47 — all catalogued
+              - paragraph [ref=e2270]:
+                - strong [ref=e2271]: "Behavior:"
+              - list [ref=e2272]:
+                - listitem [ref=e2273]: No animation on fill — instant update, like a system counter
+                - listitem [ref=e2274]: No hover response — silence is intentional (per original spec)
+                - listitem [ref=e2275]: No click response
+                - listitem [ref=e2276]: "At 47/47: the four dots do not celebrate. They simply stay filled. The observer knows what it means."
+              - separator [ref=e2277]
+              - heading "What Discovery Is Not" [level=3] [ref=e2278]
+              - group "Code" [ref=e2279]:
+                - button "Copy to clipboard" [ref=e2281]:
+                  - generic [ref=e2282]:
+                    - img [ref=e2284]
+                    - img [ref=e2288]
+                - code [ref=e2292]:
+                  - generic [ref=e2293]: Not an achievement system
+                  - text: No badges. No titles. No "X% complete" screens. Not a tutorial Nothing teaches the observer how to discover. No hints that hidden things exist (except the observatory's own behavior). Not completable in one session Some reveals require return visits. Some require time passing between sessions. The observatory rewards patience, not marathon sessions. Not gamified No XP. No streaks. No daily rewards. No leaderboard. No sharing. Not frustrating An observer who discovers 12/47 and never returns had a complete experience. The 47 exists for those who want it. It is not required. It is not withheld as punishment.
+              - separator [ref=e2294]
+              - heading "The Archaeology Principle" [level=3] [ref=e2295]
+              - paragraph [ref=e2296]: "Every discovery decision must pass this test:"
+              - blockquote [ref=e2297]:
+                - paragraph [ref=e2298]: Does this feel like finding something that was always there? Or does it feel like unlocking something that was being kept from me?
+              - paragraph [ref=e2299]: The first is archaeology. The second is a game.
+              - paragraph [ref=e2300]: The observatory has always contained these things. The observer is not earning access. They are simply looking carefully enough to see what was already present.
+              - separator [ref=e2301]
+              - heading "Status" [level=3] [ref=e2302]
+              - paragraph [ref=e2303]:
+                - strong [ref=e2304]: "Concept:"
+                - text: Locked
+                - strong [ref=e2305]: "Specification:"
+                - text: Complete — v1.0
+                - strong [ref=e2306]: "Wireframe:"
+                - text: Pending your sketch
+                - strong [ref=e2307]: "Next:"
+                - text: Environmental Reactions spec
+          - group "Message actions" [ref=e2308]:
+            - button "Copy" [ref=e2311]:
+              - generic [ref=e2314]:
+                - generic [ref=e2315]: 
+                - generic [ref=e2316]: 
+        - generic [ref=e2319]:
+          - 'heading "You said: review the entity system wireframe first" [level=2] [ref=e2320]'
+          - generic [ref=e2324]:
+            - heading "Files hidden in shared chats" [level=3] [ref=e2326]
+            - img [ref=e2332]
+          - generic [ref=e2334]:
+            - paragraph [ref=e2339]: review the entity system wireframe first
+            - group "Message actions" [ref=e2340]:
+              - generic [ref=e2342]:
+                - generic [ref=e2343]: Jun 1
+                - button "Copy" [ref=e2344]:
+                  - generic [ref=e2347]:
+                    - generic [ref=e2348]: 
+                    - generic [ref=e2349]: 
+        - generic [ref=e2351]:
+          - generic [ref=e2353]:
+            - 'heading "Claude responded: This is exceptional." [level=2] [ref=e2354]'
+            - generic [ref=e2357]:
+              - paragraph [ref=e2358]: This is exceptional. Possibly the best wireframe in the entire project. Let me go through it properly.
+              - separator [ref=e2359]
+              - heading "What's Perfect" [level=3] [ref=e2360]
+              - paragraph [ref=e2361]:
+                - strong [ref=e2362]: Core Principle & Silence Rule (top-left)
+              - paragraph [ref=e2363]: "The framing is exactly right:"
+              - group "Code" [ref=e2364]:
+                - button "Copy to clipboard" [ref=e2366]:
+                  - generic [ref=e2367]:
+                    - img [ref=e2369]
+                    - img [ref=e2373]
+                - code [ref=e2377]:
+                  - generic [ref=e2378]: Inhabitants of the observatory.
+                  - text: Not characters. Not NPCs. Not rewards. Not Easter eggs. They existed before you arrived and will continue after you leave.
+              - paragraph [ref=e2379]:
+                - text: And the Silence Rule checklist — no text, no sound, no reaction, no acknowledgment, no dialogue, no explanations,
+                - emphasis [ref=e2380]: Ever.
+                - text: — this being front-and-center on the wireframe means a developer cannot miss it. That's the right call.
+              - paragraph [ref=e2381]:
+                - strong [ref=e2382]: Entity Identities Section
+              - paragraph [ref=e2383]: "Both visual descriptions are accurate to spec. The actual rendered visuals of Knight and Fairy in the wireframe are striking and nail the character distinction completely:"
+              - list [ref=e2384]:
+                - listitem [ref=e2385]: "Knight: dark, angular, absorbs light, defined by absence"
+                - listitem [ref=e2386]: "Fairy: fragmented, luminous, violet-adjacent, unstable edges"
+              - paragraph [ref=e2387]: These images alone would communicate the brief to a visual developer without prose.
+              - paragraph [ref=e2388]:
+                - strong [ref=e2389]: Appearance Sequence (top-right)
+              - paragraph [ref=e2390]: "Knight sequence:"
+              - group "Code" [ref=e2391]:
+                - button "Copy to clipboard" [ref=e2393]:
+                  - generic [ref=e2394]:
+                    - img [ref=e2396]
+                    - img [ref=e2400]
+                - code [ref=e2404]:
+                  - generic [ref=e2405]: Appears (instant) → May turn toward cursor (1.5s) → Disappears (instant)
+              - paragraph [ref=e2406]: "Fairy sequence:"
+              - group "Code" [ref=e2407]:
+                - button "Copy to clipboard" [ref=e2409]:
+                  - generic [ref=e2410]:
+                    - img [ref=e2412]
+                    - img [ref=e2416]
+                - code [ref=e2420]:
+                  - generic [ref=e2421]: Appears at edge → Subtle shimmer/fragmented light → Fragments outward (400ms) → Gone
+              - paragraph [ref=e2422]: Both accurate. The visual sequence format is clean and implementation-ready.
+              - paragraph [ref=e2423]:
+                - strong [ref=e2424]: Trigger System Overview
+              - paragraph [ref=e2425]: The three-column mode split for Easter egg trigger is correct. Engineer mode showing the "stop." text with no entity — rendered as an actual mini status bar — is a smart wireframe choice. Shows the behavior without describing it.
+              - paragraph [ref=e2426]: "Click counter rule documented correctly: 7 clicks, 4s window, resets on no-click. The dot progress visualization matches the Explorer Environment wireframe. Consistent."
+              - paragraph [ref=e2427]:
+                - strong [ref=e2428]: Trigger Cooldown (Easter Egg)
+              - group "Code" [ref=e2429]:
+                - button "Copy to clipboard" [ref=e2431]:
+                  - generic [ref=e2432]:
+                    - img [ref=e2434]
+                    - img [ref=e2438]
+                - code [ref=e2442]:
+                  - generic [ref=e2443]: "1st Attempt: Normal appearance + status text"
+                  - text: "2nd Attempt: Entity for 0.8s only. No status text. 3rd Attempt: Nothing. The observatory has already responded."
+              - paragraph [ref=e2444]: Exactly right.
+              - paragraph [ref=e2445]:
+                - strong [ref=e2446]: Organic Triggers — Both Entities
+              - paragraph [ref=e2447]:
+                - text: All triggers from spec present and correctly located. The addition of "Curiosity patterns (Explorer)" as a Fairy trigger —
+                - emphasis [ref=e2448]: "\"Use hints, open hidden areas, explore unusual paths\""
+                - text: — is a good addition that wasn't explicitly named in the spec but is consistent with the Fairy's character. Keep it.
+              - paragraph [ref=e2449]:
+                - strong [ref=e2450]: Visibility Rules
+              - paragraph [ref=e2451]: "The checklist format works perfectly here:"
+              - group "Code" [ref=e2452]:
+                - button "Copy to clipboard" [ref=e2454]:
+                  - generic [ref=e2455]:
+                    - img [ref=e2457]
+                    - img [ref=e2461]
+                - code [ref=e2465]:
+                  - generic [ref=e2466]: ✓ Never center screen
+                  - text: ✓ Never over windows, dock or status bar ✓ Always at preferred location for that entity ✓ Visible for 1.2-1.8s only ✗ No tooltip, no label, no interaction ✗ Clicks are ignored (no event fired)
+              - paragraph [ref=e2467]:
+                - strong [ref=e2468]: Modal Variations (bottom-right)
+              - paragraph [ref=e2469]: "This is new and it's excellent. Two environmental effects not in the original spec:"
+              - list [ref=e2470]:
+                - listitem [ref=e2471]: "Knight appearance: environment slightly desaturates — subtle"
+                - listitem [ref=e2472]: "Fairy appearance: environment slightly warms / violet brightens — subtle"
+              - paragraph [ref=e2473]: These are exactly the kind of additions that deepen atmosphere without announcing themselves. They pass the archaeology test. Locking these into spec now.
+              - paragraph [ref=e2474]:
+                - strong [ref=e2475]: Implementation Notes
+              - paragraph [ref=e2476]: "All six notes are correct and implementation-critical:"
+              - list [ref=e2477]:
+                - listitem [ref=e2478]: EntityManager controls spawn logic ✓
+                - listitem [ref=e2479]: ClickCounter handles status bar clicks ✓
+                - listitem [ref=e2480]: Entities are DOM overlays at highest z-index layer ✓
+                - listitem [ref=e2481]: "Pointer events: none (clicks pass through / suppressed) ✓"
+                - listitem [ref=e2482]: All timings use requestAnimationFrame ✓
+                - listitem [ref=e2483]: All randomness seeded per session (not predictable) ✓
+              - paragraph [ref=e2484]: The last one is especially important — seeded randomness means the observer can't refresh to force a specific entity. Good catch.
+              - paragraph [ref=e2485]:
+                - strong [ref=e2486]: Explorer Integration Examples (bottom)
+              - paragraph [ref=e2487]: Five location examples rendered visually — Near Terminal, Near Engine Room Node, Near Uncatalogued Node, Near Observatory Fragment, Top-Right Corner. All correct positions. The visual context makes the location preference system immediately understandable.
+              - separator [ref=e2488]
+              - heading "Two Things To Add" [level=3] [ref=e2489]
+              - paragraph [ref=e2490]:
+                - strong [ref=e2491]: 1. Cursor Intervention System is missing
+              - paragraph [ref=e2492]: The wireframe covers appearance behavior thoroughly but the cursor suppression (Knight) and cursor misdirection (Fairy) mechanics aren't documented here. This is a significant omission — a developer building from this wireframe wouldn't know about it.
+              - paragraph [ref=e2493]: "Add a section:"
+              - group "Code" [ref=e2494]:
+                - button "Copy to clipboard" [ref=e2496]:
+                  - generic [ref=e2497]:
+                    - img [ref=e2499]
+                    - img [ref=e2503]
+                - code [ref=e2507]:
+                  - generic [ref=e2508]: CURSOR INTERVENTION (ONE PER SESSION)
+                  - text: "Knight — Suppression All click + hover events suppressed. Cursor moves visually but nothing responds. Duration: 2.0-3.2s. Knight remains visible throughout. After: 400ms continued suppression post-disappearance. Status text: \"the system has boundaries.\" Fairy — Misdirection Cursor visual drifts 2-4px. Clicks register at wrong coordinates. Fairy flickers at screen edge during duration. Duration: 2.0-3.0s. Returns gradually (600ms ease). Status text: \"it was only curious.\" Trigger conditions for each — see spec doc. One intervention maximum per entity per session."
+              - paragraph [ref=e2509]:
+                - strong [ref=e2510]: 2. Rarity Curve not shown
+              - paragraph [ref=e2511]: The frequency model — max 2 appearances first session, scaling to 4 by visit 5+, then gradual reduction — isn't documented. Add a small frequency table to Silent Recording section or as its own subsection. A developer needs this to build EntityManager correctly.
+              - separator [ref=e2512]
+              - heading "Verdict" [level=3] [ref=e2513]
+              - paragraph [ref=e2514]:
+                - strong [ref=e2515]: Entity System Wireframe v1.0 — Ready for implementation with two additions.
+              - paragraph [ref=e2516]: The cursor intervention section and rarity curve need to be added — these can be annotation additions on the existing sheet, no redraw required. The modal variations (desaturation for Knight, violet warmth for Fairy) are accepted into spec.
+              - paragraph [ref=e2517]: This wireframe will be the reference document for one of the most complex behavioral systems in the project. It's up to that responsibility. Locked pending two additions.
+              - paragraph [ref=e2518]: Ready to move to Discovery Mechanics wireframe when you sketch it, or shall we write the Environmental Reactions spec now?
+          - group "Message actions" [ref=e2519]:
+            - button "Copy" [ref=e2522]:
+              - generic [ref=e2525]:
+                - generic [ref=e2526]: 
+                - generic [ref=e2527]: 
+        - generic [ref=e2530]:
+          - 'heading "You said: let''s start with discovery mechanics first, most of the environmental reactions will also depend on this" [level=2] [ref=e2531]'
+          - generic [ref=e2532]:
+            - paragraph [ref=e2537]: let's start with discovery mechanics first, most of the environmental reactions will also depend on this
+            - group "Message actions" [ref=e2538]:
+              - generic [ref=e2540]:
+                - generic [ref=e2541]: Jun 1
+                - button "Copy" [ref=e2542]:
+                  - generic [ref=e2545]:
+                    - generic [ref=e2546]: 
+                    - generic [ref=e2547]: 
+        - generic [ref=e2549]:
+          - generic [ref=e2551]:
+            - 'heading "Claude responded: Agreed completely." [level=2] [ref=e2552]'
+            - generic [ref=e2555]:
+              - paragraph [ref=e2556]: Agreed completely. Environmental Reactions without Discovery Mechanics would be designing responses before defining what the observatory is responding to.
+              - paragraph [ref=e2557]: "One question before I start writing — and it's the most important structural question in this spec:"
+              - paragraph [ref=e2558]:
+                - strong [ref=e2559]: How explicit should the discovery system feel to the observer?
+              - paragraph [ref=e2560]: "Three possible positions:"
+              - group "Code" [ref=e2561]:
+                - button "Copy to clipboard" [ref=e2563]:
+                  - generic [ref=e2564]:
+                    - img [ref=e2566]
+                    - img [ref=e2570]
+                - code [ref=e2574]:
+                  - generic [ref=e2575]: A — Mostly Invisible
+                  - text: "No progress counter visible by default. Discovery Panel hidden until found. Observer never knows 47 exists. The observatory simply becomes more legible over time. Purest atmosphere. Hardest to implement meaningfully. B — Softly Visible (current spec direction) Progress counter in footer: Observed 12/47 Discovery Panel accessible via indicator. Observer knows something is being tracked. But the system never celebrates or rewards. Balance of atmosphere and legibility. C — Clearly Visible Dedicated discovery UI. Clear progress indication. Closer to a game system. Loses the archaeology feeling almost entirely."
+              - paragraph [ref=e2576]: Current spec says B. I think B is right. But I want you to confirm before the full spec locks — because this decision shapes every single mechanic in the document.
+          - group "Message actions" [ref=e2577]:
+            - button "Copy" [ref=e2580]:
+              - generic [ref=e2583]:
+                - generic [ref=e2584]: 
+                - generic [ref=e2585]: 
+        - generic [ref=e2588]:
+          - 'heading "You said: yes B is what we will move forward with." [level=2] [ref=e2589]'
+          - generic [ref=e2590]:
+            - paragraph [ref=e2595]: yes B is what we will move forward with..
+            - group "Message actions" [ref=e2596]:
+              - generic [ref=e2598]:
+                - generic [ref=e2599]: Jun 1
+                - button "Copy" [ref=e2600]:
+                  - generic [ref=e2603]:
+                    - generic [ref=e2604]: 
+                    - generic [ref=e2605]: 
+        - generic [ref=e2607]:
+          - generic [ref=e2609]:
+            - 'heading "Claude responded: Good." [level=2] [ref=e2610]'
+            - generic [ref=e2613]:
+              - paragraph [ref=e2614]: Good. B it is. Writing the full spec now.
+              - separator [ref=e2615]
+              - heading "Discovery Mechanics" [level=2] [ref=e2616]
+              - paragraph [ref=e2617]:
+                - strong [ref=e2618]: Specification v1.0
+              - paragraph [ref=e2619]:
+                - emphasis [ref=e2620]: "\"The observatory does not hide things. It simply doesn't announce them.\""
+              - separator [ref=e2621]
+              - heading "What Discovery Is" [level=3] [ref=e2622]
+              - paragraph [ref=e2623]: Discovery is not a game system. It is not an achievement system. It is not a progression tracker with rewards.
+              - paragraph [ref=e2624]: Discovery is the natural consequence of genuine attention.
+              - paragraph [ref=e2625]: An observer who moves quickly through the observatory, clicking obvious things, will discover very little. An observer who dwells, returns, reads, and explores will find the observatory gradually revealing more of itself — not because they completed conditions, but because the observatory noticed the quality of their attention.
+              - paragraph [ref=e2626]: "The distinction is critical for implementation:"
+              - group "Code" [ref=e2627]:
+                - button "Copy to clipboard" [ref=e2629]:
+                  - generic [ref=e2630]:
+                    - img [ref=e2632]
+                    - img [ref=e2636]
+                - code [ref=e2640]:
+                  - generic [ref=e2641]: "WRONG: Observer triggered condition X → reward Y unlocked"
+                  - text: "RIGHT: Observer demonstrated behavior X → observatory responded"
+              - paragraph [ref=e2642]: No observer should ever feel they are collecting things. They should feel they are learning about a place.
+              - separator [ref=e2643]
+              - heading "What Can Be Discovered" [level=3] [ref=e2644]
+              - paragraph [ref=e2645]: "Discovery exists across four categories:"
+              - heading "1. Nodes (Observatory Index)" [level=4] [ref=e2646]
+              - paragraph [ref=e2647]:
+                - text: Uncatalogued nodes in the Observatory Index that become readable through dwell, return visits, or specific behaviors. Initially rendered as
+                - code [ref=e2648]: ██████
+                - text: or faint geometry with no label.
+              - group "Code" [ref=e2649]:
+                - button "Copy to clipboard" [ref=e2651]:
+                  - generic [ref=e2652]:
+                    - img [ref=e2654]
+                    - img [ref=e2658]
+                - code [ref=e2662]:
+                  - generic [ref=e2663]: "Total discoverable nodes: 47"
+                  - text: "Visible + labeled from start: 12 Visible but unreadable: 8 (██████ — present, identity unknown) Hidden — become visible: 19 (appear through behavior) Permanently difficult: 8 (require specific conditions, some may never be found)"
+              - paragraph [ref=e2664]: The 47 is achievable in theory. An observer who reaches 39/47 has seen nearly everything. Whether the final 8 exist will feel uncertain. The observatory will not confirm.
+              - heading "2. Signals" [level=4] [ref=e2665]
+              - paragraph [ref=e2666]: Transient events on the desktop or Observatory Index. Brief appearances of text, geometry, or light that carry no explanation. Not interactive. Cannot be saved or captured. Present for seconds, then gone.
+              - group "Code" [ref=e2667]:
+                - button "Copy to clipboard" [ref=e2669]:
+                  - generic [ref=e2670]:
+                    - img [ref=e2672]
+                    - img [ref=e2676]
+                - code [ref=e2680]:
+                  - generic [ref=e2681]: "Examples:"
+                  - text: "[archive] unknown artifact indexed. bottom bar, once per session A connection line briefly connects desktop ambient geometry to nothing visible A node label reads \"[REDACTED]\" Observatory Index, 3 seconds before going blank"
+              - paragraph [ref=e2682]: Signals are witnessed, not collected. They appear in the Discovery Panel as witnessed events but carry no completion state. An observer who missed one missed it.
+              - heading "3. Entity Traces" [level=4] [ref=e2683]
+              - paragraph [ref=e2684]: After a Fairy or Knight appearance, a trace remains on the Observatory Index map. Not visible immediately — appears 30-60 seconds after the entity leaves.
+              - paragraph [ref=e2685]: "Visually: a faint dotted line originating from the entity's home sector, 4-6% opacity. Follows no existing connection line — it is its own path. Persists for the session only. Does not persist to localStorage."
+              - paragraph [ref=e2686]: Observers who notice these traces and follow them will find they lead toward the entity's origin sector. No label. No confirmation. The map becomes slightly more legible to those paying attention.
+              - heading "4. Observatory Memory Fragment" [level=4] [ref=e2687]
+              - paragraph [ref=e2688]: Deep discovery. Accessible only after 50% node cataloguing (24/47) in Explorer mode.
+              - paragraph [ref=e2689]: The Observatory Core in the Index becomes fully interactive. Clicking it opens the Observatory Memory — a personal map fragment. A visualization of everything the observer has catalogued, rendered in the observatory's own visual language. Not a progress screen. Not a completion tracker. A record.
+              - paragraph [ref=e2690]: The observer sees their own version of the observatory — partial, shaped by where they looked, what they dwelled on, which paths they took. Two observers with the same node count will have different Memory Fragments because they arrived at discoveries differently.
+              - separator [ref=e2691]
+              - heading "How Discovery Happens" [level=3] [ref=e2692]
+              - heading "Trigger 1 — Dwell" [level=4] [ref=e2693]
+              - paragraph [ref=e2694]:
+                - strong [ref=e2695]: "Condition:"
+                - text: Cursor remains within 40px of a hidden or uncatalogued node for 4+ consecutive seconds without clicking.
+              - paragraph [ref=e2696]:
+                - strong [ref=e2697]: "Response progression:"
+              - group "Code" [ref=e2698]:
+                - button "Copy to clipboard" [ref=e2700]:
+                  - generic [ref=e2701]:
+                    - img [ref=e2703]
+                    - img [ref=e2707]
+                - code [ref=e2711]:
+                  - generic [ref=e2712]: "4s dwell: Node opacity increases from invisible to 4-6%"
+                  - text: "Something is there. Shape only. No label. 8s dwell: Fragment of label appears — 1-2 characters The node is beginning to resolve. 12s dwell: Label fragment extends — 3-4 characters Still incomplete. Full reveal: Requires return dwell across multiple visits OR combination with revisit trigger Never instant. Never in one sitting."
+              - paragraph [ref=e2713]:
+                - strong [ref=e2714]: "Critical rule:"
+                - text: Clicking during dwell resets the dwell timer. The observatory rewards stillness, not action. A developer must implement this as a strict reset — not a pause.
+              - paragraph [ref=e2715]:
+                - strong [ref=e2716]: "Cursor movement tolerance:"
+                - text: Micro-movements within 40px radius do not break dwell. Intentional movement outside 40px breaks it immediately.
+              - separator [ref=e2717]
+              - heading "Trigger 2 — Revisit" [level=4] [ref=e2718]
+              - paragraph [ref=e2719]:
+                - strong [ref=e2720]: "Condition:"
+                - text: Observer returns cursor to the same node or desktop region 3+ times within a session, or returns to the same node across separate visits.
+              - paragraph [ref=e2721]:
+                - strong [ref=e2722]: "Response:"
+              - group "Code" [ref=e2723]:
+                - button "Copy to clipboard" [ref=e2725]:
+                  - generic [ref=e2726]:
+                    - img [ref=e2728]
+                    - img [ref=e2732]
+                - code [ref=e2736]:
+                  - generic [ref=e2737]: "Within session (3+ returns):"
+                  - text: "Node label becomes slightly more complete Connection lines from that node gain 1-2% opacity No animation — state simply updates, as a system would Across visits (same node, multiple sessions): Each visit with dwell compounds previous progress A node visited 5 times with genuine dwell will be fully revealed A node visited 20 times with immediate departure will not"
+              - paragraph [ref=e2738]:
+                - strong [ref=e2739]: "What counts as a return:"
+                - text: Cursor entering the 40px radius after having left it for 30+ seconds. Rapid in-out does not count — the observatory recognizes impatience.
+              - separator [ref=e2740]
+              - heading "Trigger 3 — Terminal Commands" [level=4] [ref=e2741]
+              - paragraph [ref=e2742]: Certain commands entered in Signal Interface cause nodes to surface in the Observatory Index that weren't visible before. The terminal and the map are connected systems.
+              - group "Code" [ref=e2743]:
+                - button "Copy to clipboard" [ref=e2745]:
+                  - generic [ref=e2746]:
+                    - img [ref=e2748]
+                    - img [ref=e2752]
+                - code [ref=e2756]:
+                  - generic [ref=e2757]: "> scan"
+                  - text: "Reveals the position of one hidden node (not its label) A faint shape appears in the Index at that node's location Works once per session > trace [node-name] Shows all connection lines from a named node Including connections to nodes not yet visible The connection exists. The destination is still hidden. > observe If cursor is currently dwelling on a node in Index, increments dwell timer by 4 seconds The terminal noticed where attention was directed > map Shows current discovery state in terminal output Format: \"12 sectors catalogued. 8 signals observed. The observatory has more to show.\" Not a percentage. Not a completion bar. A statement."
+              - paragraph [ref=e2758]: These commands are not documented anywhere in the UI. No hint that they exist. Observers who think to try them find they work. This is intentional — the terminal rewards curiosity, not instruction-following.
+              - separator [ref=e2759]
+              - heading "Trigger 4 — Attention (Environmental Focus)" [level=4] [ref=e2760]
+              - paragraph [ref=e2761]:
+                - strong [ref=e2762]: "Condition:"
+                - text: Cursor repeatedly circles or returns to same desktop area without taking action — pure proximity behavior over time.
+              - paragraph [ref=e2763]:
+                - strong [ref=e2764]: "Response:"
+                - text: Probabilistic. Not guaranteed. Not consistent.
+              - group "Code" [ref=e2765]:
+                - button "Copy to clipboard" [ref=e2767]:
+                  - generic [ref=e2768]:
+                    - img [ref=e2770]
+                    - img [ref=e2774]
+                - code [ref=e2778]:
+                  - generic [ref=e2779]: "Probability model:"
+                  - text: "First qualifying attention event: 25% chance of response Second within same session: 35% chance Third+: 45% chance (ceiling) Response types (random selection): A — Ambient geometry brightens in that region briefly (800ms) B — Faint node appears at region edge (3-5s, then gone) C — No response. The observatory noticed but said nothing."
+              - paragraph [ref=e2780]:
+                - strong [ref=e2781]: Nothing from attention events is stored.
+                - text: No localStorage. No counter. They are ephemeral. The observer either witnessed something or they didn't. There is no record either way.
+              - paragraph [ref=e2782]: This is the most important rule of attention triggers — they must feel like the observatory choosing to respond, not a mechanic activating.
+              - separator [ref=e2783]
+              - heading "Trigger 5 — Behavioral" [level=4] [ref=e2784]
+              - paragraph [ref=e2785]: The deepest layer. Specific sequences that demonstrate genuine engagement rather than surface exploration.
+              - paragraph [ref=e2786]: These are not documented. Not hinted at. Implementation team should know them. Observers should discover them or not.
+              - group "Code" [ref=e2787]:
+                - button "Copy to clipboard" [ref=e2789]:
+                  - generic [ref=e2790]:
+                    - img [ref=e2792]
+                    - img [ref=e2796]
+                - code [ref=e2800]:
+                  - generic [ref=e2801]: Reading passive terminal logs 45+ seconds without input
+                  - text: "→ Fairy appears (entity trigger, crosses into entity system) → Entity trace placed in Observatory Index after 30-60s Opening same project in Projects app twice in same session → Secondary connection line appears from that project node leading toward Knowledge Layer → Persists for session, gone on reload Staying in Observatory Index 3+ minutes total across session → Unknown Sector label partially reveals: \"U██████ S█████\" → Further dwell completes the partial reveal over time Dismissing Recent Activity widget without reading → Nothing visible happens → session_dismissal_unread: true stored in localStorage → Observatory Memory Fragment (if reached) reflects this — the observer's map has a gap where that history would have been → The observatory noticed. It incorporated it. It said nothing. Attempting to interact with a Fairy during appearance → Fairy misdirection trigger (crosses into entity system) → After misdirection ends: nearest uncatalogued node in Index gains 2s of dwell progress silently → The Fairy redirected attention. Attention landed somewhere. Using Command Palette exclusively for 5+ minutes without dock → One hidden node in System Sector partially reveals → The observer demonstrated they understand the terminal layer"
+              - paragraph [ref=e2802]: Behavioral triggers interact with the entity system, the terminal system, and the Observatory Index simultaneously. They are the connective tissue of the observatory. They should be implemented last, after all individual systems are stable.
+              - separator [ref=e2803]
+              - heading "Discovery State (localStorage)" [level=3] [ref=e2804]
+              - group "javascript code" [ref=e2805]:
+                - button "Copy to clipboard" [ref=e2807]:
+                  - generic [ref=e2808]:
+                    - img [ref=e2810]
+                    - img [ref=e2814]
+                - generic [ref=e2816]: javascript
+                - code [ref=e2819]:
+                  - generic [ref=e2820]: "discovery: {"
+                  - generic [ref=e2821]: // Node cataloguing
+                  - generic [ref=e2822]: "nodes_catalogued: string[],"
+                  - generic [ref=e2823]: "nodes_partially_revealed: {"
+                  - generic [ref=e2824]: "[nodeId]: {"
+                  - generic [ref=e2825]: "dwell_seconds_total: number,"
+                  - generic [ref=e2826]: "visit_count: number,"
+                  - generic [ref=e2827]: "label_chars_revealed: number,"
+                  - generic [ref=e2828]: "last_dwelled: timestamp"
+                  - generic [ref=e2829]: "}"
+                  - generic [ref=e2830]: "},"
+                  - generic [ref=e2831]: // Signals
+                  - generic [ref=e2832]: "signals_witnessed: string[],"
+                  - generic [ref=e2833]: // Entity traces
+                  - generic [ref=e2834]: "entity_traces_active: boolean, // session only, not persisted"
+                  - generic [ref=e2835]: "entity_traces_ever_seen: boolean, // persisted"
+                  - generic [ref=e2836]: // Terminal
+                  - generic [ref=e2837]: "terminal_commands_used: string[],"
+                  - generic [ref=e2838]: "scan_used_this_session: boolean,"
+                  - generic [ref=e2839]: // Behavioral flags
+                  - generic [ref=e2840]: "dismissal_unread: boolean,"
+                  - generic [ref=e2841]: "projects_revisited: string[], // project IDs opened 2+ times"
+                  - generic [ref=e2842]: "index_total_dwell: number, // seconds in Observatory Index"
+                  - generic [ref=e2843]: // Session
+                  - generic [ref=e2844]: "session_count: number,"
+                  - generic [ref=e2845]: "current_session_discoveries: number,"
+                  - generic [ref=e2846]: "total_discoveries_ever: number"
+                  - generic [ref=e2847]: "}"
+              - paragraph [ref=e2848]:
+                - strong [ref=e2849]: "What does not get stored:"
+              - list [ref=e2850]:
+                - listitem [ref=e2851]: Individual attention trigger responses
+                - listitem [ref=e2852]: Probabilistic event outcomes
+                - listitem [ref=e2853]: Cursor path or movement data
+                - listitem [ref=e2854]: Time spent on specific desktop areas
+              - paragraph [ref=e2855]: The observatory remembers what the observer found. It does not surveil how they moved.
+              - separator [ref=e2856]
+              - heading "Discovery Progress Display" [level=3] [ref=e2857]
+              - heading "Explorer Footer" [level=4] [ref=e2858]
+              - group "Code" [ref=e2859]:
+                - button "Copy to clipboard" [ref=e2861]:
+                  - generic [ref=e2862]:
+                    - img [ref=e2864]
+                    - img [ref=e2868]
+                - code [ref=e2872]:
+                  - generic [ref=e2873]: "◈ 4 observations catalogued · The observatory remembers. · Observed: 12 / 47"
+              - paragraph [ref=e2874]: Counter updates in real time as nodes are catalogued. No animation on number change — instant update, system counter behavior. No celebration. No sound. The number simply becomes more accurate.
+              - heading "Discovery Indicator (Status Bar)" [level=4] [ref=e2875]
+              - paragraph [ref=e2876]:
+                - text: The
+                - code [ref=e2877]: ◌◌◌◌
+                - text: "element. Four circles. Fills at thresholds:"
+              - group "Code" [ref=e2878]:
+                - button "Copy to clipboard" [ref=e2880]:
+                  - generic [ref=e2881]:
+                    - img [ref=e2883]
+                    - img [ref=e2887]
+                - code [ref=e2891]:
+                  - generic [ref=e2892]: ◌◌◌◌ 0–11 catalogued
+                  - text: ●◌◌◌ 12–23 catalogued ●●◌◌ 24–35 catalogued ●●●◌ 36–46 catalogued ●●●● 47/47
+              - paragraph [ref=e2893]: Fills instantly — no animation. No hover response. No click response. At 47/47 the dots stay filled. The observatory does not celebrate. Neither should the UI.
+              - paragraph [ref=e2894]:
+                - text: "The indicator's silence is load-bearing. It communicates:"
+                - emphasis [ref=e2895]: this system tracks something.
+                - text: Nothing more.
+              - heading "Discovery Panel" [level=4] [ref=e2896]
+              - paragraph [ref=e2897]: Accessible by clicking the Discovery Indicator. Slides in from right, 320px, over canvas.
+              - group "Code" [ref=e2898]:
+                - button "Copy to clipboard" [ref=e2900]:
+                  - generic [ref=e2901]:
+                    - img [ref=e2903]
+                    - img [ref=e2907]
+                - code [ref=e2911]:
+                  - generic [ref=e2912]: ◈ Observatory Discovery Log
+                  - text: "────────────────────────────────────── CATALOGUED (12) ● Identity Layer ● Application Layer ● Knowledge Layer ● [9 more listed...] PARTIALLY OBSERVED (3) ◐ [████████] sector unknown ◐ [R███████] identity partial ◐ System Sector connections unclear SIGNALS WITNESSED (2) ∿ unknown artifact indexed. ∿ [REDACTED] ENTITY ACTIVITY ◈ Knight observed · near Terminal ✦ Fairy trace · active this session ────────────────────────────────────── Observed: 12 / 47"
+              - paragraph [ref=e2913]:
+                - strong [ref=e2914]: "Language rules throughout:"
+              - list [ref=e2915]:
+                - listitem [ref=e2916]:
+                  - text: Items are
+                  - emphasis [ref=e2917]: catalogued
+                  - text: ","
+                  - emphasis [ref=e2918]: observed
+                  - text: ","
+                  - emphasis [ref=e2919]: witnessed
+                  - text: — never
+                  - emphasis [ref=e2920]: found
+                  - text: ","
+                  - emphasis [ref=e2921]: unlocked
+                  - text: ","
+                  - emphasis [ref=e2922]: collected
+                - listitem [ref=e2923]: Partially observed nodes show redacted labels — the observer knows something exists, not what
+                - listitem [ref=e2924]:
+                  - text: Signals show their text if witnessed,
+                  - code [ref=e2925]: "[unobserved]"
+                  - text: placeholder if not — observer knows signals exist as a category even before seeing one
+                - listitem [ref=e2926]: Entity activity shows location, not trigger condition — what happened, not how it happened
+              - paragraph [ref=e2927]:
+                - strong [ref=e2928]: "Panel behavior:"
+              - list [ref=e2929]:
+                - listitem [ref=e2930]: "Click outside: closes"
+                - listitem [ref=e2931]: "ESC: closes"
+                - listitem [ref=e2932]: No close button — consistent with observatory panel behavior
+                - listitem [ref=e2933]: Opens to current state — no loading, no transition on content
+              - separator [ref=e2934]
+              - heading "The Archaeology Principle" [level=3] [ref=e2935]
+              - paragraph [ref=e2936]: "Every discovery decision — now and in all future specs — must pass this test:"
+              - blockquote [ref=e2937]:
+                - paragraph [ref=e2938]: Does this feel like finding something that was always there? Or does it feel like unlocking something that was being kept from me?
+              - paragraph [ref=e2939]: The first is archaeology. The second is a game.
+              - paragraph [ref=e2940]: The observatory has always contained these things. The observer is not earning access. They are simply looking carefully enough to see what was already present.
+              - paragraph [ref=e2941]: An observer who discovers 12/47 and never returns had a complete experience. The 47 exists for those who want it. It is not required. It is not dangled. It is simply there, for the kind of person who looks.
+              - separator [ref=e2942]
+              - heading "Interaction With Other Systems" [level=3] [ref=e2943]
+              - group "Code" [ref=e2944]:
+                - button "Copy to clipboard" [ref=e2946]:
+                  - generic [ref=e2947]:
+                    - img [ref=e2949]
+                    - img [ref=e2953]
+                - code [ref=e2957]:
+                  - generic [ref=e2958]: "Entity System:"
+                  - text: "Behavioral triggers cross into entity system Entity traces appear in Discovery Panel Fairy misdirection silently advances node dwell Terminal System: scan / trace / observe / map commands Terminal output references discovery state Command history may surface in behavioral triggers Observatory Index: Primary surface for node discovery All node reveals happen here Memory Fragment opens from Core node at 50% Environmental Reactions: Discovery events are primary triggers for environmental reactions New node catalogued → ambient geometry responds Signal witnessed → bottom bar may react (Full detail in Environmental Reactions spec)"
+              - separator [ref=e2959]
+              - heading "Status" [level=3] [ref=e2960]
+              - paragraph [ref=e2961]:
+                - strong [ref=e2962]: "Concept:"
+                - text: Locked
+                - strong [ref=e2963]: "Specification:"
+                - text: Complete — v1.0
+                - strong [ref=e2964]: "Wireframe:"
+                - text: Pending your sketch
+                - strong [ref=e2965]: "Next:"
+                - text: Environmental Reactions spec
+          - group "Message actions" [ref=e2966]:
+            - button "Copy" [ref=e2969]:
+              - generic [ref=e2972]:
+                - generic [ref=e2973]: 
+                - generic [ref=e2974]: 
+        - generic [ref=e2977]:
+          - 'heading "You said: review this wireframe for now as the session limit is almost over." [level=2] [ref=e2978]'
+          - generic [ref=e2982]:
+            - heading "Files hidden in shared chats" [level=3] [ref=e2984]
+            - img [ref=e2990]
+          - generic [ref=e2992]:
+            - paragraph [ref=e2997]: review this wireframe for now as the session limit is almost over.
+            - group "Message actions" [ref=e2998]:
+              - generic [ref=e3000]:
+                - generic [ref=e3001]: Jun 1
+                - button "Copy" [ref=e3002]:
+                  - generic [ref=e3005]:
+                    - generic [ref=e3006]: 
+                    - generic [ref=e3007]: 
+        - generic [ref=e3009]:
+          - generic [ref=e3011]:
+            - 'heading "Claude responded: This is v1." [level=2] [ref=e3012]'
+            - generic [ref=e3015]:
+              - paragraph [ref=e3016]: This is v1.1 and it's a significant upgrade from v1.0. The two missing sections from the previous review have both been added. Let me go through it quickly given the session limit.
+              - separator [ref=e3017]
+              - heading "What's Been Fixed" [level=3] [ref=e3018]
+              - paragraph [ref=e3019]:
+                - strong [ref=e3020]: Cursor Intervention System — now present
+              - paragraph [ref=e3021]: "Both columns are correct:"
+              - group "Code" [ref=e3022]:
+                - button "Copy to clipboard" [ref=e3024]:
+                  - generic [ref=e3025]:
+                    - img [ref=e3027]
+                    - img [ref=e3031]
+                - code [ref=e3035]:
+                  - generic [ref=e3036]: "Knight — Suppression:"
+                  - text: "Purpose, Triggers, Effect, Recovery, Status Text All accurate. \"Interactivity returns post-disappearance\" noted. ✓ Fairy — Misdirection: Cursor drift (2-4px), hover states drift, clicks register nearby 600ms easing correction noted \"Normal precision returns\" ✓"
+              - paragraph [ref=e3037]: The one-intervention-per-entity-per-session rule is captured in the section header. Good placement.
+              - paragraph [ref=e3038]:
+                - strong [ref=e3039]: Rarity Curve — now present
+              - paragraph [ref=e3040]: "The bell curve visualization is exactly right:"
+              - group "Code" [ref=e3041]:
+                - button "Copy to clipboard" [ref=e3043]:
+                  - generic [ref=e3044]:
+                    - img [ref=e3046]
+                    - img [ref=e3050]
+                - code [ref=e3054]:
+                  - generic [ref=e3055]: "Visit 1: 1 appearance (learning the observatory)"
+                  - text: "Visit 2-3: 2-3 (curiosity increasing) Visit 4-5: 4 (peak engagement window) Visit 6+: Gradual decline (familiarity reduces appearances)"
+              - paragraph [ref=e3056]: "Session limits table is clean. Minimum gap between appearances: 4 minutes — this is correct and critical for implementation."
+              - paragraph [ref=e3057]:
+                - strong [ref=e3058]: Entity Origins — new addition
+              - paragraph [ref=e3059]: "This wasn't in the previous wireframe and it's a strong addition:"
+              - group "Code" [ref=e3060]:
+                - button "Copy to clipboard" [ref=e3062]:
+                  - generic [ref=e3063]:
+                    - img [ref=e3065]
+                    - img [ref=e3069]
+                - code [ref=e3073]:
+                  - generic [ref=e3074]: "Knight Origins (System Sector):"
+                  - text: "Engine Room, Observatory Core, Terminal, Core Nodes Fairy Origins (Research Sector): Unknown Nodes, Observatory Fragment, Discovery Boundary, Research Regions"
+              - paragraph [ref=e3075]: The origin map visualization makes the location preference system spatially legible in a way prose couldn't. Keep this.
+              - paragraph [ref=e3076]:
+                - strong [ref=e3077]: Seeded Randomness Example — implementation note
+              - group "Code" [ref=e3078]:
+                - button "Copy to clipboard" [ref=e3080]:
+                  - generic [ref=e3081]:
+                    - img [ref=e3083]
+                    - img [ref=e3087]
+                - code [ref=e3091]:
+                  - generic [ref=e3092]: sessionSeed = hash(sessionId + visitCount)
+                  - text: rand() = seededRandom(sessionSeed)
+              - paragraph [ref=e3093]: This is exactly right and will prevent a common implementation mistake of using Math.random() directly. Good catch.
+              - paragraph [ref=e3094]:
+                - strong [ref=e3095]: Modal Variations
+              - paragraph [ref=e3096]: "Both environmental effects now have descriptive language alongside the visual:"
+              - group "Code" [ref=e3097]:
+                - button "Copy to clipboard" [ref=e3099]:
+                  - generic [ref=e3100]:
+                    - img [ref=e3102]
+                    - img [ref=e3106]
+                - code [ref=e3110]:
+                  - generic [ref=e3111]: "Knight: \"Environment slightly desaturates."
+                  - text: "Contrast tightens. Feels watched.\" Fairy: \"Environment slightly warms. Violet accent subtly brightens. Feels discovered.\""
+              - paragraph [ref=e3112]:
+                - text: The emotional annotation —
+                - emphasis [ref=e3113]: "\"Feels watched\""
+                - text: /
+                - emphasis [ref=e3114]: "\"Feels discovered\""
+                - text: — is the right language for a developer implementing subtle CSS transitions. It tells them what the effect should communicate, not just what it should look like.
+              - separator [ref=e3115]
+              - heading "One Small Flag" [level=3] [ref=e3116]
+              - paragraph [ref=e3117]: The Fairy Organic Triggers section lists "Discovery progress (Explorer) — Reach 20% / 50% / 75% discovery milestones" as a trigger with location "Near Observatory Fragment or Index periphery."
+              - paragraph [ref=e3118]:
+                - text: The spec says Fairy appears
+                - emphasis [ref=e3119]: after
+                - text: a new node is catalogued — not at milestone thresholds specifically. Milestones as triggers would make Fairy appearances feel like level-up notifications, which edges toward gamification.
+              - paragraph [ref=e3120]: "Recommend changing this trigger to:"
+              - group "Code" [ref=e3121]:
+                - button "Copy to clipboard" [ref=e3123]:
+                  - generic [ref=e3124]:
+                    - img [ref=e3126]
+                    - img [ref=e3130]
+                - code [ref=e3134]:
+                  - generic [ref=e3135]: Post-cataloguing (Explorer)
+                  - text: Immediately after any new node is catalogued. Near that node peripherally. Brief (1.0-1.2s). Acknowledges without celebrating.
+              - paragraph [ref=e3136]: This keeps Fairy tied to the act of discovery rather than accumulated progress totals.
+              - separator [ref=e3137]
+              - heading "Verdict" [level=3] [ref=e3138]
+              - paragraph [ref=e3139]:
+                - strong [ref=e3140]: Entity System Wireframe v1.1 — Ready for implementation with one trigger correction.
+              - paragraph [ref=e3141]: Change the discovery milestone trigger to post-cataloguing trigger as noted above. Everything else is locked.
+              - paragraph [ref=e3142]: This is the most complete behavioral spec wireframe in the project. The addition of entity origins, rarity curve, seeded randomness, and cursor intervention in one sheet makes this fully self-contained for a developer.
+              - paragraph [ref=e3143]: Save the session context before we lose it — next session picks up with Discovery Mechanics wireframe review, then Environmental Reactions spec.
+          - group "Message actions" [ref=e3144]:
+            - button "Copy" [ref=e3147]:
+              - generic [ref=e3150]:
+                - generic [ref=e3151]: 
+                - generic [ref=e3152]: 
+        - generic [ref=e3155]:
+          - 'heading "You said: Review this wireframe too." [level=2] [ref=e3156]'
+          - generic [ref=e3160]:
+            - heading "Files hidden in shared chats" [level=3] [ref=e3162]
+            - img [ref=e3168]
+          - generic [ref=e3170]:
+            - paragraph [ref=e3175]: Review this wireframe too..
+            - group "Message actions" [ref=e3176]:
+              - generic [ref=e3178]:
+                - generic [ref=e3179]: Jun 1
+                - button "Copy" [ref=e3180]:
+                  - generic [ref=e3183]:
+                    - generic [ref=e3184]: 
+                    - generic [ref=e3185]: 
+        - generic [ref=e3187]:
+          - generic [ref=e3189]:
+            - 'heading "Claude responded: This is outstanding." [level=2] [ref=e3190]'
+            - generic [ref=e3193]:
+              - paragraph [ref=e3194]: This is outstanding. Possibly the most information-dense wireframe in the project and it holds together completely. Let me go through it efficiently.
+              - separator [ref=e3195]
+              - heading "What's Excellent" [level=3] [ref=e3196]
+              - paragraph [ref=e3197]:
+                - strong [ref=e3198]: Section 1 — Discovery Philosophy
+              - paragraph [ref=e3199]: "The Archaeology Principle rendered as a direct question:"
+              - group "Code" [ref=e3200]:
+                - button "Copy to clipboard" [ref=e3202]:
+                  - generic [ref=e3203]:
+                    - img [ref=e3205]
+                    - img [ref=e3209]
+                - code [ref=e3213]:
+                  - generic [ref=e3214]: Does this feel like finding something that was always there?
+                  - text: Or unlocking something that was being kept from me?
+              - paragraph [ref=e3215]:
+                - text: This as a visible wireframe element means a developer reading this document understands the
+                - emphasis [ref=e3216]: why
+                - text: before touching a single mechanic. That's exactly right.
+              - paragraph [ref=e3217]: "The Discovery Is / Discovery Is Not checklist is clean:"
+              - group "Code" [ref=e3218]:
+                - button "Copy to clipboard" [ref=e3220]:
+                  - generic [ref=e3221]:
+                    - img [ref=e3223]
+                    - img [ref=e3227]
+                - code [ref=e3231]:
+                  - generic [ref=e3232]: "IS: Observation, Attention, Return Visits, Curiosity"
+                  - text: "IS NOT: Progression, Rewards, Achievements, Unlock Trees"
+              - paragraph [ref=e3233]:
+                - strong [ref=e3234]: Section 2 — What Can Be Discovered
+              - paragraph [ref=e3235]: "The four-column breakdown with persistence labels at the bottom is smart:"
+              - group "Code" [ref=e3236]:
+                - button "Copy to clipboard" [ref=e3238]:
+                  - generic [ref=e3239]:
+                    - img [ref=e3241]
+                    - img [ref=e3245]
+                - code [ref=e3249]:
+                  - generic [ref=e3250]: "Nodes: TOTAL (47, persistent)"
+                  - text: "Signals: EPHEMERAL Entity Traces: TEMPORARY (session only) Memory Fragment: PERSISTENT"
+              - paragraph [ref=e3251]:
+                - text: "One line that's particularly good:"
+                - emphasis [ref=e3252]: "\"47 total nodes are achievable in theory. Whether the final few exist will feel uncertain — the observatory will not confirm.\""
+                - text: That belongs on the wireframe exactly where it is.
+              - paragraph [ref=e3253]:
+                - strong [ref=e3254]: Section 3 — Discovery Triggers
+              - paragraph [ref=e3255]:
+                - text: All five triggers presented in parallel columns with Condition, Response, and Persistence rows. The dwell progression (4s → 8s → 12s → full reveal across visits) is accurately represented. The warning annotation —
+                - emphasis [ref=e3256]: "\"Clicking during dwell resets the timer. The observatory rewards stillness, not action.\""
+                - text: — is correctly emphasized with the ⚠ symbol.
+              - paragraph [ref=e3257]: "Trigger 5 (Behavioral) is appropriately vague:"
+              - group "Code" [ref=e3258]:
+                - button "Copy to clipboard" [ref=e3260]:
+                  - generic [ref=e3261]:
+                    - img [ref=e3263]
+                    - img [ref=e3267]
+                - code [ref=e3271]:
+                  - generic [ref=e3272]: Unlisted conditions
+                  - text: Unexpected actions Creative curiosity No formula. The observatory decides.
+              - paragraph [ref=e3273]: That's the right level of documentation for something intentionally undocumented in the UI.
+              - paragraph [ref=e3274]:
+                - strong [ref=e3275]: Section 4 — Observatory Index Progression
+              - paragraph [ref=e3276]: "The six-state node evolution sequence is the clearest thing in this entire wireframe:"
+              - group "Code" [ref=e3277]:
+                - button "Copy to clipboard" [ref=e3279]:
+                  - generic [ref=e3280]:
+                    - img [ref=e3282]
+                    - img [ref=e3286]
+                - code [ref=e3290]:
+                  - generic [ref=e3291]: UNSEEN → SHAPE DETECTED → FRAGMENT → EXTENDED → KNOWN → CATALOGUED
+              - paragraph [ref=e3292]: With the actual visual representation at each stage — invisible dots, faint geometry, "A", "AA", [ARCHIVE], ARCHIVE — this communicates the mechanic better than any prose could.
+              - paragraph [ref=e3293]: "Discovery Indicator Evolution shown across visits:"
+              - group "Code" [ref=e3294]:
+                - button "Copy to clipboard" [ref=e3296]:
+                  - generic [ref=e3297]:
+                    - img [ref=e3299]
+                    - img [ref=e3303]
+                - code [ref=e3307]:
+                  - generic [ref=e3308]: ○○○○ → ●○○○ → ●●○○ → ●●●○ → ●●●●
+                  - text: Visit 1 Visit 2-3 Visit 4 Visit 5+ Mastered?
+              - paragraph [ref=e3309]: The "Mastered?" with a question mark is exactly right. The observatory doesn't confirm completion.
+              - paragraph [ref=e3310]:
+                - text: "The footnote:"
+                - emphasis [ref=e3311]: "\"Indicator reflects understanding, not completion. The final state does not mean 'everything found'.\""
+                - text: — this should be in the implementation notes verbatim.
+              - paragraph [ref=e3312]:
+                - strong [ref=e3313]: Section 5 — Discovery Panel
+              - paragraph [ref=e3314]:
+                - text: The panel is accurately rendered with all three sections — Catalogued Nodes, Partial Nodes, Recent Signals, Entity Activity. The partial nodes showing lock icons with
+                - code [ref=e3315]: "??????"
+                - text: labels correctly communicates that something exists without revealing what. The footer showing
+                - code [ref=e3316]: "Observed: 12/47 · Sessions: 3 · Mode: Explorer"
+                - text: is a clean information summary.
+              - paragraph [ref=e3317]:
+                - strong [ref=e3318]: Section 6 — Signal System
+              - paragraph [ref=e3319]:
+                - text: The three-state visualization (Appears → Observed → Gone) with the 2-6s duration and "Witnessed. No interaction. Cannot be captured." is exactly right. The examples showing
+                - code [ref=e3320]: "[REDACTED]"
+                - text: node label and "Connection to nowhere" signal types are atmospheric and accurate.
+              - paragraph [ref=e3321]:
+                - strong [ref=e3322]: Section 7 — Entity Trace System
+              - paragraph [ref=e3323]: "Both Knight and Fairy trace sequences shown:"
+              - group "Code" [ref=e3324]:
+                - button "Copy to clipboard" [ref=e3326]:
+                  - generic [ref=e3327]:
+                    - img [ref=e3329]
+                    - img [ref=e3333]
+                - code [ref=e3337]:
+                  - generic [ref=e3338]: Entity Leaves → 30-60s Delay → Trace Appears → Points To Origin Sector
+              - paragraph [ref=e3339]:
+                - text: "The warning at the bottom:"
+                - emphasis [ref=e3340]: "\"Not stored. Not saved. Exists for this session only. Traces fade when the session ends.\""
+                - text: — correct and important for implementation.
+              - paragraph [ref=e3341]:
+                - strong [ref=e3342]: Section 8 — Observatory Memory Fragment
+              - paragraph [ref=e3343]: "The four-stage sequence is clean:"
+              - group "Code" [ref=e3344]:
+                - button "Copy to clipboard" [ref=e3346]:
+                  - generic [ref=e3347]:
+                    - img [ref=e3349]
+                    - img [ref=e3353]
+                - code [ref=e3357]:
+                  - generic [ref=e3358]: Reach 24/47 → Core Unlocks → Memory Opens → Personal Map
+              - paragraph [ref=e3359]:
+                - text: "The Observer A vs Observer B comparison is the strongest element in this section — same node count, different memory. This communicates the core concept of the Memory Fragment better than the spec prose did. The footnote is perfect:"
+                - emphasis [ref=e3360]: "\"Your Memory Fragment is not a leaderboard. It is a record of where you looked, what you dwelled on, and which paths you took.\""
+              - paragraph [ref=e3361]:
+                - strong [ref=e3362]: Section 9 — Storage & System Links
+              - paragraph [ref=e3363]: The system diagram showing Discovery System at center connecting to Observatory Index, Terminal, Entity System, Environmental Reactions, Discovery Panel, and Memory Fragment is exactly the right architecture visualization. localStorage keys are correctly listed with descriptions.
+              - separator [ref=e3364]
+              - heading "Two Small Flags" [level=3] [ref=e3365]
+              - paragraph [ref=e3366]:
+                - strong [ref=e3367]: 1. Discovery Indicator — visit labeling
+              - paragraph [ref=e3368]:
+                - text: Section 4 shows the indicator filling across visits (Visit 1, 2-3, 4, 5+). But the indicator fills based on
+                - emphasis [ref=e3369]: nodes catalogued
+                - text: "(thresholds of 12/24/36/47), not visit count. A developer reading this might implement it as visit-based rather than discovery-based. Add a clarifying note:"
+                - emphasis [ref=e3370]: "\"Fills by catalogued node count, not visit count. Visit labels shown as typical progression only.\""
+              - paragraph [ref=e3371]:
+                - strong [ref=e3372]: 2. Memory Fragment threshold
+              - paragraph [ref=e3373]:
+                - text: "Section 8 shows \"Reach 24/47\" but the intro card says \"Catalog 50% of nodes.\" 50% of 47 is 23.5, so 24 is correct — but showing both \"24/47\" and \"50%\" without reconciling them could cause confusion. Pick one. Recommend:"
+                - emphasis [ref=e3374]: "\"24 / 47 nodes catalogued (50% threshold)\""
+                - text: as a single unified label.
+              - separator [ref=e3375]
+              - heading "Verdict" [level=3] [ref=e3376]
+              - paragraph [ref=e3377]:
+                - strong [ref=e3378]: Discovery Mechanics Wireframe v1.0 — Ready for implementation with two annotation clarifications.
+              - paragraph [ref=e3379]: No redraw needed. Both flags are annotation-level. This wireframe is comprehensive, accurate, and self-contained — a developer could build the entire discovery system from this document alone.
+              - paragraph [ref=e3380]: "Discovery Mechanics is fully locked. Next session: Environmental Reactions spec, then its wireframe."
+          - group "Message actions" [ref=e3381]:
+            - button "Copy" [ref=e3384]:
+              - generic [ref=e3387]:
+                - generic [ref=e3388]: 
+                - generic [ref=e3389]: 
+        - generic [ref=e3392]:
+          - 'heading "You said: Great." [level=2] [ref=e3393]'
+          - generic [ref=e3394]:
+            - paragraph [ref=e3399]: Great.. then Describe the environmental reactions spec as best as you can. And ask questions where needed
+            - group "Message actions" [ref=e3400]:
+              - generic [ref=e3402]:
+                - generic [ref=e3403]: Jun 1
+                - button "Copy" [ref=e3404]:
+                  - generic [ref=e3407]:
+                    - generic [ref=e3408]: 
+                    - generic [ref=e3409]: 
+        - generic [ref=e3411]:
+          - generic [ref=e3413]:
+            - 'heading "Claude responded: Environmental Reactions" [level=2] [ref=e3414]'
+            - generic [ref=e3417]:
+              - heading "Environmental Reactions" [level=2] [ref=e3418]
+              - paragraph [ref=e3419]:
+                - strong [ref=e3420]: Pre-Specification — Thinking Out Loud
+              - paragraph [ref=e3421]: Before I write a single rule, let me establish what this system actually is, because it's the easiest system in the project to get wrong.
+              - separator [ref=e3422]
+              - heading "What Environmental Reactions Is Not" [level=3] [ref=e3423]
+              - paragraph [ref=e3424]:
+                - text: "It is not a feedback system. Feedback says:"
+                - emphasis [ref=e3425]: "\"you did X, here is confirmation.\""
+              - paragraph [ref=e3426]: It is not an animation system. Animations are UI responses to UI events.
+              - paragraph [ref=e3427]: It is not an Easter egg system. Easter eggs are hidden rewards for specific actions.
+              - separator [ref=e3428]
+              - heading "What It Actually Is" [level=3] [ref=e3429]
+              - paragraph [ref=e3430]:
+                - text: Environmental Reactions is the observatory's
+                - strong [ref=e3431]: ambient nervous system.
+              - paragraph [ref=e3432]:
+                - text: It is the difference between a space that
+                - emphasis [ref=e3433]: contains
+                - text: things and a space that
+                - emphasis [ref=e3434]: exists
+                - text: independently.
+              - paragraph [ref=e3435]: "Every other system in the observatory responds to the observer directly:"
+              - group "Code" [ref=e3436]:
+                - button "Copy to clipboard" [ref=e3438]:
+                  - generic [ref=e3439]:
+                    - img [ref=e3441]
+                    - img [ref=e3445]
+                - code [ref=e3449]:
+                  - generic [ref=e3450]: Dock → hover → tooltip
+                  - text: Windows → click → open Terminal → command → output Entities → trigger → appear
+              - paragraph [ref=e3451]:
+                - text: Environmental Reactions is the only system that responds to the observer
+                - emphasis [ref=e3452]: obliquely
+                - text: — not to their actions, but to the
+                - strong [ref=e3453]: state of the observatory
+                - text: as shaped by their presence.
+              - paragraph [ref=e3454]: The observer doesn't cause reactions. The observatory reacts to what their presence has created.
+              - separator [ref=e3455]
+              - heading "The Three Reaction Surfaces" [level=3] [ref=e3456]
+              - paragraph [ref=e3457]: "Environmental reactions happen across three surfaces:"
+              - heading "Surface 1 — Ambient Geometry (Desktop Far Layer)" [level=4] [ref=e3458]
+              - paragraph [ref=e3459]: The faint connection lines, node fragments, constellation geometry at 3-6% opacity on the desktop. This is the most sensitive reaction surface. It responds to almost everything — subtly, slowly, never dramatically.
+              - heading "Surface 2 — Status Bar Center Text" [level=4] [ref=e3460]
+              - paragraph [ref=e3461]:
+                - text: Already specced as contextual. But environmental reactions can
+                - emphasis [ref=e3462]: interrupt
+                - text: the normal cycle with observatory-state-driven messages that feel less like system readouts and more like the observatory thinking out loud.
+              - heading "Surface 3 — Observatory Index Map" [level=4] [ref=e3463]
+              - paragraph [ref=e3464]: Connection lines, node brightness, sector visibility. The map is a living document — its appearance should reflect the current state of the observatory, not just be a static navigation tool.
+              - separator [ref=e3465]
+              - heading "Reaction Categories" [level=3] [ref=e3466]
+              - paragraph [ref=e3467]: "I see five categories of environmental reaction:"
+              - heading "Category 1 — Discovery Reactions" [level=4] [ref=e3468]
+              - paragraph [ref=e3469]: The observatory responds when something is found.
+              - group "Code" [ref=e3470]:
+                - button "Copy to clipboard" [ref=e3472]:
+                  - generic [ref=e3473]:
+                    - img [ref=e3475]
+                    - img [ref=e3479]
+                - code [ref=e3483]:
+                  - generic [ref=e3484]: "New node catalogued:"
+                  - text: "Ambient geometry pulses outward from that node's approximate desktop position — single wave, 800ms, returns to rest. Not celebratory. Acknowledgment. Signal witnessed: Bottom bar log updates within 2s with observatory language. Not describing the signal. Responding to it. \"[observatory] something surfaced briefly.\" Memory Fragment unlocked (24/47): Observatory Index ambient lines briefly increase opacity by 3-4% across entire map — 1.5s, then settle back. The whole system noticed."
+              - heading "Category 2 — Attention Reactions" [level=4] [ref=e3485]
+              - paragraph [ref=e3486]: The observatory responds to where attention is being directed.
+              - group "Code" [ref=e3487]:
+                - button "Copy to clipboard" [ref=e3489]:
+                  - generic [ref=e3490]:
+                    - img [ref=e3492]
+                    - img [ref=e3496]
+                - code [ref=e3500]:
+                  - generic [ref=e3501]: "Cursor proximity to hidden node:"
+                  - text: "Nearest ambient geometry line brightens slightly. No click. No hover. Pure proximity. Fades if cursor moves away. Extended dwell (8s+): Ambient geometry in dwell region very slowly shifts — lines rotate fractionally, 0.5° over 8s. Imperceptible unless watching carefully. The observatory is paying closer attention. Cursor stillness (8s on open desktop): Nearest connection line shifts pulse rhythm. As if the observatory is listening more carefully."
+              - heading "Category 3 — Entity Reactions" [level=4] [ref=e3502]
+              - paragraph [ref=e3503]: The observatory responds to entity presence and departure.
+              - group "Code" [ref=e3504]:
+                - button "Copy to clipboard" [ref=e3506]:
+                  - generic [ref=e3507]:
+                    - img [ref=e3509]
+                    - img [ref=e3513]
+                - code [ref=e3517]:
+                  - generic [ref=e3518]: "Knight appears:"
+                  - text: "Ambient geometry desaturates slightly — global, subtle, 300ms transition. Returns when Knight leaves. Environment slightly dims. Contrast tightens. Fairy appears: Ambient geometry warms fractionally — violet accent brightens 10-15%. Returns when Fairy leaves. Entity trace placed (30-60s after departure): Single ambient line on desktop shifts position by 2-3px toward entity's origin sector direction. Over 60s. Imperceptible in real time. Only visible if the observer was watching that line."
+              - heading "Category 4 — State Reactions" [level=4] [ref=e3519]
+              - paragraph [ref=e3520]: The observatory responds to its own system state.
+              - group "Code" [ref=e3521]:
+                - button "Copy to clipboard" [ref=e3523]:
+                  - generic [ref=e3524]:
+                    - img [ref=e3526]
+                    - img [ref=e3530]
+                - code [ref=e3534]:
+                  - generic [ref=e3535]: "Return visitor detected (on entry):"
+                  - text: "Ambient geometry initializes slightly brighter than first visit — 5-6% vs 3-4% opacity. The observatory is more comfortable. High discovery state (36+ nodes): Ambient geometry becomes fractionally more complex — one or two additional faint lines appear on desktop that weren't there at session start. The observatory has more to show now. Extended session (30+ minutes): Ambient geometry drift animation begins — lines shift position 2-3px over 60s. The observatory continues existing. It has been running a long time. Idle (2+ minutes): Everything dims fractionally. Pulse rhythms slow. The observatory is patient."
+              - heading "Category 5 — Disruption Reactions" [level=4] [ref=e3536]
+              - paragraph [ref=e3537]: The observatory responds to stress, forcing, or breaking behavior.
+              - group "Code" [ref=e3538]:
+                - button "Copy to clipboard" [ref=e3540]:
+                  - generic [ref=e3541]:
+                    - img [ref=e3543]
+                    - img [ref=e3547]
+                - code [ref=e3551]:
+                  - generic [ref=e3552]: "Knight cursor suppression active:"
+                  - text: "Ambient geometry freezes — no pulse, no movement, nothing. For the duration of suppression. The observatory held its breath. Chaos controls active (Engineer): Ambient geometry increases in complexity and slight instability — lines flicker at edges, 1-2% opacity variance, irregular. Safe mode triggered (Engineer): Ambient geometry simplifies — some lines disappear, remaining lines stabilize completely. The observatory is recovering. It needs stillness. Bottom bar poked (Explorer, 5-6 clicks): \"you were warned.\" + geometry flickers once — 300ms, then stabilizes. The observatory noticed."
+              - separator [ref=e3553]
+              - heading "The Reaction Rules" [level=3] [ref=e3554]
+              - paragraph [ref=e3555]: Before I write the full spec I need to establish rules that every reaction must follow. These prevent the system from becoming noise.
+              - group "Code" [ref=e3556]:
+                - button "Copy to clipboard" [ref=e3558]:
+                  - generic [ref=e3559]:
+                    - img [ref=e3561]
+                    - img [ref=e3565]
+                - code [ref=e3569]:
+                  - generic [ref=e3570]: Rule 1 — Reactions are never immediate
+                  - text: "Minimum 200ms delay between trigger and reaction. The observatory notices, then responds. Never simultaneous. Rule 2 — Reactions never stack If a new reaction triggers while one is active, the new one queues — does not interrupt. Maximum queue depth: 2. Third reaction while 2 queued: silently dropped. Rule 3 — Reactions never explain themselves No tooltip. No label. No notification. The reaction simply happens. Rule 4 — Reactions are reversible Every reaction has a return state. Nothing permanently alters the environment without the observer doing something to cause it. Exception: high discovery state geometry additions — these persist for the session. Rule 5 — Reactions respect motion settings If observer has reduced motion enabled: All ambient geometry reactions disabled. Status bar text reactions still active. Entity modal variations (desaturation/warmth) still active. Pulse reactions: instant state change, no transition. Rule 6 — Reactions are subtle by default If a reaction is noticeable on first viewing, it is too strong. The observer should be able to use the observatory for 10 minutes and not consciously register a single environmental reaction. And yet the space should feel alive."
+              - separator [ref=e3571]
+              - heading "Questions Before I Lock This" [level=3] [ref=e3572]
+              - paragraph [ref=e3573]: "Three things I need your input on before writing the full spec:"
+              - separator [ref=e3574]
+              - paragraph [ref=e3575]:
+                - strong [ref=e3576]: Question 1 — Reaction surface priority
+              - paragraph [ref=e3577]: When multiple reactions want to affect the ambient geometry simultaneously — say, a discovery reaction and an entity reaction happening within seconds of each other — which takes priority?
+              - paragraph [ref=e3578]:
+                - text: "My instinct:"
+                - strong [ref=e3579]: entity reactions always win.
+                - text: They are the most significant events in the observatory. Discovery reactions queue behind them.
+              - paragraph [ref=e3580]: Do you agree, or should it be first-in-first-out regardless?
+              - separator [ref=e3581]
+              - paragraph [ref=e3582]:
+                - strong [ref=e3583]: Question 2 — Status bar text as reaction surface
+              - paragraph [ref=e3584]:
+                - text: The status bar center text already has a defined cycle of contextual messages per mode. Environmental reactions could
+                - emphasis [ref=e3585]: interrupt
+                - text: this cycle with observatory-state messages.
+              - paragraph [ref=e3586]: "Two options:"
+              - group "Code" [ref=e3587]:
+                - button "Copy to clipboard" [ref=e3589]:
+                  - generic [ref=e3590]:
+                    - img [ref=e3592]
+                    - img [ref=e3596]
+                - code [ref=e3600]:
+                  - generic [ref=e3601]: A — Reactions can interrupt the cycle
+                  - text: A significant event (node catalogued, entity appeared) pushes a reaction message immediately, then cycle resumes normally after. More responsive. Slightly less predictable. B — Reactions slot into the cycle Reaction messages are added to the rotation pool and appear when the cycle reaches them. More controlled. May feel delayed.
+              - paragraph [ref=e3602]:
+                - text: "My instinct:"
+                - strong [ref=e3603]: Option A
+                - text: for significant events only (entity appearances, Memory Fragment unlock). Option B for minor reactions (dwell acknowledgment, signal witnessed). Hybrid approach.
+              - separator [ref=e3604]
+              - paragraph [ref=e3605]:
+                - strong [ref=e3606]: Question 3 — How much should the Explorer desktop geometry change across a full session?
+              - paragraph [ref=e3607]: "Two positions:"
+              - group "Code" [ref=e3608]:
+                - button "Copy to clipboard" [ref=e3610]:
+                  - generic [ref=e3611]:
+                    - img [ref=e3613]
+                    - img [ref=e3617]
+                - code [ref=e3621]:
+                  - generic [ref=e3622]: A — Minimal change
+                  - text: Geometry is essentially static. Reactions are momentary — pulse, brighten, return. Desktop looks the same at minute 1 and minute 60. Purest restraint. B — Gradual evolution Geometry slowly becomes more complex/present as discovery increases and session lengthens. Desktop at minute 60 is visibly (if subtly) different from minute 1. More alive. Slightly more risk of feeling busy.
+              - paragraph [ref=e3623]:
+                - text: "My instinct:"
+                - strong [ref=e3624]: Option B
+                - text: "but with a very low ceiling. Maximum additional complexity: 2-3 new ambient lines appearing across a full session. Nothing dramatic. Just enough that an observer who stayed long enough might notice the space feels slightly more inhabited than when they arrived."
+              - separator [ref=e3625]
+              - paragraph [ref=e3626]: Answer these three and I'll write the complete spec immediately.
+          - group "Message actions" [ref=e3627]:
+            - button "Copy" [ref=e3630]:
+              - generic [ref=e3633]:
+                - generic [ref=e3634]: 
+                - generic [ref=e3635]: 
+        - generic [ref=e3638]:
+          - 'heading "You said: Your instincts are aligned with the rest of the observatory architecture." [level=2] [ref=e3639]'
+          - generic [ref=e3640]:
+            - generic [ref=e3643]:
+              - generic [ref=e3644]:
+                - paragraph [ref=e3645]: Your instincts are aligned with the rest of the observatory architecture. I'd lock all three with only minor modifications.
+                - paragraph [ref=e3646]: "---"
+                - paragraph [ref=e3647]: Question 1
+                - paragraph [ref=e3648]: Reaction Surface Priority
+                - paragraph [ref=e3649]: "Your proposal:"
+                - paragraph [ref=e3650]: Entity Reactions ↓ Discovery Reactions ↓ State Reactions ↓ Attention Reactions
+                - paragraph [ref=e3651]: I agree, but I would formalize it as a priority ladder, not FIFO.
+                - paragraph [ref=e3652]: Why?
+                - paragraph [ref=e3653]: Because entities are not events.
+                - paragraph [ref=e3654]: They're presence.
+                - paragraph [ref=e3655]: "When a Knight appears, the observatory should not be simultaneously running:"
+                - paragraph [ref=e3656]: Node Catalogued Pulse + Attention Brightening + Idle Fade + Knight Desaturation
+                - paragraph [ref=e3657]: That creates visual noise.
+                - paragraph [ref=e3658]: "Instead:"
+                - paragraph [ref=e3659]: Priority 1 ENTITY
+                - paragraph [ref=e3660]: Priority 2 DISCOVERY
+                - paragraph [ref=e3661]: Priority 3 STATE
+                - paragraph [ref=e3662]: Priority 4 ATTENTION
+                - paragraph [ref=e3663]: "Rules:"
+                - paragraph [ref=e3664]: Higher priority preempts lower.
+                - paragraph [ref=e3665]: Lower priority pauses.
+                - paragraph [ref=e3666]: Resumes afterward if still relevant.
+                - paragraph [ref=e3667]: "Example:"
+                - paragraph [ref=e3668]: Attention Reaction Active ↓ Knight Appears ↓ Attention Suspended ↓ Knight Owns Geometry Layer ↓ Knight Ends ↓ Attention May Resume
+                - paragraph [ref=e3669]: Not queue.
+                - paragraph [ref=e3670]: Suspend.
+                - paragraph [ref=e3671]: That feels more like a living system.
+                - paragraph [ref=e3672]: "---"
+                - paragraph [ref=e3673]: Special Case
+                - paragraph [ref=e3674]: Disruption Reactions should actually sit beside Entities.
+                - paragraph [ref=e3675]: "Revised hierarchy:"
+                - paragraph [ref=e3676]: ENTITY DISRUPTION DISCOVERY STATE ATTENTION
+                - paragraph [ref=e3677]: "because:"
+                - paragraph [ref=e3678]: Chaos Controls Safe Mode Cursor Suppression
+                - paragraph [ref=e3679]: are observatory-wide states.
+                - paragraph [ref=e3680]: "---"
+                - paragraph [ref=e3681]: Question 2
+                - paragraph [ref=e3682]: Status Bar Center Text
+                - paragraph [ref=e3683]: Definitely Hybrid.
+                - paragraph [ref=e3684]: Pure A is too noisy.
+                - paragraph [ref=e3685]: Pure B is too delayed.
+                - paragraph [ref=e3686]: "I'd formalize:"
+                - paragraph [ref=e3687]: "---"
+                - paragraph [ref=e3688]: Interrupt Class
+                - paragraph [ref=e3689]: May interrupt immediately.
+                - paragraph [ref=e3690]: Memory Fragment Unlocked
+                - paragraph [ref=e3691]: Knight Appearance
+                - paragraph [ref=e3692]: Fairy Appearance
+                - paragraph [ref=e3693]: Safe Mode Triggered
+                - paragraph [ref=e3694]: Observatory Core Activated
+                - paragraph [ref=e3695]: Critical Discovery Milestone
+                - paragraph [ref=e3696]: "Behavior:"
+                - paragraph [ref=e3697]: Current Text Suspends ↓ Reaction Text Appears ↓ 3-5 Seconds ↓ Normal Cycle Resumes
+                - paragraph [ref=e3698]: "---"
+                - paragraph [ref=e3699]: Queue Class
+                - paragraph [ref=e3700]: Inserted into rotation.
+                - paragraph [ref=e3701]: Signal Witnessed
+                - paragraph [ref=e3702]: Node Catalogued
+                - paragraph [ref=e3703]: Trace Appeared
+                - paragraph [ref=e3704]: Attention Response
+                - paragraph [ref=e3705]: Minor Discovery
+                - paragraph [ref=e3706]: "These should feel like:"
+                - paragraph [ref=e3707]: The observatory eventually mentions it.
+                - paragraph [ref=e3708]: "not:"
+                - paragraph [ref=e3709]: Achievement unlocked.
+                - paragraph [ref=e3710]: "---"
+                - paragraph [ref=e3711]: One Rule
+                - paragraph [ref=e3712]: "Never more than:"
+                - paragraph [ref=e3713]: 1 interrupt
+                - paragraph [ref=e3714]: "within:"
+                - paragraph [ref=e3715]: 15 seconds
+                - paragraph [ref=e3716]: Otherwise explorers who trigger multiple discoveries rapidly get spammed.
+                - paragraph [ref=e3717]: The observatory should feel thoughtful.
+                - paragraph [ref=e3718]: Not excitable.
+                - paragraph [ref=e3719]: "---"
+                - paragraph [ref=e3720]: Question 3
+                - paragraph [ref=e3721]: Desktop Geometry Evolution
+                - paragraph [ref=e3722]: Definitely B.
+                - paragraph [ref=e3723]: But I think your proposed ceiling is still slightly too conservative.
+                - paragraph [ref=e3724]: Minute 1 and Minute 60 should not look identical.
+                - paragraph [ref=e3725]: Otherwise all this state machinery exists but never becomes perceptible.
+                - paragraph [ref=e3726]: "The trick is:"
+                - paragraph [ref=e3727]: Complexity ≠ Brightness
+                - paragraph [ref=e3728]: Most designers increase brightness.
+                - paragraph [ref=e3729]: That's wrong.
+                - paragraph [ref=e3730]: Increase structure instead.
+                - paragraph [ref=e3731]: "---"
+                - paragraph [ref=e3732]: My Recommendation
+                - paragraph [ref=e3733]: "Session Start:"
+                - paragraph [ref=e3734]: 12 ambient lines 8 node fragments
+                - paragraph [ref=e3735]: "By:"
+                - paragraph [ref=e3736]: 24 / 47 discovery
+                - paragraph [ref=e3737]: +1 line +1 fragment
+                - paragraph [ref=e3738]: "By:"
+                - paragraph [ref=e3739]: 36 / 47 discovery
+                - paragraph [ref=e3740]: +1 line +1 fragment
+                - paragraph [ref=e3741]: "By:"
+                - paragraph [ref=e3742]: Extended session
+                - paragraph [ref=e3743]: Subtle drift enabled
+                - paragraph [ref=e3744]: "Final ceiling:"
+                - paragraph [ref=e3745]: 14-15 lines 10-11 fragments
+                - paragraph [ref=e3746]: "That's only:"
+                - paragraph [ref=e3747]: 15-20% increase
+                - paragraph [ref=e3748]: across an entire observatory lifetime.
+                - paragraph [ref=e3749]: "Enough to feel:"
+                - blockquote [ref=e3750]:
+                  - paragraph [ref=e3751]: "\"something changed\""
+                - paragraph [ref=e3752]: "Not enough to feel:"
+                - blockquote [ref=e3753]:
+                  - paragraph [ref=e3754]: "\"the UI evolved\""
+                - paragraph [ref=e3755]: "---"
+                - paragraph [ref=e3756]: One Additional Rule I'd Add
+                - paragraph [ref=e3757]: This is missing from the draft.
+                - paragraph [ref=e3758]: Reaction Decay
+                - paragraph [ref=e3759]: Every environmental reaction should have a return path.
+                - paragraph [ref=e3760]: "Formal rule:"
+                - paragraph [ref=e3761]: Reaction Peak ↓ Decay Phase ↓ Baseline
+                - paragraph [ref=e3762]: "Examples:"
+                - paragraph [ref=e3763]: Discovery Pulse 800ms ↓ 1200ms decay ↓ Rest
+                - paragraph [ref=e3764]: Fairy Warmth Active Duration ↓ 600ms fade ↓ Rest
+                - paragraph [ref=e3765]: Attention Brightening Cursor Leaves ↓ 1500ms fade ↓ Rest
+                - paragraph [ref=e3766]: Without explicit decay rules, reactions tend to accumulate and create visual drift.
+                - paragraph [ref=e3767]: The observatory should breathe.
+                - paragraph [ref=e3768]: Not collect scars.
+                - paragraph [ref=e3769]: "---"
+                - paragraph [ref=e3770]: Final Answers
+                - paragraph [ref=e3771]: Q1
+                - paragraph [ref=e3772]: ✅ Priority Ladder
+                - paragraph [ref=e3773]: ENTITY DISRUPTION DISCOVERY STATE ATTENTION
+                - paragraph [ref=e3774]: Suspend lower priorities rather than queueing them.
+                - paragraph [ref=e3775]: "---"
+                - paragraph [ref=e3776]: Q2
+                - paragraph [ref=e3777]: ✅ Hybrid
+                - paragraph [ref=e3778]: Major Events → Interrupt Minor Events → Rotation Queue
+                - paragraph [ref=e3779]: "Maximum:"
+                - paragraph [ref=e3780]: 1 interrupt / 15 seconds
+                - paragraph [ref=e3781]: "---"
+                - paragraph [ref=e3782]: Q3
+                - paragraph [ref=e3783]: ✅ Gradual Evolution
+                - paragraph [ref=e3784]: "But evolve:"
+                - paragraph [ref=e3785]: Structure
+                - paragraph [ref=e3786]: "more than:"
+                - paragraph [ref=e3787]: Brightness
+                - paragraph [ref=e3788]: "Ceiling:"
+                - paragraph [ref=e3789]: ~15-20% more ambient complexity
+                - paragraph [ref=e3790]: after a very long session and high discovery state.
+                - paragraph [ref=e3791]: "---"
+                - paragraph [ref=e3792]: The deeper I look at this, the more I'm convinced Environmental Reactions is actually the system that makes or breaks Explorer.
+                - paragraph [ref=e3793]: Entities make the observatory feel inhabited.
+                - paragraph [ref=e3794]: Discovery makes it feel deep.
+                - paragraph [ref=e3795]: Environmental Reactions make it feel awake. 🛰️
+              - button "Show more" [ref=e3796]
+            - group "Message actions" [ref=e3797]:
+              - generic [ref=e3799]:
+                - generic [ref=e3800]: Jun 1
+                - button "Copy" [ref=e3801]:
+                  - generic [ref=e3804]:
+                    - generic [ref=e3805]: 
+                    - generic [ref=e3806]: 
+        - generic [ref=e3808]:
+          - generic [ref=e3810]:
+            - 'heading "Claude responded: That last line is the spec''s epigraph." [level=2] [ref=e3811]'
+            - generic [ref=e3814]:
+              - paragraph [ref=e3815]: That last line is the spec's epigraph.
+              - blockquote [ref=e3816]:
+                - paragraph [ref=e3817]:
+                  - emphasis [ref=e3818]: "\"Entities make the observatory feel inhabited. Discovery makes it feel deep. Environmental Reactions make it feel awake.\""
+              - paragraph [ref=e3819]: Writing the full spec now.
+              - separator [ref=e3820]
+              - heading "Environmental Reactions" [level=2] [ref=e3821]
+              - paragraph [ref=e3822]:
+                - strong [ref=e3823]: Specification v1.0
+              - paragraph [ref=e3824]:
+                - emphasis [ref=e3825]: "\"The observatory doesn't react to what you do. It reacts to what your presence has created.\""
+              - separator [ref=e3826]
+              - heading "What This System Is" [level=3] [ref=e3827]
+              - paragraph [ref=e3828]: Environmental Reactions is the observatory's ambient nervous system. It is the only system in the entire observatory that responds to the observer obliquely — not to their actions, but to the state of the observatory as shaped by their presence over time.
+              - paragraph [ref=e3829]: "Every other system responds directly:"
+              - group "Code" [ref=e3830]:
+                - button "Copy to clipboard" [ref=e3832]:
+                  - generic [ref=e3833]:
+                    - img [ref=e3835]
+                    - img [ref=e3839]
+                - code [ref=e3843]:
+                  - generic [ref=e3844]: Dock → hover → tooltip
+                  - text: Windows → click → open Terminal → command → output Entities → trigger → appear
+              - paragraph [ref=e3845]: Environmental Reactions responds to none of these directly. It watches the cumulative state — what has been discovered, how long the observer has been present, whether an entity appeared, whether something is being stressed — and responds to that state, not to the individual action that created it.
+              - paragraph [ref=e3846]: The observer should be able to use the observatory for ten minutes and not consciously register a single environmental reaction. And yet the space should feel alive throughout.
+              - separator [ref=e3847]
+              - heading "Reaction Surfaces" [level=3] [ref=e3848]
+              - paragraph [ref=e3849]: "Three surfaces receive environmental reactions:"
+              - heading "Surface 1 — Ambient Geometry (Desktop Far Layer)" [level=4] [ref=e3850]
+              - paragraph [ref=e3851]: Faint connection lines, node fragments, constellation geometry at 3-6% opacity on the desktop. The most sensitive reaction surface. Responds to almost everything — subtly, slowly, never dramatically. The far layer never intercepts interaction.
+              - heading "Surface 2 — Status Bar Center Text" [level=4] [ref=e3852]
+              - paragraph [ref=e3853]: The contextual message cycle. Environmental reactions can interrupt or insert into this cycle based on observatory state. The text is the observatory thinking out loud — not confirming actions, responding to conditions.
+              - heading "Surface 3 — Observatory Index Map" [level=4] [ref=e3854]
+              - paragraph [ref=e3855]: Connection line brightness, node visibility, sector presence. The map is a living document. Its appearance reflects current observatory state, not just static navigation structure.
+              - separator [ref=e3856]
+              - heading "Priority Ladder" [level=3] [ref=e3857]
+              - paragraph [ref=e3858]:
+                - text: When multiple reactions compete for the same surface simultaneously, the priority ladder governs. Higher priority preempts lower. Lower priority
+                - strong [ref=e3859]: suspends
+                - text: — not queues — and may resume afterward if still relevant.
+              - group "Code" [ref=e3860]:
+                - button "Copy to clipboard" [ref=e3862]:
+                  - generic [ref=e3863]:
+                    - img [ref=e3865]
+                    - img [ref=e3869]
+                - code [ref=e3873]:
+                  - generic [ref=e3874]: Priority 1 — ENTITY
+                  - text: Priority 2 — DISRUPTION Priority 3 — DISCOVERY Priority 4 — STATE Priority 5 — ATTENTION
+              - paragraph [ref=e3875]:
+                - strong [ref=e3876]: "Suspend, not queue:"
+              - group "Code" [ref=e3877]:
+                - button "Copy to clipboard" [ref=e3879]:
+                  - generic [ref=e3880]:
+                    - img [ref=e3882]
+                    - img [ref=e3886]
+                - code [ref=e3890]:
+                  - generic [ref=e3891]: Attention Reaction Active
+                  - text: ↓ Knight Appears (Priority 1) ↓ Attention Reaction Suspended ↓ Knight Owns Geometry Layer ↓ Knight Ends + Decay Phase ↓ Attention Reaction Resumes (if cursor is still in attention position) (if not — reaction dismissed silently)
+              - paragraph [ref=e3892]: When a Knight appears, the observatory does not simultaneously run node catalogued pulse, attention brightening, idle fade, and Knight desaturation. Entity presence owns the geometry layer completely for its duration.
+              - paragraph [ref=e3893]:
+                - strong [ref=e3894]: Disruption sits beside Entity
+                - text: because chaos controls, safe mode, and cursor suppression are observatory-wide states — not momentary events. They affect the entire system, not a single surface.
+              - separator [ref=e3895]
+              - heading "Reaction Decay Rule" [level=3] [ref=e3896]
+              - paragraph [ref=e3897]: Every environmental reaction has three phases. No exceptions.
+              - group "Code" [ref=e3898]:
+                - button "Copy to clipboard" [ref=e3900]:
+                  - generic [ref=e3901]:
+                    - img [ref=e3903]
+                    - img [ref=e3907]
+                - code [ref=e3911]:
+                  - generic [ref=e3912]: Reaction Peak → Decay Phase → Baseline
+              - paragraph [ref=e3913]: Without explicit decay, reactions accumulate and create visual drift. The observatory breathes. It does not collect scars.
+              - paragraph [ref=e3914]:
+                - strong [ref=e3915]: "Standard decay times:"
+              - group "Code" [ref=e3916]:
+                - button "Copy to clipboard" [ref=e3918]:
+                  - generic [ref=e3919]:
+                    - img [ref=e3921]
+                    - img [ref=e3925]
+                - code [ref=e3929]:
+                  - generic [ref=e3930]: "Discovery Pulse: 800ms peak → 1200ms decay → rest"
+                  - text: "Entity Geometry: Active → 600ms decay → rest Attention Brightening: Cursor away → 1500ms decay → rest State Transitions: Event → 2000ms decay → rest (slow, deliberate) Idle Dimming: Any input → 300ms recovery → rest"
+              - paragraph [ref=e3931]: Decay is always ease-out. Nothing snaps back. The observatory returns to baseline the way a room returns to silence after a sound — gradually, completely.
+              - separator [ref=e3932]
+              - heading "Reaction Rules" [level=3] [ref=e3933]
+              - paragraph [ref=e3934]: "Every reaction in this system must satisfy all six rules:"
+              - paragraph [ref=e3935]:
+                - strong [ref=e3936]: Rule 1 — Reactions are never immediate
+                - text: Minimum 200ms delay between trigger and reaction. The observatory notices, then responds. Never simultaneous.
+              - paragraph [ref=e3937]:
+                - strong [ref=e3938]: Rule 2 — Reactions never stack
+                - text: Priority ladder governs conflicts. Lower priority suspends. Resumes if relevant after higher priority decays.
+              - paragraph [ref=e3939]:
+                - strong [ref=e3940]: Rule 3 — Reactions never explain themselves
+                - text: No tooltip. No label. No notification. The reaction simply happens.
+              - paragraph [ref=e3941]:
+                - strong [ref=e3942]: Rule 4 — Reactions are reversible
+                - text: "Every reaction has a decay path back to baseline. Nothing permanently alters the environment without the observer doing something to sustain it. Exception: desktop geometry evolution — structural additions persist for the session."
+              - paragraph [ref=e3943]:
+                - strong [ref=e3944]: Rule 5 — Reactions respect motion settings
+                - text: "Reduced motion enabled:"
+              - list [ref=e3945]:
+                - listitem [ref=e3946]: "All ambient geometry reactions: disabled"
+                - listitem [ref=e3947]: "Status bar text reactions: still active"
+                - listitem [ref=e3948]: "Entity modal variations (desaturation / warmth): still active"
+                - listitem [ref=e3949]: "Pulse reactions: instant state change, no transition animation"
+              - paragraph [ref=e3950]:
+                - strong [ref=e3951]: Rule 6 — Reactions are subtle by default
+                - text: "If a reaction is noticeable on first viewing, it is too strong. Target: reactions are felt before they are seen."
+              - separator [ref=e3952]
+              - heading "Category 1 — Entity Reactions (Priority 1)" [level=3] [ref=e3953]
+              - paragraph [ref=e3954]: The observatory responds to entity presence and departure. These reactions own the geometry layer completely for their duration.
+              - heading "Knight Appears" [level=4] [ref=e3955]
+              - group "Code" [ref=e3956]:
+                - button "Copy to clipboard" [ref=e3958]:
+                  - generic [ref=e3959]:
+                    - img [ref=e3961]
+                    - img [ref=e3965]
+                - code [ref=e3969]:
+                  - generic [ref=e3970]: "Surface: Ambient geometry + Observatory Index"
+                  - text: "Delay: 0ms (simultaneous with appearance) Effect: Global desaturation — subtle, 300ms transition Contrast tightens fractionally Ambient geometry freezes — no pulse, no movement Environment feels: watched Decay: 600ms after Knight disappears Geometry resumes normal pulse rhythm Saturation returns to baseline"
+              - heading "Fairy Appears" [level=4] [ref=e3971]
+              - group "Code" [ref=e3972]:
+                - button "Copy to clipboard" [ref=e3974]:
+                  - generic [ref=e3975]:
+                    - img [ref=e3977]
+                    - img [ref=e3981]
+                - code [ref=e3985]:
+                  - generic [ref=e3986]: "Surface: Ambient geometry + Observatory Index"
+                  - text: "Delay: 0ms Effect: Ambient geometry warms — violet accent brightens 10-15% Nearest connection lines to Fairy position gain 2% opacity Environment feels: discovered Decay: 600ms after Fairy disappears Warmth returns to baseline Opacity returns to baseline"
+              - heading "Entity Trace Placed (30-60s after departure)" [level=4] [ref=e3987]
+              - group "Code" [ref=e3988]:
+                - button "Copy to clipboard" [ref=e3990]:
+                  - generic [ref=e3991]:
+                    - img [ref=e3993]
+                    - img [ref=e3997]
+                - code [ref=e4001]:
+                  - generic [ref=e4002]: "Surface: Desktop ambient geometry"
+                  - text: "Delay: 30-60s post-departure (randomized) Effect: Single ambient line shifts position 2-3px toward entity's origin sector direction Over 60s — imperceptible in real time Only visible if observer was watching that line Decay: No decay — persists session only Gone on next session load"
+              - heading "Knight Cursor Suppression Active" [level=4] [ref=e4003]
+              - group "Code" [ref=e4004]:
+                - button "Copy to clipboard" [ref=e4006]:
+                  - generic [ref=e4007]:
+                    - img [ref=e4009]
+                    - img [ref=e4013]
+                - code [ref=e4017]:
+                  - generic [ref=e4018]: "Surface: Ambient geometry"
+                  - text: "Delay: 0ms Effect: Ambient geometry freezes completely No pulse. No movement. No drift. Nothing. For entire suppression duration (2.0-3.2s) + 400ms post-suppression Decay: Geometry resumes 400ms after suppression lifts Single slow pulse as it returns — the observatory exhaling after holding its breath"
+              - separator [ref=e4019]
+              - heading "Category 2 — Disruption Reactions (Priority 2)" [level=3] [ref=e4020]
+              - paragraph [ref=e4021]: The observatory responds to system stress, forcing behavior, and breaking behavior.
+              - heading "Chaos Controls Active (Engineer)" [level=4] [ref=e4022]
+              - group "Code" [ref=e4023]:
+                - button "Copy to clipboard" [ref=e4025]:
+                  - generic [ref=e4026]:
+                    - img [ref=e4028]
+                    - img [ref=e4032]
+                - code [ref=e4036]:
+                  - generic [ref=e4037]: "Surface: Ambient geometry"
+                  - text: "Delay: 500ms after first control activated Effect: Geometry increases in complexity — lines flicker at edges, 1-2% opacity variance, irregular rhythm Feels: unstable Each additional chaos control increases instability fractionally (ceiling: 3 controls active) Decay: 2000ms after all controls deactivated Geometry stabilizes slowly, deliberately"
+              - heading "Safe Mode Triggered (Engineer)" [level=4] [ref=e4038]
+              - group "Code" [ref=e4039]:
+                - button "Copy to clipboard" [ref=e4041]:
+                  - generic [ref=e4042]:
+                    - img [ref=e4044]
+                    - img [ref=e4048]
+                - code [ref=e4052]:
+                  - generic [ref=e4053]: "Surface: Ambient geometry"
+                  - text: "Delay: 200ms Effect: Geometry simplifies — 2-3 lines disappear Remaining lines stabilize completely No pulse. No drift. Perfect stillness. The observatory is recovering. It needs stillness. Decay: Lines return gradually after safe mode resolves One line every 800ms until baseline restored"
+              - heading "Bottom Bar Poked — Explorer (5-6 clicks)" [level=4] [ref=e4054]
+              - group "Code" [ref=e4055]:
+                - button "Copy to clipboard" [ref=e4057]:
+                  - generic [ref=e4058]:
+                    - img [ref=e4060]
+                    - img [ref=e4064]
+                - code [ref=e4068]:
+                  - generic [ref=e4069]: "Surface: Ambient geometry"
+                  - text: "Delay: 0ms Effect: Geometry flickers once — 300ms, single frame irregularity across all lines, then stabilizes The observatory noticed. It does not approve. Decay: Immediate — single event, no sustained effect"
+              - heading "Observatory Core Forced — Explorer (pre-20% discovery)" [level=4] [ref=e4070]
+              - group "Code" [ref=e4071]:
+                - button "Copy to clipboard" [ref=e4073]:
+                  - generic [ref=e4074]:
+                    - img [ref=e4076]
+                    - img [ref=e4080]
+                - code [ref=e4084]:
+                  - generic [ref=e4085]: "Surface: Observatory Index map"
+                  - text: "Delay: 300ms Effect: Core node dims briefly — 400ms Connection lines from Core fade 50% — 600ms Then return to normal The Core is present. It is not ready. Decay: 800ms total — returns to normal pulse"
+              - separator [ref=e4086]
+              - heading "Category 3 — Discovery Reactions (Priority 3)" [level=3] [ref=e4087]
+              - paragraph [ref=e4088]: The observatory responds when something is found. These reactions acknowledge without celebrating.
+              - heading "New Node Catalogued" [level=4] [ref=e4089]
+              - group "Code" [ref=e4090]:
+                - button "Copy to clipboard" [ref=e4092]:
+                  - generic [ref=e4093]:
+                    - img [ref=e4095]
+                    - img [ref=e4099]
+                - code [ref=e4103]:
+                  - generic [ref=e4104]: "Surface: Ambient geometry (desktop)"
+                  - text: "Delay: 400ms after cataloguing confirmed Effect: Single pulse wave originates from approximate desktop position of that node's sector Expands outward, 800ms, returns to rest Opacity peak: +3% above baseline at wave front Feels: acknowledgment, not celebration Decay: 1200ms fade back to baseline"
+              - heading "Signal Witnessed" [level=4] [ref=e4105]
+              - group "Code" [ref=e4106]:
+                - button "Copy to clipboard" [ref=e4108]:
+                  - generic [ref=e4109]:
+                    - img [ref=e4111]
+                    - img [ref=e4115]
+                - code [ref=e4119]:
+                  - generic [ref=e4120]: "Surface: Status bar center text (Queue class)"
+                  - text: "Delay: Inserted into rotation — appears within next cycle Effect: \"[observatory] something surfaced briefly.\" or \"[signal] the map shifted for a moment.\" Never describes the signal. Responds to it. Decay: Normal cycle resumes after text displays"
+              - heading "Memory Fragment Unlocked (24/47)" [level=4] [ref=e4121]
+              - group "Code" [ref=e4122]:
+                - button "Copy to clipboard" [ref=e4124]:
+                  - generic [ref=e4125]:
+                    - img [ref=e4127]
+                    - img [ref=e4131]
+                - code [ref=e4135]:
+                  - generic [ref=e4136]: "Surface: Observatory Index map + ambient geometry"
+                  - text: "Delay: 800ms after threshold confirmed Effect: Index map ambient lines briefly increase opacity 3-4% across entire map — 1500ms Then settle back to baseline Desktop geometry: single slow pulse, all lines Status bar: Interrupt class text (see below) Decay: 2000ms total return to baseline Deliberate — this is the observatory's most significant acknowledgment"
+              - heading "Critical Discovery Milestone (every 12 nodes)" [level=4] [ref=e4137]
+              - group "Code" [ref=e4138]:
+                - button "Copy to clipboard" [ref=e4140]:
+                  - generic [ref=e4141]:
+                    - img [ref=e4143]
+                    - img [ref=e4147]
+                - code [ref=e4151]:
+                  - generic [ref=e4152]: "Surface: Status bar center text (Interrupt class)"
+                  - text: "Delay: 600ms Effect: Text interrupts current cycle 12/47: \"the observatory is beginning to know you.\" 24/47: \"something opened.\" 36/47: \"you have seen most of what can be seen.\" 47/47: [silence — status bar says nothing. The observatory has no words for completion. It simply continues.] Decay: Text holds 4s, normal cycle resumes"
+              - separator [ref=e4153]
+              - heading "Category 4 — State Reactions (Priority 4)" [level=3] [ref=e4154]
+              - paragraph [ref=e4155]: The observatory responds to its own condition — session length, discovery depth, visitor history.
+              - heading "Return Visitor Detected (on entry)" [level=4] [ref=e4156]
+              - group "Code" [ref=e4157]:
+                - button "Copy to clipboard" [ref=e4159]:
+                  - generic [ref=e4160]:
+                    - img [ref=e4162]
+                    - img [ref=e4166]
+                - code [ref=e4170]:
+                  - generic [ref=e4171]: "Surface: Ambient geometry"
+                  - text: "Delay: 0ms — present from initialization Effect: Geometry initializes at 5-6% opacity vs 3-4% for first visit The observatory is more comfortable with a known observer Decay: N/A — baseline for session"
+              - heading "High Discovery State (36+ nodes catalogued)" [level=4] [ref=e4172]
+              - group "Code" [ref=e4173]:
+                - button "Copy to clipboard" [ref=e4175]:
+                  - generic [ref=e4176]:
+                    - img [ref=e4178]
+                    - img [ref=e4182]
+                - code [ref=e4186]:
+                  - generic [ref=e4187]: "Surface: Ambient geometry"
+                  - text: "Delay: Applied at session start if threshold met Or gradually if threshold crossed mid-session Effect: +1 ambient line added to desktop geometry +1 node fragment added These persist for the session Subtle structural increase — not brightness Decay: N/A — session persistent"
+              - heading "Extended Session (30+ minutes)" [level=4] [ref=e4188]
+              - group "Code" [ref=e4189]:
+                - button "Copy to clipboard" [ref=e4191]:
+                  - generic [ref=e4192]:
+                    - img [ref=e4194]
+                    - img [ref=e4198]
+                - code [ref=e4202]:
+                  - generic [ref=e4203]: "Surface: Ambient geometry"
+                  - text: "Delay: Activates at 30-minute mark Effect: Ambient drift animation begins Lines shift position 2-3px over 60s Imperceptibly slow — like continental drift The observatory has been running a long time It continues existing. It is not waiting. Decay: N/A — active until session ends or idle triggers"
+              - heading "Idle State (2+ minutes no interaction)" [level=4] [ref=e4204]
+              - group "Code" [ref=e4205]:
+                - button "Copy to clipboard" [ref=e4207]:
+                  - generic [ref=e4208]:
+                    - img [ref=e4210]
+                    - img [ref=e4214]
+                - code [ref=e4218]:
+                  - generic [ref=e4219]: "Surface: Ambient geometry + status bar"
+                  - text: "Delay: 2 minutes exact Effect: Everything dims fractionally — geometry to 70% current Pulse rhythms slow — periods extend by 40% Status bar: \"the observatory is patient.\" Clock dims to 20% opacity Decay: 300ms recovery on any interaction Geometry returns to full opacity Pulse rhythms restore Clock returns to full opacity The observatory noticed the return"
+              - heading "Idle Return (any interaction after idle)" [level=4] [ref=e4220]
+              - group "Code" [ref=e4221]:
+                - button "Copy to clipboard" [ref=e4223]:
+                  - generic [ref=e4224]:
+                    - img [ref=e4226]
+                    - img [ref=e4230]
+                - code [ref=e4234]:
+                  - generic [ref=e4235]: "Surface: Ambient geometry"
+                  - text: "Delay: 0ms Effect: Single connection line nearest cursor pulses once The observatory noticed the return No text. Just the pulse. Decay: 400ms — single event"
+              - separator [ref=e4236]
+              - heading "Category 5 — Attention Reactions (Priority 5)" [level=3] [ref=e4237]
+              - paragraph [ref=e4238]: The observatory responds to where attention is directed — before any action is taken.
+              - heading "Cursor Proximity to Hidden Node" [level=4] [ref=e4239]
+              - group "Code" [ref=e4240]:
+                - button "Copy to clipboard" [ref=e4242]:
+                  - generic [ref=e4243]:
+                    - img [ref=e4245]
+                    - img [ref=e4249]
+                - code [ref=e4253]:
+                  - generic [ref=e4254]: "Surface: Ambient geometry (nearest lines to cursor)"
+                  - text: "Delay: 300ms after cursor enters proximity zone (80px) Effect: Nearest 1-2 connection lines brighten slightly +2% opacity, 400ms transition No click. No hover event. Pure proximity. Feels: something is nearby Decay: 1500ms after cursor leaves proximity zone"
+              - heading "Extended Dwell (8s+ on Observatory Index node)" [level=4] [ref=e4255]
+              - group "Code" [ref=e4256]:
+                - button "Copy to clipboard" [ref=e4258]:
+                  - generic [ref=e4259]:
+                    - img [ref=e4261]
+                    - img [ref=e4265]
+                - code [ref=e4269]:
+                  - generic [ref=e4270]: "Surface: Ambient geometry (dwell region)"
+                  - text: "Delay: 8s dwell confirmed Effect: Ambient geometry in dwell region rotates fractionally — 0.5° over 8s Imperceptible unless watching carefully The observatory is paying closer attention Decay: Returns to original angle over 4s after dwell breaks"
+              - heading "Cursor Stillness (8s+ on open desktop)" [level=4] [ref=e4271]
+              - group "Code" [ref=e4272]:
+                - button "Copy to clipboard" [ref=e4274]:
+                  - generic [ref=e4275]:
+                    - img [ref=e4277]
+                    - img [ref=e4281]
+                - code [ref=e4285]:
+                  - generic [ref=e4286]: "Surface: Ambient geometry (nearest connection line)"
+                  - text: "Delay: 8s stillness confirmed Effect: Nearest connection line shifts pulse rhythm Period extends — breathes more slowly As if the observatory is listening more carefully Decay: Returns to normal rhythm 2s after cursor moves"
+              - heading "Repeated Area Return" [level=4] [ref=e4287]
+              - group "Code" [ref=e4288]:
+                - button "Copy to clipboard" [ref=e4290]:
+                  - generic [ref=e4291]:
+                    - img [ref=e4293]
+                    - img [ref=e4297]
+                - code [ref=e4301]:
+                  - generic [ref=e4302]: "Surface: Ambient geometry (that region)"
+                  - text: "Delay: 400ms after qualifying return confirmed Effect: Probabilistic response (see Discovery Mechanics) A — Region geometry brightens briefly (800ms) B — Faint node appears at region edge (3-5s) C — No response (observatory noticed, said nothing) Decay: A: 1200ms · B: natural fade over 5s · C: none"
+              - separator [ref=e4303]
+              - heading "Status Bar Text — Interrupt & Queue System" [level=3] [ref=e4304]
+              - heading "Interrupt Class" [level=4] [ref=e4305]
+              - paragraph [ref=e4306]: May interrupt current text immediately. Observer sees it within 400ms of trigger.
+              - group "Code" [ref=e4307]:
+                - button "Copy to clipboard" [ref=e4309]:
+                  - generic [ref=e4310]:
+                    - img [ref=e4312]
+                    - img [ref=e4316]
+                - code [ref=e4320]:
+                  - generic [ref=e4321]: "Triggers:"
+                  - text: "Memory Fragment Unlocked Knight Appearance Fairy Appearance Safe Mode Triggered Observatory Core Activated Critical Discovery Milestone (every 12 nodes) Behavior: Current text suspends mid-display Reaction text appears — 400ms fade in Holds 3-5 seconds (event-dependent) Normal cycle resumes — 400ms fade in Rate limit: Maximum 1 interrupt per 15 seconds If second interrupt triggers within 15s window: Queued as priority Queue class item instead The observatory is thoughtful. Not excitable."
+              - heading "Queue Class" [level=4] [ref=e4322]
+              - paragraph [ref=e4323]: Inserted into rotation. Appears when cycle reaches it naturally.
+              - group "Code" [ref=e4324]:
+                - button "Copy to clipboard" [ref=e4326]:
+                  - generic [ref=e4327]:
+                    - img [ref=e4329]
+                    - img [ref=e4333]
+                - code [ref=e4337]:
+                  - generic [ref=e4338]: "Triggers:"
+                  - text: "Signal Witnessed Node Catalogued (non-milestone) Entity Trace Appeared Attention Response (significant dwell) Minor Discovery Behavior: Added to front of rotation queue Appears at next natural cycle transition Treated as normal rotation message thereafter Feels like: the observatory eventually mentions it Queue limit: Maximum 2 queued items at once Third item: silently dropped The observatory does not accumulate undelivered thoughts"
+              - separator [ref=e4339]
+              - heading "Desktop Geometry Evolution" [level=3] [ref=e4340]
+              - paragraph [ref=e4341]: The desktop ambient geometry evolves structurally across a session. Complexity increases, not brightness.
+              - heading "Baseline (Session Start, First Visit)" [level=4] [ref=e4342]
+              - group "Code" [ref=e4343]:
+                - button "Copy to clipboard" [ref=e4345]:
+                  - generic [ref=e4346]:
+                    - img [ref=e4348]
+                    - img [ref=e4352]
+                - code [ref=e4356]:
+                  - generic [ref=e4357]: "Ambient lines: 12"
+                  - text: "Node fragments: 8 Opacity: 3-4% Pulse: Active, 3.5-5.5s irregular Drift: None"
+              - heading "Evolution Thresholds" [level=4] [ref=e4358]
+              - group "Code" [ref=e4359]:
+                - button "Copy to clipboard" [ref=e4361]:
+                  - generic [ref=e4362]:
+                    - img [ref=e4364]
+                    - img [ref=e4368]
+                - code [ref=e4372]:
+                  - generic [ref=e4373]: "24 / 47 nodes catalogued:"
+                  - text: "+1 ambient line added (total: 13) +1 node fragment added (total: 9) Addition: 800ms fade in from invisible Feels: the map has more to show 36 / 47 nodes catalogued: +1 ambient line added (total: 14) +1 node fragment added (total: 10) Addition: 800ms fade in Feels: the observatory is more present 30+ minute session: Drift animation enabled Lines shift 2-3px over 60s cycles Feels: the observatory continues existing High discovery + extended session (both active): +1 additional line (total: 15) Opacity ceiling raised to 5-6% Feels: inhabited, not decorated"
+              - heading "Final Ceiling" [level=4] [ref=e4374]
+              - group "Code" [ref=e4375]:
+                - button "Copy to clipboard" [ref=e4377]:
+                  - generic [ref=e4378]:
+                    - img [ref=e4380]
+                    - img [ref=e4384]
+                - code [ref=e4388]:
+                  - generic [ref=e4389]: "Maximum ambient lines: 15"
+                  - text: "Maximum node fragments: 11 Maximum opacity: 6%"
+              - paragraph [ref=e4390]: 15-20% structural increase across an entire observatory lifetime. Enough that an observer who stayed long enough might notice the space feels slightly more inhabited than when they arrived. Not enough to feel like the UI evolved.
+              - separator [ref=e4391]
+              - heading "System Interactions" [level=3] [ref=e4392]
+              - group "Code" [ref=e4393]:
+                - button "Copy to clipboard" [ref=e4395]:
+                  - generic [ref=e4396]:
+                    - img [ref=e4398]
+                    - img [ref=e4402]
+                - code [ref=e4406]:
+                  - generic [ref=e4407]: "Entity System:"
+                  - text: "Entity appearances trigger Category 1 reactions directly Entity traces trigger delayed geometry shifts Cursor suppression triggers geometry freeze Discovery System: Node cataloguing triggers Category 3 reactions Discovery thresholds trigger geometry evolution Memory Fragment unlock triggers observatory-wide reaction Terminal System: scan / trace commands may trigger subtle Index reactions Extended log reading triggers Fairy (entity system) which then triggers Category 1 reactions Status Bar: Center text is both a reaction surface and a system Interrupt / Queue rules govern all environmental text reactions globally"
+              - separator [ref=e4408]
+              - heading "Implementation Notes" [level=3] [ref=e4409]
+              - group "Code" [ref=e4410]:
+                - button "Copy to clipboard" [ref=e4412]:
+                  - generic [ref=e4413]:
+                    - img [ref=e4415]
+                    - img [ref=e4419]
+                - code [ref=e4423]:
+                  - generic [ref=e4424]: "ReactionManager:"
+                  - text: "Singleton. Governs all reaction state. Maintains priority ladder. Handles suspend / resume for lower priorities. Tracks interrupt rate limit (15s window). Tracks geometry evolution state. GeometryLayer: Separate canvas layer — far layer, no pointer events. Managed entirely by ReactionManager. Never touched directly by other systems. DecayScheduler: Every reaction registers a decay callback on activation. If reaction is suspended mid-decay, decay pauses. Resumes from current state, not from peak. The observatory does not restart reactions. It continues them. Motion Respect: prefers-reduced-motion: geometry layer hidden entirely. ReactionManager still runs — text reactions still fire. Entity modal variations still apply via CSS filter. No geometry. No pulse. No drift."
+              - separator [ref=e4425]
+              - heading "The Epigraph" [level=3] [ref=e4426]
+              - blockquote [ref=e4427]:
+                - paragraph [ref=e4428]:
+                  - emphasis [ref=e4429]: "\"Entities make the observatory feel inhabited."
+                  - emphasis [ref=e4430]: Discovery makes it feel deep.
+                  - emphasis [ref=e4431]: Environmental Reactions make it feel awake."
+              - paragraph [ref=e4432]: "This line governs every implementation decision in this system. When in doubt: does this reaction contribute to the observatory feeling awake — present, continuous, alive — without drawing attention to itself?"
+              - paragraph [ref=e4433]: "If yes: implement it. If no: remove it."
+              - separator [ref=e4434]
+              - heading "Status" [level=3] [ref=e4435]
+              - paragraph [ref=e4436]:
+                - strong [ref=e4437]: "Concept:"
+                - text: Locked
+                - strong [ref=e4438]: "Specification:"
+                - text: Complete — v1.0
+                - strong [ref=e4439]: "Wireframe:"
+                - text: Pending your sketch
+                - strong [ref=e4440]: "Next:"
+                - text: Explorer Terminal spec (Passive + Active integration)
+          - group "Message actions" [ref=e4441]:
+            - button "Copy" [ref=e4444]:
+              - generic [ref=e4447]:
+                - generic [ref=e4448]: 
+                - generic [ref=e4449]: 
+        - generic [ref=e4452]:
+          - 'heading "You said: Here take a look." [level=2] [ref=e4453]'
+          - generic [ref=e4457]:
+            - heading "Files hidden in shared chats" [level=3] [ref=e4459]
+            - img [ref=e4465]
+          - generic [ref=e4467]:
+            - paragraph [ref=e4472]: Here take a look. Both are same diagram
+            - group "Message actions" [ref=e4473]:
+              - generic [ref=e4475]:
+                - generic [ref=e4476]: Jun 2
+                - button "Copy" [ref=e4477]:
+                  - generic [ref=e4480]:
+                    - generic [ref=e4481]: 
+                    - generic [ref=e4482]: 
+        - generic [ref=e4484]:
+          - generic [ref=e4486]:
+            - 'heading "Claude responded: Both images are identical — same wireframe, so reviewing once." [level=2] [ref=e4487]'
+            - generic [ref=e4490]:
+              - paragraph [ref=e4491]: Both images are identical — same wireframe, so reviewing once.
+              - paragraph [ref=e4492]: This is excellent. Comprehensive, accurate, and visually communicates the system's complexity without becoming noisy itself. Let me go through it properly.
+              - separator [ref=e4493]
+              - heading "What's Perfect" [level=3] [ref=e4494]
+              - paragraph [ref=e4495]:
+                - strong [ref=e4496]: Section 1 — Philosophy
+              - paragraph [ref=e4497]: "The IS / IS NOT split is exactly right:"
+              - group "Code" [ref=e4498]:
+                - button "Copy to clipboard" [ref=e4500]:
+                  - generic [ref=e4501]:
+                    - img [ref=e4503]
+                    - img [ref=e4507]
+                - code [ref=e4511]:
+                  - generic [ref=e4512]: "NOT: IS:"
+                  - text: Feedback Ambient Animation Oblique Easter Eggs State-Driven Confirmation Subtle Immediate Delayed Explained Alive
+              - paragraph [ref=e4513]:
+                - text: "And the callout:"
+                - emphasis [ref=e4514]: "\"Reactions are felt before they are seen.\""
+                - text: — this belongs on the implementation team's wall. It's the single most important sentence in this entire system.
+              - paragraph [ref=e4515]: "The Direct Systems vs Ambient Reactions comparison table communicates the architectural distinction immediately:"
+              - group "Code" [ref=e4516]:
+                - button "Copy to clipboard" [ref=e4518]:
+                  - generic [ref=e4519]:
+                    - img [ref=e4521]
+                    - img [ref=e4525]
+                - code [ref=e4529]:
+                  - generic [ref=e4530]: Dock → Hover → Tooltip
+                  - text: Windows → Click → Open Terminal → Command → Output Entities → Trigger → Appear Environmental Reactions → State → Response
+              - paragraph [ref=e4531]:
+                - strong [ref=e4532]: Section 2 — Reaction Surfaces
+              - paragraph [ref=e4533]: All three surfaces correctly characterized. The "Observatory thinking out loud" description for Surface 2 (Status Bar) is exactly the right mental model for a developer.
+              - paragraph [ref=e4534]:
+                - strong [ref=e4535]: Section 3 — Priority Ladder
+              - paragraph [ref=e4536]: "The five-tier ladder with icons is clean and scannable. The Knight preempts attention example shown as a flow diagram:"
+              - group "Code" [ref=e4537]:
+                - button "Copy to clipboard" [ref=e4539]:
+                  - generic [ref=e4540]:
+                    - img [ref=e4542]
+                    - img [ref=e4546]
+                - code [ref=e4550]:
+                  - generic [ref=e4551]: Attention Active → Knight Appears → Attention Suspended → Knight Ends → Attention Resumes
+              - paragraph [ref=e4552]: This is the clearest illustration of suspend-not-queue in the entire wireframe. Good placement.
+              - paragraph [ref=e4553]:
+                - strong [ref=e4554]: Section 4 — Reaction Lifecycle
+              - paragraph [ref=e4555]: "The Trigger → 200ms Delay → Peak → Decay → Baseline flow with the waveform visualization is implementation-ready. The example timings table is exactly right:"
+              - group "Code" [ref=e4556]:
+                - button "Copy to clipboard" [ref=e4558]:
+                  - generic [ref=e4559]:
+                    - img [ref=e4561]
+                    - img [ref=e4565]
+                - code [ref=e4569]:
+                  - generic [ref=e4570]: "Discovery Pulse: 800ms peak → 1200ms decay → Rest"
+                  - text: "Entity Geometry: Active → 600ms decay → Rest Attention Brightening: While Active → 1500ms decay → Rest State Transitions: Event → 2000ms decay → Rest Idle Dimming: Active → 300ms recovery → Rest"
+              - paragraph [ref=e4571]:
+                - emphasis [ref=e4572]: "\"All decay is ease-out. Nothing snaps back.\""
+                - text: — correct and critical.
+              - paragraph [ref=e4573]:
+                - strong [ref=e4574]: Section 5 — Entity Reactions
+              - paragraph [ref=e4575]: Knight and Fairy appearance reactions accurately documented. Knight Suppression with geometry freeze and single pulse return is correct. Entity Trace Placed with the 30-60s delay and "only visible if watching" note is exactly right.
+              - paragraph [ref=e4576]:
+                - strong [ref=e4577]: Section 6 — Disruption Reactions
+              - paragraph [ref=e4578]: All four disruption types present and accurate. Safe Mode showing lines disappearing one at a time (1 line / 800ms) communicates the gradual recovery feeling correctly.
+              - paragraph [ref=e4579]:
+                - strong [ref=e4580]: Section 7 — Discovery Reactions
+              - paragraph [ref=e4581]: Node Catalogued pulse wave, Signal Witnessed queue insertion, Memory Fragment Unlocked observatory-wide reaction, Discovery Milestones with the actual text at each threshold — all accurate.
+              - paragraph [ref=e4582]:
+                - text: The 47/47 milestone showing
+                - emphasis [ref=e4583]: "\"silence\""
+                - text: is perfect. The observatory has no words for completion. It simply continues.
+              - paragraph [ref=e4584]:
+                - strong [ref=e4585]: Section 9 — Attention Reactions
+              - paragraph [ref=e4586]:
+                - text: The "NO HOVER / NO CLICK / NO TOOLTIP" callout for Repeated Return is the right emphasis.
+                - emphasis [ref=e4587]: "\"Pure observation. The observatory notices attention before interaction.\""
+                - text: — this is the sentence that prevents a developer from accidentally wiring these to hover events.
+              - paragraph [ref=e4588]:
+                - strong [ref=e4589]: Section 10 — Status Text Reaction System
+              - paragraph [ref=e4590]: Interrupt Class and Queue Class both correctly documented. The flow diagrams showing Current Text → Suspend/Resume for Interrupt, and Added to Queue → Next Cycle Transition → Displayed for Queue, are clean and unambiguous. Max 1 interrupt per 15 seconds noted correctly.
+              - paragraph [ref=e4591]:
+                - strong [ref=e4592]: Section 11 — Desktop Geometry Evolution
+              - paragraph [ref=e4593]: "The four-state progression is accurate:"
+              - group "Code" [ref=e4594]:
+                - button "Copy to clipboard" [ref=e4596]:
+                  - generic [ref=e4597]:
+                    - img [ref=e4599]
+                    - img [ref=e4603]
+                - code [ref=e4607]:
+                  - generic [ref=e4608]: "First Visit: 12 lines, 8 fragments, 3-4% opacity, no drift"
+                  - text: "24/47 Discovered: 13 lines, 9 fragments, 4-5% opacity 36/47 Discovered: 14 lines, 10 fragments, 4-5% opacity High + 30min: 15 lines, 11 fragments, 5-6% opacity"
+              - paragraph [ref=e4609]: "What Evolves vs What Does Not Evolve:"
+              - group "Code" [ref=e4610]:
+                - button "Copy to clipboard" [ref=e4612]:
+                  - generic [ref=e4613]:
+                    - img [ref=e4615]
+                    - img [ref=e4619]
+                - code [ref=e4623]:
+                  - generic [ref=e4624]: "EVOLVES: Structure, Connections"
+                  - text: "DOES NOT: Brightness, Saturation"
+              - paragraph [ref=e4625]: This distinction being explicit on the wireframe is important. Most developers will reach for opacity first. This tells them not to.
+              - paragraph [ref=e4626]:
+                - strong [ref=e4627]: Section 12 — System Architecture
+              - paragraph [ref=e4628]: The ReactionManager at center connecting to all inputs and surfaces is correctly structured. Dependencies column noting Reduced Motion, Animation Frame, localStorage, Event Bus — all correct.
+              - paragraph [ref=e4629]:
+                - text: "The epigraph at the bottom landing exactly where it should:"
+                - emphasis [ref=e4630]: "\"Entities make the observatory feel inhabited. Discovery makes it feel deep. Environmental Reactions make it feel awake.\""
+              - separator [ref=e4631]
+              - heading "Two Small Flags" [level=3] [ref=e4632]
+              - paragraph [ref=e4633]:
+                - strong [ref=e4634]: 1. Opacity values in Section 11
+              - paragraph [ref=e4635]:
+                - text: The wireframe shows 24/47 and 36/47 both at "Opacity 4-5%" which is correct — but the final state (High Discovery + 30min) shows "Opacity 5-6%" which matches spec. Just worth annotating clearly that opacity increase is a
+                - emphasis [ref=e4636]: ceiling raise
+                - text: ", not a direct increase — the geometry operates within the range, not at the ceiling constantly. A developer might implement it as a fixed value otherwise."
+              - paragraph [ref=e4637]:
+                - text: "Add note:"
+                - emphasis [ref=e4638]: "\"Opacity range widens. Geometry breathes within it. Not pinned to ceiling.\""
+              - paragraph [ref=e4639]:
+                - strong [ref=e4640]: 2. Extended Dwell decay in Section 9
+              - paragraph [ref=e4641]:
+                - text: "Shows \"Decay: 4s return to original angle\" — spec says \"returns to original angle over 4s after dwell breaks.\" These mean the same thing but the wireframe phrasing could be read as a 4-second delay before decay starts rather than a 4-second decay duration. Clarify to:"
+                - emphasis [ref=e4642]: "\"4s ease-out return to original angle, begins immediately on dwell break.\""
+              - separator [ref=e4643]
+              - heading "Verdict" [level=3] [ref=e4644]
+              - paragraph [ref=e4645]:
+                - strong [ref=e4646]: Environmental Reactions Wireframe v1.0 — Ready for implementation with two annotation clarifications.
+              - paragraph [ref=e4647]: No redraw needed. Both flags are single-sentence annotation updates on existing sections.
+              - paragraph [ref=e4648]: "This wireframe completes the four Explorer subsystems:"
+              - group "Code" [ref=e4649]:
+                - button "Copy to clipboard" [ref=e4651]:
+                  - generic [ref=e4652]:
+                    - img [ref=e4654]
+                    - img [ref=e4658]
+                - code [ref=e4662]:
+                  - generic [ref=e4663]: ✓ Explorer Desktop — Initial State
+                  - text: ✓ Entity System — Fairy & Knight ✓ Discovery Mechanics ✓ Environmental Reactions
+              - paragraph [ref=e4664]:
+                - text: "Explorer Workspace is fully specced and wireframed. Next:"
+                - strong [ref=e4665]: Explorer Terminal spec
+                - text: — passive and active integration. Shall we begin?
+          - group "Message actions" [ref=e4666]:
+            - button "Copy" [ref=e4669]:
+              - generic [ref=e4672]:
+                - generic [ref=e4673]: 
+                - generic [ref=e4674]: 
+        - generic [ref=e4677]:
+          - 'heading "You said: Yes please." [level=2] [ref=e4678]'
+          - generic [ref=e4679]:
+            - paragraph [ref=e4684]: Yes please..
+            - group "Message actions" [ref=e4685]:
+              - generic [ref=e4687]:
+                - generic [ref=e4688]: Jun 2
+                - button "Copy" [ref=e4689]:
+                  - generic [ref=e4692]:
+                    - generic [ref=e4693]: 
+                    - generic [ref=e4694]: 
+        - generic [ref=e4696]:
+          - generic [ref=e4698]:
+            - 'heading "Claude responded: Explorer Terminal — Passive & Active Integration" [level=2] [ref=e4699]'
+            - generic [ref=e4702]:
+              - heading "Explorer Terminal — Passive & Active Integration" [level=2] [ref=e4703]
+              - paragraph [ref=e4704]:
+                - strong [ref=e4705]: Specification v1.0
+              - paragraph [ref=e4706]:
+                - emphasis [ref=e4707]: "\"The terminal is not a command line. It is a listening post.\""
+              - separator [ref=e4708]
+              - heading "What The Explorer Terminal Is" [level=3] [ref=e4709]
+              - paragraph [ref=e4710]: In Engineer mode, the terminal is a tool. You query it. It responds. The relationship is transactional.
+              - paragraph [ref=e4711]: In Explorer mode, the terminal is different in character entirely.
+              - paragraph [ref=e4712]:
+                - text: It is called the
+                - strong [ref=e4713]: Signal Interface
+                - text: — and the name is deliberate. A signal interface doesn't wait for commands. It receives. It monitors. It occasionally transmits something the observer didn't ask for.
+              - paragraph [ref=e4714]: "The Explorer terminal exists on two levels simultaneously:"
+              - group "Code" [ref=e4715]:
+                - button "Copy to clipboard" [ref=e4717]:
+                  - generic [ref=e4718]:
+                    - img [ref=e4720]
+                    - img [ref=e4724]
+                - code [ref=e4728]:
+                  - generic [ref=e4729]: Passive Level — always running, always visible if opened
+                  - text: The observatory transmitting to anyone paying attention. No input required. No commands needed. Just presence and observation. Active Level — available when the observer chooses to engage Commands work. But differently than Engineer. The terminal responds in observatory language. Some commands do unexpected things. Some things work that aren't commands.
+              - paragraph [ref=e4730]: The Signal Interface is the most direct line between the observer and the observatory's interior. Everything else in Explorer mode is atmospheric. The terminal is where the atmosphere becomes legible — briefly, partially, never completely.
+              - separator [ref=e4731]
+              - heading "Two Modes, One Surface" [level=3] [ref=e4732]
+              - paragraph [ref=e4733]: "The Signal Interface exists as two window types, consistent with the Window Manager spec:"
+              - heading "Passive Terminal Panel (Type 5 Window)" [level=4] [ref=e4734]
+              - list [ref=e4735]:
+                - listitem [ref=e4736]: Full width overlay, anchors to bottom, expands upward
+                - listitem [ref=e4737]: "Height: draggable, 35-70% viewport, default 40%"
+                - listitem [ref=e4738]: "Translucent: rgba(7,7,11,0.92)"
+                - listitem [ref=e4739]: Drag handle at top, no title bar, no buttons
+                - listitem [ref=e4740]: "Content: read-only log stream"
+                - listitem [ref=e4741]: "Closes: click outside only"
+                - listitem [ref=e4742]: "Always shows: [Open Signal Interface →] button at right"
+              - heading "Active Signal Interface (Type 2 Window)" [level=4] [ref=e4743]
+              - list [ref=e4744]:
+                - listitem [ref=e4745]: 16:9 centered window
+                - listitem [ref=e4746]:
+                  - text: Monospace throughout, darker background (
+                  - code [ref=e4747]: "#0a0a0f"
+                  - text: )
+                - listitem [ref=e4749]: Input always focused when window is focused
+                - listitem [ref=e4750]: "Title: \"Signal Interface\""
+                - listitem [ref=e4751]: Both never open simultaneously — opening Active scales Passive panel into Active window, 220ms
+              - separator [ref=e4752]
+              - heading "Passive Terminal — Log Stream" [level=3] [ref=e4753]
+              - paragraph [ref=e4754]: The passive log is the observatory transmitting. The observer reads. Nothing is asked of them.
+              - heading "Log Format" [level=4] [ref=e4755]
+              - group "Code" [ref=e4756]:
+                - button "Copy to clipboard" [ref=e4758]:
+                  - generic [ref=e4759]:
+                    - img [ref=e4761]
+                    - img [ref=e4765]
+                - code [ref=e4769]:
+                  - generic [ref=e4770]: HH:MM:SS [tag] message...
+              - paragraph [ref=e4771]: All lowercase. All monospace. Tags in brackets. Messages never exceed one line. No wrapping — long messages trail off with ellipsis at viewport edge. The terminal does not accommodate. The observer adjusts.
+              - heading "Tag System" [level=4] [ref=e4772]
+              - group "Code" [ref=e4773]:
+                - button "Copy to clipboard" [ref=e4775]:
+                  - generic [ref=e4776]:
+                    - img [ref=e4778]
+                    - img [ref=e4782]
+                - code [ref=e4786]:
+                  - generic [ref=e4787]: "[observatory] System-level observations"
+                  - text: "[signal] Incoming data, detected patterns [memory] State and history references [entity] Entity activity logs [archive] Project and data references [sector] Location and navigation events [observer] Observer behavior observations (rare, unsettling)"
+              - paragraph [ref=e4788]:
+                - text: The
+                - code [ref=e4789]: "[observer]"
+                - text: tag is used sparingly. When it appears, it means the observatory is logging the observer's own behavior — not to them, just logging it. As if they happened to look at a screen showing their own file.
+              - heading "Log Rhythm" [level=4] [ref=e4790]
+              - paragraph [ref=e4791]: Logs appear at irregular intervals. Never predictable. Never silent for too long.
+              - group "Code" [ref=e4792]:
+                - button "Copy to clipboard" [ref=e4794]:
+                  - generic [ref=e4795]:
+                    - img [ref=e4797]
+                    - img [ref=e4801]
+                - code [ref=e4805]:
+                  - generic [ref=e4806]: "Active log rate: Entry every 8-25s (randomized)"
+                  - text: "Idle log rate: Entry every 30-60s After entity: 2-3 rapid entries within 90s, then normal After discovery: 1-2 entries referencing the sector, then normal Dead silence max: 90 seconds — then one entry, always"
+              - paragraph [ref=e4807]: The terminal is never completely silent. The observatory is always running.
+              - heading "Log Content — Examples" [level=4] [ref=e4808]
+              - paragraph [ref=e4809]:
+                - strong [ref=e4810]: "Routine Observatory State:"
+              - group "Code" [ref=e4811]:
+                - button "Copy to clipboard" [ref=e4813]:
+                  - generic [ref=e4814]:
+                    - img [ref=e4816]
+                    - img [ref=e4820]
+                - code [ref=e4824]:
+                  - generic [ref=e4825]: 21:41:29 [observatory] system initialized. all sectors nominal.
+                  - text: "21:41:44 [signal] identity layer: active. 4 datasets loaded. 21:42:03 [observatory] rendering desktop. observer connected. 21:42:31 [memory] previous visit detected. 3 sessions logged. 21:43:18 [signal] ambient topology refreshed. 21:44:02 [archive] project index loaded. 6 entries catalogued."
+              - paragraph [ref=e4826]:
+                - strong [ref=e4827]: "Observer Behavior (unsettling):"
+              - group "Code" [ref=e4828]:
+                - button "Copy to clipboard" [ref=e4830]:
+                  - generic [ref=e4831]:
+                    - img [ref=e4833]
+                    - img [ref=e4837]
+                - code [ref=e4841]:
+                  - generic [ref=e4842]: "21:44:33 [observer] dwell detected. sector: unknown."
+                  - text: "21:45:01 [observer] observer has been here before. 21:45:44 [observer] attention pattern: non-linear."
+              - paragraph [ref=e4843]:
+                - strong [ref=e4844]: "Entity Activity:"
+              - group "Code" [ref=e4845]:
+                - button "Copy to clipboard" [ref=e4847]:
+                  - generic [ref=e4848]:
+                    - img [ref=e4850]
+                    - img [ref=e4854]
+                - code [ref=e4858]:
+                  - generic [ref=e4859]: 21:46:12 [entity] presence detected. system sector.
+                  - text: "21:46:14 [entity] trace logged. origin: terminal proximity. 21:47:03 [entity] dormant."
+              - paragraph [ref=e4860]:
+                - strong [ref=e4861]: "Discovery Events:"
+              - group "Code" [ref=e4862]:
+                - button "Copy to clipboard" [ref=e4864]:
+                  - generic [ref=e4865]:
+                    - img [ref=e4867]
+                    - img [ref=e4871]
+                - code [ref=e4875]:
+                  - generic [ref=e4876]: "21:48:22 [signal] new signal. sector: research. unclassified."
+                  - text: 21:48:24 [archive] node partially resolved. identity unknown. 21:49:11 [sector] boundary detected. uncatalogued region.
+              - paragraph [ref=e4877]:
+                - strong [ref=e4878]: "Cryptic / Unexplained:"
+              - group "Code" [ref=e4879]:
+                - button "Copy to clipboard" [ref=e4881]:
+                  - generic [ref=e4882]:
+                    - img [ref=e4884]
+                    - img [ref=e4888]
+                - code [ref=e4892]:
+                  - generic [ref=e4893]: 21:50:03 [signal] ............
+                  - text: "21:50:44 [observatory] something is different here. 21:51:22 [signal] untranslated burst. duration: 0.3s. 21:52:08 [memory] this has happened before."
+              - paragraph [ref=e4894]: The cryptic entries appear rarely — maximum 1 per 5 minutes. They are not random. They appear after specific conditions (entity activity, deep dwell, behavioral triggers). But they never explain what triggered them.
+              - heading "Auto-scroll Behavior" [level=4] [ref=e4895]
+              - list [ref=e4896]:
+                - listitem [ref=e4897]: "Default: auto-scroll enabled, newest entry at bottom"
+                - listitem [ref=e4898]: "If observer scrolls up manually: auto-scroll pauses"
+                - listitem [ref=e4899]:
+                  - text: "Small indicator appears:"
+                  - code [ref=e4900]: ↓ new entries
+                  - text: — not a button, just a signal
+                - listitem [ref=e4901]: "Auto-scroll resumes: observer scrolls back to bottom"
+                - listitem [ref=e4902]: New entries continue arriving regardless of scroll position
+              - heading "Reading Without Commands (Behavioral Trigger)" [level=4] [ref=e4903]
+              - paragraph [ref=e4904]:
+                - text: "Per Discovery Mechanics spec: if observer reads passive logs for 45+ consecutive seconds without entering any input, a Fairy appears near the terminal. The terminal noticed the quiet observation. The log does not reference the Fairy's appearance — the"
+                - code [ref=e4905]: "[entity]"
+                - text: log entries appear 30-60 seconds after, as a delayed record.
+              - separator [ref=e4906]
+              - heading "Active Signal Interface — Command System" [level=3] [ref=e4907]
+              - paragraph [ref=e4908]: When the observer opens the Active Signal Interface, the passive log stream continues in the background — the same stream, now with an input line below it.
+              - heading "Interface Anatomy" [level=4] [ref=e4909]
+              - group "Code" [ref=e4910]:
+                - button "Copy to clipboard" [ref=e4912]:
+                  - generic [ref=e4913]:
+                    - img [ref=e4915]
+                    - img [ref=e4919]
+                - code [ref=e4923]:
+                  - generic [ref=e4924]: ┌─────────────────────────────────────────────────────┐
+                  - text: │ Signal Interface · Active · Session 1│ ├─────────────────────────────────────────────────────┤ │ │ │ [log stream continues here — same as passive] │ │ │ │ 21:44:33 [observer] input detected. │ │ 21:44:34 [signal] interface active. │ │ │ │ │ │ │ ├─────────────────────────────────────────────────────┤ │ > _ │ └─────────────────────────────────────────────────────┘
+              - paragraph [ref=e4925]:
+                - text: "Input prompt:"
+                - code [ref=e4926]: ">"
+                - text: — simple, monospace, always focused.
+              - paragraph [ref=e4927]:
+                - text: No cursor blink in Explorer mode. The cursor is a steady underline
+                - code [ref=e4928]: _
+                - text: . It is present. It waits.
+              - heading "Command Response Style" [level=4] [ref=e4929]
+              - paragraph [ref=e4930]: "All responses in Explorer terminal follow the same rules:"
+              - group "Code" [ref=e4931]:
+                - button "Copy to clipboard" [ref=e4933]:
+                  - generic [ref=e4934]:
+                    - img [ref=e4936]
+                    - img [ref=e4940]
+                - code [ref=e4944]:
+                  - generic [ref=e4945]: Always lowercase
+                  - text: Always monospace Never more than 3 lines Never direct — observatory speaks obliquely Never confirms commands — acknowledges them
+              - paragraph [ref=e4946]:
+                - strong [ref=e4947]: "Example — standard command:"
+              - group "Code" [ref=e4948]:
+                - button "Copy to clipboard" [ref=e4950]:
+                  - generic [ref=e4951]:
+                    - img [ref=e4953]
+                    - img [ref=e4957]
+                - code [ref=e4961]:
+                  - generic [ref=e4962]: "> help"
+                  - text: "[signal] the observatory does not provide instructions. [signal] observe. explore. the interface will respond."
+              - paragraph [ref=e4963]:
+                - strong [ref=e4964]: "Example — navigation command:"
+              - group "Code" [ref=e4965]:
+                - button "Copy to clipboard" [ref=e4967]:
+                  - generic [ref=e4968]:
+                    - img [ref=e4970]
+                    - img [ref=e4974]
+                - code [ref=e4978]:
+                  - generic [ref=e4979]: "> open projects"
+                  - text: "[sector] navigating to project archive. [archive] 6 entries. 2 featured. loading..."
+              - paragraph [ref=e4980]:
+                - strong [ref=e4981]: "Example — unknown input:"
+              - group "Code" [ref=e4982]:
+                - button "Copy to clipboard" [ref=e4984]:
+                  - generic [ref=e4985]:
+                    - img [ref=e4987]
+                    - img [ref=e4991]
+                - code [ref=e4995]:
+                  - generic [ref=e4996]: "> hello"
+                  - text: "[observatory] the observatory is listening."
+              - paragraph [ref=e4997]:
+                - strong [ref=e4998]: "Example — repeated unknown input:"
+              - group "Code" [ref=e4999]:
+                - button "Copy to clipboard" [ref=e5001]:
+                  - generic [ref=e5002]:
+                    - img [ref=e5004]
+                    - img [ref=e5008]
+                - code [ref=e5012]:
+                  - generic [ref=e5013]: "> hello"
+                  - text: "[observatory] you have said this before."
+              - paragraph [ref=e5014]: The terminal has memory within a session. It notices repetition.
+              - separator [ref=e5015]
+              - heading "Command Reference" [level=3] [ref=e5016]
+              - heading "Navigation Commands" [level=4] [ref=e5017]
+              - paragraph [ref=e5018]: These work as expected — they open windows, navigate to sectors.
+              - group "Code" [ref=e5019]:
+                - button "Copy to clipboard" [ref=e5021]:
+                  - generic [ref=e5022]:
+                    - img [ref=e5024]
+                    - img [ref=e5028]
+                - code [ref=e5032]:
+                  - generic [ref=e5033]: "> profile Opens Identity Archive"
+                  - text: "> projects Opens Project Archive > certs Opens Certification Log > lab Opens Experiment Lab > index Opens Observatory Index > guide Opens Observatory Guide (assistant)"
+              - paragraph [ref=e5034]:
+                - text: "Response format: brief"
+                - code [ref=e5035]: "[sector]"
+                - text: log entry, then action executes.
+              - separator [ref=e5036]
+              - heading "Discovery Commands" [level=4] [ref=e5037]
+              - paragraph [ref=e5038]: These interact with the Discovery Mechanics system directly.
+              - group "Code" [ref=e5039]:
+                - button "Copy to clipboard" [ref=e5041]:
+                  - generic [ref=e5042]:
+                    - img [ref=e5044]
+                    - img [ref=e5048]
+                - code [ref=e5052]:
+                  - generic [ref=e5053]: "> scan"
+                  - text: "[signal] scanning. one unknown signal detected. Reveals position of one hidden node in Observatory Index. Shape only — no label. Works once per session. Second use: [signal] the signal has already been located. > trace [node-name] [signal] tracing connections from: [node-name]. Shows all connection lines from named node in Index. Including lines to nodes not yet labeled. Unknown destination nodes shown as ████ endpoints. Invalid node: [signal] that sector is not in the catalogue. > observe [observatory] noted. If cursor is currently dwelling on a node: +4s dwell credit. If not: [observatory] there is nothing to observe here. > map [archive] 12 sectors catalogued. [signal] 8 signals observed this session. [memory] the observatory has more to show. Never a percentage. Never \"X% complete.\" Always a statement. Always understated."
+              - separator [ref=e5054]
+              - heading "System Commands" [level=4] [ref=e5055]
+              - paragraph [ref=e5056]: These reveal observatory state — partially, in observatory language.
+              - group "Code" [ref=e5057]:
+                - button "Copy to clipboard" [ref=e5059]:
+                  - generic [ref=e5060]:
+                    - img [ref=e5062]
+                    - img [ref=e5066]
+                - code [ref=e5070]:
+                  - generic [ref=e5071]: "> status"
+                  - text: "[observatory] all systems nominal. [signal] 3 sectors partially resolved. [entity] no active presence detected. (or if entity recently appeared) [entity] something was here. recently. > session [memory] session: 3. duration: 00:42:18. [observer] 12 sectors catalogued this session. [memory] first visit: [date]. the observatory remembers. > history [memory] 3 sessions logged. [archive] last visit: 2 days ago. [observer] behavior pattern: exploratory. The terminal categorizes the observer. Not to them — just in front of them."
+              - separator [ref=e5072]
+              - heading "Hidden Commands" [level=4] [ref=e5073]
+              - paragraph [ref=e5074]: Not documented anywhere in the UI. Discoverable only through experimentation.
+              - group "Code" [ref=e5075]:
+                - button "Copy to clipboard" [ref=e5077]:
+                  - generic [ref=e5078]:
+                    - img [ref=e5080]
+                    - img [ref=e5084]
+                - code [ref=e5088]:
+                  - generic [ref=e5089]: "> listen"
+                  - text: "Terminal enters a special state for 30 seconds. Input disabled. Log rate increases. Entries become more specific — referencing exact sectors the observer has been in this session. After 30s: [signal] the observatory has said what it can. Input re-enables. > trace entity [entity] tracing last known presence. If entity appeared this session: Shows origin sector in Observatory Index. Dotted line from origin — same as entity trace but triggered immediately rather than delayed. If no entity this session: [entity] no presence logged this session. [memory] they have been here before. (even if they haven't — the observatory is uncertain) > forget [memory] the observatory does not forget. Nothing happens. localStorage unchanged. The terminal acknowledged the request. The observatory declined it. > who [observer] you are the observer. [memory] session 3. visit 3. known. [observatory] the observatory knows you better than you know the observatory. This is true — localStorage has more data about the observer than the observer has discovered about the observatory. The terminal is not lying. > why [observatory] that is not a question the observatory can answer. [signal] but it noticed you asked."
+              - paragraph [ref=e5090]: The hidden commands are the terminal's deepest layer. They don't unlock anything. They don't advance discovery. They are the observatory responding to a different kind of attention — not exploration, but inquiry.
+              - separator [ref=e5091]
+              - heading "Non-Command Input" [level=4] [ref=e5092]
+              - paragraph [ref=e5093]: The terminal accepts non-command input. Things that aren't commands at all.
+              - group "Code" [ref=e5094]:
+                - button "Copy to clipboard" [ref=e5096]:
+                  - generic [ref=e5097]:
+                    - img [ref=e5099]
+                    - img [ref=e5103]
+                - code [ref=e5107]:
+                  - generic [ref=e5108]: "> ........"
+                  - text: "[signal] ............ The terminal mirrors the ellipsis. Then continues. > ? [observatory] the observatory has the same question. > (empty enter) [signal] . A single period. The terminal acknowledged the silence. > [any number] [archive] that is not a sector index. [signal] sectors are not numbered here. > [observer's name, if they type it] (impossible to predict — handled as unknown input) [observatory] the observatory is listening. But the [observer] tag entry that follows in the log: [observer] identity confirmed. The terminal made a connection. It doesn't explain it."
+              - paragraph [ref=e5109]: Non-command inputs are the observatory's personality layer. They prevent the terminal from feeling like a search box. They reward curiosity without gamifying it.
+              - separator [ref=e5110]
+              - heading "Special Terminal States" [level=3] [ref=e5111]
+              - heading "Listen State (triggered by > listen)" [level=4] [ref=e5112]:
+                - text: Listen State (triggered by
+                - code [ref=e5113]: "> listen"
+                - text: )
+              - group "Code" [ref=e5114]:
+                - button "Copy to clipboard" [ref=e5116]:
+                  - generic [ref=e5117]:
+                    - img [ref=e5119]
+                    - img [ref=e5123]
+                - code [ref=e5127]:
+                  - generic [ref=e5128]: "Duration: 30 seconds"
+                  - text: "Input: Disabled Log rate: Increases to one entry every 4-6s Content: More specific — references exact observer behavior Cursor: Dims to 30% opacity End: [signal] the observatory has said what it can. Input re-enables. Cursor returns to full opacity. Log returns to normal rate."
+              - heading "Post-Entity State (triggered by entity appearance)" [level=4] [ref=e5129]
+              - group "Code" [ref=e5130]:
+                - button "Copy to clipboard" [ref=e5132]:
+                  - generic [ref=e5133]:
+                    - img [ref=e5135]
+                    - img [ref=e5139]
+                - code [ref=e5143]:
+                  - generic [ref=e5144]: "Duration: 90 seconds after entity disappears"
+                  - text: "Input: Normal Log rate: Elevated — 2-3 entries within first 30s Content: [entity] logs reference the appearance Then [signal] entries referencing the sector Then normal rhythm resumes Cursor: Unchanged"
+              - heading "Deep Session State (45+ minutes active in terminal)" [level=4] [ref=e5145]
+              - group "Code" [ref=e5146]:
+                - button "Copy to clipboard" [ref=e5148]:
+                  - generic [ref=e5149]:
+                    - img [ref=e5151]
+                    - img [ref=e5155]
+                - code [ref=e5159]:
+                  - generic [ref=e5160]: "Triggered: 45 continuous minutes with terminal open"
+                  - text: "Input: Normal Effect: One additional [observer] tag entry appears referencing the duration: [observer] extended observation. 47 minutes. [observatory] the observatory appreciates patience. Never happens more than once per session."
+              - separator [ref=e5161]
+              - heading "Integration With Other Systems" [level=3] [ref=e5162]
+              - group "Code" [ref=e5163]:
+                - button "Copy to clipboard" [ref=e5165]:
+                  - generic [ref=e5166]:
+                    - img [ref=e5168]
+                    - img [ref=e5172]
+                - code [ref=e5176]:
+                  - generic [ref=e5177]: "Discovery System:"
+                  - text: "scan / trace / observe / map commands affect node visibility in Observatory Index directly. Terminal is a discovery tool — not just a readout. Entity System: [entity] log entries appear after entity activity. > trace entity command surfaces entity origin. 45s passive reading triggers Fairy appearance. Post-entity log state elevates for 90s. Environmental Reactions: Terminal open + no commands for 45s: Passive reaction — ambient geometry dims slightly around terminal area. The observatory noticed the observer is reading, not acting. > listen state: Ambient geometry pulse rhythm synchronizes briefly with log entry rhythm. 30s. Then desynchronizes. The observer may or may not notice. Observatory Index: scan reveals node position in Index map. trace shows connections in Index map. Both affect Index visually in real time — the terminal and the map are the same system viewed from different angles."
+              - separator [ref=e5178]
+              - heading "What The Signal Interface Is Not" [level=3] [ref=e5179]
+              - group "Code" [ref=e5180]:
+                - button "Copy to clipboard" [ref=e5182]:
+                  - generic [ref=e5183]:
+                    - img [ref=e5185]
+                    - img [ref=e5189]
+                - code [ref=e5193]:
+                  - generic [ref=e5194]: Not a bash terminal
+                  - text: No file system. No directories. No ls, cd, pwd. The observatory has no file system to expose. Not a chatbot No natural language processing. Fixed command set + observatory personality responses. Unknown inputs get observatory responses, not errors. Not an Easter egg machine Hidden commands don't unlock achievements. They unlock understanding. Different thing entirely. Not Engineer terminal Engineer terminal is a tool. Signal Interface is a presence. Same surface. Completely different character.
+              - separator [ref=e5195]
+              - heading "Voice & Tone Reference" [level=3] [ref=e5196]
+              - paragraph [ref=e5197]: "The Signal Interface speaks in one voice throughout:"
+              - group "Code" [ref=e5198]:
+                - button "Copy to clipboard" [ref=e5200]:
+                  - generic [ref=e5201]:
+                    - img [ref=e5203]
+                    - img [ref=e5207]
+                - code [ref=e5211]:
+                  - generic [ref=e5212]: Quiet.
+                  - text: Certain without being informative. Aware without being intrusive. Never helpful in the conventional sense. Always honest — but honest in observatory language, which is not the same as plain language. The terminal never apologizes. The terminal never explains. The terminal never asks questions. It states. It logs. It acknowledges. And occasionally, it says something that makes the observer pause. That pause is the goal.
+              - separator [ref=e5213]
+              - heading "Status" [level=3] [ref=e5214]
+              - paragraph [ref=e5215]:
+                - strong [ref=e5216]: "Concept:"
+                - text: Locked
+                - strong [ref=e5217]: "Specification:"
+                - text: Complete — v1.0
+                - strong [ref=e5218]: "Wireframe:"
+                - text: Pending your sketch
+                - strong [ref=e5219]: "Next:"
+                - text: Engineer Workspace + Engine Room spec
+          - group "Message actions" [ref=e5220]:
+            - button "Copy" [ref=e5223]:
+              - generic [ref=e5226]:
+                - generic [ref=e5227]: 
+                - generic [ref=e5228]: 
+        - generic [ref=e5231]:
+          - 'heading "You said: It''s time for transferring the context to a new chat." [level=2] [ref=e5232]'
+          - generic [ref=e5233]:
+            - paragraph [ref=e5238]: It's time for transferring the context to a new chat. Give me a detailed context transfer message while I am working on the sketch.
+            - group "Message actions" [ref=e5239]:
+              - generic [ref=e5241]:
+                - generic [ref=e5242]: Jun 2
+                - button "Copy" [ref=e5243]:
+                  - generic [ref=e5246]:
+                    - generic [ref=e5247]: 
+                    - generic [ref=e5248]: 
+        - generic [ref=e5250]:
+          - generic [ref=e5252]:
+            - 'heading "Claude responded: Mystify Observatory — Context Transfer v2." [level=2] [ref=e5253]'
+            - generic [ref=e5256]:
+              - heading "Mystify Observatory — Context Transfer v2.0" [level=2] [ref=e5257]
+              - heading "For new chat session" [level=3] [ref=e5258]
+              - separator [ref=e5259]
+              - heading "WHAT THIS PROJECT IS" [level=3] [ref=e5260]
+              - paragraph [ref=e5261]: "A portfolio for a full-stack developer (Aryan, GitHub: Mystify7777) built as an immersive \"Digital Observatory\" — not a website with sections, but a controlled engineering environment. The portfolio presents the creator as a full-stack product engineer who understands systems, runtime behavior, architecture, performance, and interaction design."
+              - paragraph [ref=e5262]:
+                - strong [ref=e5263]: "The governing test for every feature:"
+              - blockquote [ref=e5264]:
+                - paragraph [ref=e5265]: "\"Does this strengthen the Digital Observatory illusion?\""
+              - paragraph [ref=e5266]:
+                - strong [ref=e5267]: "It is NOT:"
+                - text: an OS clone, hacker aesthetic, cyberpunk UI, or game.
+              - separator [ref=e5268]
+              - heading "CORE CONCEPT" [level=3] [ref=e5269]
+              - heading "Three Visitor Modes" [level=4] [ref=e5270]
+              - paragraph [ref=e5271]: "One shared architecture, three layered configurations:"
+              - paragraph [ref=e5272]:
+                - strong [ref=e5273]: Recruiter Mode
+                - text: — "Built for clarity, warmth and trust"
+                - strong [ref=e5274]: Explorer Mode
+                - text: — "The observatory becomes aware of you"
+                - strong [ref=e5275]: Engineer Mode
+                - text: — "The system tells the truth"
+              - heading "Experience Flow" [level=4] [ref=e5276]
+              - group "Code" [ref=e5277]:
+                - button "Copy to clipboard" [ref=e5279]:
+                  - generic [ref=e5280]:
+                    - img [ref=e5282]
+                    - img [ref=e5286]
+                - code [ref=e5290]:
+                  - generic [ref=e5291]: BOOT SEQUENCE (4-6s)
+                  - text: ↓ IDENTITY SELECTION ↓ OBSERVATORY INITIALIZATION ↓ DESKTOP ENVIRONMENT ↓ APPLICATION ECOSYSTEM
+              - separator [ref=e5292]
+              - heading "DESIGN SYSTEM" [level=3] [ref=e5293]
+              - heading "Color Palette" [level=4] [ref=e5294]
+              - group "Code" [ref=e5295]:
+                - button "Copy to clipboard" [ref=e5297]:
+                  - generic [ref=e5298]:
+                    - img [ref=e5300]
+                    - img [ref=e5304]
+                - code [ref=e5308]:
+                  - generic [ref=e5309]: "Backgrounds:"
+                  - text: "Primary desktop: #07070b Status/dock bar: #0a0a0e Window body: #0d0d16 Title bar: #0f0f16 Mode Accent Colors: Engineer: #00D4FF (muted cyan) Explorer: #9b7fd4 (muted violet) Recruiter: #C9924A (muted amber) Text: Primary: #EAEAEA Secondary: #A6A6A6 Muted: #707070 Borders: rgba(255,255,255,0.08) Dividers: rgba(255,255,255,0.06) Icons: rgba(255,255,255,0.75)"
+              - heading "Typography" [level=4] [ref=e5310]
+              - list [ref=e5311]:
+                - listitem [ref=e5312]: "UI font: JetBrains Mono / Space Grotesk Mono"
+                - listitem [ref=e5313]: All monospace throughout
+                - listitem [ref=e5314]: "Letter spacing: 0.08–0.15em"
+              - heading "Tech Stack" [level=4] [ref=e5315]
+              - list [ref=e5316]:
+                - listitem [ref=e5317]: Next.js (App Router)
+                - listitem [ref=e5318]: TypeScript (strict)
+                - listitem [ref=e5319]: Tailwind CSS
+                - listitem [ref=e5320]: Zustand (state)
+                - listitem [ref=e5321]: Framer Motion (animation)
+                - listitem [ref=e5322]: React Three Fiber (later phase)
+              - heading "Design Principles" [level=4] [ref=e5323]
+              - list [ref=e5324]:
+                - listitem [ref=e5325]: Restraint over spectacle
+                - listitem [ref=e5326]: Signal over noise
+                - listitem [ref=e5327]: Mode color drives all accent
+                - listitem [ref=e5328]: No red in UI (red only in terminal log output for errors)
+                - listitem [ref=e5329]: "All animations: 160–200ms ease-out standard"
+                - listitem [ref=e5330]: "Accessibility: 4.5:1 contrast minimum, 44px tap targets"
+              - separator [ref=e5331]
+              - heading "OBSERVATORY LANGUAGE" [level=3] [ref=e5332]
+              - group "Code" [ref=e5333]:
+                - button "Copy to clipboard" [ref=e5335]:
+                  - generic [ref=e5336]:
+                    - img [ref=e5338]
+                    - img [ref=e5342]
+                - code [ref=e5346]:
+                  - generic [ref=e5347]: Term Definition
+                  - text: ────────────────────────────────────────────────────── ENV Environment / Perspective — never "MODE" Observer The visitor / user Master Portfolio owner (Aryan) Observatory The entire system Knight Entity — discipline, system protection Fairy Entity — curiosity, exploration Sector Thematic area within the observatory Entity Living/intelligent element Archive Projects store (Explorer language) Null Container Trash in Engineer mode Archive Vault Trash in Explorer mode Recycle Bin Trash in Recruiter mode Signal Interface Terminal in Explorer mode Observatory Guide Assistant in Explorer mode Observatory Index Spatial navigation launcher [tag] System log format prefix
+              - separator [ref=e5348]
+              - heading "WHAT'S COMPLETE — FULLY SPECCED + WIREFRAMED" [level=3] [ref=e5349]
+              - group "Code" [ref=e5350]:
+                - button "Copy to clipboard" [ref=e5352]:
+                  - generic [ref=e5353]:
+                    - img [ref=e5355]
+                    - img [ref=e5359]
+                - code [ref=e5363]:
+                  - generic [ref=e5364]: ✓ Boot Sequence
+                  - text: ✓ Identity Selection ✓ Status Bar — all 3 modes ✓ Dock — v2.0 locked ✓ Window Manager — v1.0 locked ✓ Recruiter Workspace — all 8 states ✓ Notification System — spec + wireframe v1.0 ✓ Command Palette — spec + wireframe v0.3 ✓ Observatory Index — spec + wireframe v1.0 ✓ Explorer Desktop — Initial State — spec + wireframe v0.2 ✓ Entity System — Fairy & Knight — spec + wireframe v1.1 ✓ Discovery Mechanics — spec + wireframe v1.0 ✓ Environmental Reactions — spec + wireframe v1.0 ✓ Explorer Terminal (Signal Interface) — spec complete
+              - separator [ref=e5365]
+              - heading "CRITICAL SPEC DECISIONS — LOCKED" [level=3] [ref=e5366]
+              - heading "Red Color Rule" [level=4] [ref=e5367]
+              - paragraph [ref=e5368]:
+                - text: Red is removed from all UI elements. Amber pulsing replaces red for critical states everywhere.
+                - strong [ref=e5369]: "Exception:"
+                - text: Terminal log output —
+                - code [ref=e5370]: "[ERROR]"
+                - text: entries in terminal logs render in red. This is a technical readout, not a UI element. Red in that context is correct and expected.
+              - heading "No Sound" [level=4] [ref=e5371]
+              - paragraph [ref=e5372]: Completely removed. Visual only throughout entire observatory. No chimes, no beeps, no ambient audio.
+              - heading "Entity Silence Rule" [level=4] [ref=e5373]
+              - paragraph [ref=e5374]: No entity ever communicates directly with the observer. No text, no sound, no reaction to being clicked, no acknowledgment that the observer exists. Ever.
+              - heading "Discovery Philosophy — Option B" [level=4] [ref=e5375]
+              - paragraph [ref=e5376]: "Progress softly visible. Footer counter (Observed: 12/47). Discovery Panel accessible. System never celebrates or rewards. Archaeology, not game progression."
+              - heading "Environmental Reactions — Three Decisions Locked" [level=4] [ref=e5377]
+              - list [ref=e5378]:
+                - listitem [ref=e5379]: "Priority Ladder: Entity → Disruption → Discovery → State → Attention (suspend, not queue)"
+                - listitem [ref=e5380]: "Status Bar Text: Hybrid (Interrupt Class for major events, Queue Class for minor)"
+                - listitem [ref=e5381]: "Desktop Geometry Evolution: Structure increases, not brightness. Ceiling: 15 lines / 11 fragments / 6% opacity maximum."
+              - separator [ref=e5382]
+              - heading "EXPLORER WORKSPACE — COMPLETE SPEC SUMMARY" [level=3] [ref=e5383]
+              - heading "Desktop Initial State" [level=4] [ref=e5384]
+              - list [ref=e5385]:
+                - listitem [ref=e5386]: "Two widgets: Observatory Pulse (48px breathing orb, upper right) + Recent Activity (280px card, lower left)"
+                - listitem [ref=e5387]: "Observatory Fragment: faint node cluster 120-160px, lower center-left, 6-8% opacity, no interaction, visual anchor"
+                - listitem [ref=e5388]: "Entry sequence: 0 → 150 → 300 → 450 → 700 → 900 → 1500ms"
+                - listitem [ref=e5389]: Idle states at 30s, 2min, 5min
+                - listitem [ref=e5390]: "Environmental Focus Events: cursor proximity, repeated observation, cursor stillness"
+              - heading "Entity System — Fairy & Knight v1.1" [level=4] [ref=e5391]
+              - paragraph [ref=e5392]:
+                - strong [ref=e5393]: "Knight:"
+                - text: "Discipline, system protection. Dark angular silhouette. Preferred locations: Terminal, Engine Room node, system-critical areas. Appears, may turn toward cursor 1.5s, disappears instantly."
+              - paragraph [ref=e5394]:
+                - strong [ref=e5395]: "Fairy:"
+                - text: "Curiosity, exploration. Fragmented violet light, unstable geometry. Preferred locations: uncatalogued nodes, Observatory Fragment, areas observer has circled. Appears at edge, subtle shimmer, fragments outward 400ms."
+              - paragraph [ref=e5396]:
+                - strong [ref=e5397]: "Cursor Intervention (one per entity per session):"
+              - list [ref=e5398]:
+                - listitem [ref=e5399]: "Knight: suppresses all click/hover events 2.0-3.2s. Cursor moves visually but nothing responds. Status text: \"the system has boundaries.\""
+                - listitem [ref=e5400]: "Fairy: cursor drifts 2-4px, clicks register at wrong coordinates. Status text: \"it was only curious.\""
+              - paragraph [ref=e5401]:
+                - strong [ref=e5402]: "Trigger system:"
+              - list [ref=e5403]:
+                - listitem [ref=e5404]: "Easter egg: 7 clicks center text within 4s (Recruiter: Knight always, Engineer: \"stop.\" no entity, Explorer: 60% Fairy / 40% Knight)"
+                - listitem [ref=e5405]: "Knight organic: chaos overload, repeated failed commands, Core forced, system stress"
+                - listitem [ref=e5406]: "Fairy organic: genuine dwell 6s+, repeated area return, terminal exploration without commands, post-cataloguing"
+              - paragraph [ref=e5407]:
+                - strong [ref=e5408]: "Modal variations:"
+              - list [ref=e5409]:
+                - listitem [ref=e5410]: "Knight appearance: environment desaturates slightly, contrast tightens"
+                - listitem [ref=e5411]: "Fairy appearance: environment warms fractionally, violet brightens 10-15%"
+              - paragraph [ref=e5412]:
+                - strong [ref=e5413]: "Rarity curve:"
+              - list [ref=e5414]:
+                - listitem [ref=e5415]: "Visit 1: max 2 appearances"
+                - listitem [ref=e5416]: "Visit 2-3: max 3"
+                - listitem [ref=e5417]: "Visit 4-5: max 4 (peak)"
+                - listitem [ref=e5418]: "Visit 6+: gradual decline"
+                - listitem [ref=e5419]: "Minimum gap: 4 minutes between appearances"
+              - paragraph [ref=e5420]:
+                - strong [ref=e5421]: "Entity origins:"
+              - list [ref=e5422]:
+                - listitem [ref=e5423]: "Knight: System Sector (Engine Room, Terminal, Core Nodes)"
+                - listitem [ref=e5424]: "Fairy: Research Sector / Unknown Sector boundary"
+              - paragraph [ref=e5425]:
+                - strong [ref=e5426]: "Mode restrictions:"
+              - list [ref=e5427]:
+                - listitem [ref=e5428]: "Recruiter: Knight only, max 1/session, Easter egg only"
+                - listitem [ref=e5429]: "Explorer: Both, full system"
+                - listitem [ref=e5430]: "Engineer: Knight only, Easter egg replaced by \"stop.\" text"
+              - heading "Discovery Mechanics v1.0" [level=4] [ref=e5431]
+              - paragraph [ref=e5432]:
+                - strong [ref=e5433]: "47 total discoverable nodes:"
+              - list [ref=e5434]:
+                - listitem [ref=e5435]: 12 visible + labeled from start
+                - listitem [ref=e5436]: 8 visible but unreadable (██████)
+                - listitem [ref=e5437]: 19 hidden, become visible through behavior
+                - listitem [ref=e5438]: 8 permanently difficult / may never be found
+              - paragraph [ref=e5439]:
+                - strong [ref=e5440]: "Five trigger types:"
+              - list [ref=e5441]:
+                - listitem [ref=e5442]: Dwell (4s/8s/12s/multi-visit progression)
+                - listitem [ref=e5443]: Revisit (3+ returns, compounds across sessions)
+                - listitem [ref=e5444]: Terminal commands (scan/trace/observe/map)
+                - listitem [ref=e5445]: Attention patterns (probabilistic, 25-45% chance, not stored)
+                - listitem [ref=e5446]: Behavioral (undocumented, cross-system)
+              - paragraph [ref=e5447]:
+                - strong [ref=e5448]: "Discovery categories:"
+                - text: Nodes (persistent), Signals (ephemeral), Entity Traces (session only), Observatory Memory Fragment (deep, 24/47 threshold)
+              - paragraph [ref=e5449]:
+                - strong [ref=e5450]: "Display:"
+                - text: "Footer counter (Observed: 12/47), Discovery Indicator (◌◌◌◌ fills at 12/24/36/47), Discovery Panel (slides from right, observatory language throughout)"
+              - paragraph [ref=e5451]:
+                - strong [ref=e5452]: "Observatory Memory Fragment:"
+                - text: Unlocks at 24/47. Observatory Core becomes interactive. Opens personal map — unique per observer based on path taken, not just count.
+              - paragraph [ref=e5453]:
+                - strong [ref=e5454]: "Archaeology Principle:"
+                - text: Does this feel like finding something that was always there? Or unlocking something being kept from me? First = archaeology. Second = game. Only the first is acceptable.
+              - heading "Environmental Reactions v1.0" [level=4] [ref=e5455]
+              - paragraph [ref=e5456]:
+                - strong [ref=e5457]: "Five categories with priority ladder:"
+              - paragraph [ref=e5458]:
+                - strong [ref=e5459]: "Category 1 — Entity (Priority 1):"
+                - text: "Knight appears: desaturate + freeze geometry (300ms, 600ms decay) Fairy appears: violet warmth +10-15% (600ms decay) Knight suppression: geometry freezes completely, single pulse on return Entity trace: ambient line shifts 2-3px toward origin over 60s"
+              - paragraph [ref=e5460]:
+                - strong [ref=e5461]: "Category 2 — Disruption (Priority 2):"
+                - text: "Chaos controls: geometry instability, flicker at edges Safe mode: geometry simplifies, lines return 1 per 800ms on recovery Bottom bar poked: single 300ms flicker Core forced: Core dims 400ms, connections fade 50%"
+              - paragraph [ref=e5462]:
+                - strong [ref=e5463]: "Category 3 — Discovery (Priority 3):"
+                - text: "Node catalogued: pulse wave from sector position, 800ms peak, 1200ms decay Signal witnessed: Queue class status bar text Memory Fragment: observatory-wide opacity +3-4%, 1500ms, Interrupt class text Milestones: Interrupt class text at 12/24/36/47 (47 = silence)"
+              - paragraph [ref=e5464]:
+                - strong [ref=e5465]: "Category 4 — State (Priority 4):"
+                - text: "Return visitor: geometry initializes at 5-6% vs 3-4% High discovery (36+): +1 line, +1 fragment (session persistent) Extended session (30min+): drift animation begins Idle (2min): everything dims 70%, pulses slow, clock dims"
+              - paragraph [ref=e5466]:
+                - strong [ref=e5467]: "Category 5 — Attention (Priority 5):"
+                - text: "Cursor proximity: nearest lines +2% opacity, 1500ms decay on leave Extended dwell (8s+): geometry rotates 0.5°, returns over 4s Cursor stillness (8s): nearest line pulse rhythm shifts Repeated return: probabilistic A/B/C response"
+              - paragraph [ref=e5468]:
+                - strong [ref=e5469]: "Decay Rule:"
+                - text: Every reaction — Peak → Decay → Baseline. Always ease-out. Nothing snaps back.
+              - paragraph [ref=e5470]:
+                - strong [ref=e5471]: "Status Bar — Interrupt vs Queue:"
+              - list [ref=e5472]:
+                - listitem [ref=e5473]: "Interrupt: Memory Fragment, Knight/Fairy appearance, Safe Mode, Core Activated, Discovery Milestones. Max 1 per 15 seconds."
+                - listitem [ref=e5474]: "Queue: Signal Witnessed, Node Catalogued, Trace Appeared, Attention Response, Minor Discovery"
+              - paragraph [ref=e5475]:
+                - strong [ref=e5476]: "Desktop Geometry Evolution:"
+              - group "Code" [ref=e5477]:
+                - button "Copy to clipboard" [ref=e5479]:
+                  - generic [ref=e5480]:
+                    - img [ref=e5482]
+                    - img [ref=e5486]
+                - code [ref=e5490]:
+                  - generic [ref=e5491]: "Start: 12 lines, 8 fragments, 3-4% opacity"
+                  - text: "24/47: +1 line, +1 fragment 36/47: +1 line, +1 fragment 30min+: Drift enabled All active: 15 lines, 11 fragments, 5-6% opacity (ceiling) Structure increases. Brightness does not."
+              - heading "Explorer Terminal — Signal Interface v1.0" [level=4] [ref=e5492]
+              - paragraph [ref=e5493]:
+                - strong [ref=e5494]: "Two surfaces:"
+              - list [ref=e5495]:
+                - listitem [ref=e5496]: "Passive Panel (Type 5): read-only log stream, full-width bottom overlay"
+                - listitem [ref=e5497]: "Active Signal Interface (Type 2): same stream + input line, never both open simultaneously"
+              - paragraph [ref=e5498]:
+                - strong [ref=e5499]: "Log format:"
+                - code [ref=e5500]: HH:MM:SS [tag] message...
+                - text: — always lowercase, always monospace
+              - paragraph [ref=e5501]:
+                - strong [ref=e5502]: "Tag system:"
+                - text: "[observatory] [signal] [memory] [entity] [archive] [sector] [observer]"
+              - paragraph [ref=e5503]:
+                - strong [ref=e5504]: "[observer] tag:"
+                - text: Used sparingly. The terminal logging the observer's own behavior in front of them. Unsettling by design.
+              - paragraph [ref=e5505]:
+                - strong [ref=e5506]: "Log rhythm:"
+                - text: Entry every 8-25s active, 30-60s idle, never silent beyond 90s
+              - paragraph [ref=e5507]:
+                - strong [ref=e5508]: "Command categories:"
+              - list [ref=e5509]:
+                - listitem [ref=e5510]: "Navigation: profile / projects / certs / lab / index / guide"
+                - listitem [ref=e5511]: "Discovery: scan / trace [node] / observe / map"
+                - listitem [ref=e5512]: "System: status / session / history"
+                - listitem [ref=e5513]: "Hidden: listen / trace entity / forget / who / why"
+              - paragraph [ref=e5514]:
+                - strong [ref=e5515]: "Non-command input:"
+                - text: All handled with observatory personality responses. Terminal never returns errors. Unknown input gets observatory language acknowledgment.
+              - paragraph [ref=e5516]:
+                - strong [ref=e5517]: "Hidden command highlights:"
+              - list [ref=e5518]:
+                - listitem [ref=e5519]:
+                  - code [ref=e5520]: "> listen"
+                  - text: — 30s elevated log state, input disabled
+                - listitem [ref=e5521]:
+                  - code [ref=e5522]: "> forget"
+                  - text: — terminal declines. localStorage unchanged. "The observatory does not forget."
+                - listitem [ref=e5523]:
+                  - code [ref=e5524]: "> who"
+                  - text: — terminal tells observer they are known. True — localStorage has more data about observer than observer has discovered about observatory.
+                - listitem [ref=e5525]:
+                  - code [ref=e5526]: "> why"
+                  - text: — "that is not a question the observatory can answer. but it noticed you asked."
+              - paragraph [ref=e5527]:
+                - strong [ref=e5528]: "Voice:"
+                - text: Quiet. Certain without being informative. Never apologizes. Never explains. Never asks questions.
+              - paragraph [ref=e5529]:
+                - strong [ref=e5530]: "Behavioral trigger:"
+                - text: 45s passive reading → Fairy appears near terminal. [entity] log entries appear 30-60s after as delayed record.
+              - separator [ref=e5531]
+              - heading "WHAT REMAINS — IN ORDER" [level=3] [ref=e5532]
+              - group "Code" [ref=e5533]:
+                - button "Copy to clipboard" [ref=e5535]:
+                  - generic [ref=e5536]:
+                    - img [ref=e5538]
+                    - img [ref=e5542]
+                - code [ref=e5546]:
+                  - generic [ref=e5547]: "NEXT (immediate):"
+                  - text: "→ Explorer Terminal wireframe review (sketch in progress) → Engineer Workspace + Engine Room spec → Engineer Workspace wireframe THEN: → Profile App spec + wireframe → Projects App spec + wireframe → Lab App spec + wireframe → Certifications App spec + wireframe → Observatory Guide (Assistant) spec + wireframe → Dev Diary (semi-hidden) spec + wireframe → Hidden Systems spec → Mobile Adaptation spec DEFERRED: → React Three Fiber integration → Implementation / coding phase → Performance optimization → PWA setup"
+              - separator [ref=e5548]
+              - heading "WORKING STYLE" [level=3] [ref=e5549]
+              - list [ref=e5550]:
+                - listitem [ref=e5551]: One system at a time, fully specced before moving on
+                - listitem [ref=e5552]: Aryan sketches wireframes by hand or generates via AI tools, uploads for review
+                - listitem [ref=e5553]: "Process: discuss → spec → sketch → review → lock → next"
+                - listitem [ref=e5554]: "\"Locked\" = spec is final, ready for implementation"
+                - listitem [ref=e5555]: When something is locked it does not change without explicit revisit
+                - listitem [ref=e5556]: New session always begins by reviewing any pending wireframes before writing new specs
+                - listitem [ref=e5557]: Split complex specs into focused documents (one per subsystem)
+              - separator [ref=e5558]
+              - heading "SESSION HANDOFF NOTE" [level=3] [ref=e5559]
+              - paragraph [ref=e5560]: "The Explorer Terminal wireframe is currently being sketched. New session should:"
+              - list [ref=e5561]:
+                - listitem [ref=e5562]: Wait for / receive the Explorer Terminal wireframe
+                - listitem [ref=e5563]: Review it against the Signal Interface spec v1.0
+                - listitem [ref=e5564]: Lock it if approved
+                - listitem [ref=e5565]: Begin Engineer Workspace + Engine Room spec
+              - paragraph [ref=e5566]: The Engineer Workspace is the next major design challenge. It is fundamentally different from Explorer — full canvas, no floating windows, Engine Room as centerpiece, chaos controls, real runtime topology. It will require careful thought before a single spec line is written.
+              - separator [ref=e5567]
+              - paragraph [ref=e5568]:
+                - emphasis [ref=e5569]: Context transfer v2.0 — generated end of session. All decisions above are locked unless explicitly revisited.
+          - group "Message actions" [ref=e5570]:
+            - button "Copy" [ref=e5573]:
+              - generic [ref=e5576]:
+                - generic [ref=e5577]: 
+                - generic [ref=e5578]: 
+        - generic [ref=e5581]:
+          - 'heading "You said: Review about the terminal Interface." [level=2] [ref=e5582]'
+          - generic [ref=e5586]:
+            - heading "Files hidden in shared chats" [level=3] [ref=e5588]
+            - img [ref=e5594]
+          - generic [ref=e5596]:
+            - paragraph [ref=e5601]: Review about the terminal Interface.. gi through it.
+            - group "Message actions" [ref=e5602]:
+              - generic [ref=e5604]:
+                - generic [ref=e5605]: Jun 2
+                - button "Copy" [ref=e5606]:
+                  - generic [ref=e5609]:
+                    - generic [ref=e5610]: 
+                    - generic [ref=e5611]: 
+        - generic [ref=e5613]:
+          - generic [ref=e5615]:
+            - 'heading "Claude responded: This feedback is sharp and mostly right." [level=2] [ref=e5616]'
+            - generic [ref=e5619]:
+              - paragraph [ref=e5620]: This feedback is sharp and mostly right. Let me go through each point and give my verdict before we update the spec.
+              - separator [ref=e5621]
+              - heading "Accepting In Full" [level=3] [ref=e5622]
+              - paragraph [ref=e5623]:
+                - strong [ref=e5624]: Issue 2 — Repetition Memory persists to localStorage
+              - paragraph [ref=e5625]: Simple, cheap, powerful. The observatory remembering a greeting across sessions is exactly the kind of detail that makes return visitors feel the relationship is real. Accepting completely.
+              - group "Code" [ref=e5626]:
+                - button "Copy to clipboard" [ref=e5628]:
+                  - generic [ref=e5629]:
+                    - img [ref=e5631]
+                    - img [ref=e5635]
+                - code [ref=e5639]:
+                  - generic [ref=e5640]: "terminal_phrases_used: string[] // added to localStorage"
+              - paragraph [ref=e5641]:
+                - strong [ref=e5642]: Issue 4 — Terminal Fatigue System
+              - paragraph [ref=e5643]: "This is the only major omission and it's a genuine one. The observatory has personality. Personality includes disinterest in redundancy. The escalation is perfect:"
+              - group "Code" [ref=e5644]:
+                - button "Copy to clipboard" [ref=e5646]:
+                  - generic [ref=e5647]:
+                    - img [ref=e5649]
+                    - img [ref=e5653]
+                - code [ref=e5657]:
+                  - generic [ref=e5658]: "> status → all systems nominal."
+                  - text: "> status → all systems nominal. > status → unchanged. > status → still unchanged. > status → ..."
+              - paragraph [ref=e5659]: Not punishment. Not an error. Just the observatory losing interest. Accepting completely.
+              - paragraph [ref=e5660]:
+                - strong [ref=e5661]:
+                  - text: Issue 5 —
+                  - code [ref=e5662]: "> where"
+                  - text: hidden command
+              - paragraph [ref=e5663]: The absence is conspicuous once named. Humans ask who/what/where/why. The terminal has three. The fourth belongs.
+              - group "Code" [ref=e5664]:
+                - button "Copy to clipboard" [ref=e5666]:
+                  - generic [ref=e5667]:
+                    - img [ref=e5669]
+                    - img [ref=e5673]
+                - code [ref=e5677]:
+                  - generic [ref=e5678]: "> where"
+                  - text: "[sector] observatory index available. [signal] your location is less certain than you think."
+              - paragraph [ref=e5679]: "Or if Observatory Index is currently open:"
+              - group "Code" [ref=e5680]:
+                - button "Copy to clipboard" [ref=e5682]:
+                  - generic [ref=e5683]:
+                    - img [ref=e5685]
+                    - img [ref=e5689]
+                - code [ref=e5693]:
+                  - generic [ref=e5694]: "> where"
+                  - text: "[observatory] you are already looking at the map. it hasn't told you everything."
+              - paragraph [ref=e5695]: Accepting completely.
+              - paragraph [ref=e5696]:
+                - strong [ref=e5697]: Terminal Drift — vocabulary shift over session
+              - paragraph [ref=e5698]: This is elegant and costs almost nothing to implement. The observatory acknowledging persistence through slightly different language rather than frequency or drama.
+              - group "Code" [ref=e5699]:
+                - button "Copy to clipboard" [ref=e5701]:
+                  - generic [ref=e5702]:
+                    - img [ref=e5704]
+                    - img [ref=e5708]
+                - code [ref=e5712]:
+                  - generic [ref=e5713]: "Early: observer connected."
+                  - text: "Later: observer still present. Latest: extended observation detected."
+              - paragraph [ref=e5714]: Accepting completely. This becomes a formal addition to the spec.
+              - separator [ref=e5715]
+              - heading "Accepting With Modification" [level=3] [ref=e5716]
+              - paragraph [ref=e5717]:
+                - strong [ref=e5718]:
+                  - text: Issue 1 —
+                  - code [ref=e5719]: scan
+                  - text: too powerful
+              - paragraph [ref=e5720]: The feedback is right in principle — scan shouldn't solve discovery. But revealing only a region might feel too vague to be useful. The terminal helps but doesn't solve.
+              - paragraph [ref=e5721]: "My modification:"
+              - group "Code" [ref=e5722]:
+                - button "Copy to clipboard" [ref=e5724]:
+                  - generic [ref=e5725]:
+                    - img [ref=e5727]
+                    - img [ref=e5731]
+                - code [ref=e5735]:
+                  - generic [ref=e5736]: "> scan"
+                  - text: "[signal] anomaly detected. [sector] boundary region: eastern observatory. [signal] the signal is approximate. observe carefully."
+              - paragraph [ref=e5737]: Node position is not revealed. Region is revealed. The observer still has to dwell, return, and find it within that region. The terminal narrowed the search. It didn't complete it.
+              - paragraph [ref=e5738]:
+                - strong [ref=e5739]:
+                  - text: Issue 3 —
+                  - code [ref=e5740]: trace entity
+                  - text: too precise
+              - paragraph [ref=e5741]: Agreed that entities should remain partially unresolved. But complete ambiguity makes the command feel broken. Probable origin is the right balance.
+              - group "Code" [ref=e5742]:
+                - button "Copy to clipboard" [ref=e5744]:
+                  - generic [ref=e5745]:
+                    - img [ref=e5747]
+                    - img [ref=e5751]
+                - code [ref=e5755]:
+                  - generic [ref=e5756]: "> trace entity"
+                  - text: "[entity] trace incomplete. [signal] strongest presence: archive sector vicinity. [memory] certainty: low."
+              - paragraph [ref=e5757]: Never exact. Always approximate. The Knight doesn't live at a coordinate. It haunts a region.
+              - separator [ref=e5758]
+              - heading "One Minor Pushback" [level=3] [ref=e5759]
+              - paragraph [ref=e5760]:
+                - strong [ref=e5761]: Issue 2 — phrase memory scope
+              - paragraph [ref=e5762]:
+                - text: "The feedback suggests storing terminal phrases in localStorage. Agreed — but with one constraint: only store the"
+                - emphasis [ref=e5763]: category
+                - text: of phrase, not the exact string. The observatory should remember the observer greeted it, not the exact word used. This keeps the data footprint minimal and prevents it from feeling like surveillance.
+              - group "Code" [ref=e5764]:
+                - button "Copy to clipboard" [ref=e5766]:
+                  - generic [ref=e5767]:
+                    - img [ref=e5769]
+                    - img [ref=e5773]
+                - code [ref=e5777]:
+                  - generic [ref=e5778]: "terminal_interaction_types: {"
+                  - text: "greeted: boolean, asked_why: boolean, asked_who: boolean, asked_where: boolean, tried_to_forget: boolean, used_listen: boolean }"
+              - paragraph [ref=e5779]: Each unlocks a slightly different cross-session response. Clean, purposeful, minimal.
+              - separator [ref=e5780]
+              - heading "The Five Updates To Spec" [level=3] [ref=e5781]
+              - group "Code" [ref=e5782]:
+                - button "Copy to clipboard" [ref=e5784]:
+                  - generic [ref=e5785]:
+                    - img [ref=e5787]
+                    - img [ref=e5791]
+                - code [ref=e5795]:
+                  - generic [ref=e5796]: 1. scan — reveals region, not node position
+                  - text: 2. trace entity — returns probable origin, not exact 3. Repetition memory — persists to localStorage (interaction types) 4. Terminal Fatigue — escalating disinterest on repeated identical commands 5. > where — added as hidden command 6. Terminal Drift — vocabulary shifts after 30min / 45min / 60min+
+              - separator [ref=e5797]
+              - heading "On The Epigraph Suggestion" [level=3] [ref=e5798]
+              - blockquote [ref=e5799]:
+                - paragraph [ref=e5800]:
+                  - emphasis [ref=e5801]: "\"The terminal is not a command line. It is a listening post.\""
+              - paragraph [ref=e5802]: Agreed. This joins the Environmental Reactions epigraph in the Explorer design canon. Both belong in the implementation brief header.
+              - separator [ref=e5803]
+              - paragraph [ref=e5804]:
+                - strong [ref=e5805]: Explorer Terminal spec is now v1.1 with these six updates locked.
+              - paragraph [ref=e5806]: Ready for the wireframe review when your sketch arrives. After that — Engineer Workspace.
+          - group "Message actions" [ref=e5807]:
+            - button "Copy" [ref=e5810]:
+              - generic [ref=e5813]:
+                - generic [ref=e5814]: 
+                - generic [ref=e5815]: 
+      - link "Ask Claude your own question" [ref=e5817] [cursor=pointer]:
+        - /url: /new
+  - region "Notifications (F8)":
+    - list
