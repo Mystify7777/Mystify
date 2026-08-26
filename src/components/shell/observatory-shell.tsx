@@ -24,11 +24,14 @@ export function ObservatoryShell() {
               Foundation online.
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-observatory-muted sm:text-base">
-              The application foundation is ready. Feature systems will be introduced through
-              their defined architectural boundaries.
+              The application foundation is ready. Feature systems will be
+              introduced through their defined architectural boundaries.
             </p>
             <div className="mt-8 flex items-center justify-center gap-3 font-mono text-xs text-observatory-muted">
-              <span className="h-2 w-2 rounded-full bg-observatory-amber" aria-hidden="true" />
+              <span
+                className="h-2 w-2 rounded-full bg-observatory-amber"
+                aria-hidden="true"
+              />
               <span>session: {mode ?? "unselected"}</span>
             </div>
           </Surface>
