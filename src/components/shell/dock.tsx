@@ -4,6 +4,7 @@ import { useObservatoryStore } from "@/state/use-observatory-store";
 
 export function Dock() {
   const windows = useObservatoryStore((state) => state.windows);
+  const activeWindowId = useObservatoryStore((state) => state.activeWindowId);
   const restoreWindow = useObservatoryStore((state) => state.restoreWindow);
   const focusWindow = useObservatoryStore((state) => state.focusWindow);
 
@@ -20,12 +21,12 @@ export function Dock() {
         </span>
       ) : (
         visibleWindows.map((window) => {
-          const isActive = window.id === useObservatoryStore.getState().activeWindowId;
+          const isActive = window.id === activeWindowId;
           return (
             <button
               key={window.id}
               type="button"
-              className={`rounded-xl px-3 py-2 font-mono text-[11px] transition-observatory duration-observatory ${
+              className={`rounded-xl px-3 py-2 font-mono text-[11px] transition duration-observatory ${
                 window.isMinimized || !isActive
                   ? "text-observatory-muted hover:bg-white/5 hover:text-observatory-ink"
                   : "bg-white/5 text-observatory-ink"
