@@ -1,0 +1,22 @@
+name: Quality
+
+on:
+  push:
+    branches: [master, "feat/**"]
+  pull_request:
+    branches: [master]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          package-manager-cache: false
+      - run: npm install
+      - run: npm run type-check
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run build
