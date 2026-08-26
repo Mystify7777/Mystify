@@ -18,7 +18,9 @@ interface ObservatoryState {
   setMode: (mode: ObservatoryMode) => void;
   registerCommand: (command: CommandAction) => void;
   unregisterCommand: (commandId: string) => void;
-  openWindow: (window: Omit<ShellWindow, "isOpen" | "isMinimized" | "zIndex">) => void;
+  openWindow: (
+    window: Omit<ShellWindow, "isOpen" | "isMinimized" | "zIndex">,
+  ) => void;
   focusWindow: (windowId: WindowId) => void;
   minimizeWindow: (windowId: WindowId) => void;
   restoreWindow: (windowId: WindowId) => void;
@@ -37,7 +39,10 @@ export const useObservatoryStore = create<ObservatoryState>((set) => ({
   setMode: (mode) => set({ mode }),
   registerCommand: (command) =>
     set((state) => ({
-      commands: [...state.commands.filter((item) => item.id !== command.id), command],
+      commands: [
+        ...state.commands.filter((item) => item.id !== command.id),
+        command,
+      ],
     })),
   unregisterCommand: (commandId) =>
     set((state) => ({
@@ -70,11 +75,16 @@ export const useObservatoryStore = create<ObservatoryState>((set) => ({
     }),
   focusWindow: (windowId) =>
     set((state) => {
-      const target = state.windows.find((window) => window.id === windowId && window.isOpen);
-      if (!target) return state;
+      const target = state.windows.find(
+        (window) => window.id === windowId && window.isOpen,
+      );
+      if (!target || state.activeWindowId === windowId) return state;
+
       return {
         windows: state.windows.map((window) =>
-          window.id === windowId ? { ...window, isMinimized: false, zIndex: state.nextZIndex } : window,
+          window.id === windowId
+            ? { ...window, isMinimized: false, zIndex: state.nextZIndex }
+            : window,
         ),
         activeWindowId: windowId,
         nextZIndex: state.nextZIndex + 1,
@@ -89,8 +99,11 @@ export const useObservatoryStore = create<ObservatoryState>((set) => ({
     })),
   restoreWindow: (windowId) =>
     set((state) => {
-      const target = state.windows.find((window) => window.id === windowId && window.isOpen);
+      const target = state.windows.find(
+        (window) => window.id === windowId && window.isOpen,
+      );
       if (!target) return state;
+
       return {
         windows: state.windows.map((window) =>
           window.id === windowId
@@ -102,16 +115,22 @@ export const useObservatoryStore = create<ObservatoryState>((set) => ({
       };
     }),
   closeWindow: (windowId) =>
-    set((state) => ({
-      windows: state.windows.map((window) =>
-        window.id === windowId ? { ...window, isOpen: false, isMinimized: false } : window,
-      ),
-      activeWindowId: state.activeWindowId === windowId ? null : state.activeWindowId,
-    })),
+    set((state) => {
+      const targetExists = state.windows.some((window) => window.id === windowId);
+      if (!targetExists) return state;
+
+      return {
+        windows: state.windows.filter((window) => window.id !== windowId),
+        activeWindowId:
+          state.activeWindowId === windowId ? null : state.activeWindowId,
+      };
+    }),
   addNotification: (notification) =>
     set((state) => ({ notifications: [notification, ...state.notifications] })),
   clearNotification: (notificationId) =>
     set((state) => ({
-      notifications: state.notifications.filter((notification) => notification.id !== notificationId),
+      notifications: state.notifications.filter(
+        (notification) => notification.id !== notificationId,
+      ),
     })),
 }));
