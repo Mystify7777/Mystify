@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 :root {
+  --font-inter: Inter;
+  --font-jetbrains: "JetBrains Mono";
   --observatory-surface: #0b0d10;
   --observatory-panel: #11151a;
   --observatory-elevated: #171c22;
