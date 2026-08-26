@@ -66,7 +66,9 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
                   setQuery("");
                 }}
               >
-                <span className="block text-sm text-observatory-ink">{command.label}</span>
+                <span className="block text-sm text-observatory-ink">
+                  {command.label}
+                </span>
                 {command.description ? (
                   <span className="mt-1 block text-xs text-observatory-muted">
                     {command.description}

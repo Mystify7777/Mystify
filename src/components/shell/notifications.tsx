@@ -4,7 +4,9 @@ import { useObservatoryStore } from "@/state/use-observatory-store";
 
 export function Notifications() {
   const notifications = useObservatoryStore((state) => state.notifications);
-  const clearNotification = useObservatoryStore((state) => state.clearNotification);
+  const clearNotification = useObservatoryStore(
+    (state) => state.clearNotification,
+  );
 
   if (notifications.length === 0) return null;
 
@@ -19,7 +21,9 @@ export function Notifications() {
           className="rounded-xl border border-white/10 bg-observatory-panel/95 p-3 shadow-xl backdrop-blur"
         >
           <div className="flex items-start justify-between gap-3">
-            <p className="text-sm text-observatory-ink">{notification.message}</p>
+            <p className="text-sm text-observatory-ink">
+              {notification.message}
+            </p>
             <button
               type="button"
               aria-label="Dismiss notification"

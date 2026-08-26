@@ -95,7 +95,8 @@ export const useObservatoryStore = create<ObservatoryState>((set) => ({
       windows: state.windows.map((window) =>
         window.id === windowId ? { ...window, isMinimized: true } : window,
       ),
-      activeWindowId: state.activeWindowId === windowId ? null : state.activeWindowId,
+      activeWindowId:
+        state.activeWindowId === windowId ? null : state.activeWindowId,
     })),
   restoreWindow: (windowId) =>
     set((state) => {
@@ -116,7 +117,9 @@ export const useObservatoryStore = create<ObservatoryState>((set) => ({
     }),
   closeWindow: (windowId) =>
     set((state) => {
-      const targetExists = state.windows.some((window) => window.id === windowId);
+      const targetExists = state.windows.some(
+        (window) => window.id === windowId,
+      );
       if (!targetExists) return state;
 
       return {
