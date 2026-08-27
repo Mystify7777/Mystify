@@ -52,7 +52,9 @@ export function getProjects(): readonly ProjectRecord[] {
   return registryData.projects;
 }
 
-export function getProjectsByStatus(status: ProjectRecord["status"]): readonly ProjectRecord[] {
+export function getProjectsByStatus(
+  status: ProjectRecord["status"],
+): readonly ProjectRecord[] {
   return registryData.projects.filter((project) => project.status === status);
 }
 
@@ -60,23 +62,33 @@ export function getConstraint(id: RegistryId): ConstraintRecord | undefined {
   return constraintMap.get(id);
 }
 
-export function getConstraintsByProject(projectId: RegistryId): readonly ConstraintRecord[] {
-  return registryData.constraints.filter((constraint) => constraint.id.startsWith(`${projectId}:`));
+export function getConstraintsByProject(
+  projectId: RegistryId,
+): readonly ConstraintRecord[] {
+  return registryData.constraints.filter((constraint) =>
+    constraint.id.startsWith(`${projectId}:`),
+  );
 }
 
 export function getTradeoff(id: RegistryId): TradeoffRecord | undefined {
   return tradeoffMap.get(id);
 }
 
-export function getTradeoffsByProject(projectId: RegistryId): readonly TradeoffRecord[] {
-  return registryData.tradeoffs.filter((tradeoff) => tradeoff.id.startsWith(`${projectId}:`));
+export function getTradeoffsByProject(
+  projectId: RegistryId,
+): readonly TradeoffRecord[] {
+  return registryData.tradeoffs.filter((tradeoff) =>
+    tradeoff.id.startsWith(`${projectId}:`),
+  );
 }
 
 export function getObservation(id: RegistryId): ObservationRecord | undefined {
   return observationMap.get(id);
 }
 
-export function getObservationsByProject(projectId: RegistryId): readonly ObservationRecord[] {
+export function getObservationsByProject(
+  projectId: RegistryId,
+): readonly ObservationRecord[] {
   return registryData.observations.filter(
     (observation) => observation.primarySubject.id === projectId,
   );
@@ -107,7 +119,9 @@ export function getProjectEvolution(projectId: RegistryId): {
   if (!current) return {};
 
   return {
-    predecessor: current.predecessor ? getProject(current.predecessor) : undefined,
+    predecessor: current.predecessor
+      ? getProject(current.predecessor)
+      : undefined,
     current,
     successor: current.successor ? getProject(current.successor) : undefined,
   };

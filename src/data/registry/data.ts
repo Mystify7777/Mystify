@@ -4,7 +4,8 @@ const projects: RegistryData["projects"] = [
   {
     id: "cybershield",
     name: "CyberShield",
-    summary: "A security analysis platform focused on explainable trust decisions.",
+    summary:
+      "A security analysis platform focused on explainable trust decisions.",
     type: "APPLICATION",
     uiSurface: "Web application",
     status: "COMPLETED",
@@ -22,7 +23,8 @@ const projects: RegistryData["projects"] = [
   {
     id: "halotask",
     name: "HaloTask Pro",
-    summary: "A productivity application designed to remain useful through interruption and network failure.",
+    summary:
+      "A productivity application designed to remain useful through interruption and network failure.",
     type: "APPLICATION",
     uiSurface: "Web application",
     status: "ACTIVE",
@@ -34,12 +36,20 @@ const projects: RegistryData["projects"] = [
     repository: { host: "GITHUB", owner: "Mystify7777", repo: "HaloTaskPro" },
     thesis: "Productivity software should survive interruption.",
     engineeringIdentity: "Resilient Execution",
-    technologies: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "IndexedDB"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "IndexedDB",
+    ],
   },
   {
     id: "stocksphere",
     name: "StockSphere",
-    summary: "An inventory system centered on explicit business ownership boundaries.",
+    summary:
+      "An inventory system centered on explicit business ownership boundaries.",
     type: "SYSTEM",
     consumers: ["Inventory operators", "Business users"],
     status: "COMPLETED",
@@ -55,7 +65,8 @@ const projects: RegistryData["projects"] = [
   {
     id: "aquaveda-v0",
     name: "AquaVeda",
-    summary: "The preserved SIH prototype that established the original problem space.",
+    summary:
+      "The preserved SIH prototype that established the original problem space.",
     type: "APPLICATION",
     uiSurface: "Web application",
     status: "ARCHIVED",
@@ -72,7 +83,8 @@ const projects: RegistryData["projects"] = [
   {
     id: "aquaveda-v1",
     name: "AquaVeda",
-    summary: "A complete modular architecture following the original prototype.",
+    summary:
+      "A complete modular architecture following the original prototype.",
     type: "SYSTEM",
     consumers: ["AquaVeda application modules"],
     status: "COMPLETED",
@@ -84,7 +96,8 @@ const projects: RegistryData["projects"] = [
   {
     id: "aquaveda-v2",
     name: "AquaVeda",
-    summary: "A production-oriented Next.js rebuild of AquaVeda in active development.",
+    summary:
+      "A production-oriented Next.js rebuild of AquaVeda in active development.",
     type: "APPLICATION",
     uiSurface: "Next.js application",
     status: "ACTIVE",
@@ -96,7 +109,8 @@ const projects: RegistryData["projects"] = [
   {
     id: "devlens",
     name: "DevLens",
-    summary: "A developer diagnostics engine designed to make application architecture observable.",
+    summary:
+      "A developer diagnostics engine designed to make application architecture observable.",
     type: "LIBRARY",
     apiSurface: "Framework-agnostic diagnostics and consumer packages",
     packageManager: "npm",
@@ -109,7 +123,8 @@ const projects: RegistryData["projects"] = [
   {
     id: "mystify",
     name: "Mystify Observatory",
-    summary: "A portfolio operating system presenting engineering work through controlled perspectives.",
+    summary:
+      "A portfolio operating system presenting engineering work through controlled perspectives.",
     type: "SYSTEM",
     consumers: ["Recruiter", "Explorer", "Engineer"],
     status: "ACTIVE",
@@ -120,7 +135,13 @@ const projects: RegistryData["projects"] = [
     repository: { host: "GITHUB", owner: "Mystify7777", repo: "Mystify" },
     thesis: "Truth exists before presentation.",
     engineeringIdentity: "Ontological Design",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Zustand", "Framer Motion"],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "Framer Motion",
+    ],
   },
 ];
 

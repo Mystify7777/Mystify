@@ -1,30 +1,19 @@
 export type RegistryId = string;
 
 export type ProjectType =
-  | "APPLICATION"
-  | "SYSTEM"
-  | "LIBRARY"
-  | "EXPERIMENTAL_PLATFORM";
+  "APPLICATION" | "SYSTEM" | "LIBRARY" | "EXPERIMENTAL_PLATFORM";
 
 export type ProjectStatus = "ACTIVE" | "DORMANT" | "COMPLETED" | "ARCHIVED";
 
 export type DeploymentPlatform =
-  | "RENDER"
-  | "VERCEL"
-  | "NETLIFY"
-  | "SELF_HOSTED"
-  | "NONE";
+  "RENDER" | "VERCEL" | "NETLIFY" | "SELF_HOSTED" | "NONE";
 
 export type DeploymentEnvironment = "PRODUCTION" | "STAGING" | "DEVELOPMENT";
 
 export type RepositoryHost = "GITHUB" | "GITLAB" | "PRIVATE" | "NONE";
 
 export type ProjectLinkType =
-  | "DEMO"
-  | "DOCUMENTATION"
-  | "CASE_STUDY"
-  | "WRITEUP"
-  | "OTHER";
+  "DEMO" | "DOCUMENTATION" | "CASE_STUDY" | "WRITEUP" | "OTHER";
 
 export interface ProjectDeployment {
   platform: DeploymentPlatform;
@@ -92,12 +81,7 @@ export interface ProjectRecord {
 }
 
 export type ConstraintType =
-  | "PLATFORM"
-  | "TIME"
-  | "KNOWLEDGE"
-  | "LEGAL"
-  | "RESOURCE"
-  | "TECHNICAL";
+  "PLATFORM" | "TIME" | "KNOWLEDGE" | "LEGAL" | "RESOURCE" | "TECHNICAL";
 
 export interface ConstraintRecord {
   id: RegistryId;
@@ -120,10 +104,7 @@ export type TradeoffValueType =
   | "RELIABILITY";
 
 export type TradeoffStatus =
-  | "ACCEPTED"
-  | "REVISITING"
-  | "SUPERSEDED"
-  | "VALIDATED";
+  "ACCEPTED" | "REVISITING" | "SUPERSEDED" | "VALIDATED";
 
 export interface TradeoffExchange {
   gained: TradeoffValueType;
@@ -157,11 +138,7 @@ export interface NodeReference {
 export type ObservationType = string;
 export type ObservationObserverType = "INSPECTOR" | "ENTITY" | "ENGINE";
 export type ObservationCollectionMethod =
-  | "MANUAL"
-  | "TRIGGERED"
-  | "AMBIENT"
-  | "SYSTEM_AUDIT"
-  | "DERIVED";
+  "MANUAL" | "TRIGGERED" | "AMBIENT" | "SYSTEM_AUDIT" | "DERIVED";
 
 export interface ObservationObserver {
   type: ObservationObserverType;
@@ -189,7 +166,8 @@ export interface ObservationRecord {
   metadata?: Record<string, unknown>;
 }
 
-export type DiscoveryStatus = "evolving" | "mature" | "challenged" | "retracted";
+export type DiscoveryStatus =
+  "evolving" | "mature" | "challenged" | "retracted";
 
 export interface DiscoveryRecord {
   id: RegistryId;
