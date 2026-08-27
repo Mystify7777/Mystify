@@ -43,6 +43,7 @@ interface ObservatoryState {
   activeWindowId: WindowId | null;
   nextZIndex: number;
   setMode: (mode: ObservatoryMode) => void;
+  hydrateMode: () => void;
   clearMode: () => void;
   registerCommand: (command: CommandAction) => void;
   unregisterCommand: (commandId: string) => void;
@@ -58,7 +59,7 @@ interface ObservatoryState {
 }
 
 export const useObservatoryStore = create<ObservatoryState>((set) => ({
-  mode: readStoredMode(),
+  mode: null,
   windows: [],
   notifications: [],
   commands: [],
@@ -67,6 +68,10 @@ export const useObservatoryStore = create<ObservatoryState>((set) => ({
   setMode: (mode) => {
     writeStoredMode(mode);
     set({ mode });
+  },
+  hydrateMode: () => {
+    const storedMode = readStoredMode();
+    if (storedMode !== null) set({ mode: storedMode });
   },
   clearMode: () => {
     writeStoredMode(null);
