@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { CommandPalette } from "@/components/shell/command-palette";
 import { Dock } from "@/components/shell/dock";
@@ -20,9 +20,14 @@ const PLACEHOLDER_WINDOW = {
 
 export function ObservatoryShell() {
   const mode = useObservatoryStore((state) => state.mode);
+  const hydrateMode = useObservatoryStore((state) => state.hydrateMode);
   const clearMode = useObservatoryStore((state) => state.clearMode);
   const openWindow = useObservatoryStore((state) => state.openWindow);
   const [paletteOpen, setPaletteOpen] = useState(false);
+
+  useEffect(() => {
+    hydrateMode();
+  }, [hydrateMode]);
 
   const command = useMemo(
     () => ({
