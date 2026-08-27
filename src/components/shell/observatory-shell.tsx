@@ -8,6 +8,7 @@ import { Notifications } from "@/components/shell/notifications";
 import { StatusBar } from "@/components/shell/status-bar";
 import { WindowManager } from "@/components/shell/window-manager";
 import { useShellCommand } from "@/components/shell/use-shell-command";
+import { ModeSelector } from "@/components/modes/mode-selector";
 import { Surface } from "@/components/ui/surface";
 import { useObservatoryStore } from "@/state/use-observatory-store";
 
@@ -19,6 +20,7 @@ const PLACEHOLDER_WINDOW = {
 
 export function ObservatoryShell() {
   const mode = useObservatoryStore((state) => state.mode);
+  const clearMode = useObservatoryStore((state) => state.clearMode);
   const openWindow = useObservatoryStore((state) => state.openWindow);
   const [paletteOpen, setPaletteOpen] = useState(false);
 
@@ -60,38 +62,49 @@ export function ObservatoryShell() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
           >
-            <Surface className="mx-auto max-w-2xl text-center">
-              <p className="font-mono text-xs uppercase tracking-[0.28em] text-observatory-muted">
-                Shared shell
-              </p>
-              <h1 className="mt-4 text-3xl font-medium tracking-tight sm:text-4xl">
-                Observatory shell online.
-              </h1>
-              <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-observatory-muted sm:text-base">
-                Window lifecycle, commands, notifications, and navigation now
-                have shared ownership. Feature applications can plug into this
-                surface without owning shell mechanics.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <button
-                  type="button"
-                  className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs text-observatory-ink transition duration-observatory hover:border-observatory-amber/50 hover:bg-observatory-amber/10"
-                  onClick={() => openWindow(PLACEHOLDER_WINDOW)}
-                >
-                  Open placeholder window
-                </button>
-                <button
-                  type="button"
-                  className="rounded-xl border border-white/10 px-4 py-2 font-mono text-xs text-observatory-muted transition duration-observatory hover:bg-white/5 hover:text-observatory-ink"
-                  onClick={() => setPaletteOpen(true)}
-                >
-                  Command palette
-                </button>
-              </div>
-              <p className="mt-6 font-mono text-[11px] text-observatory-muted">
-                environment: {mode ?? "unselected"}
-              </p>
-            </Surface>
+            {mode === null ? (
+              <ModeSelector />
+            ) : (
+              <Surface className="mx-auto max-w-2xl text-center">
+                <p className="font-mono text-xs uppercase tracking-[0.28em] text-observatory-muted">
+                  Shared shell
+                </p>
+                <h1 className="mt-4 text-3xl font-medium tracking-tight sm:text-4xl">
+                  Observatory shell online.
+                </h1>
+                <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-observatory-muted sm:text-base">
+                  Window lifecycle, commands, notifications, and navigation now
+                  have shared ownership. Feature applications can plug into this
+                  surface without owning shell mechanics.
+                </p>
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                  <button
+                    type="button"
+                    className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs text-observatory-ink transition duration-observatory hover:border-observatory-amber/50 hover:bg-observatory-amber/10"
+                    onClick={() => openWindow(PLACEHOLDER_WINDOW)}
+                  >
+                    Open placeholder window
+                  </button>
+                  <button
+                    type="button"
+                    className="rounded-xl border border-white/10 px-4 py-2 font-mono text-xs text-observatory-muted transition duration-observatory hover:bg-white/5 hover:text-observatory-ink"
+                    onClick={() => setPaletteOpen(true)}
+                  >
+                    Command palette
+                  </button>
+                  <button
+                    type="button"
+                    className="rounded-xl border border-white/10 px-4 py-2 font-mono text-xs text-observatory-muted transition duration-observatory hover:bg-white/5 hover:text-observatory-ink"
+                    onClick={clearMode}
+                  >
+                    Change mode
+                  </button>
+                </div>
+                <p className="mt-6 font-mono text-[11px] text-observatory-muted">
+                  environment: {mode}
+                </p>
+              </Surface>
+            )}
           </motion.div>
         </div>
 
