@@ -8,6 +8,33 @@ import type {
 
 export type ObservatoryMode = "recruiter" | "explorer" | "engineer";
 
+const MODE_STORAGE_KEY = "observatory.mode";
+const VALID_MODES: readonly ObservatoryMode[] = [
+  "recruiter",
+  "explorer",
+  "engineer",
+];
+
+function readStoredMode(): ObservatoryMode | null {
+  if (typeof window === "undefined") return null;
+
+  const storedMode = window.sessionStorage.getItem(MODE_STORAGE_KEY);
+  return VALID_MODES.includes(storedMode as ObservatoryMode)
+    ? (storedMode as ObservatoryMode)
+    : null;
+}
+
+function writeStoredMode(mode: ObservatoryMode | null) {
+  if (typeof window === "undefined") return;
+
+  if (mode === null) {
+    window.sessionStorage.removeItem(MODE_STORAGE_KEY);
+    return;
+  }
+
+  window.sessionStorage.setItem(MODE_STORAGE_KEY, mode);
+}
+
 interface ObservatoryState {
   mode: ObservatoryMode | null;
   windows: ShellWindow[];
@@ -16,6 +43,7 @@ interface ObservatoryState {
   activeWindowId: WindowId | null;
   nextZIndex: number;
   setMode: (mode: ObservatoryMode) => void;
+  clearMode: () => void;
   registerCommand: (command: CommandAction) => void;
   unregisterCommand: (commandId: string) => void;
   openWindow: (
@@ -30,13 +58,20 @@ interface ObservatoryState {
 }
 
 export const useObservatoryStore = create<ObservatoryState>((set) => ({
-  mode: null,
+  mode: readStoredMode(),
   windows: [],
   notifications: [],
   commands: [],
   activeWindowId: null,
   nextZIndex: 1,
-  setMode: (mode) => set({ mode }),
+  setMode: (mode) => {
+    writeStoredMode(mode);
+    set({ mode });
+  },
+  clearMode: () => {
+    writeStoredMode(null);
+    set({ mode: null });
+  },
   registerCommand: (command) =>
     set((state) => ({
       commands: [
