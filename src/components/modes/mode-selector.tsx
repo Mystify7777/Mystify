@@ -8,11 +8,7 @@ import {
   type ObservatoryMode,
 } from "@/state/use-observatory-store";
 
-const MODES: readonly ObservatoryMode[] = [
-  "recruiter",
-  "explorer",
-  "engineer",
-];
+const MODES: readonly ObservatoryMode[] = ["recruiter", "explorer", "engineer"];
 
 const MODE_LABELS: Record<ObservatoryMode, string> = {
   recruiter: "Recruiter",
