@@ -38,23 +38,32 @@ export function ModeSelector({ onSelected }: ModeSelectorProps) {
     event: KeyboardEvent<HTMLButtonElement>,
     index: number,
   ) => {
-    if (event.key !== "ArrowRight" && event.key !== "ArrowDown" && event.key !== "ArrowLeft" && event.key !== "ArrowUp") {
+    const isForward = event.key === "ArrowRight" || event.key === "ArrowDown";
+    const isBackward = event.key === "ArrowLeft" || event.key === "ArrowUp";
+
+    if (!isForward && !isBackward) {
       return;
     }
 
     event.preventDefault();
-    const direction = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : -1;
+    const direction = isForward ? 1 : -1;
     const nextIndex = (index + direction + MODES.length) % MODES.length;
     buttonRefs.current[nextIndex]?.focus();
   };
 
   return (
-    <section aria-labelledby="mode-selector-heading" className="w-full max-w-3xl">
+    <section
+      aria-labelledby="mode-selector-heading"
+      className="w-full max-w-3xl"
+    >
       <div className="mb-8 text-center">
         <p className="font-mono text-xs uppercase tracking-[0.28em] text-observatory-muted">
           Choose your lens
         </p>
-        <h1 id="mode-selector-heading" className="mt-3 text-3xl font-medium tracking-tight sm:text-4xl">
+        <h1
+          id="mode-selector-heading"
+          className="mt-3 text-3xl font-medium tracking-tight sm:text-4xl"
+        >
           How do you want to explore?
         </h1>
       </div>
