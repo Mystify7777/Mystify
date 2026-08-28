@@ -41,14 +41,16 @@ export function getRecruiterQuickSignals(counts: RegistryCounts) {
 }
 
 export function getCategoryIntegrityExamples(projects: readonly ProjectRecord[]) {
-  const candidates = projects.filter(
-    (project) => project.thesis && project.engineeringIdentity,
-  );
-
-  return candidates.slice(0, 3).map((project) => ({
-    projectId: project.id,
-    projectName: project.name,
-    thesis: project.thesis,
-    engineeringIdentity: project.engineeringIdentity,
-  }));
+  return projects
+    .filter(
+      (project) =>
+        Boolean(project.thesis) && Boolean(project.engineeringIdentity),
+    )
+    .slice(0, 3)
+    .map((project) => ({
+      projectId: project.id,
+      projectName: project.name,
+      thesis: project.thesis as string,
+      engineeringIdentity: project.engineeringIdentity as string,
+    }));
 }
