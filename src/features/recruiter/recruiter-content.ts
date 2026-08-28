@@ -2,33 +2,48 @@ import type { RegistryCounts } from "@/data/registry/store";
 import type { ProjectRecord } from "@/data/registry/types";
 
 export const RECRUITER_IDENTITY = {
-  name: "Aryan Kumar",
+  name: "ARYAN KUMAR",
   role: "Software Engineer",
-  thesis: "Truth exists before presentation.",
-  engineeringIdentity: "Ontological Design",
+  institution: "BCET Durgapur",
+  graduationYear: "2026",
+  thesis: "Every project in this portfolio is backed by structured engineering evidence. Constraints, tradeoffs, observations, and design decisions are stored as first-class data rather than hidden implementation history.",
+  engineeringIdentity: "Category Integrity",
+  engineeringPrinciple:
+    "Different kinds of truth remain separate so each can stay honest in its own domain.",
 } as const;
 
-export const RECRUITER_BOOT_STEPS = [
-  "Initializing Observatory",
-  "Loading canonical registries",
-  "Preparing evidence surface",
-] as const;
+export function getRecruiterBootSteps(counts: RegistryCounts) {
+  return [
+    "initializing observatory...",
+    `loading knowledge graph... ${counts.projects} projects · ${counts.constraints} constraints · ${counts.tradeoffs} tradeoffs`,
+    "visitor context: unknown",
+    "rendering truth layer... complete",
+    "select your lens",
+  ] as const;
+}
 
 export const RECRUITER_CREDENTIALS = [
   {
-    label: "Engineering focus",
-    value: "Software systems and product engineering",
+    label: "Education",
+    value: "B.Tech CSE · BCET Durgapur · 2026",
   },
   {
-    label: "Primary evidence",
-    value: "Projects, decisions, constraints, and observations",
+    label: "Credential",
+    value: "CGPA 8.52 · SIH 2024 Finalist",
   },
 ] as const;
 
 export const CATEGORY_INTEGRITY = {
-  title: "Category Integrity",
+  title: "Engineering Identity",
   statement:
-    "Different kinds of truth must be kept separate so each can remain honest in its own domain.",
+    "Different kinds of truth remain separate so each can stay honest in its own domain.",
+} as const;
+
+export const RECRUITER_CONTACT = {
+  headline: "Interested in working together?",
+  responseTime: "Typically within 48 hours",
+  primary: "Inline contact form",
+  secondary: "LinkedIn · GitHub",
 } as const;
 
 export function getRecruiterQuickSignals(counts: RegistryCounts) {
