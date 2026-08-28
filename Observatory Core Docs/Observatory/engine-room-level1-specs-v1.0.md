@@ -1,4 +1,5 @@
 # Engine Room — Level 1 Access Ladder Specifications v1.0
+
 ## State / History / Constraints / Tradeoffs
 
 ---
@@ -18,10 +19,12 @@ Tradeoffs      Why was this decision made?             → This document
 ```
 
 The Anti-Theater Rule applies to every view:
+
 > Never fake a metric that could be real.
 > Never pretend a model is a metric.
 
 The three-second rule applies to every view:
+
 > Is this measured or modeled? Answerable within three seconds.
 
 ---
@@ -131,6 +134,7 @@ STATE VIEW
 If a real deployment API is available and returning genuine signals, those signals render in the OBSERVED panel with LIVE badge. No simulation needed. No modeling of service health.
 
 Real metrics only qualify as OBSERVED if:
+
 - They come from an actual running endpoint
 - They are fetched at render time, not hardcoded
 - They degrade visibly if the service goes down
@@ -478,7 +482,7 @@ Constraints are facts that shaped the system. Not regrets. Not wishes.
 
 Every other view shows the system. Tradeoffs View shows the thinking behind the system.
 
-This is the view where Dialogue begins — not because Aryan initiates it, but because the Inspector reads a tradeoff and immediately asks: *Would I have made the same decision?* That question is peer-to-peer thinking. It emerges from the content. It is never asked for.
+This is the view where Dialogue begins — not because Aryan initiates it, but because the Inspector reads a tradeoff and immediately asks: _Would I have made the same decision?_ That question is peer-to-peer thinking. It emerges from the content. It is never asked for.
 
 ## The Central Question
 
@@ -728,6 +732,6 @@ Next:
 
 ---
 
-*Engine Room Level 1 — Access Ladder Specifications v1.0*
-*All decisions above are locked unless explicitly revisited.*
-*Mystify Observatory — Engineer Workspace*
+_Engine Room Level 1 — Access Ladder Specifications v1.0_
+_All decisions above are locked unless explicitly revisited._
+_Mystify Observatory — Engineer Workspace_

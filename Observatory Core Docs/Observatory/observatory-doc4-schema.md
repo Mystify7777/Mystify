@@ -1,4 +1,5 @@
 # Observatory Architecture
+
 ## Doc 4 — Schema Spec
 
 **Status:** Locked  
@@ -25,6 +26,7 @@ These laws were discovered during Session F. Every schema in this document is a 
 ---
 
 **Schema Law 01: Typed Depth**
+
 > A field declares its category first. Category determines what additional structure is legal.
 
 A discriminator permits conditional subfields. It does not require them. A category may be constitutive without adding depth (see: TECHNICAL on Constraint).
@@ -32,6 +34,7 @@ A discriminator permits conditional subfields. It does not require them. A categ
 ---
 
 **Schema Law 02: Truth vs Presentation**
+
 > Content fields describe truth. Presentation fields describe prioritization.
 > Presentation metadata may not live inside domain registries.
 
@@ -41,6 +44,7 @@ If yes → presentation field → belongs outside domain registry.
 ---
 
 **Schema Law 03: Category vs Capability**
+
 > Categories influence expectations. Categories do not grant capabilities.
 
 Node categories may not determine registry participation. Capabilities belong to the node type, not to category values. Changing type should not grant or remove legal relationships.
@@ -48,6 +52,7 @@ Node categories may not determine registry participation. Capabilities belong to
 ---
 
 **Schema Law 04: Truth / Interpretation / Presentation**
+
 > Three distinct field categories. Never collapse them.
 
 ```
@@ -59,6 +64,7 @@ Presentation    Describes how a node is surfaced. Lives outside domain registrie
 ---
 
 **Schema Law 05: Category vs State**
+
 > Category describes enduring nature. State describes current condition.
 
 ```
@@ -69,12 +75,14 @@ Changing status:    Changes what condition the node is IN (lifecycle)
 ---
 
 **Schema Law 07: Self-Originated vs Externally-Originated Truth**
+
 > Self-originated truth is subject to internal evidence.
 > Externally-originated truth is subject only to the authority that issued it.
 
 ---
 
 **Schema Law 08: Transient vs Terminal State**
+
 > States may be transient or terminal.
 
 ```
@@ -85,6 +93,7 @@ Terminal    Irreversible: SUPPORTED, CONTRADICTED, EXPIRED, REVOKED
 ---
 
 **Schema Law 09: Explicit Relationship Modeling**
+
 > When a concept is inherently relational, model both sides explicitly.
 
 One-sided declarations are incomplete relationships in disguise.
@@ -97,14 +106,14 @@ One-sided declarations are incomplete relationships in disguise.
 
 **Layer structure:**
 
-| Layer | Purpose | Fields |
-|---|---|---|
-| Identity | What is this? | id, name |
-| Interpretation | How should a human understand this? | summary |
-| Truth: Category | What kind of work is this? | type |
-| Truth: State | What condition is this in? | status |
-| Truth: External Presence | Where does this exist externally? | deployment, repository, links |
-| Observatory Meaning | Carried by graph edges — nearly empty by design | — |
+| Layer                    | Purpose                                         | Fields                        |
+| ------------------------ | ----------------------------------------------- | ----------------------------- |
+| Identity                 | What is this?                                   | id, name                      |
+| Interpretation           | How should a human understand this?             | summary                       |
+| Truth: Category          | What kind of work is this?                      | type                          |
+| Truth: State             | What condition is this in?                      | status                        |
+| Truth: External Presence | Where does this exist externally?               | deployment, repository, links |
+| Observatory Meaning      | Carried by graph edges — nearly empty by design | —                             |
 
 ```typescript
 Project {
@@ -197,6 +206,7 @@ Project {
 ```
 
 **What is absent and why:**
+
 - `audience` on links → presentation disguised as content (Schema Law 02)
 - `featuredOrder` → presentation (Schema Law 02)
 - `constraintCount` → dishonest summary of graph relationships (Architectural Law 01)
@@ -209,15 +219,16 @@ Project {
 
 **Layer structure:**
 
-| Layer | Purpose | Fields |
-|---|---|---|
-| Identity | What is this? | id, name |
-| Interpretation | Two temporal orientations | hypothesis?, summary |
-| Truth: Category | What domain does this investigate? | category |
-| Truth: Execution State | Did it run? | status |
-| Truth: Conclusion State | What was learned? | outcome? |
+| Layer                   | Purpose                            | Fields               |
+| ----------------------- | ---------------------------------- | -------------------- |
+| Identity                | What is this?                      | id, name             |
+| Interpretation          | Two temporal orientations          | hypothesis?, summary |
+| Truth: Category         | What domain does this investigate? | category             |
+| Truth: Execution State  | Did it run?                        | status               |
+| Truth: Conclusion State | What was learned?                  | outcome?             |
 
 **Two orthogonal state machines:**
+
 ```
 Execution State     ACTIVE → PAUSED → COMPLETED | ABANDONED
                     Answers: Did the experiment run?
@@ -266,10 +277,12 @@ Experiment {
 ```
 
 **Invariants (see Doc 3):**
+
 - INV-04: `status = COMPLETED → outcome must exist`
 - INV-05: `outcome = SUPPORTED → status must = COMPLETED`
 
 **Valid state combinations:**
+
 ```
 ACTIVE    + null             ✓ Running, no conclusion yet
 PAUSED    + null             ✓ Paused, no conclusion yet
@@ -333,6 +346,7 @@ Certification {
 ```
 
 **What is absent and why:**
+
 - `supportingObservations` → Certifications do not require internal evidence
 - `derivedConfidence` → External authority is not confidence-weighted
 - `patternLinks` → Certifications do not emerge from graph analysis
@@ -386,6 +400,7 @@ Constraint {
 ```
 
 **What is absent and why:**
+
 - `severity` → Metric Test: changing it changes no edges, no invariants (Doc 1, Appendix A)
 - `impact` → Depends on what is affected; belongs to Tradeoff or relationship
 - `scope` → Consequence territory, not constraint territory
@@ -439,6 +454,7 @@ type ValueType =
 ```
 
 **What is absent and why:**
+
 - `confidence` → Metric Test: changing it changes no edges, no invariants (Doc 1 Appendix A)
 - `impact` → Consequence territory; belongs to Observation chain
 - `alternatives` → Graph cannot carry this; would belong in summary
@@ -452,9 +468,10 @@ type ValueType =
 **Design note:** Sparse. Evidence architecture is entirely graph-carried. Schema holds only the authored abstraction claim.
 
 **The abstraction principle:**
-Pattern is about abstraction, not recurrence. Recurrence is the *evidence*. The Pattern is the *higher-order claim* placed over that evidence.
+Pattern is about abstraction, not recurrence. Recurrence is the _evidence_. The Pattern is the _higher-order claim_ placed over that evidence.
 
 **Two sources, two schemas:**
+
 ```
 AUTHORED    statement required (claim to be expressed)
             strength manually set
@@ -494,6 +511,7 @@ Pattern {
 ```
 
 **What is absent and why:**
+
 - `recurrence.context` → Graph already knows (traverse DERIVED_FROM → OBSERVED) (Doc 1 Appendix A)
 - `recurrence.subject` → Redundant with name (Doc 1 Appendix A)
 - `confidence` → Wrong metric; patterns use strength (recurrence), not confidence (certainty)
@@ -527,6 +545,7 @@ Entity {
 ```
 
 **What is absent and why:**
+
 - `personality` → Not Observatory architecture
 - `biography` → Not Observatory architecture
 - `behavior` → Belongs to Observation
@@ -543,6 +562,7 @@ Entity {
 **Design note:** Near-minimal. Named space with accessibility state. Graph carries habitation, history, and association.
 
 **Accessibility vs visibility:**
+
 ```
 Visibility  → observer state (rejected under Schema Law 02)
 Sealed      → place state (survives — true regardless of who is watching)
@@ -579,6 +599,7 @@ Sector {
 ```
 
 **Invariant (see Doc 3):**
+
 - INV-07: `accessibility = SEALED → New Observations may not OCCUR_IN this Sector`
 
 ---
@@ -591,14 +612,15 @@ Sector {
 
 **The four-layer model:**
 
-| Layer | Question | Fields |
-|---|---|---|
-| Existence | Can this node legally exist? | id, type |
-| Graph Admissibility | Can this be queried and traversed? | primarySubject, observer, timestamp, scope |
-| Evidentiary Admissibility | Can this support truth claims? | provenance |
-| Interpretation | What does this mean in context? | metadata |
+| Layer                     | Question                           | Fields                                     |
+| ------------------------- | ---------------------------------- | ------------------------------------------ |
+| Existence                 | Can this node legally exist?       | id, type                                   |
+| Graph Admissibility       | Can this be queried and traversed? | primarySubject, observer, timestamp, scope |
+| Evidentiary Admissibility | Can this support truth claims?     | provenance                                 |
+| Interpretation            | What does this mean in context?    | metadata                                   |
 
 **Article 1 of the Observation Constitution:**
+
 > An Observation may exist without provenance, but it may not participate in truth formation without provenance.
 
 ```typescript
@@ -655,6 +677,7 @@ Observation {
 ```
 
 **Three observer types and their trust tiers:**
+
 ```
 INSPECTOR   Intentional, human-directed
             Highest interpretive authority
@@ -671,6 +694,7 @@ ENGINE      Structural, consistency-driven
 
 **System Observations (consistency violations):**
 When the Consistency Engine detects a violation, it emits:
+
 ```typescript
 {
     type: "consistency_violation_detected",
@@ -714,10 +738,12 @@ Discovery {
 ```
 
 **Invariant (see Doc 3):**
+
 - INV-01: Requires ≥1 SUPPORTED_BY Observation
 - INV-03: REVEALS active only when status = mature (Activation Engine)
 
 **What is absent and why:**
+
 - `supportingCount` → Derived metric; computed by Derivation Engine from SUPPORTED_BY edges
 - `subject` → Carried by REVEALS edges and supporting Observations
 - `description` → Carried by associated Observations and Patterns
@@ -730,45 +756,46 @@ Discovery {
 
 **Typed Depth discriminators (Schema Law 01):**
 
-| Field | Node | Discriminator Values |
-|---|---|---|
-| `type` | Project | APPLICATION, SYSTEM, LIBRARY, EXPERIMENTAL_PLATFORM |
-| `status` | Project | ACTIVE, DORMANT, COMPLETED, ARCHIVED |
-| `deployment.platform` | Project | RENDER, VERCEL, NETLIFY, SELF_HOSTED, NONE |
-| `repository.host` | Project | GITHUB, GITLAB, PRIVATE, NONE |
-| `links[].type` | Project | DEMO, DOCUMENTATION, CASE_STUDY, WRITEUP, OTHER |
-| `type` | Constraint | PLATFORM, TIME, KNOWLEDGE, LEGAL, RESOURCE, TECHNICAL |
-| `status` | Experiment | ACTIVE, PAUSED, COMPLETED, ABANDONED |
-| `outcome` | Experiment | INCONCLUSIVE, SUPPORTED, CONTRADICTED |
-| `status` | Certification | ACTIVE, EXPIRED, REVOKED |
-| `type` | Entity | KNIGHT, FAIRY, ... (extensible) |
-| `type` | Sector | ARCHIVE, SIGNAL, ENGINE, RESEARCH, UNKNOWN |
-| `accessibility` | Sector | OPEN, SEALED, RESTRICTED |
-| `observer.type` | Observation | INSPECTOR, ENTITY, ENGINE |
-| `provenance.generatedBy.type` | Observation | INSPECTOR, ENTITY, ENGINE |
-| `provenance.collectionMethod` | Observation | MANUAL, TRIGGERED, AMBIENT, SYSTEM_AUDIT, DERIVED |
-| `source` | Pattern | AUTHORED, DERIVED |
+| Field                         | Node          | Discriminator Values                                  |
+| ----------------------------- | ------------- | ----------------------------------------------------- |
+| `type`                        | Project       | APPLICATION, SYSTEM, LIBRARY, EXPERIMENTAL_PLATFORM   |
+| `status`                      | Project       | ACTIVE, DORMANT, COMPLETED, ARCHIVED                  |
+| `deployment.platform`         | Project       | RENDER, VERCEL, NETLIFY, SELF_HOSTED, NONE            |
+| `repository.host`             | Project       | GITHUB, GITLAB, PRIVATE, NONE                         |
+| `links[].type`                | Project       | DEMO, DOCUMENTATION, CASE_STUDY, WRITEUP, OTHER       |
+| `type`                        | Constraint    | PLATFORM, TIME, KNOWLEDGE, LEGAL, RESOURCE, TECHNICAL |
+| `status`                      | Experiment    | ACTIVE, PAUSED, COMPLETED, ABANDONED                  |
+| `outcome`                     | Experiment    | INCONCLUSIVE, SUPPORTED, CONTRADICTED                 |
+| `status`                      | Certification | ACTIVE, EXPIRED, REVOKED                              |
+| `type`                        | Entity        | KNIGHT, FAIRY, ... (extensible)                       |
+| `type`                        | Sector        | ARCHIVE, SIGNAL, ENGINE, RESEARCH, UNKNOWN            |
+| `accessibility`               | Sector        | OPEN, SEALED, RESTRICTED                              |
+| `observer.type`               | Observation   | INSPECTOR, ENTITY, ENGINE                             |
+| `provenance.generatedBy.type` | Observation   | INSPECTOR, ENTITY, ENGINE                             |
+| `provenance.collectionMethod` | Observation   | MANUAL, TRIGGERED, AMBIENT, SYSTEM_AUDIT, DERIVED     |
+| `source`                      | Pattern       | AUTHORED, DERIVED                                     |
 
 **Interpretation fields (survive Reconstruction Test):**
 
-| Field | Node | Why It Survives |
-|---|---|---|
-| `summary` | Project, Experiment, Constraint, Tradeoff, Sector? | Graph cannot recover intent |
-| `hypothesis?` | Experiment | Graph cannot recover pre-run thinking |
-| `rationale?` | Tradeoff | Graph cannot recover pre-outcome reasoning |
-| `statement?` | Pattern | Graph cannot recover specific authored abstraction |
+| Field         | Node                                               | Why It Survives                                    |
+| ------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `summary`     | Project, Experiment, Constraint, Tradeoff, Sector? | Graph cannot recover intent                        |
+| `hypothesis?` | Experiment                                         | Graph cannot recover pre-run thinking              |
+| `rationale?`  | Tradeoff                                           | Graph cannot recover pre-outcome reasoning         |
+| `statement?`  | Pattern                                            | Graph cannot recover specific authored abstraction |
 
 **Computed fields (Derivation Engine owned):**
 
-| Field | Node | Computed From |
-|---|---|---|
-| `strength` | Pattern (DERIVED) | DERIVED_FROM edge weights |
-| `confidence` | Discovery | SUPPORTED_BY contribution values |
-| `affinity` | ASSOCIATED_WITH edge | Observation evidence |
+| Field        | Node                 | Computed From                    |
+| ------------ | -------------------- | -------------------------------- |
+| `strength`   | Pattern (DERIVED)    | DERIVED_FROM edge weights        |
+| `confidence` | Discovery            | SUPPORTED_BY contribution values |
+| `affinity`   | ASSOCIATED_WITH edge | Observation evidence             |
 
 ### 5.2 Required vs Optional Field Reference
 
 **Always required (existence-level):**
+
 - All `id` fields
 - `Observation.primarySubject`, `.observer`, `.timestamp`, `.scope`
 - `Certification.issuer`
@@ -776,10 +803,12 @@ Discovery {
 - `Discovery.status`, `.confidence`
 
 **Required for function (admissibility-level):**
+
 - `Observation.provenance` (for truth formation participation)
 - `Experiment.outcome` when `status = COMPLETED` (INV-04)
 
 **Conditionally required (Typed Depth):**
+
 - Subfields within discriminated types (e.g., `GITHUB` requires `owner`, `repo`)
 
 ---
@@ -827,14 +856,15 @@ Certification.issuer        Removes the constitutional requirement that makes it
 
 ---
 
-*Doc 4 complete.*
-*Every schema here is smaller than it would have been without the laws.*
-*Every absent field has a tombstone in Doc 1.*
-*The compression was not laziness. It was honesty.*
+_Doc 4 complete._
+_Every schema here is smaller than it would have been without the laws._
+_Every absent field has a tombstone in Doc 1._
+_The compression was not laziness. It was honesty._
 
 ---
 
 **Document Metadata**
+
 - Architecture Sessions: F (F.0–F.4)
 - Node schemas: 10
 - Schema Laws applied: 01–05, 07–09

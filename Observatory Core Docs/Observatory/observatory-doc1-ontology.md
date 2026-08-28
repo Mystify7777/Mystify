@@ -1,4 +1,5 @@
 # Observatory Architecture
+
 ## Doc 1 — Ontology + Relationship Catalog
 
 **Status:** Locked  
@@ -124,11 +125,13 @@ If a concept fails either direction, it is not a node — it is a relationship, 
 Two laws govern the entire system. Everything else is application of these.
 
 **Architectural Law 01:**
+
 > If information can be represented more honestly as a relationship, the relationship wins.
 
-The key word is *honestly*. Not compactly, not efficiently. Honestly.
+The key word is _honestly_. Not compactly, not efficiently. Honestly.
 
 **Architectural Law 02:**
+
 > If authority can be represented more honestly as ownership, ownership wins.
 
 Every time process was attempted — voting, committees, approval chains — the solution collapsed. Every time topology was used — ownership, consequence maps, authority domains — the solution stabilized.
@@ -155,6 +158,7 @@ The 3-3-2-2 balance is diagnostic. Invented ontologies produce prime numbers of 
 ### 1.1 Project
 
 **Constitutional Definition:**
+
 > The central work artifact. The thing that was built.
 
 **Constitutional Purpose:**
@@ -163,21 +167,25 @@ A Project is affected by Constraints, embodies Tradeoffs, produces Observations,
 **Registry Owner:** ProjectRegistry
 
 **Node Necessity Test:**
+
 - Project survives without AFFECTS edges → yes, a project exists even without documented constraints
 - AFFECTS does not survive without a Project → correct, the edge requires something that does the affecting
 
 **What Project Explicitly Does Not Own:**
+
 - Constraint objects, Tradeoff objects, Observation objects — stored by reference only
 - Deployment consequences — owned by Graph Layer
 - Discovery support — owned by DiscoveryRegistry
 - Presentation priority (featured, highlighted) — owned by ViewModel Layer
 
 **Compression History:**
+
 - `researchObjective` field → compressed into summary + graph
 - `audience` field on links → rejected (presentation disguised as content)
 - EXPERIMENTAL_PLATFORM special registry participation → rejected (capability vs category confusion)
 
 **Schema:**
+
 ```
 Project {
     id
@@ -217,6 +225,7 @@ Project {
 ```
 
 **Notes:**
+
 - `type` = Category (enduring nature, changing it may change what the project IS)
 - `status` = State (current condition, can change without changing project identity)
 - `deployment` is an embedded domain object, not a registry node
@@ -227,6 +236,7 @@ Project {
 ### 1.2 Experiment
 
 **Constitutional Definition:**
+
 > A work artifact whose success criterion is learning, not delivery.
 
 **Constitutional Purpose:**
@@ -235,24 +245,28 @@ Experiment is the only Work node evaluated by the Truth Layer rather than by the
 **Registry Owner:** ExperimentRegistry
 
 **Node Necessity Test:**
+
 - Experiment survives without Observation edges → yes, it can exist before running
 - Observation does not require an Experiment to exist → correct, Observations are universal
 
 **What Experiment Explicitly Does Not Own:**
+
 - The evidence that evaluates it — owned by ObservationRegistry
 - Learning outcomes — reflected in outcome field but evidenced by graph
 - Observation production as a defining capability — any node may produce Observations
 
 **Key Distinction:**
-Experiment does not exist *because it produces Observations*. It exists *because it is evaluated by them*. Capability-driven vs purpose-driven. Schema Law 03 applies.
+Experiment does not exist _because it produces Observations_. It exists _because it is evaluated by them_. Capability-driven vs purpose-driven. Schema Law 03 applies.
 
 **Two Orthogonal State Machines:**
+
 ```
 Execution State     Did the experiment run?
 Conclusion State    What did we learn?
 ```
 
 **Schema:**
+
 ```
 Experiment {
     id
@@ -272,6 +286,7 @@ Experiment {
 ```
 
 **Domain Invariants:**
+
 ```
 INV-04: status = COMPLETED → outcome must exist
 INV-05: outcome = SUPPORTED → status must = COMPLETED
@@ -282,6 +297,7 @@ INV-05: outcome = SUPPORTED → status must = COMPLETED
 ### 1.3 Certification
 
 **Constitutional Definition:**
+
 > A recorded external truth claim. Not an achievement earned internally — an assertion made by an external authority.
 
 **Constitutional Purpose:**
@@ -290,10 +306,12 @@ Certification is the first node whose primary truth does not originate inside th
 **Registry Owner:** CertificationRegistry
 
 **Node Necessity Test:**
+
 - Certification survives without verification edges → yes, AWS certified you regardless of whether the URL exists
 - Verification reference does not survive without Certification → correct
 
 **What Certification Explicitly Does Not Own:**
+
 - Internal evidence — Certifications are not supported by Observations
 - Derivation — no internal engine may generate a Certification
 - Re-certification authority — belongs only to the original issuer
@@ -305,6 +323,7 @@ Certification is the first node whose primary truth does not originate inside th
 Certification.status transitions are controlled by the external authority, not the Observatory. The Observatory observes and records. It does not adjudicate.
 
 **Schema:**
+
 ```
 Certification {
     id
@@ -333,6 +352,7 @@ Certification {
 ### 1.4 Constraint
 
 **Constitutional Definition:**
+
 > A condition that restricts available decisions.
 
 A Constraint exists when at least one otherwise-valid decision becomes unavailable, impractical, or disproportionately costly.
@@ -343,10 +363,12 @@ Constraint narrows the decision space. It explains pressure. Everything downstre
 **Registry Owner:** ConstraintRegistry
 
 **Node Necessity Test:**
+
 - Constraint survives without AFFECTS edges → yes, "Render SMTP restriction" means something without knowing which projects it affects
 - AFFECTS does not survive without Constraint → correct, something must do the affecting
 
 **What Constraint Explicitly Does Not Own:**
+
 - Severity — this is relationship territory or interpretation
 - Impact — depends on what is affected, belongs to the edge or Tradeoff
 - Scope — owned by consequence, not by the constraint itself
@@ -355,6 +377,7 @@ Constraint narrows the decision space. It explains pressure. Everything downstre
 Constraint may be the purest demonstration of Architectural Law 01. Most of its meaning lives in the relationships it participates in, not in its own fields.
 
 **Schema:**
+
 ```
 Constraint {
     id
@@ -378,9 +401,11 @@ Constraint {
 ### 1.5 Tradeoff
 
 **Constitutional Definition:**
+
 > The recorded acknowledgment of competing values consciously exchanged.
 
 Three load-bearing words:
+
 - **recorded** — it exists because someone wrote it down
 - **acknowledged** — the sacrifice was recognized, not accidental
 - **consciously** — unintended consequences are Observations, not Tradeoffs
@@ -391,18 +416,20 @@ Tradeoff selects within the decision space that Constraint has narrowed. It embo
 **Registry Owner:** TradeoffRegistry
 
 **What Tradeoff Explicitly Does Not Own:**
+
 - Consequences — owned by graph (Observations, Discoveries)
 - Alternatives considered — belongs in summary or Experiment
 - Success metrics — owned by Discoveries
 - Impact scores — relationship territory (rejected under Metric Test)
 
 **Why rationale Survives:**
-The Reconstruction Test: could a future Inspector reconstruct why this option felt reasonable *before the outcome was known*, from graph evidence alone? No. The rejected alternatives leave no graph trace. The reasoning existed once, in someone's head, at decision time. `rationale` is the Observatory's mechanism for refusing to lose it.
+The Reconstruction Test: could a future Inspector reconstruct why this option felt reasonable _before the outcome was known_, from graph evidence alone? No. The rejected alternatives leave no graph trace. The reasoning existed once, in someone's head, at decision time. `rationale` is the Observatory's mechanism for refusing to lose it.
 
 **The Exchange Structure (Schema Law 09):**
 A tradeoff is not a value. It is a relationship between values. "Performance Tradeoff" — compared to what? Both sides must be explicit.
 
 **Schema:**
+
 ```
 Tradeoff {
     id
@@ -428,6 +455,7 @@ Tradeoff {
 ### 1.6 Pattern
 
 **Constitutional Definition:**
+
 > A recurring abstraction — a higher-order claim that something keeps proving true.
 
 **Constitutional Purpose:**
@@ -436,6 +464,7 @@ Pattern represents the Observatory's ability to learn from recurrence. Not merel
 **Registry Owner:** PatternRegistry
 
 **The Abstraction Principle:**
+
 > Pattern is fundamentally about abstraction. Recurrence is the evidence, not the definition.
 
 ```
@@ -446,11 +475,13 @@ Pattern:            "Infrastructure constraints   → higher-order claim
 ```
 
 **What Pattern Explicitly Does Not Own:**
+
 - `recurrence.context` — the graph already knows which nodes Pattern connects to
 - `recurrence.subject` — redundant with name
 - Observation references — owned by DERIVED_FROM edges, not by schema fields
 
 **Two Sources, Different Constraints:**
+
 ```
 AUTHORED    Declared intentionally. No evidence required.
             statement required. strength manually set.
@@ -463,6 +494,7 @@ DERIVED     Generated from evidence. Requires ≥1 Observation.
 Confidence asks: how certain are we? Strength asks: how consistently does this appear? These are different measurements. Mixing them would make Engineer Mode fuzzy.
 
 **Schema:**
+
 ```
 Pattern {
     id
@@ -486,6 +518,7 @@ Pattern {
 ### 1.7 Entity
 
 **Constitutional Definition:**
+
 > An inhabitant of the Observatory. A presence, not a character.
 
 **Constitutional Purpose:**
@@ -494,10 +527,12 @@ Entities are evidence of habitation. They appear, depart, leave traces, have aff
 **Registry Owner:** EntityRegistry
 
 **Node Necessity Test:**
+
 - Entity survives without any Observations → yes, the Fairy exists before anyone sees her (Observatory Existence Principle)
 - ASSOCIATED_WITH does not survive without Entity → correct
 
 **What Entity Explicitly Does Not Own:**
+
 - Movement — belongs to Observation
 - Appearance history — belongs to Observation chain
 - Affinity — belongs to ASSOCIATED_WITH edge
@@ -511,6 +546,7 @@ Entity may be the most compressed node in the ontology. Dense graph presence. Ti
 observer field on Observation accepts `type: ENTITY`. Entities don't just appear — they notice things. Those noticings are Observations. Those Observations can support Discoveries. The entity-as-witness thread is a consequence of the Observation model.
 
 **Schema:**
+
 ```
 Entity {
     id
@@ -528,6 +564,7 @@ Entity {
 ### 1.8 Sector
 
 **Constitutional Definition:**
+
 > A named place in the Observatory with its own accessibility state.
 
 **Constitutional Purpose:**
@@ -536,6 +573,7 @@ Sectors are where Observatory events occur. They have topology, affinity, and �
 **Registry Owner:** SectorRegistry
 
 **What Sector Explicitly Does Not Own:**
+
 - Discovery state — Discovery controls awareness, not Sector
 - Visibility — Activation Layer concern, rejected under Schema Law 02
 - Entity locations — Entities associate with Sectors, they are not contained by them
@@ -552,6 +590,7 @@ Open        → place state (survives)
 ```
 
 **Schema:**
+
 ```
 Sector {
     id
@@ -575,6 +614,7 @@ Sector {
 ### 1.9 Observation
 
 **Constitutional Definition:**
+
 > A recorded fact. Something that occurred.
 
 The most important node in the Observatory. Not Project. Not Entity. Not Discovery.
@@ -587,6 +627,7 @@ Observation is the foundation of the entire evidence architecture. Everything th
 **Registry Owner:** ObservationRegistry
 
 **The Observation Constitution — Four Layers:**
+
 ```
 Layer 1     Existence           Can this node legally exist?
 Layer 2     Graph Admissibility Can this be queried and traversed?
@@ -595,6 +636,7 @@ Layer 4     Interpretation      What does this mean in context?
 ```
 
 **Article 1:**
+
 > An Observation may exist without provenance, but it may not participate in truth formation without provenance.
 
 ```
@@ -607,6 +649,7 @@ With provenance:        All of the above ✓
 ```
 
 **Three Observer Types:**
+
 ```
 Inspector   Intentional, human-directed. Highest interpretive authority.
 Entity      Ambient, presence-triggered. Atmospheric, not analytical.
@@ -617,6 +660,7 @@ System      Structural, consistency-driven. Reports, never interprets.
 Consistency violations become first-class Observations with `observer.type: ENGINE`. The Observatory observes itself through the same mechanism it uses to observe everything else. No side channel. No special event bus. One epistemic pipeline.
 
 **Schema:**
+
 ```
 Observation {
     // Layer 1: Existence
@@ -656,6 +700,7 @@ Observation {
 ### 1.10 Discovery
 
 **Constitutional Definition:**
+
 > A finding — a singular interpreted conclusion derived from observed evidence.
 
 **Constitutional Purpose:**
@@ -664,6 +709,7 @@ Discovery bridges evidence and knowledge. It is the moment of understanding, not
 **Registry Owner:** DiscoveryRegistry
 
 **Discovery vs Observation:**
+
 ```
 Observation:    I witnessed the Fairy in the Signal Sector three times.
 Discovery:      The Fairy likely originates from the Signal Sector.
@@ -672,6 +718,7 @@ Discovery:      The Fairy likely originates from the Signal Sector.
 Same evidence. Different cognitive act. Observations are facts. Discoveries are findings.
 
 **The Discovery Lifecycle:**
+
 ```
 evolving    Accumulating evidence. REVEALS edges inactive.
 mature      Sufficient evidence. REVEALS edges active.
@@ -683,6 +730,7 @@ retracted   REVEALS suspended. Node persists. Trust revoked.
 Discovery requires at least one supporting Observation. Without this, Discovery becomes magic. The Observatory explicitly rejects magic masquerading as evidence.
 
 **Schema:**
+
 ```
 Discovery {
     id
@@ -715,6 +763,7 @@ EVIDENTIARY     Justify truth claims. Answer: Why should I trust this?
 ```
 
 **The Citation Test (applied to determine class):**
+
 > Can I cite this edge independently of its nodes?
 
 If yes → Evidentiary. If no → Referential or Semantic.
@@ -727,13 +776,13 @@ If yes → Evidentiary. If no → Referential or Semantic.
 Observation → OBSERVED → Node
 ```
 
-| Property | Value |
-|---|---|
-| Class | Referential |
-| Cardinality | Many → Many |
-| Payload | None |
-| Lifecycle | Static |
-| Owner | Graph Layer |
+| Property          | Value                                                                   |
+| ----------------- | ----------------------------------------------------------------------- |
+| Class             | Referential                                                             |
+| Cardinality       | Many → Many                                                             |
+| Payload           | None                                                                    |
+| Lifecycle         | Static                                                                  |
+| Owner             | Graph Layer                                                             |
 | Semantic Contract | Records what entity or object was the primary subject of an Observation |
 
 **Note:** `Node` here means any node type — Entity, Project, Constraint, Tradeoff, Pattern, Sector. Observation is universal in what it can witness.
@@ -746,13 +795,13 @@ Observation → OBSERVED → Node
 Observation → OCCURRED_IN → Sector
 ```
 
-| Property | Value |
-|---|---|
-| Class | Referential |
-| Cardinality | Many → One |
-| Payload | None |
-| Lifecycle | Static |
-| Owner | Graph Layer |
+| Property          | Value                                                                                               |
+| ----------------- | --------------------------------------------------------------------------------------------------- |
+| Class             | Referential                                                                                         |
+| Cardinality       | Many → One                                                                                          |
+| Payload           | None                                                                                                |
+| Lifecycle         | Static                                                                                              |
+| Owner             | Graph Layer                                                                                         |
 | Semantic Contract | Records where an Observation took place. Location becomes queryable rather than buried in metadata. |
 
 **Why not metadata:** Explorer asks "where was this observed?" Engineer asks "where did this happen?" Discovery often depends on location. The edge makes location queryable. Metadata does not.
@@ -765,13 +814,13 @@ Observation → OCCURRED_IN → Sector
 Constraint → AFFECTS → Project
 ```
 
-| Property | Value |
-|---|---|
-| Class | Semantic |
-| Cardinality | Many → Many |
-| Payload | None |
-| Lifecycle | Static |
-| Owner | ConstraintRegistry |
+| Property          | Value                                                            |
+| ----------------- | ---------------------------------------------------------------- |
+| Class             | Semantic                                                         |
+| Cardinality       | Many → Many                                                      |
+| Payload           | None                                                             |
+| Lifecycle         | Static                                                           |
+| Owner             | ConstraintRegistry                                               |
 | Semantic Contract | A Constraint changes the available decision space for a Project. |
 
 **UI Alias:** `Project → CONSTRAINED_BY → Constraint` (traversal only — canonical direction is causal)
@@ -786,13 +835,13 @@ Constraint → AFFECTS → Project
 Tradeoff → RESPONSE_TO → Constraint
 ```
 
-| Property | Value |
-|---|---|
-| Class | Semantic |
-| Cardinality | Many → Many |
-| Payload | None |
-| Lifecycle | Static |
-| Owner | TradeoffRegistry |
+| Property          | Value                                                                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Class             | Semantic                                                                                                                              |
+| Cardinality       | Many → Many                                                                                                                           |
+| Payload           | None                                                                                                                                  |
+| Lifecycle         | Static                                                                                                                                |
+| Owner             | TradeoffRegistry                                                                                                                      |
 | Semantic Contract | A Tradeoff exists because a Constraint existed. The tradeoff is a response; the constraint is not the generator. Agency is preserved. |
 
 **Why RESPONSE_TO not GENERATED:** Constraints don't generate anything. Humans do. The graph preserves agency by placing the relationship on the Tradeoff, not the Constraint.
@@ -805,25 +854,27 @@ Tradeoff → RESPONSE_TO → Constraint
 Tradeoff → EMBODIED_BY → Project
 ```
 
-| Property | Value |
-|---|---|
-| Class | Semantic |
-| Cardinality | Many → Many |
-| Payload | `{ fidelity: 0.0–1.0 }` |
-| Lifecycle | Static |
-| Owner | TradeoffRegistry |
+| Property          | Value                                                                                                                  |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Class             | Semantic                                                                                                               |
+| Cardinality       | Many → Many                                                                                                            |
+| Payload           | `{ fidelity: 0.0–1.0 }`                                                                                                |
+| Lifecycle         | Static                                                                                                                 |
+| Owner             | TradeoffRegistry                                                                                                       |
 | Semantic Contract | A Project becomes evidence of a Tradeoff decision. The Project does not merely link to the Tradeoff — it expresses it. |
 
 **UI Alias:** `Project → EMBODIES → Tradeoff`
 
-**Why payload survives:** Project A may *fully* embody a tradeoff; Project B may *partially* embody the same tradeoff. Fidelity describes the connection, not either endpoint. It passes the Payload Test.
+**Why payload survives:** Project A may _fully_ embody a tradeoff; Project B may _partially_ embody the same tradeoff. Fidelity describes the connection, not either endpoint. It passes the Payload Test.
 
 **The Causality Triangle:**
+
 ```
 Constraint → AFFECTS → Project
 Tradeoff   → RESPONSE_TO → Constraint
 Tradeoff   → EMBODIED_BY → Project
 ```
+
 Engineer Mode query: "Show all projects embodying tradeoffs that responded to deployment constraints." One traversal. No hacks.
 
 ---
@@ -834,20 +885,21 @@ Engineer Mode query: "Show all projects embodying tradeoffs that responded to de
 Entity → ASSOCIATED_WITH → Sector
 ```
 
-| Property | Value |
-|---|---|
-| Class | Semantic |
-| Cardinality | Many → Many |
-| Payload | `{ affinity: 0.0–1.0 }` |
-| Lifecycle | Dynamic (stored) |
-| Owner | EntityRegistry |
+| Property          | Value                                                                                                        |
+| ----------------- | ------------------------------------------------------------------------------------------------------------ |
+| Class             | Semantic                                                                                                     |
+| Cardinality       | Many → Many                                                                                                  |
+| Payload           | `{ affinity: 0.0–1.0 }`                                                                                      |
+| Lifecycle         | Dynamic (stored)                                                                                             |
+| Owner             | EntityRegistry                                                                                               |
 | Semantic Contract | Represents meaningful affinity between an Entity and a Sector. Not physical location. Not current residence. |
 
-**Why not LOCATED_IN:** Entities are presences, not furniture. The Knight is not located in the Archive Wing. The Knight is *affiliated* with it. Entity movement is recorded as Observations, not as location state.
+**Why not LOCATED_IN:** Entities are presences, not furniture. The Knight is not located in the Archive Wing. The Knight is _affiliated_ with it. Entity movement is recorded as Observations, not as location state.
 
 **Why affinity on the edge:** An Entity's connection to different Sectors varies in strength. Affinity describes the connection itself, not the Entity or the Sector independently. It passes the Payload Test.
 
 **Explicit Non-Uses:**
+
 - Movement → Observation (type: entity_appeared / entity_departed)
 - Appearance → Observation
 - Traces → Observation
@@ -860,13 +912,13 @@ Entity → ASSOCIATED_WITH → Sector
 Discovery → REVEALS → Node
 ```
 
-| Property | Value |
-|---|---|
-| Class | Semantic |
-| Cardinality | Many → Many |
-| Payload | None |
-| Lifecycle | Dynamic (derived from Discovery.status) |
-| Owner | DiscoveryRegistry (rule) + Graph Layer (materialization) |
+| Property          | Value                                                          |
+| ----------------- | -------------------------------------------------------------- |
+| Class             | Semantic                                                       |
+| Cardinality       | Many → Many                                                    |
+| Payload           | None                                                           |
+| Lifecycle         | Dynamic (derived from Discovery.status)                        |
+| Owner             | DiscoveryRegistry (rule) + Graph Layer (materialization)       |
 | Semantic Contract | Makes an existing node known to the observer. Does not create. |
 
 **Allowed Targets:** Project, Experiment, Certification, Constraint, Tradeoff, Pattern, Entity, Sector
@@ -876,7 +928,8 @@ Discovery → REVEALS → Node
 **Why prohibited:** Observations are already facts — they don't require discovery to exist. Discoveries revealing Discoveries creates infinite philosophical nesting. The Observatory has enough of that without building it in structurally.
 
 **Rule ≠ Storage:**
-- DiscoveryRegistry owns *when* REVEALS becomes active (when status = mature)
+
+- DiscoveryRegistry owns _when_ REVEALS becomes active (when status = mature)
 - Graph Layer materializes the traversal path
 - This is the first example of rule ownership and relationship storage being separated
 
@@ -891,13 +944,13 @@ A Pattern exists independently of any Discovery pointing at it. A hidden Pattern
 Discovery → SUPPORTED_BY → Observation
 ```
 
-| Property | Value |
-|---|---|
-| Class | Evidentiary |
-| Cardinality | Many → Many |
-| Payload | `{ contribution: 0.0–1.0, source: MANUAL \| DERIVED }` |
-| Lifecycle | Dynamic |
-| Owner | DiscoveryRegistry |
+| Property          | Value                                                                                               |
+| ----------------- | --------------------------------------------------------------------------------------------------- |
+| Class             | Evidentiary                                                                                         |
+| Cardinality       | Many → Many                                                                                         |
+| Payload           | `{ contribution: 0.0–1.0, source: MANUAL \| DERIVED }`                                              |
+| Lifecycle         | Dynamic                                                                                             |
+| Owner             | DiscoveryRegistry                                                                                   |
 | Semantic Contract | An Observation contributes evidence toward a Discovery. These observations support this conclusion. |
 
 **Why evidentiary:** The Citation Test. Engineer Mode shows: "Discovery: Fairy Origin Located. Supported by: Observation #18, #22, #27." The observations are cited. The edge carries weight. It can be cited as evidence.
@@ -917,27 +970,30 @@ Discovery requires ≥1 SUPPORTED_BY Observation (INV-01). Without this, Discove
 Pattern → DERIVED_FROM → Observation
 ```
 
-| Property | Value |
-|---|---|
-| Class | Evidentiary |
-| Cardinality | Many → Many |
-| Payload | `{ weight: 0.0–1.0 }` |
-| Lifecycle | Dynamic |
-| Owner | PatternRegistry |
+| Property          | Value                                                                       |
+| ----------------- | --------------------------------------------------------------------------- |
+| Class             | Evidentiary                                                                 |
+| Cardinality       | Many → Many                                                                 |
+| Payload           | `{ weight: 0.0–1.0 }`                                                       |
+| Lifecycle         | Dynamic                                                                     |
+| Owner             | PatternRegistry                                                             |
 | Semantic Contract | These observations collectively demonstrate recurrence toward this Pattern. |
 
 **Why different from SUPPORTED_BY:**
+
 - SUPPORTED_BY: these observations support this conclusion
 - DERIVED_FROM: these observations collectively demonstrate recurrence
 - Subtle difference. Worth preserving. Same evidence architecture, different semantic contract.
 
 **Conditional Invariant (first in the graph):**
+
 ```
 Pattern(source = DERIVED)   → requires ≥1 DERIVED_FROM Observation
 Pattern(source = AUTHORED)  → requires 0
 ```
 
 **Two Causal Structures (emergent):**
+
 ```
 Evidence Chain              Decision Chain
 ──────────────              ──────────────
@@ -997,6 +1053,7 @@ Derived Truth       Computed trust. Generated by Derivation Engine.
 ```
 
 **Operationally:**
+
 ```
 Validation Engine     Guards authored truth
 Activation Engine     Interprets current state
@@ -1011,9 +1068,11 @@ Derivation Engine     Computes derived truth
 See Schema in Section 1.9 for full structure. The constitutional principles:
 
 **Article 1:**
+
 > An Observation may exist without provenance, but it may not participate in truth formation without provenance.
 
 **Article 2 (implicit):**
+
 > The Observatory observes itself through the same mechanism it uses to observe everything else.
 
 Consistency violations are first-class Observations. `observer.type: ENGINE`. No side channel. No special event bus.
@@ -1023,6 +1082,7 @@ Consistency violations are first-class Observations. `observer.type: ENGINE`. No
 ### 3.4 Key Epistemological Tests
 
 **Reconstruction Test:**
+
 > Could a future Inspector reconstruct this honestly from the graph alone?
 
 If yes → graph wins; remove the field.
@@ -1031,22 +1091,26 @@ If no → field may survive.
 Applied to: `rationale` on Tradeoff (survives), `severity` on Constraint (rejected), `researchObjective` on Experiment (rejected).
 
 **Citation Test:**
+
 > Can I cite this edge independently of its nodes?
 
 If yes → Evidentiary class.
 If no → Referential or Semantic class.
 
 **Metric Test:**
+
 > If two values produce identical graph behavior, the metric is likely interpretation rather than truth.
 
 Applied to: `confidence` on Tradeoff (rejected — no edges change), `severity` on Constraint (rejected).
 
 **Field Costume Test:**
+
 > Could this information be represented more honestly as a relationship?
 
 If yes → suspect the field. Apply Architectural Law 01.
 
 **Node Test (bidirectional):**
+
 > Node survives without edges. Edge does not survive without node.
 
 Both directions must hold for a node to be legitimate.
@@ -1086,13 +1150,15 @@ These are not preferences or conventions. They are laws discovered under pressur
 ### 4.1 Architectural Laws
 
 **Architectural Law 01:**
+
 > If information can be represented more honestly as a relationship, the relationship wins.
 
-The key word is *honestly*. Not compactly. Not efficiently. Honestly.
+The key word is _honestly_. Not compactly. Not efficiently. Honestly.
 
 Evidence: Event compressed to Observation.type. EvidenceLink compressed to evidentiary edge. researchObjective compressed to summary + graph. Project meaning compressed to edges. Half the original schema is a compression record.
 
 **Architectural Law 02:**
+
 > If authority can be represented more honestly as ownership, ownership wins.
 
 The governance equivalent of Law 01. Topology over procedure. Every time process was attempted (voting, committees, approval chains), the solution collapsed. Every time ownership and consequence maps were used, the solution stabilized.
@@ -1102,26 +1168,31 @@ The governance equivalent of Law 01. Topology over procedure. Every time process
 ### 4.2 Schema Laws
 
 **Schema Law 01: Typed Depth**
+
 > A field declares its category first. Category determines what additional structure is legal.
 
 A discriminator permits conditional subfields. It does not require them. TECHNICAL on Constraint has no subfields — the category name is constitutive.
 
 **Schema Law 02: Truth vs Presentation**
+
 > Content fields describe truth. Presentation fields describe prioritization. Presentation metadata may not live inside domain registries.
 
 Test: Could this field change without changing the truth of the node? If yes → presentation.
 
 **Schema Law 03: Category vs Capability**
+
 > Categories influence expectations. Categories do not grant capabilities.
 
 EXPERIMENTAL_PLATFORM does not get special registry access. Any Project type may produce Observations. The graph owns capabilities. Categories own expectations.
 
 **Schema Law 04: Truth / Interpretation / Presentation**
+
 > Three distinct field categories. Never collapse them.
 
 Truth → Interpretation → Presentation is a one-way hierarchy. Mixing categories produces drift and eventually disagreement between fields that were supposed to describe the same node.
 
 **Schema Law 05: Category vs State**
+
 > Category describes enduring nature. State describes current condition.
 
 ```
@@ -1132,11 +1203,13 @@ Changing status:    Changes what condition the node is IN (lifecycle)
 **Schema Law 06:** (promoted to Architectural Law 01)
 
 **Schema Law 07: Self-Originated vs Externally-Originated Truth**
+
 > Self-originated truth is subject to internal evidence. Externally-originated truth is subject only to the authority that issued it.
 
 The Observatory may record, display, verify, and expire external truth claims. It may not derive, invalidate, certify, or re-certify them.
 
 **Schema Law 08: Transient vs Terminal State**
+
 > States may be transient or terminal.
 
 ```
@@ -1147,6 +1220,7 @@ Terminal    Irreversible: SUPPORTED, CONTRADICTED, EXPIRED, REVOKED
 Not a new field category. A property of State. Experiment has two state machines: Execution (transient) and Conclusion (terminal).
 
 **Schema Law 09: Explicit Relationship Modeling**
+
 > When a concept is inherently relational, model both sides of the relationship explicitly.
 
 A Tradeoff is not a value — it is a relationship between values. `exchange.gained` and `exchange.sacrificed` must both exist. "Performance Tradeoff" compared to what? One-sided declarations are incomplete relationships in disguise.
@@ -1156,11 +1230,13 @@ A Tradeoff is not a value — it is a relationship between values. `exchange.gai
 ### 4.3 Registry Laws
 
 **Registry Law 01: Dependency Is Not Authority**
+
 > Dependency density and authority are orthogonal.
 
 The registry most referenced is not the registry with highest authority. The registry most written is not the registry whose failure hurts most. Four distinct criticality dimensions: Dependency Density, Mutation Frequency, Authority Sensitivity, Blast Radius, Semantic Density.
 
 **Registry Law 02: Failure Modes Matter More Than Components**
+
 > A registry does not have a single blast radius. It has blast radii per failure mode.
 
 ```
@@ -1176,26 +1252,31 @@ Absence of evidence is recoverable. Incorrect evidence is not. The Observatory s
 ### 4.4 Governance Laws
 
 **Governance Law 01:**
+
 > Every architectural change proposal declares its affected authority domains before it may be evaluated. Only those domains participate.
 
 No senate. No committee. Only authorities whose consequences change.
 
 **Governance Law 02:**
+
 > No non-registry authority may author truth.
 
 Derivation may compute. Activation may materialize. Neither may create or reclassify nodes. This law prevents authority creep — every large system eventually develops one helpful subsystem that starts making decisions on behalf of everyone else.
 
 **Governance Law 03:**
+
 > Schema evolution is additive by default. New versions extend what is legal. They do not invalidate what was true.
 
 Applies to additive changes only: new enum values, new optional fields, new relationship types.
 
 **Governance Law 04:**
+
 > Architectural changes that alter legality are constitutional changes, not schema changes.
 
-Test: does this change affect what is *legal*, or only what is *possible*? Possible expands → schema change. Legal redraws → constitutional change requiring explicit migration strategy.
+Test: does this change affect what is _legal_, or only what is _possible_? Possible expands → schema change. Legal redraws → constitutional change requiring explicit migration strategy.
 
 **Governance Law 05:**
+
 > Historical validity and current compliance are separate concepts.
 
 ```
@@ -1210,17 +1291,17 @@ The Observatory does not rewrite history. It reevaluates it.
 
 ### 4.5 The Invariant Catalog
 
-| ID | Invariant | Type | Engine | Crosses |
-|---|---|---|---|---|
-| INV-01 | Discovery requires ≥1 SUPPORTED_BY Observation | Existence | Validation | DiscoveryRegistry ↔ ObservationRegistry |
-| INV-02 | Pattern(source=DERIVED) requires ≥1 DERIVED_FROM Observation | Existence (conditional) | Validation | PatternRegistry ↔ ObservationRegistry |
-| INV-03 | REVEALS active only when Discovery.status = mature | Activation | Activation | DiscoveryRegistry ↔ Graph Layer |
-| INV-04 | Experiment.status = COMPLETED → outcome must exist | Existence | Validation | ExperimentRegistry internal |
-| INV-05 | Experiment.outcome = SUPPORTED → status must = COMPLETED | Existence | Validation | ExperimentRegistry internal |
-| INV-06 | Tradeoff.exchange.gained ≠ exchange.sacrificed | Existence | Validation | TradeoffRegistry internal |
-| INV-07 | Sector.accessibility = SEALED → New Observations may not OCCUR_IN | Existence | Validation | SectorRegistry ↔ ObservationRegistry |
+| ID     | Invariant                                                         | Type                    | Engine     | Crosses                                 |
+| ------ | ----------------------------------------------------------------- | ----------------------- | ---------- | --------------------------------------- |
+| INV-01 | Discovery requires ≥1 SUPPORTED_BY Observation                    | Existence               | Validation | DiscoveryRegistry ↔ ObservationRegistry |
+| INV-02 | Pattern(source=DERIVED) requires ≥1 DERIVED_FROM Observation      | Existence (conditional) | Validation | PatternRegistry ↔ ObservationRegistry   |
+| INV-03 | REVEALS active only when Discovery.status = mature                | Activation              | Activation | DiscoveryRegistry ↔ Graph Layer         |
+| INV-04 | Experiment.status = COMPLETED → outcome must exist                | Existence               | Validation | ExperimentRegistry internal             |
+| INV-05 | Experiment.outcome = SUPPORTED → status must = COMPLETED          | Existence               | Validation | ExperimentRegistry internal             |
+| INV-06 | Tradeoff.exchange.gained ≠ exchange.sacrificed                    | Existence               | Validation | TradeoffRegistry internal               |
+| INV-07 | Sector.accessibility = SEALED → New Observations may not OCCUR_IN | Existence               | Validation | SectorRegistry ↔ ObservationRegistry    |
 
-**Critical note on INV-07:** Historical OCCURRED_IN edges remain valid and immutable. The Validation Engine blocks *creation*, never *history*. Facts do not disappear because a door was locked afterward.
+**Critical note on INV-07:** Historical OCCURRED_IN edges remain valid and immutable. The Validation Engine blocks _creation_, never _history_. Facts do not disappear because a door was locked afterward.
 
 ---
 
@@ -1235,6 +1316,7 @@ Validation → Activation → Consistency → Derivation
 **Why this order:** The graph must never temporarily violate a higher-trust layer while updating a lower-trust layer. At every stage of a cascade, higher trust layers remain valid. Derived data may be stale temporarily. That is acceptable. Authored truth may never be inconsistent. That is required.
 
 **Example — Discovery retraction cascade:**
+
 ```
 Phase 1: Validation    Is retraction legal? If no, stop.
 Phase 2: Activation    REVEALS immediately inactive. Graph stops making claims.
@@ -1246,7 +1328,7 @@ Phase 4: Derivation    Recompute Pattern strength, discovery counts, affinities.
 
 ## Appendix A — The Graveyard
 
-*Every concept that was seriously considered and deliberately rejected. Each entry records what was learned from the rejection. Future Monster: read this before removing anything from the surviving schema.*
+_Every concept that was seriously considered and deliberately rejected. Each entry records what was learned from the rejection. Future Monster: read this before removing anything from the surviving schema._
 
 ---
 
@@ -1402,7 +1484,7 @@ Phase 4: Derivation    Recompute Pattern strength, discovery counts, affinities.
 
 **Second admission attempt:** After establishing evidentiary edges carry payload, the question reopened: if SUPPORTED_BY has `{ contribution, source }`, isn't it effectively an object?
 
-**Second rejection:** The Citation Test, applied more carefully. Engineer Mode shows "Discovery: Fairy Origin Located. Evidence: Observation #18, #22, #27." The Observations are cited. The *edge* is never cited independently. The payload enriches the relationship. It does not give the relationship independent identity. An object-sized edge is still an edge.
+**Second rejection:** The Citation Test, applied more carefully. Engineer Mode shows "Discovery: Fairy Origin Located. Evidence: Observation #18, #22, #27." The Observations are cited. The _edge_ is never cited independently. The payload enriches the relationship. It does not give the relationship independent identity. An object-sized edge is still an edge.
 
 **Replacement:** Evidentiary edge class with rich payload. `SUPPORTED_BY { contribution: 0.0–1.0, source: MANUAL | DERIVED }`
 
@@ -1412,7 +1494,7 @@ Phase 4: Derivation    Recompute Pattern strength, discovery counts, affinities.
 
 ## Appendix B — Historical Discoveries
 
-*Chronological record of the moments the architecture revealed something true about itself. Not decisions — discoveries. The distinction matters.*
+_Chronological record of the moments the architecture revealed something true about itself. Not decisions — discoveries. The distinction matters._
 
 ---
 
@@ -1460,12 +1542,13 @@ The synchronous/reactive split (Validation synchronous; everything else reactive
 
 ---
 
-*Doc 1 complete.*
-*Carve carefully. Future Monster is watching.*
+_Doc 1 complete._
+_Carve carefully. Future Monster is watching._
 
 ---
 
 **Document Metadata**
+
 - Architecture Sessions: A through G.1
 - Core Nodes: 10
 - Core Relationships: 9
