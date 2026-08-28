@@ -2,10 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  getProjects,
-  getRegistryCounts,
-} from "@/data/registry/store";
+import { getProjects, getRegistryCounts } from "@/data/registry/store";
 import {
   CATEGORY_INTEGRITY,
   getCategoryIntegrityExamples,
