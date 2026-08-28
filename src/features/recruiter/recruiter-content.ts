@@ -40,7 +40,9 @@ export function getRecruiterQuickSignals(counts: RegistryCounts) {
   ];
 }
 
-export function getCategoryIntegrityExamples(projects: readonly ProjectRecord[]) {
+export function getCategoryIntegrityExamples(
+  projects: readonly ProjectRecord[],
+) {
   return projects
     .filter(
       (project) =>

@@ -95,9 +95,9 @@ export function ObservatoryShell() {
                   Observatory shell online.
                 </h1>
                 <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-observatory-muted sm:text-base">
-                  This mode is reserved for its implementation phase. Shared shell
-                  and session context remain available without exposing unfinished
-                  content.
+                  This mode is reserved for its implementation phase. Shared
+                  shell and session context remain available without exposing
+                  unfinished content.
                 </p>
                 <button
                   type="button"
@@ -113,10 +113,13 @@ export function ObservatoryShell() {
 
         <WindowManager windowId={PLACEHOLDER_WINDOW.id}>
           <div className="space-y-3">
-            <p className="text-sm text-observatory-ink">Placeholder application surface.</p>
+            <p className="text-sm text-observatory-ink">
+              Placeholder application surface.
+            </p>
             <p className="text-xs leading-5 text-observatory-muted">
               This window exists only to prove the shared lifecycle contract.
-              Project knowledge and mode-specific behavior do not belong in the shell.
+              Project knowledge and mode-specific behavior do not belong in the
+              shell.
             </p>
           </div>
         </WindowManager>

@@ -54,9 +54,7 @@ export function RecruiterBootSequence({
         >
           {RECRUITER_BOOT_STEPS[stepIndex]}
         </motion.p>
-        <p className="mt-3 text-xs text-observatory-muted">
-          Recruiter Mode
-        </p>
+        <p className="mt-3 text-xs text-observatory-muted">Recruiter Mode</p>
       </div>
     </div>
   );

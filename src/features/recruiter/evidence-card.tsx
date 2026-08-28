@@ -17,7 +17,10 @@ export function RecruiterEvidenceCard() {
   const [showExplanation, setShowExplanation] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const counts = getRegistryCounts();
-  const examples = useMemo(() => getCategoryIntegrityExamples(getProjects()), []);
+  const examples = useMemo(
+    () => getCategoryIntegrityExamples(getProjects()),
+    [],
+  );
 
   return (
     <div className="w-full max-w-5xl space-y-5">
@@ -51,7 +54,10 @@ export function RecruiterEvidenceCard() {
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {RECRUITER_CREDENTIALS.map((credential) => (
-              <div key={credential.label} className="rounded-2xl border border-white/10 p-4">
+              <div
+                key={credential.label}
+                className="rounded-2xl border border-white/10 p-4"
+              >
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-observatory-muted">
                   {credential.label}
                 </p>
@@ -82,10 +88,12 @@ export function RecruiterEvidenceCard() {
 
           {contactOpen ? (
             <div className="mt-4 rounded-2xl border border-white/10 p-4">
-              <p className="text-sm text-observatory-ink">Start a conversation.</p>
+              <p className="text-sm text-observatory-ink">
+                Start a conversation.
+              </p>
               <p className="mt-2 text-xs leading-5 text-observatory-muted">
-                Contact delivery is not configured yet. The contact surface is kept
-                intentionally minimal until a delivery path exists.
+                Contact delivery is not configured yet. The contact surface is
+                kept intentionally minimal until a delivery path exists.
               </p>
             </div>
           ) : null}
@@ -97,8 +105,13 @@ export function RecruiterEvidenceCard() {
           </p>
           <div className="mt-5 grid grid-cols-2 gap-3">
             {getRecruiterQuickSignals(counts).map((signal) => (
-              <div key={signal.label} className="rounded-2xl border border-white/10 p-4">
-                <p className="text-2xl font-medium tracking-tight">{signal.value}</p>
+              <div
+                key={signal.label}
+                className="rounded-2xl border border-white/10 p-4"
+              >
+                <p className="text-2xl font-medium tracking-tight">
+                  {signal.value}
+                </p>
                 <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-observatory-muted">
                   {signal.label}
                 </p>
@@ -139,7 +152,10 @@ export function RecruiterEvidenceCard() {
           <div className="mt-5 grid gap-3 md:grid-cols-3">
             {examples.length > 0 ? (
               examples.map((example) => (
-                <article key={example.projectId} className="rounded-2xl border border-white/10 p-4">
+                <article
+                  key={example.projectId}
+                  className="rounded-2xl border border-white/10 p-4"
+                >
                   <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-observatory-muted">
                     {example.projectName}
                   </p>
@@ -161,9 +177,9 @@ export function RecruiterEvidenceCard() {
 
         {showExplanation ? (
           <p className="mt-5 text-xs leading-5 text-observatory-muted">
-            The pattern is derived from the project theses and engineering identities
-            represented in the canonical registry. Deeper evidence belongs to
-            Engineer Mode.
+            The pattern is derived from the project theses and engineering
+            identities represented in the canonical registry. Deeper evidence
+            belongs to Engineer Mode.
           </p>
         ) : null}
       </section>
