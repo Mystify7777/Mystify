@@ -10,9 +10,8 @@ import {
   RECRUITER_CONTACT,
   RECRUITER_CREDENTIALS,
   RECRUITER_IDENTITY,
+  RECRUITER_RESUME_PATH,
 } from "@/features/recruiter/recruiter-content";
-
-const RESUME_PATH = "/resume.pdf";
 
 export function RecruiterEvidenceCard() {
   const [showExplanation, setShowExplanation] = useState(false);
@@ -38,7 +37,8 @@ export function RecruiterEvidenceCard() {
             {RECRUITER_IDENTITY.name}
           </h1>
           <p className="mt-2 text-sm text-observatory-muted">
-            {RECRUITER_IDENTITY.role} · {RECRUITER_IDENTITY.institution} · {RECRUITER_IDENTITY.graduationYear}
+            {RECRUITER_IDENTITY.role} · {RECRUITER_IDENTITY.institution} ·{" "}
+            {RECRUITER_IDENTITY.graduationYear}
           </p>
           <p className="mt-1 font-mono text-xs text-observatory-muted">
             {RECRUITER_CREDENTIALS[1].value}
@@ -72,7 +72,7 @@ export function RecruiterEvidenceCard() {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href={RESUME_PATH}
+              href={RECRUITER_RESUME_PATH}
               download
               className="rounded-xl bg-observatory-amber px-4 py-2 font-mono text-xs text-black transition duration-observatory hover:brightness-110"
             >
