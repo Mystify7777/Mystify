@@ -68,7 +68,7 @@ describe("recruiter content contracts", () => {
       <RecruiterBootSequence onComplete={() => undefined} />,
     );
     expect(markup).toContain("initializing observatory...");
-    expect(markup).toContain("aria-live=\"polite\"");
+    expect(markup).toContain('aria-live="polite"');
   });
 
   it("advances a boot step after the configured delay", () => {
@@ -161,11 +161,11 @@ describe("recruiter content contracts", () => {
   it("renders the resume as a direct PDF download and contact collapsed by default", () => {
     const markup = renderToStaticMarkup(<RecruiterEvidenceCard />);
 
-    expect(markup).toContain(`href=\"${RECRUITER_RESUME_PATH}\"`);
+    expect(markup).toContain(`href="${RECRUITER_RESUME_PATH}"`);
     expect(markup).toContain("download");
     expect(markup).toContain("Download Resume");
     expect(markup).toContain("Start Conversation");
-    expect(markup).toContain("aria-expanded=\"false\"");
+    expect(markup).toContain('aria-expanded="false"');
     expect(markup).not.toContain("Interested in working together?");
   });
 });
