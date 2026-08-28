@@ -12,6 +12,8 @@ export const RECRUITER_IDENTITY = {
     "Different kinds of truth remain separate so each can stay honest in its own domain.",
 } as const;
 
+export const RECRUITER_RESUME_PATH = "/resume.pdf";
+
 export function getRecruiterBootSteps(counts: RegistryCounts) {
   return [
     "initializing observatory...",
@@ -70,4 +72,12 @@ export function getCategoryIntegrityExamples(
       thesis: project.thesis as string,
       engineeringIdentity: project.engineeringIdentity as string,
     }));
+}
+
+export function scheduleRecruiterBootStep(
+  callback: () => void,
+  delayMs: number,
+): () => void {
+  const timer = setTimeout(callback, delayMs);
+  return () => clearTimeout(timer);
 }
