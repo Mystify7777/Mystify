@@ -1,4 +1,5 @@
 # Observatory Architecture
+
 ## Doc 2 — Registry Architecture Spec
 
 **Status:** Locked  
@@ -55,6 +56,7 @@ Ownership = final semantic authority. Not storage. Not access. Not visibility.
 > Ownership grants authority over meaning. Not authority over consequences.
 
 **Corollary:**
+
 > Consequences are owned by the layer responsible for enforcing them,
 > regardless of which registry owns the node that triggered them.
 
@@ -98,26 +100,28 @@ The 3-3-2-2 balance is diagnostic. The symmetry reflects discovered ontology, no
 
 One-to-one. No conflicts. No shared ownership.
 
-| Node | Owner Registry | Family |
-|---|---|---|
-| Project | ProjectRegistry | Content |
-| Experiment | ExperimentRegistry | Content |
-| Certification | CertificationRegistry | Content |
-| Constraint | ConstraintRegistry | Decision |
-| Tradeoff | TradeoffRegistry | Decision |
-| Pattern | PatternRegistry | Decision |
-| Entity | EntityRegistry | Observatory |
-| Sector | SectorRegistry | Observatory |
-| Observation | ObservationRegistry | Truth |
-| Discovery | DiscoveryRegistry | Truth |
+| Node          | Owner Registry        | Family      |
+| ------------- | --------------------- | ----------- |
+| Project       | ProjectRegistry       | Content     |
+| Experiment    | ExperimentRegistry    | Content     |
+| Certification | CertificationRegistry | Content     |
+| Constraint    | ConstraintRegistry    | Decision    |
+| Tradeoff      | TradeoffRegistry      | Decision    |
+| Pattern       | PatternRegistry       | Decision    |
+| Entity        | EntityRegistry        | Observatory |
+| Sector        | SectorRegistry        | Observatory |
+| Observation   | ObservationRegistry   | Truth       |
+| Discovery     | DiscoveryRegistry     | Truth       |
 
 **What ownership means per node:**
+
 - Authority to create the node
 - Authority to update the node's owned fields
 - Authority to change the node's state
 - Final say on whether the node exists
 
 **What ownership does not mean:**
+
 - Authority over edges that reference the node
 - Authority over downstream computations triggered by the node
 - Authority over how other registries interpret the node
@@ -129,13 +133,16 @@ One-to-one. No conflicts. No shared ownership.
 Two principles govern all relationship ownership:
 
 **Principle A (Semantic edges):**
+
 > Semantic edges are owned by the registry of the source node.
 
 **Principle B (Evidentiary edges):**
+
 > Evidentiary edges are owned by the registry of the knowledge node they justify.
 > Not the registry of the evidence node they cite.
 
 **Principle C (Referential edges):**
+
 > Referential edges belong to the Graph Layer.
 > They are structural graph facts, not business logic.
 
@@ -143,17 +150,17 @@ Two principles govern all relationship ownership:
 
 ### 3.1 Relationship Ownership Table
 
-| Edge | Class | Owner | Ownership Principle |
-|---|---|---|---|
-| `OBSERVED` | Referential | Graph Layer | Structural graph fact |
-| `OCCURRED_IN` | Referential | Graph Layer | Structural graph fact |
-| `AFFECTS` | Semantic | ConstraintRegistry | Source node owns |
-| `RESPONSE_TO` | Semantic | TradeoffRegistry | Source node owns |
-| `EMBODIED_BY` | Semantic | TradeoffRegistry | Source node owns |
-| `ASSOCIATED_WITH` | Semantic | EntityRegistry | Affinity is an Entity concept |
-| `REVEALS` | Semantic | DiscoveryRegistry (rule) + Graph Layer (materialization) | Rule ≠ Storage |
-| `SUPPORTED_BY` | Evidentiary | DiscoveryRegistry | Justifies Discovery |
-| `DERIVED_FROM` | Evidentiary | PatternRegistry | Justifies Pattern |
+| Edge              | Class       | Owner                                                    | Ownership Principle           |
+| ----------------- | ----------- | -------------------------------------------------------- | ----------------------------- |
+| `OBSERVED`        | Referential | Graph Layer                                              | Structural graph fact         |
+| `OCCURRED_IN`     | Referential | Graph Layer                                              | Structural graph fact         |
+| `AFFECTS`         | Semantic    | ConstraintRegistry                                       | Source node owns              |
+| `RESPONSE_TO`     | Semantic    | TradeoffRegistry                                         | Source node owns              |
+| `EMBODIED_BY`     | Semantic    | TradeoffRegistry                                         | Source node owns              |
+| `ASSOCIATED_WITH` | Semantic    | EntityRegistry                                           | Affinity is an Entity concept |
+| `REVEALS`         | Semantic    | DiscoveryRegistry (rule) + Graph Layer (materialization) | Rule ≠ Storage                |
+| `SUPPORTED_BY`    | Evidentiary | DiscoveryRegistry                                        | Justifies Discovery           |
+| `DERIVED_FROM`    | Evidentiary | PatternRegistry                                          | Justifies Pattern             |
 
 ---
 
@@ -171,7 +178,7 @@ Graph Layer owns:           The traversal path itself
                             The edge when active
 ```
 
-This is not an exception to the ownership model. It is the ownership model correctly applied. DiscoveryRegistry owns the *meaning* of REVEALS (when it activates). Graph Layer owns the *connectivity* (the traversal). These are different responsibilities.
+This is not an exception to the ownership model. It is the ownership model correctly applied. DiscoveryRegistry owns the _meaning_ of REVEALS (when it activates). Graph Layer owns the _connectivity_ (the traversal). These are different responsibilities.
 
 **Implication:** If Discovery.status is queried by a renderer, the renderer asks DiscoveryRegistry. If a node connected via REVEALS is traversed, the traversal goes through Graph Layer.
 
@@ -184,6 +191,7 @@ Three architectural layers beyond the domain registries.
 ### 4.1 Graph Layer
 
 **Owns:**
+
 - All referential edges (OBSERVED, OCCURRED_IN)
 - Traversal indexes
 - Cross-registry connectivity
@@ -191,6 +199,7 @@ Three architectural layers beyond the domain registries.
 - Relationship storage for all edge classes
 
 **Does not own:**
+
 - Node truth (domain registries)
 - Rule enforcement (Invariant Layer)
 - Computed values (Derivation Engine)
@@ -226,6 +235,7 @@ Derivation Engine     Computational
 ```
 
 **The Observatory Law:**
+
 > Only the Validation Engine may prevent a graph mutation.
 
 Everything else may interpret, report, compute, or materialize. Only Validation can say no.
@@ -237,14 +247,14 @@ No engine may author truth. Derivation updates `Pattern.strength` (computed fiel
 
 ### 4.3 Read/Write Authority Table
 
-| Layer | Read Authority | Write Authority |
-|---|---|---|
-| Domain Registry | Own node type | Own node type + owned edges |
-| Graph Layer | All nodes + edges | Relationships only |
-| Validation Engine | All (pre-commit) | None — blocks only |
-| Activation Engine | Relevant state nodes | Materialized visibility only |
-| Consistency Engine | All | Observation emission only |
-| Derivation Engine | Dependency graph | Computed fields only |
+| Layer              | Read Authority       | Write Authority              |
+| ------------------ | -------------------- | ---------------------------- |
+| Domain Registry    | Own node type        | Own node type + owned edges  |
+| Graph Layer        | All nodes + edges    | Relationships only           |
+| Validation Engine  | All (pre-commit)     | None — blocks only           |
+| Activation Engine  | Relevant state nodes | Materialized visibility only |
+| Consistency Engine | All                  | Observation emission only    |
+| Derivation Engine  | Dependency graph     | Computed fields only         |
 
 **Critical constraint:** Nobody except domain registries writes authored truth. This was implicit throughout the architecture. It is explicit here.
 
@@ -304,24 +314,25 @@ Semantic Density        How much meaning is lost when a single node disappears?
 
 ### 6.2 Registry Topology Table
 
-| Registry | Dependency Density | Mutation Frequency | Authority Sensitivity | Semantic Density |
-|---|---|---|---|---|
-| ProjectRegistry | Very High | Low | Medium | Medium |
-| ExperimentRegistry | Medium | Low | Medium | Medium |
-| CertificationRegistry | Very Low | Very Low | Low | Low |
-| ConstraintRegistry | Medium | Low | Medium | Medium |
-| TradeoffRegistry | Low | Very Low | High | **Very High** |
-| PatternRegistry | High | Medium | High | High |
-| EntityRegistry | Medium | Low | Low | Low |
-| SectorRegistry | Medium | Low | Medium | Medium |
-| ObservationRegistry | **Very High** | **Very High** | High | Low |
-| DiscoveryRegistry | High | Low | **Very High** | High |
+| Registry              | Dependency Density | Mutation Frequency | Authority Sensitivity | Semantic Density |
+| --------------------- | ------------------ | ------------------ | --------------------- | ---------------- |
+| ProjectRegistry       | Very High          | Low                | Medium                | Medium           |
+| ExperimentRegistry    | Medium             | Low                | Medium                | Medium           |
+| CertificationRegistry | Very Low           | Very Low           | Low                   | Low              |
+| ConstraintRegistry    | Medium             | Low                | Medium                | Medium           |
+| TradeoffRegistry      | Low                | Very Low           | High                  | **Very High**    |
+| PatternRegistry       | High               | Medium             | High                  | High             |
+| EntityRegistry        | Medium             | Low                | Low                   | Low              |
+| SectorRegistry        | Medium             | Low                | Medium                | Medium           |
+| ObservationRegistry   | **Very High**      | **Very High**      | High                  | Low              |
+| DiscoveryRegistry     | High               | Low                | **Very High**         | High             |
 
 ### 6.3 Blast Radius — Per Failure Mode
 
 Blast radius must be assessed per failure mode, not per registry. Registry Law 02.
 
 **ObservationRegistry:**
+
 ```
 Write failure       New observations stop arriving
                     Existing graph remains intact
@@ -342,6 +353,7 @@ Corruption          Incorrect evidence enters truth formation
 ```
 
 **DiscoveryRegistry:**
+
 ```
 Write failure       New discoveries cannot be formed
                     Existing visibility unchanged
@@ -359,6 +371,7 @@ Corruption          Visibility claims become incorrect
 ```
 
 **ProjectRegistry:**
+
 ```
 Write failure       New projects cannot be created
                     Blast Radius: MEDIUM
@@ -373,6 +386,7 @@ Corruption          Work identity becomes unreliable
 ```
 
 **TradeoffRegistry:**
+
 ```
 Write failure       New tradeoffs cannot be recorded
                     Blast Radius: LOW (low mutation frequency)
@@ -451,7 +465,7 @@ Without this decision:
         → Pattern recalculation (synchronous)
         → Consistency audit (synchronous)
         → Activation updates (synchronous)
-    
+
     Single Fairy sighting requires half the Observatory to wake up synchronously.
     ObservationRegistry's Very High mutation frequency becomes catastrophic.
 
@@ -460,7 +474,7 @@ With this decision:
         → Validation (synchronous, blocking)
         → Commit
         → Everything else (reactive, non-blocking)
-    
+
     Write path is protected. Cascade is asynchronous.
 ```
 
@@ -468,12 +482,12 @@ This is not a coincidence. It is evidence that the authority model and the infra
 
 ### 7.2 Infrastructure Response Per Registry Type
 
-| Registry Type | Primary Risk | Infrastructure Response |
-|---|---|---|
-| Throughput Critical | Write bottleneck | Write path isolation, async cascade |
-| Authority Critical | Corruption propagation | Integrity validation, audit logging |
-| Knowledge Density Critical | Silent node loss | Per-write backup, restore testing |
-| Connectivity Critical | Cascading unavailability | High availability SLA, graceful degradation |
+| Registry Type              | Primary Risk             | Infrastructure Response                     |
+| -------------------------- | ------------------------ | ------------------------------------------- |
+| Throughput Critical        | Write bottleneck         | Write path isolation, async cascade         |
+| Authority Critical         | Corruption propagation   | Integrity validation, audit logging         |
+| Knowledge Density Critical | Silent node loss         | Per-write backup, restore testing           |
+| Connectivity Critical      | Cascading unavailability | High availability SLA, graceful degradation |
 
 ### 7.3 The Corruption vs Absence Distinction
 
@@ -501,21 +515,21 @@ This replaces committees with topology. Governance Law 01 in operational form.
 
 ### 8.1 Schema Element Consequence Map
 
-| Schema Element | Owner | Consequence Domains |
-|---|---|---|
-| `Pattern.source` | PatternRegistry | Validation Engine (INV-02), Derivation Engine (strength) |
-| `Pattern.strength` | PatternRegistry (authored) / Derivation Engine (computed) | PatternRegistry reads |
-| `Discovery.status` | DiscoveryRegistry | Activation Engine (REVEALS), Graph Layer (materialization) |
-| `Discovery.confidence` | DiscoveryRegistry | PatternRegistry (DERIVED_FROM weight interpretation) |
-| `Observation.provenance` | ObservationRegistry | Validation Engine (admissibility), DiscoveryRegistry (SUPPORTED_BY weight) |
-| `Sector.accessibility` | SectorRegistry | Validation Engine (INV-07), Graph Layer (OCCURRED_IN legality) |
-| `Experiment.status` | ExperimentRegistry | Validation Engine (INV-04, INV-05) |
-| `Experiment.outcome` | ExperimentRegistry | Validation Engine (INV-05) |
-| `Tradeoff.exchange` | TradeoffRegistry | Validation Engine (INV-06) |
-| `SUPPORTED_BY.contribution` | DiscoveryRegistry | Derivation Engine (confidence recalculation) |
-| `DERIVED_FROM.weight` | PatternRegistry | Derivation Engine (strength recalculation) |
-| `ASSOCIATED_WITH.affinity` | EntityRegistry | Derivation Engine (sector weighting) |
-| `REVEALS` (activation) | DiscoveryRegistry (rule) | Graph Layer (materialization), Explorer Mode (visibility) |
+| Schema Element              | Owner                                                     | Consequence Domains                                                        |
+| --------------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `Pattern.source`            | PatternRegistry                                           | Validation Engine (INV-02), Derivation Engine (strength)                   |
+| `Pattern.strength`          | PatternRegistry (authored) / Derivation Engine (computed) | PatternRegistry reads                                                      |
+| `Discovery.status`          | DiscoveryRegistry                                         | Activation Engine (REVEALS), Graph Layer (materialization)                 |
+| `Discovery.confidence`      | DiscoveryRegistry                                         | PatternRegistry (DERIVED_FROM weight interpretation)                       |
+| `Observation.provenance`    | ObservationRegistry                                       | Validation Engine (admissibility), DiscoveryRegistry (SUPPORTED_BY weight) |
+| `Sector.accessibility`      | SectorRegistry                                            | Validation Engine (INV-07), Graph Layer (OCCURRED_IN legality)             |
+| `Experiment.status`         | ExperimentRegistry                                        | Validation Engine (INV-04, INV-05)                                         |
+| `Experiment.outcome`        | ExperimentRegistry                                        | Validation Engine (INV-05)                                                 |
+| `Tradeoff.exchange`         | TradeoffRegistry                                          | Validation Engine (INV-06)                                                 |
+| `SUPPORTED_BY.contribution` | DiscoveryRegistry                                         | Derivation Engine (confidence recalculation)                               |
+| `DERIVED_FROM.weight`       | PatternRegistry                                           | Derivation Engine (strength recalculation)                                 |
+| `ASSOCIATED_WITH.affinity`  | EntityRegistry                                            | Derivation Engine (sector weighting)                                       |
+| `REVEALS` (activation)      | DiscoveryRegistry (rule)                                  | Graph Layer (materialization), Explorer Mode (visibility)                  |
 
 ### 8.2 How To Use This Map
 
@@ -524,7 +538,7 @@ This replaces committees with topology. Governance Law 01 in operational form.
 1. Identify the schema element being changed
 2. Find it in the Consequence Map
 3. The Consequence Domains column lists every authority that must be consulted
-4. If the change alters *legality* rather than *possibility* → constitutional change (Governance Law 04)
+4. If the change alters _legality_ rather than _possibility_ → constitutional change (Governance Law 04)
 5. If the change is additive → schema change (Governance Law 03)
 
 **Example — Proposal: Add `Pattern.source = EMERGENT`**
@@ -564,10 +578,10 @@ Review participants: All listed consequence domains + Governance Authority
 
 ### 9.1 Schema Change vs Constitutional Change
 
-| Change Type | Test | Protocol |
-|---|---|---|
-| Schema change | Does this extend what's possible without restricting what's legal? | Governance Law 03 — automatic coexistence |
-| Constitutional change | Does this redraw legality for existing nodes? | Governance Law 04 — explicit migration strategy |
+| Change Type           | Test                                                               | Protocol                                        |
+| --------------------- | ------------------------------------------------------------------ | ----------------------------------------------- |
+| Schema change         | Does this extend what's possible without restricting what's legal? | Governance Law 03 — automatic coexistence       |
+| Constitutional change | Does this redraw legality for existing nodes?                      | Governance Law 04 — explicit migration strategy |
 
 ### 9.2 The Migration Window Model
 
@@ -621,6 +635,7 @@ The Observatory does not rewrite history. It reevaluates it. The same principle 
 Governance Authority is not a runtime system. It is a specification authority. It has no runtime power — it cannot block writes, compute values, or materialize edges.
 
 **Governance Authority responsibilities:**
+
 - Approve or reject constitutional change proposals
 - Declare deprecation schedules
 - Authorize sunset dates
@@ -628,6 +643,7 @@ Governance Authority is not a runtime system. It is a specification authority. I
 - Resolve cross-domain disputes about architectural intent
 
 **Governance Authority composition:**
+
 - Affected domain registry owners (per Consequence Map)
 - No external participants required for schema changes
 - Full authority lattice participants required for constitutional changes
@@ -739,12 +755,13 @@ Governance Law 01. Authority follows ownership. Schema changes that don't alter 
 
 ---
 
-*Doc 2 complete.*
-*The map has boundaries. The boundaries have owners. The owners have authority. The authority has limits. Everything beyond those limits belongs to a different registry, a different layer, or the Graph.*
+_Doc 2 complete._
+_The map has boundaries. The boundaries have owners. The owners have authority. The authority has limits. Everything beyond those limits belongs to a different registry, a different layer, or the Graph._
 
 ---
 
 **Document Metadata**
+
 - Architecture Sessions: D · G · G.1
 - Domain Registries: 10
 - Architectural Layers: 3 (Graph, Invariant, Governance)

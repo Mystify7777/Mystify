@@ -1,4 +1,5 @@
 # Observatory Architecture
+
 ## Doc 5 — Governance Spec
 
 **Status:** Locked  
@@ -90,18 +91,20 @@ This law prevents authority creep. Every large system eventually develops one he
 Every proposed change to the Observatory architecture falls into exactly one category.
 
 **Schema Change:**
+
 > Extends what is possible without restricting what is legal.
 
 Governance Law 03 applies. Automatic coexistence. No migration strategy required.
 
 **Constitutional Change:**
+
 > Redraws legality for existing nodes or relationships.
 
 Governance Law 04 applies. Explicit migration strategy required before activation.
 
 ### 1.2 The Classification Test
 
-> Does this change affect what is *legal*, or only what is *possible*?
+> Does this change affect what is _legal_, or only what is _possible_?
 
 ```
 Possible expands → Schema change
@@ -110,27 +113,30 @@ Legal redraws   → Constitutional change
 
 Examples:
 
-| Proposed Change | Classification | Reasoning |
-|---|---|---|
-| Add `Pattern.source = EMERGENT` | Schema | New value extends possibilities; existing values unchanged |
-| Add optional `Observation.sessionId` | Schema | New optional field; nothing becomes illegal |
-| Add `Entity.type = ARCHIVIST` | Schema | New entity type; no existing entity becomes invalid |
-| Change INV-02 threshold ≥1 → ≥2 | Constitutional | Existing DERIVED Patterns with 1 Observation become non-compliant |
-| Make `Sector.summary` required | Constitutional | Sectors without summary become non-compliant |
-| Remove `Tradeoff.rationale` | Constitutional | Removes mechanism — see Doc 4 Section 6.3 |
-| Transfer AFFECTS ownership to ProjectRegistry | Constitutional | Changes authority model |
-| Change `DERIVED_FROM` from Evidentiary to Semantic | Constitutional | Changes relationship class, cascade behavior, ownership |
+| Proposed Change                                    | Classification | Reasoning                                                         |
+| -------------------------------------------------- | -------------- | ----------------------------------------------------------------- |
+| Add `Pattern.source = EMERGENT`                    | Schema         | New value extends possibilities; existing values unchanged        |
+| Add optional `Observation.sessionId`               | Schema         | New optional field; nothing becomes illegal                       |
+| Add `Entity.type = ARCHIVIST`                      | Schema         | New entity type; no existing entity becomes invalid               |
+| Change INV-02 threshold ≥1 → ≥2                    | Constitutional | Existing DERIVED Patterns with 1 Observation become non-compliant |
+| Make `Sector.summary` required                     | Constitutional | Sectors without summary become non-compliant                      |
+| Remove `Tradeoff.rationale`                        | Constitutional | Removes mechanism — see Doc 4 Section 6.3                         |
+| Transfer AFFECTS ownership to ProjectRegistry      | Constitutional | Changes authority model                                           |
+| Change `DERIVED_FROM` from Evidentiary to Semantic | Constitutional | Changes relationship class, cascade behavior, ownership           |
 
 ### 1.3 Governance Laws
 
 **Governance Law 03:**
+
 > Schema evolution is additive by default.
 > New versions extend what is legal. They do not invalidate what was true.
 
 **Governance Law 04:**
+
 > Architectural changes that alter legality are constitutional changes, not schema changes.
 
 **Governance Law 05:**
+
 > Historical validity and current compliance are separate concepts.
 
 ```
@@ -249,6 +255,7 @@ NodeVersionRecord {
 ```
 
 **Read behavior under non-compliance:**
+
 - Read: Always permitted, regardless of compliance status
 - Write modifications: May require compliance upgrade first (strategy-dependent)
 - Existence: Cannot be denied — Observatory Existence Principle applies
@@ -368,11 +375,13 @@ See Doc 2, Section 8 for the complete Consequence Map.
 ### 5.1 How To Maintain The Consequence Map
 
 When a schema change is approved:
+
 1. Add new schema elements to the map
 2. Link consequence domains accurately
 3. Schema changes with no cross-registry consequences: entry still required (documents scope)
 
 When a constitutional change completes:
+
 1. Update existing entries if element semantics changed
 2. Add migration status field to affected entries during Migration Window
 3. Remove migration status when all nodes reach compliance
@@ -398,7 +407,7 @@ Proposed change: [X]
 
 ### 6.1 The Observatory's Constitutional Invariants
 
-Some things define what the Observatory *is*. Changing them requires demonstrating the Observatory remains epistemologically sound afterward. In practice, most of these cannot be meaningfully changed without rebuilding from scratch.
+Some things define what the Observatory _is_. Changing them requires demonstrating the Observatory remains epistemologically sound afterward. In practice, most of these cannot be meaningfully changed without rebuilding from scratch.
 
 **Cannot be changed without architectural justification:**
 
@@ -429,6 +438,7 @@ Observation Constitution Article 1
 ```
 
 **Cannot be removed (Doc 4, Section 6.3):**
+
 - `Observation.provenance`
 - `Observation.observer`
 - `Discovery.status`
@@ -440,6 +450,7 @@ Observation Constitution Article 1
 - `Certification.issuer`
 
 **Foundational invariants (never remove — may modify through constitutional process):**
+
 - INV-01: Discovery evidence requirement
 - INV-02: Derived Pattern evidence requirement
 - INV-03: Discovery visibility gate
@@ -505,32 +516,33 @@ The architecture is self-consistent under recursion. Governance principles that 
 
 ### Change Type Reference
 
-| Proposed Change | Type | Process |
-|---|---|---|
-| New enum value | Schema | Section 2 |
-| New optional field | Schema | Section 2 |
-| New node type | Schema | Section 2 |
-| New relationship type | Schema | Section 2 |
-| New Entity or Sector type | Schema | Section 2 |
-| Making field required | Constitutional | Section 3 |
-| Removing field | Constitutional | Section 3 |
-| Changing invariant | Constitutional | Section 3 |
-| Changing field semantics | Constitutional | Section 3 |
-| Ownership transfer | Constitutional | Section 3 |
-| Relationship class change | Constitutional | Section 3 |
+| Proposed Change               | Type                           | Process         |
+| ----------------------------- | ------------------------------ | --------------- |
+| New enum value                | Schema                         | Section 2       |
+| New optional field            | Schema                         | Section 2       |
+| New node type                 | Schema                         | Section 2       |
+| New relationship type         | Schema                         | Section 2       |
+| New Entity or Sector type     | Schema                         | Section 2       |
+| Making field required         | Constitutional                 | Section 3       |
+| Removing field                | Constitutional                 | Section 3       |
+| Changing invariant            | Constitutional                 | Section 3       |
+| Changing field semantics      | Constitutional                 | Section 3       |
+| Ownership transfer            | Constitutional                 | Section 3       |
+| Relationship class change     | Constitutional                 | Section 3       |
 | Foundational invariant change | Constitutional + justification | Section 3 + 6.1 |
 
 ---
 
-*Doc 5 complete.*
-*The Observatory now knows how to change without forgetting.*
-*History is preserved. Compliance is evaluated. The past is never erased.*
-*Future Monster inherits terrain, not mythology.*
-*The runes are carved.*
+_Doc 5 complete._
+_The Observatory now knows how to change without forgetting._
+_History is preserved. Compliance is evaluated. The past is never erased._
+_Future Monster inherits terrain, not mythology._
+_The runes are carved._
 
 ---
 
 **Document Metadata**
+
 - Architecture Sessions: G
 - Governance Laws: 5 (Laws 01–05)
 - Change types: 2 (Schema, Constitutional)

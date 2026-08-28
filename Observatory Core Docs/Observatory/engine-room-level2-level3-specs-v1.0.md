@@ -1,4 +1,5 @@
 # Engine Room — Level 2 & Level 3 Specifications v1.0
+
 ## Subsystem Inspection / Cross-Project Constraints & Tradeoffs
 
 ---
@@ -92,11 +93,13 @@ That is an honest Level 2 with nothing to show. It is correct. It is not embarra
 Level 2 inherits the Level 1 layout with three changes:
 
 **1 — Breadcrumb extends one level deeper:**
+
 ```
 ENGINE ROOM  >  CyberShield  >  Threat Engine
 ```
 
 **2 — Access Ladder applies to the subsystem:**
+
 ```
 Structure    Internal architecture of Threat Engine
 State        How Threat Engine behaves (if observable)
@@ -106,6 +109,7 @@ Tradeoffs    Decisions made for Threat Engine specifically
 ```
 
 **3 — Chaos Controls become maximally specific:**
+
 ```
 CHAOS CONTROLS
 Target: Threat Engine
@@ -443,6 +447,6 @@ REMAINING:
 
 ---
 
-*Engine Room Level 2 & Level 3 Specifications v1.0*
-*All decisions above are locked unless explicitly revisited.*
-*Mystify Observatory — Engineer Workspace*
+_Engine Room Level 2 & Level 3 Specifications v1.0_
+_All decisions above are locked unless explicitly revisited._
+_Mystify Observatory — Engineer Workspace_
