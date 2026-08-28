@@ -3,7 +3,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { getRegistryCounts } from "@/data/registry/store";
-import { getRecruiterBootSteps } from "@/features/recruiter/recruiter-content";
+import {
+  getRecruiterBootSteps,
+  scheduleRecruiterBootStep,
+} from "@/features/recruiter/recruiter-content";
 
 interface RecruiterBootSequenceProps {
   onComplete: () => void;
@@ -21,16 +24,13 @@ export function RecruiterBootSequence({
 
   useEffect(() => {
     if (stepIndex >= steps.length - 1) {
-      const completionTimer = window.setTimeout(onComplete, stepDurationMs);
-      return () => window.clearTimeout(completionTimer);
+      return scheduleRecruiterBootStep(onComplete, stepDurationMs);
     }
 
-    const timer = window.setTimeout(
+    return scheduleRecruiterBootStep(
       () => setStepIndex((current) => current + 1),
       stepDurationMs,
     );
-
-    return () => window.clearTimeout(timer);
   }, [onComplete, stepDurationMs, stepIndex, steps.length]);
 
   return (
