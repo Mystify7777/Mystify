@@ -70,22 +70,6 @@ export function RecruiterEvidenceCard() {
             </p>
           </div>
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {RECRUITER_CREDENTIALS.map((credential) => (
-              <div
-                key={credential.label}
-                className="rounded-2xl border border-white/10 p-4"
-              >
-                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-observatory-muted">
-                  {credential.label}
-                </p>
-                <p className="mt-2 text-sm leading-6 text-observatory-ink">
-                  {credential.value}
-                </p>
-              </div>
-            ))}
-          </div>
-
           <div className="mt-6 flex flex-wrap gap-3">
             <a
               href={RESUME_PATH}
