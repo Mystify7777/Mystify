@@ -6,7 +6,8 @@ export const RECRUITER_IDENTITY = {
   role: "Software Engineer",
   institution: "BCET Durgapur",
   graduationYear: "2026",
-  thesis: "Every project in this portfolio is backed by structured engineering evidence. Constraints, tradeoffs, observations, and design decisions are stored as first-class data rather than hidden implementation history.",
+  thesis:
+    "Every project in this portfolio is backed by structured engineering evidence. Constraints, tradeoffs, observations, and design decisions are stored as first-class data rather than hidden implementation history.",
   engineeringIdentity: "Category Integrity",
   engineeringPrinciple:
     "Different kinds of truth remain separate so each can stay honest in its own domain.",
