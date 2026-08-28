@@ -7,6 +7,7 @@ import {
   CATEGORY_INTEGRITY,
   getCategoryIntegrityExamples,
   getRecruiterQuickSignals,
+  RECRUITER_CONTACT,
   RECRUITER_CREDENTIALS,
   RECRUITER_IDENTITY,
 } from "@/features/recruiter/recruiter-content";
@@ -37,18 +38,35 @@ export function RecruiterEvidenceCard() {
             {RECRUITER_IDENTITY.name}
           </h1>
           <p className="mt-2 text-sm text-observatory-muted">
-            {RECRUITER_IDENTITY.role}
+            {RECRUITER_IDENTITY.role} · {RECRUITER_IDENTITY.institution} · {RECRUITER_IDENTITY.graduationYear}
           </p>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-observatory-ink sm:text-xl">
-            {RECRUITER_IDENTITY.thesis}
+          <p className="mt-1 font-mono text-xs text-observatory-muted">
+            {RECRUITER_CREDENTIALS[1].value}
           </p>
 
           <div className="mt-6 rounded-2xl border border-observatory-amber/20 bg-observatory-amber/5 p-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-observatory-muted">
-              Engineering identity
+            <p className="text-sm leading-6 text-observatory-ink sm:text-base">
+              {RECRUITER_IDENTITY.thesis}
             </p>
-            <p className="mt-2 text-base font-medium text-observatory-ink">
-              {RECRUITER_IDENTITY.engineeringIdentity}
+            <p className="mt-4 text-sm leading-6 text-observatory-muted">
+              Most portfolios show what was built. This one shows why
+              decisions were made.
+            </p>
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-white/10 p-4">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-observatory-muted">
+              {CATEGORY_INTEGRITY.title}
+            </p>
+            <p className="mt-3 text-sm leading-6 text-observatory-ink">
+              Across six projects, one principle emerged independently every
+              time:
+            </p>
+            <p className="mt-3 text-base font-medium leading-7 text-observatory-ink">
+              &ldquo;{RECRUITER_IDENTITY.engineeringPrinciple}&rdquo;
+            </p>
+            <p className="mt-3 text-xs leading-5 text-observatory-muted">
+              Not imposed top-down. Discovered repeatedly.
             </p>
           </div>
 
@@ -74,7 +92,7 @@ export function RecruiterEvidenceCard() {
               download
               className="rounded-xl bg-observatory-amber px-4 py-2 font-mono text-xs text-black transition duration-observatory hover:brightness-110"
             >
-              Resume
+              Download Resume
             </a>
             <button
               type="button"
@@ -82,18 +100,24 @@ export function RecruiterEvidenceCard() {
               aria-expanded={contactOpen}
               className="rounded-xl border border-white/10 px-4 py-2 font-mono text-xs text-observatory-ink transition duration-observatory hover:bg-white/5"
             >
-              Contact
+              Start Conversation
             </button>
           </div>
 
           {contactOpen ? (
             <div className="mt-4 rounded-2xl border border-white/10 p-4">
-              <p className="text-sm text-observatory-ink">
-                Start a conversation.
+              <p className="text-sm font-medium text-observatory-ink">
+                {RECRUITER_CONTACT.headline}
               </p>
               <p className="mt-2 text-xs leading-5 text-observatory-muted">
-                Contact delivery is not configured yet. The contact surface is
-                kept intentionally minimal until a delivery path exists.
+                {RECRUITER_CONTACT.primary}. Contact delivery is not configured
+                yet, so no submission action is exposed in this pass.
+              </p>
+              <p className="mt-3 text-xs text-observatory-muted">
+                {RECRUITER_CONTACT.responseTime}
+              </p>
+              <p className="mt-2 text-xs text-observatory-muted">
+                Also reachable via {RECRUITER_CONTACT.secondary}.
               </p>
             </div>
           ) : null}
@@ -118,15 +142,6 @@ export function RecruiterEvidenceCard() {
               </div>
             ))}
           </div>
-
-          <div className="mt-5 rounded-2xl border border-white/10 p-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-observatory-muted">
-              {CATEGORY_INTEGRITY.title}
-            </p>
-            <p className="mt-2 text-sm leading-6 text-observatory-ink">
-              {CATEGORY_INTEGRITY.statement}
-            </p>
-          </div>
         </div>
       </motion.section>
 
@@ -134,9 +149,9 @@ export function RecruiterEvidenceCard() {
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-observatory-muted">
-              Why this emerged
+              Cross-project signal
             </p>
-            <h2 className="mt-2 text-xl font-medium">Cross-project signal</h2>
+            <h2 className="mt-2 text-xl font-medium">Why this emerged</h2>
           </div>
           <button
             type="button"
