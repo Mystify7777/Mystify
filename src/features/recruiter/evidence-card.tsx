@@ -2,7 +2,10 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { getProject, getProjects, getRegistryCounts } from "@/data/registry/store";
+import {
+  getProjects,
+  getRegistryCounts,
+} from "@/data/registry/store";
 import {
   CATEGORY_INTEGRITY,
   getCategoryIntegrityExamples,
@@ -17,10 +20,6 @@ export function RecruiterEvidenceCard() {
   const [showExplanation, setShowExplanation] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const counts = getRegistryCounts();
-  const flagshipProjects = useMemo(
-    () => getProjects().filter((project) => ["cybershield", "halotask", "mystify"].includes(project.id)),
-    [],
-  );
   const examples = useMemo(() => getCategoryIntegrityExamples(getProjects()), []);
 
   return (
@@ -88,7 +87,8 @@ export function RecruiterEvidenceCard() {
             <div className="mt-4 rounded-2xl border border-white/10 p-4">
               <p className="text-sm text-observatory-ink">Start a conversation.</p>
               <p className="mt-2 text-xs leading-5 text-observatory-muted">
-                Contact delivery is not configured yet. The form remains intentionally collapsed until its delivery path exists.
+                Contact delivery is not configured yet. The contact surface is kept
+                intentionally minimal until a delivery path exists.
               </p>
             </div>
           ) : null}
@@ -111,7 +111,7 @@ export function RecruiterEvidenceCard() {
 
           <div className="mt-5 rounded-2xl border border-white/10 p-4">
             <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-observatory-muted">
-              Category Integrity
+              {CATEGORY_INTEGRITY.title}
             </p>
             <p className="mt-2 text-sm leading-6 text-observatory-ink">
               {CATEGORY_INTEGRITY.statement}
@@ -140,32 +140,36 @@ export function RecruiterEvidenceCard() {
 
         {showExplanation ? (
           <div className="mt-5 grid gap-3 md:grid-cols-3">
-            {examples.map((example) => (
-              <article key={example.projectId} className="rounded-2xl border border-white/10 p-4">
-                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-observatory-muted">
-                  {example.projectName}
-                </p>
-                <p className="mt-3 text-sm leading-6 text-observatory-ink">
-                  {example.thesis}
-                </p>
-                <p className="mt-3 text-xs text-observatory-muted">
-                  {example.engineeringIdentity}
-                </p>
-              </article>
-            ))}
+            {examples.length > 0 ? (
+              examples.map((example) => (
+                <article key={example.projectId} className="rounded-2xl border border-white/10 p-4">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-observatory-muted">
+                    {example.projectName}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-observatory-ink">
+                    {example.thesis}
+                  </p>
+                  <p className="mt-3 text-xs text-observatory-muted">
+                    {example.engineeringIdentity}
+                  </p>
+                </article>
+              ))
+            ) : (
+              <p className="rounded-2xl border border-white/10 p-4 text-xs leading-5 text-observatory-muted md:col-span-3">
+                No cross-project evidence is currently registered.
+              </p>
+            )}
           </div>
         ) : null}
 
         {showExplanation ? (
           <p className="mt-5 text-xs leading-5 text-observatory-muted">
-            The pattern is derived from the project theses and engineering identities represented in the canonical registry. Deeper evidence belongs to Engineer Mode.
+            The pattern is derived from the project theses and engineering identities
+            represented in the canonical registry. Deeper evidence belongs to
+            Engineer Mode.
           </p>
         ) : null}
       </section>
-
-      <p className="text-center font-mono text-[11px] text-observatory-muted">
-        {flagshipProjects.length} flagship-ready signals are available to the next Recruiter surface.
-      </p>
     </div>
   );
 }
