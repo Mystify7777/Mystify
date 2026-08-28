@@ -49,8 +49,8 @@ export function RecruiterEvidenceCard() {
               {RECRUITER_IDENTITY.thesis}
             </p>
             <p className="mt-4 text-sm leading-6 text-observatory-muted">
-              Most portfolios show what was built. This one shows why
-              decisions were made.
+              Most portfolios show what was built. This one shows why decisions
+              were made.
             </p>
           </div>
 
