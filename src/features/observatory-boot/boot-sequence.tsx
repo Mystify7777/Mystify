@@ -21,17 +21,23 @@ const GREETINGS = [
 
 const VISIBLE_GREETING_COUNT = 5;
 const ACTIVE_GREETING_INDEX = Math.floor(VISIBLE_GREETING_COUNT / 2);
-const GREETING_ROTATION_MS = 2_400;
+const GREETING_SLIDE_SECONDS = 0.7;
+const GREETING_DWELL_MS = 300;
+const GREETING_STEP_MS = GREETING_SLIDE_SECONDS * 1_000 + GREETING_DWELL_MS;
 
 interface ObservatoryBootSequenceProps {
   onComplete: () => void;
 }
 
 function getGreetingWindow(offset: number) {
-  return Array.from({ length: VISIBLE_GREETING_COUNT }, (_, index) => {
-    const greetingIndex = (offset + index) % GREETINGS.length;
+  return Array.from({ length: VISIBLE_GREETING_COUNT + 2 }, (_, index) => {
+    const greetingIndex =
+      (offset + index - 1 + GREETINGS.length) % GREETINGS.length;
 
-    return GREETINGS[greetingIndex];
+    return {
+      id: offset + index - 1,
+      greeting: GREETINGS[greetingIndex],
+    };
   });
 }
 
@@ -41,6 +47,7 @@ export function ObservatoryBootSequence({
   const prefersReducedMotion = useReducedMotion();
   const [stage, setStage] = useState<ObservatoryBootStage>("INITIALIZING");
   const [greetingOffset, setGreetingOffset] = useState(0);
+  const [isGreetingPulse, setIsGreetingPulse] = useState(false);
   const completedRef = useRef(false);
 
   useEffect(() => {
@@ -48,13 +55,28 @@ export function ObservatoryBootSequence({
       return;
     }
 
-    const timer = globalThis.setInterval(() => {
-      setGreetingOffset((currentOffset) => {
-        return (currentOffset + 1) % GREETINGS.length;
-      });
-    }, GREETING_ROTATION_MS);
+    let dwellTimer: ReturnType<typeof globalThis.setTimeout> | undefined;
 
-    return () => globalThis.clearInterval(timer);
+    const stepTimer = globalThis.setInterval(() => {
+      setIsGreetingPulse(false);
+      setGreetingOffset((currentOffset) => currentOffset + 1);
+
+      dwellTimer = globalThis.setTimeout(() => {
+        setIsGreetingPulse(true);
+      }, GREETING_SLIDE_SECONDS * 1_000);
+    }, GREETING_STEP_MS);
+
+    dwellTimer = globalThis.setTimeout(() => {
+      setIsGreetingPulse(true);
+    }, GREETING_SLIDE_SECONDS * 1_000);
+
+    return () => {
+      globalThis.clearInterval(stepTimer);
+
+      if (dwellTimer) {
+        globalThis.clearTimeout(dwellTimer);
+      }
+    };
   }, [prefersReducedMotion]);
 
   useEffect(() => {
@@ -87,41 +109,80 @@ export function ObservatoryBootSequence({
       className="relative flex min-h-[calc(100vh-2.5rem)] items-center justify-center overflow-hidden px-4 py-12"
     >
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-10 sm:bottom-14"
+        className="pointer-events-none absolute inset-x-0 bottom-10 overflow-hidden sm:bottom-14"
         aria-hidden="true"
       >
-        <div className="mx-auto flex max-w-5xl items-center justify-center gap-3 overflow-hidden px-4 font-mono sm:gap-6">
-          {visibleGreetings.map((greeting, index) => {
-            const isActive = index === ACTIVE_GREETING_INDEX;
+        <div className="mx-auto max-w-5xl overflow-hidden px-4">
+          <motion.div
+            animate={
+              prefersReducedMotion
+                ? { x: "0%" }
+                : { x: "-20%" }
+            }
+            transition={
+              prefersReducedMotion
+                ? { duration: 0 }
+                : {
+                    duration: GREETING_SLIDE_SECONDS,
+                    ease: "easeInOut",
+                  }
+            }
+            className="grid grid-cols-7 items-center font-mono"
+            style={{
+              width: "140%",
+              transform: "translateX(-20%)",
+            }}
+          >
+            {visibleGreetings.map(({ greeting, id }, index) => {
+              const visibleIndex = index - 1;
+              const distanceFromCenter = Math.abs(
+                visibleIndex - ACTIVE_GREETING_INDEX,
+              );
+              const isActive =
+                visibleIndex === ACTIVE_GREETING_INDEX;
 
-            return (
-              <motion.span
-                key={greeting + "-" + index + "-" + greetingOffset}
-                layout
-                initial={
-                  prefersReducedMotion
-                    ? false
-                    : { opacity: 0, x: -24, scale: 0.92 }
-                }
-                animate={{
-                  opacity: isActive ? 1 : 0.38,
-                  x: 0,
-                  scale: isActive ? 1.35 : 0.92,
-                }}
-                transition={{
-                  duration: prefersReducedMotion ? 0 : 0.42,
-                  ease: "easeInOut",
-                }}
-                className={
-                  isActive
-                    ? "min-w-0 whitespace-nowrap text-center text-sm font-medium tracking-[0.18em] text-observatory-amber sm:text-base"
-                    : "min-w-0 whitespace-nowrap text-center text-[10px] tracking-[0.16em] text-observatory-muted sm:text-xs"
-                }
-              >
-                {greeting}
-              </motion.span>
-            );
-          })}
+              const scale =
+                distanceFromCenter === 0
+                  ? isGreetingPulse
+                    ? 1.35
+                    : 1.25
+                  : distanceFromCenter === 1
+                    ? 0.85
+                    : 0.7;
+
+              const opacity =
+                distanceFromCenter === 0
+                  ? 1
+                  : distanceFromCenter === 1
+                    ? 0.7
+                    : 0.4;
+
+              return (
+                <motion.span
+                  key={id}
+                  animate={{
+                    scale,
+                    opacity,
+                  }}
+                  transition={{
+                    duration: prefersReducedMotion
+                      ? 0
+                      : isActive && isGreetingPulse
+                        ? 0.15
+                        : GREETING_SLIDE_SECONDS,
+                    ease: "easeInOut",
+                  }}
+                  className={
+                    isActive
+                      ? "whitespace-nowrap text-center text-sm font-semibold tracking-[0.18em] text-observatory-amber sm:text-base"
+                      : "whitespace-nowrap text-center text-[10px] tracking-[0.16em] text-observatory-muted sm:text-xs"
+                  }
+                >
+                  {greeting}
+                </motion.span>
+              );
+            })}
+          </motion.div>
         </div>
       </div>
 
