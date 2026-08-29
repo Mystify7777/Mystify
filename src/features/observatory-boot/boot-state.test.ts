@@ -16,8 +16,9 @@ describe("Observatory boot state", () => {
       "COMPLETE",
     ]);
 
-    let stage = OBSERVATORY_BOOT_STAGES[0];
-    const progression = [stage];
+    let stage: (typeof OBSERVATORY_BOOT_STAGES)[number] =
+      OBSERVATORY_BOOT_STAGES[0];
+    const progression: (typeof OBSERVATORY_BOOT_STAGES)[number][] = [stage];
 
     while (stage !== "COMPLETE") {
       stage = getNextObservatoryBootStage(stage);
