@@ -126,7 +126,8 @@ export function ObservatoryShell() {
           </>
         )}
 
-        <WindowManager windowId={PLACEHOLDER_WINDOW.id}>
+        {observatoryBootComplete ? (
+          <WindowManager windowId={PLACEHOLDER_WINDOW.id}>
           <div className="space-y-3">
             <p className="text-sm text-observatory-ink">
               Placeholder application surface.
@@ -137,15 +138,20 @@ export function ObservatoryShell() {
               shell.
             </p>
           </div>
-        </WindowManager>
+          </WindowManager>
+        ) : null}
       </div>
 
-      <Notifications />
-      <Dock />
-      <CommandPalette
-        open={paletteOpen}
-        onClose={() => setPaletteOpen(false)}
-      />
+      {observatoryBootComplete ? (
+        <>
+          <Notifications />
+          <Dock />
+          <CommandPalette
+            open={paletteOpen}
+            onClose={() => setPaletteOpen(false)}
+          />
+        </>
+      ) : null}
     </main>
   );
 }
