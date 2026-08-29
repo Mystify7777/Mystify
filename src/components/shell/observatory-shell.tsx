@@ -128,16 +128,16 @@ export function ObservatoryShell() {
 
         {observatoryBootComplete ? (
           <WindowManager windowId={PLACEHOLDER_WINDOW.id}>
-          <div className="space-y-3">
-            <p className="text-sm text-observatory-ink">
-              Placeholder application surface.
-            </p>
-            <p className="text-xs leading-5 text-observatory-muted">
-              This window exists only to prove the shared lifecycle contract.
-              Project knowledge and mode-specific behavior do not belong in the
-              shell.
-            </p>
-          </div>
+            <div className="space-y-3">
+              <p className="text-sm text-observatory-ink">
+                Placeholder application surface.
+              </p>
+              <p className="text-xs leading-5 text-observatory-muted">
+                This window exists only to prove the shared lifecycle contract.
+                Project knowledge and mode-specific behavior do not belong in the
+                shell.
+              </p>
+            </div>
           </WindowManager>
         ) : null}
       </div>
