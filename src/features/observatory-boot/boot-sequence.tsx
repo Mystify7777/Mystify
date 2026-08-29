@@ -60,7 +60,7 @@ export function ObservatoryBootSequence({
         className="pointer-events-none absolute inset-0 overflow-hidden"
         aria-hidden="true"
       >
-        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 overflow-hidden border-y border-observatory-amber/10 py-4">
+        <div className="absolute inset-x-0 bottom-10 overflow-hidden border-y border-observatory-amber/10 py-4 sm:bottom-14">
           <div
             className={
               prefersReducedMotion
