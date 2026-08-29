@@ -48,7 +48,7 @@ export function scheduleObservatoryBootTransition(
   callback: () => void,
   delayMs: number,
 ): () => void {
-  const timer = window.setTimeout(callback, delayMs);
+  const timer = globalThis.setTimeout(callback, delayMs);
 
-  return () => window.clearTimeout(timer);
+  return () => globalThis.clearTimeout(timer);
 }
