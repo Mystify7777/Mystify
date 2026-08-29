@@ -40,3 +40,21 @@ a {
 ::selection {
   background: rgba(201, 146, 74, 0.25);
 }
+
+@keyframes observatory-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
