@@ -22,23 +22,6 @@ interface ObservatoryBootSequenceProps {
   onComplete: () => void;
 }
 
-function StageStatus({ stage }: { stage: ObservatoryBootStage }) {
-  const labels: Record<Exclude<ObservatoryBootStage, "COMPLETE">, string> = {
-    INITIALIZING: "INITIALIZING",
-    MORPHING: "MYSTIFY LOADER",
-    TRACING: "TRACE GLOW",
-    GREETING: "MULTILINGUAL GREETING",
-  };
-
-  if (stage === "COMPLETE") return null;
-
-  return (
-    <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-observatory-muted sm:text-xs">
-      {labels[stage]}
-    </p>
-  );
-}
-
 export function ObservatoryBootSequence({
   onComplete,
 }: ObservatoryBootSequenceProps) {
@@ -74,16 +57,32 @@ export function ObservatoryBootSequence({
       className="relative flex min-h-[calc(100vh-2.5rem)] items-center justify-center overflow-hidden px-4 py-12"
     >
       <div
-        className="pointer-events-none absolute inset-x-6 bottom-8 border-t border-observatory-amber/20"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
         aria-hidden="true"
-      />
+      >
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 overflow-hidden border-y border-observatory-amber/10 py-4">
+          <div
+            className={
+              prefersReducedMotion
+                ? "flex justify-center gap-10 font-mono text-xs tracking-[0.28em] text-observatory-amber/45"
+                : "flex w-max animate-[observatory-marquee_12s_linear_infinite] gap-16 font-mono text-xs tracking-[0.28em] text-observatory-amber/45"
+            }
+          >
+            {[...GREETINGS, ...GREETINGS, ...GREETINGS, ...GREETINGS].map(
+              (greeting, index) => (
+                <span key={greeting + "-ambient-" + index}>{greeting}</span>
+              ),
+            )}
+          </div>
+        </div>
+      </div>
 
       <div className="relative flex w-full max-w-5xl flex-col items-center text-center">
         <div
           role="status"
           aria-live="polite"
           aria-atomic="true"
-          className="flex min-h-[12rem] w-full items-center justify-center sm:min-h-[15rem]"
+          className="relative z-10 flex min-h-[12rem] w-full items-center justify-center sm:min-h-[15rem]"
         >
           {stage === "INITIALIZING" ? (
             <motion.div
@@ -138,33 +137,18 @@ export function ObservatoryBootSequence({
             </div>
           ) : stage === "GREETING" ? (
             <motion.div
-              key="greeting"
-              initial={{ opacity: 0 }}
+              key="greeting-handoff"
+              initial={{ opacity: 0.65 }}
               animate={{ opacity: 1 }}
               transition={{ duration: prefersReducedMotion ? 0.12 : 0.35 }}
-              className="w-full overflow-hidden border-y border-observatory-amber/20 py-6"
+              className="font-serif text-5xl italic tracking-[-0.06em] text-observatory-ink sm:text-7xl"
             >
-              <div
-                className={
-                  prefersReducedMotion
-                    ? "flex justify-center gap-8 font-mono text-sm tracking-[0.22em] text-observatory-amber"
-                    : "flex w-max animate-[observatory-marquee_7s_linear_infinite] gap-12 font-mono text-sm tracking-[0.22em] text-observatory-amber"
-                }
-              >
-                {[...GREETINGS, ...GREETINGS].map((greeting, index) => (
-                  <span key={`${greeting}-${index}`}>{greeting}</span>
-                ))}
-              </div>
+              Mystify
             </motion.div>
           ) : null}
         </div>
 
-        <StageStatus stage={stage} />
-
-        <div className="mt-10 flex w-full items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-observatory-muted sm:text-xs">
-          <span>MY / OBSERVATORY</span>
-          <span>{stage}</span>
-        </div>
+        <p className="sr-only">Observatory initialization in progress.</p>
       </div>
     </section>
   );
