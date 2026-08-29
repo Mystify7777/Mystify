@@ -24,10 +24,10 @@ interface ObservatoryBootSequenceProps {
 
 function StageStatus({ stage }: { stage: ObservatoryBootStage }) {
   const labels: Record<Exclude<ObservatoryBootStage, "COMPLETE">, string> = {
-    INITIALIZING: "OBSERVATORY INITIALIZING",
-    MORPHING: "IDENTITY TRACE SYNCHRONIZING",
-    TRACING: "TRACE PATH ACTIVE",
-    GREETING: "VISITOR CONTEXT OPEN",
+    INITIALIZING: "INITIALIZING",
+    MORPHING: "MYSTIFY LOADER",
+    TRACING: "TRACE GLOW",
+    GREETING: "MULTILINGUAL GREETING",
   };
 
   if (stage === "COMPLETE") return null;
@@ -163,7 +163,7 @@ export function ObservatoryBootSequence({
 
         <div className="mt-10 flex w-full items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-observatory-muted sm:text-xs">
           <span>MY / OBSERVATORY</span>
-          <span>{stage === "GREETING" ? "HANDOFF READY" : "SYSTEM ONLINE"}</span>
+          <span>{stage}</span>
         </div>
       </div>
     </section>
