@@ -16,10 +16,23 @@ const GREETINGS = [
   "HOLA",
   "こんにちは",
   "你好",
+  "CIAO",
 ] as const;
+
+const VISIBLE_GREETING_COUNT = 5;
+const ACTIVE_GREETING_INDEX = Math.floor(VISIBLE_GREETING_COUNT / 2);
+const GREETING_ROTATION_MS = 2_400;
 
 interface ObservatoryBootSequenceProps {
   onComplete: () => void;
+}
+
+function getGreetingWindow(offset: number) {
+  return Array.from({ length: VISIBLE_GREETING_COUNT }, (_, index) => {
+    const greetingIndex = (offset + index) % GREETINGS.length;
+
+    return GREETINGS[greetingIndex];
+  });
 }
 
 export function ObservatoryBootSequence({
@@ -27,7 +40,22 @@ export function ObservatoryBootSequence({
 }: ObservatoryBootSequenceProps) {
   const prefersReducedMotion = useReducedMotion();
   const [stage, setStage] = useState<ObservatoryBootStage>("INITIALIZING");
+  const [greetingOffset, setGreetingOffset] = useState(0);
   const completedRef = useRef(false);
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    const timer = globalThis.setInterval(() => {
+      setGreetingOffset((currentOffset) => {
+        return (currentOffset + 1) % GREETINGS.length;
+      });
+    }, GREETING_ROTATION_MS);
+
+    return () => globalThis.clearInterval(timer);
+  }, [prefersReducedMotion]);
 
   useEffect(() => {
     if (stage === "COMPLETE") {
@@ -51,29 +79,49 @@ export function ObservatoryBootSequence({
     );
   }, [onComplete, prefersReducedMotion, stage]);
 
+  const visibleGreetings = getGreetingWindow(greetingOffset);
+
   return (
     <section
       aria-label="Observatory initialization"
       className="relative flex min-h-[calc(100vh-2.5rem)] items-center justify-center overflow-hidden px-4 py-12"
     >
       <div
-        className="pointer-events-none absolute inset-0 overflow-hidden"
+        className="pointer-events-none absolute inset-x-0 bottom-10 sm:bottom-14"
         aria-hidden="true"
       >
-        <div className="absolute inset-x-0 bottom-10 overflow-hidden border-y border-observatory-amber/10 py-4 sm:bottom-14">
-          <div
-            className={
-              prefersReducedMotion
-                ? "flex justify-center gap-10 font-mono text-xs tracking-[0.28em] text-observatory-amber/45"
-                : "flex w-max animate-[observatory-marquee_12s_linear_infinite] gap-16 font-mono text-xs tracking-[0.28em] text-observatory-amber/45"
-            }
-          >
-            {[...GREETINGS, ...GREETINGS, ...GREETINGS, ...GREETINGS].map(
-              (greeting, index) => (
-                <span key={greeting + "-ambient-" + index}>{greeting}</span>
-              ),
-            )}
-          </div>
+        <div className="mx-auto flex max-w-5xl items-center justify-center gap-3 overflow-hidden px-4 font-mono sm:gap-6">
+          {visibleGreetings.map((greeting, index) => {
+            const isActive = index === ACTIVE_GREETING_INDEX;
+
+            return (
+              <motion.span
+                key={greeting + "-" + index + "-" + greetingOffset}
+                layout
+                initial={
+                  prefersReducedMotion
+                    ? false
+                    : { opacity: 0, x: -24, scale: 0.92 }
+                }
+                animate={{
+                  opacity: isActive ? 1 : 0.38,
+                  x: 0,
+                  scale: isActive ? 1.35 : 0.92,
+                }}
+                transition={{
+                  duration: prefersReducedMotion ? 0 : 0.42,
+                  ease: "easeInOut",
+                }}
+                className={
+                  isActive
+                    ? "min-w-0 whitespace-nowrap text-center text-sm font-medium tracking-[0.18em] text-observatory-amber sm:text-base"
+                    : "min-w-0 whitespace-nowrap text-center text-[10px] tracking-[0.16em] text-observatory-muted sm:text-xs"
+                }
+              >
+                {greeting}
+              </motion.span>
+            );
+          })}
         </div>
       </div>
 
