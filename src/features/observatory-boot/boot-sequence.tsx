@@ -21,9 +21,8 @@ const GREETINGS = [
 
 const VISIBLE_GREETING_COUNT = 5;
 const ACTIVE_GREETING_INDEX = Math.floor(VISIBLE_GREETING_COUNT / 2);
-const GREETING_SLIDE_SECONDS = 0.7;
-const GREETING_DWELL_MS = 300;
-const GREETING_STEP_MS = GREETING_SLIDE_SECONDS * 1_000 + GREETING_DWELL_MS;
+const GREETING_SLIDE_SECONDS = 0.8;
+const GREETING_DWELL_SECONDS = 0.3;
 
 interface ObservatoryBootSequenceProps {
   onComplete: () => void;
@@ -41,43 +40,17 @@ function getGreetingWindow(offset: number) {
   });
 }
 
+type GreetingMotionPhase = "SLIDING" | "DWELL";
+
 export function ObservatoryBootSequence({
   onComplete,
 }: ObservatoryBootSequenceProps) {
   const prefersReducedMotion = useReducedMotion();
   const [stage, setStage] = useState<ObservatoryBootStage>("INITIALIZING");
   const [greetingOffset, setGreetingOffset] = useState(0);
-  const [isGreetingPulse, setIsGreetingPulse] = useState(false);
+  const [greetingPhase, setGreetingPhase] =
+    useState<GreetingMotionPhase>("SLIDING");
   const completedRef = useRef(false);
-
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    let dwellTimer: ReturnType<typeof globalThis.setTimeout> | undefined;
-
-    const stepTimer = globalThis.setInterval(() => {
-      setIsGreetingPulse(false);
-      setGreetingOffset((currentOffset) => currentOffset + 1);
-
-      dwellTimer = globalThis.setTimeout(() => {
-        setIsGreetingPulse(true);
-      }, GREETING_SLIDE_SECONDS * 1_000);
-    }, GREETING_STEP_MS);
-
-    dwellTimer = globalThis.setTimeout(() => {
-      setIsGreetingPulse(true);
-    }, GREETING_SLIDE_SECONDS * 1_000);
-
-    return () => {
-      globalThis.clearInterval(stepTimer);
-
-      if (dwellTimer) {
-        globalThis.clearTimeout(dwellTimer);
-      }
-    };
-  }, [prefersReducedMotion]);
 
   useEffect(() => {
     if (stage === "COMPLETE") {
@@ -114,24 +87,26 @@ export function ObservatoryBootSequence({
       >
         <div className="mx-auto max-w-5xl overflow-hidden px-4">
           <motion.div
-            animate={
-              prefersReducedMotion
-                ? { x: "0%" }
-                : { x: "-20%" }
-            }
-            transition={
-              prefersReducedMotion
-                ? { duration: 0 }
-                : {
-                    duration: GREETING_SLIDE_SECONDS,
-                    ease: "easeInOut",
-                  }
-            }
-            className="grid grid-cols-7 items-center font-mono"
-            style={{
-              width: "140%",
-              transform: "translateX(-20%)",
+            animate={{
+              x:
+                prefersReducedMotion || greetingPhase === "DWELL"
+                  ? "0%"
+                  : "-20%",
             }}
+            initial={false}
+            transition={{
+              duration: prefersReducedMotion ? 0 : GREETING_SLIDE_SECONDS,
+              ease: "easeInOut",
+            }}
+            onAnimationComplete={() => {
+              if (prefersReducedMotion || greetingPhase !== "SLIDING") {
+                return;
+              }
+
+              setGreetingPhase("DWELL");
+            }}
+            className="grid grid-cols-7 items-center font-mono"
+            style={{ width: "140%" }}
           >
             {visibleGreetings.map(({ greeting, id }, index) => {
               const visibleIndex = index - 1;
@@ -141,11 +116,9 @@ export function ObservatoryBootSequence({
               const isActive =
                 visibleIndex === ACTIVE_GREETING_INDEX;
 
-              const scale =
+              const baseScale =
                 distanceFromCenter === 0
-                  ? isGreetingPulse
-                    ? 1.35
-                    : 1.25
+                  ? 1.25
                   : distanceFromCenter === 1
                     ? 0.85
                     : 0.7;
@@ -160,18 +133,33 @@ export function ObservatoryBootSequence({
               return (
                 <motion.span
                   key={id}
-                  animate={{
-                    scale,
-                    opacity,
-                  }}
+                  animate={
+                    isActive && greetingPhase === "DWELL" && !prefersReducedMotion
+                      ? { scale: [1.25, 1.35, 1.25] }
+                      : { scale: baseScale }
+                  }
                   transition={{
-                    duration: prefersReducedMotion
-                      ? 0
-                      : isActive && isGreetingPulse
-                        ? 0.15
-                        : GREETING_SLIDE_SECONDS,
+                    duration:
+                      isActive && greetingPhase === "DWELL"
+                        ? GREETING_DWELL_SECONDS
+                        : prefersReducedMotion
+                          ? 0
+                          : GREETING_SLIDE_SECONDS,
                     ease: "easeInOut",
                   }}
+                  onAnimationComplete={() => {
+                    if (
+                      !isActive ||
+                      greetingPhase !== "DWELL" ||
+                      prefersReducedMotion
+                    ) {
+                      return;
+                    }
+
+                    setGreetingOffset((currentOffset) => currentOffset + 1);
+                    setGreetingPhase("SLIDING");
+                  }}
+                  style={{ opacity }}
                   className={
                     isActive
                       ? "whitespace-nowrap text-center text-sm font-semibold tracking-[0.18em] text-observatory-amber sm:text-base"
