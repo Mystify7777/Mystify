@@ -16,35 +16,53 @@ const GREETINGS = [
   "HOLA",
   "こんにちは",
   "你好",
+  "CIAO",
 ] as const;
+
+const VISIBLE_GREETING_COUNT = 5;
+const ACTIVE_GREETING_INDEX = Math.floor(VISIBLE_GREETING_COUNT / 2);
+const GREETING_SLIDE_SECONDS = 0.8;
+const GREETING_DWELL_SECONDS = 0.3;
 
 interface ObservatoryBootSequenceProps {
   onComplete: () => void;
 }
 
-function StageStatus({ stage }: { stage: ObservatoryBootStage }) {
-  const labels: Record<Exclude<ObservatoryBootStage, "COMPLETE">, string> = {
-    INITIALIZING: "INITIALIZING",
-    MORPHING: "MYSTIFY LOADER",
-    TRACING: "TRACE GLOW",
-    GREETING: "MULTILINGUAL GREETING",
-  };
+function getGreetingWindow(offset: number) {
+  return Array.from({ length: VISIBLE_GREETING_COUNT + 2 }, (_, index) => {
+    const greetingIndex =
+      (offset + index - 1 + GREETINGS.length) % GREETINGS.length;
 
-  if (stage === "COMPLETE") return null;
-
-  return (
-    <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-observatory-muted sm:text-xs">
-      {labels[stage]}
-    </p>
-  );
+    return {
+      id: offset + index - 1,
+      greeting: GREETINGS[greetingIndex],
+    };
+  });
 }
+
+type GreetingMotionPhase = "RESET" | "SLIDING" | "DWELL";
 
 export function ObservatoryBootSequence({
   onComplete,
 }: ObservatoryBootSequenceProps) {
   const prefersReducedMotion = useReducedMotion();
   const [stage, setStage] = useState<ObservatoryBootStage>("INITIALIZING");
+  const [greetingOffset, setGreetingOffset] = useState(0);
+  const [greetingPhase, setGreetingPhase] =
+    useState<GreetingMotionPhase>("SLIDING");
   const completedRef = useRef(false);
+
+  useEffect(() => {
+    if (greetingPhase !== "RESET" || prefersReducedMotion) {
+      return;
+    }
+
+    const frame = globalThis.requestAnimationFrame(() => {
+      setGreetingPhase("SLIDING");
+    });
+
+    return () => globalThis.cancelAnimationFrame(frame);
+  }, [greetingPhase, prefersReducedMotion]);
 
   useEffect(() => {
     if (stage === "COMPLETE") {
@@ -68,22 +86,115 @@ export function ObservatoryBootSequence({
     );
   }, [onComplete, prefersReducedMotion, stage]);
 
+  const visibleGreetings = getGreetingWindow(greetingOffset);
+
   return (
     <section
       aria-label="Observatory initialization"
       className="relative flex min-h-[calc(100vh-2.5rem)] items-center justify-center overflow-hidden px-4 py-12"
     >
       <div
-        className="pointer-events-none absolute inset-x-6 bottom-8 border-t border-observatory-amber/20"
+        className="pointer-events-none absolute inset-x-0 bottom-10 overflow-hidden sm:bottom-14"
         aria-hidden="true"
-      />
+      >
+        <div className="mx-auto max-w-5xl overflow-hidden px-4">
+          <motion.div
+            animate={{
+              x:
+                prefersReducedMotion || greetingPhase === "RESET"
+                  ? "0%"
+                  : "-20%",
+            }}
+            initial={false}
+            transition={{
+              duration:
+                prefersReducedMotion || greetingPhase === "RESET"
+                  ? 0
+                  : GREETING_SLIDE_SECONDS,
+              ease: "easeInOut",
+            }}
+            onAnimationComplete={() => {
+              if (prefersReducedMotion || greetingPhase !== "SLIDING") {
+                return;
+              }
+
+              setGreetingPhase("DWELL");
+            }}
+            className="grid grid-cols-7 items-center font-mono"
+            style={{ width: "140%" }}
+          >
+            {visibleGreetings.map(({ greeting, id }, index) => {
+              const visibleIndex = index - 1;
+              const distanceFromCenter = Math.abs(
+                visibleIndex - ACTIVE_GREETING_INDEX,
+              );
+              const isActive =
+                visibleIndex === ACTIVE_GREETING_INDEX;
+
+              const baseScale =
+                distanceFromCenter === 0
+                  ? 1.25
+                  : distanceFromCenter === 1
+                    ? 0.85
+                    : 0.7;
+
+              const opacity =
+                distanceFromCenter === 0
+                  ? 1
+                  : distanceFromCenter === 1
+                    ? 0.7
+                    : 0.4;
+
+              return (
+                <motion.span
+                  key={id}
+                  animate={
+                    isActive && greetingPhase === "DWELL" && !prefersReducedMotion
+                      ? { scale: [1.25, 1.35, 1.25] }
+                      : { scale: baseScale }
+                  }
+                  transition={{
+                    duration:
+                      isActive && greetingPhase === "DWELL"
+                        ? GREETING_DWELL_SECONDS
+                        : prefersReducedMotion
+                          ? 0
+                          : GREETING_SLIDE_SECONDS,
+                    ease: "easeInOut",
+                  }}
+                  onAnimationComplete={() => {
+                    if (
+                      !isActive ||
+                      greetingPhase !== "DWELL" ||
+                      prefersReducedMotion
+                    ) {
+                      return;
+                    }
+
+                    setGreetingOffset((currentOffset) => currentOffset + 1);
+                    setGreetingPhase("RESET");
+                  }}
+                  style={{ opacity }}
+                  className={
+                    isActive
+                      ? "whitespace-nowrap text-center text-sm font-semibold tracking-[0.18em] text-observatory-amber sm:text-base"
+                      : "whitespace-nowrap text-center text-[10px] tracking-[0.16em] text-observatory-muted sm:text-xs"
+                  }
+                >
+                  {greeting}
+                </motion.span>
+              );
+            })}
+          </motion.div>
+        </div>
+      </div>
 
       <div className="relative flex w-full max-w-5xl flex-col items-center text-center">
         <div
           role="status"
           aria-live="polite"
           aria-atomic="true"
-          className="flex min-h-[12rem] w-full items-center justify-center sm:min-h-[15rem]"
+          className="relative z-10 flex min-h-[12rem] w-full items-center justify-center sm:min-h-[15rem]"
         >
           {stage === "INITIALIZING" ? (
             <motion.div
@@ -138,33 +249,18 @@ export function ObservatoryBootSequence({
             </div>
           ) : stage === "GREETING" ? (
             <motion.div
-              key="greeting"
-              initial={{ opacity: 0 }}
+              key="greeting-handoff"
+              initial={{ opacity: 0.65 }}
               animate={{ opacity: 1 }}
               transition={{ duration: prefersReducedMotion ? 0.12 : 0.35 }}
-              className="w-full overflow-hidden border-y border-observatory-amber/20 py-6"
+              className="font-serif text-5xl italic tracking-[-0.06em] text-observatory-ink sm:text-7xl"
             >
-              <div
-                className={
-                  prefersReducedMotion
-                    ? "flex justify-center gap-8 font-mono text-sm tracking-[0.22em] text-observatory-amber"
-                    : "flex w-max animate-[observatory-marquee_7s_linear_infinite] gap-12 font-mono text-sm tracking-[0.22em] text-observatory-amber"
-                }
-              >
-                {[...GREETINGS, ...GREETINGS].map((greeting, index) => (
-                  <span key={`${greeting}-${index}`}>{greeting}</span>
-                ))}
-              </div>
+              Mystify
             </motion.div>
           ) : null}
         </div>
 
-        <StageStatus stage={stage} />
-
-        <div className="mt-10 flex w-full items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-observatory-muted sm:text-xs">
-          <span>MY / OBSERVATORY</span>
-          <span>{stage}</span>
-        </div>
+        <p className="sr-only">Observatory initialization in progress.</p>
       </div>
     </section>
   );
