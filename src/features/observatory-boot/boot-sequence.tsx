@@ -40,7 +40,7 @@ function getGreetingWindow(offset: number) {
   });
 }
 
-type GreetingMotionPhase = "SLIDING" | "DWELL";
+type GreetingMotionPhase = "RESET" | "SLIDING" | "DWELL";
 
 export function ObservatoryBootSequence({
   onComplete,
@@ -51,6 +51,18 @@ export function ObservatoryBootSequence({
   const [greetingPhase, setGreetingPhase] =
     useState<GreetingMotionPhase>("SLIDING");
   const completedRef = useRef(false);
+
+  useEffect(() => {
+    if (greetingPhase !== "RESET" || prefersReducedMotion) {
+      return;
+    }
+
+    const frame = globalThis.requestAnimationFrame(() => {
+      setGreetingPhase("SLIDING");
+    });
+
+    return () => globalThis.cancelAnimationFrame(frame);
+  }, [greetingPhase, prefersReducedMotion]);
 
   useEffect(() => {
     if (stage === "COMPLETE") {
@@ -89,13 +101,16 @@ export function ObservatoryBootSequence({
           <motion.div
             animate={{
               x:
-                prefersReducedMotion || greetingPhase === "DWELL"
+                prefersReducedMotion || greetingPhase === "RESET"
                   ? "0%"
                   : "-20%",
             }}
             initial={false}
             transition={{
-              duration: prefersReducedMotion ? 0 : GREETING_SLIDE_SECONDS,
+              duration:
+                prefersReducedMotion || greetingPhase === "RESET"
+                  ? 0
+                  : GREETING_SLIDE_SECONDS,
               ease: "easeInOut",
             }}
             onAnimationComplete={() => {
@@ -157,7 +172,7 @@ export function ObservatoryBootSequence({
                     }
 
                     setGreetingOffset((currentOffset) => currentOffset + 1);
-                    setGreetingPhase("SLIDING");
+                    setGreetingPhase("RESET");
                   }}
                   style={{ opacity }}
                   className={
