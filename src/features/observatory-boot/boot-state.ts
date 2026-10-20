@@ -20,6 +20,36 @@ export const OBSERVATORY_BOOT_STAGE_DURATIONS: Record<
 };
 
 const REDUCED_MOTION_STAGE_DURATION_MS = 180;
+export const BOOT_VISIT_STORAGE_KEY = "mystify-observatory:boot-visits";
+export const BOOT_SKIP_MINIMUM_VISITS = 3;
+
+/**
+ * Reads and increments the browser-profile load count. Storage is best-effort:
+ * unavailable or malformed storage starts a safe first visit without blocking boot.
+ * Tests/development can reset it by removing BOOT_VISIT_STORAGE_KEY.
+ */
+export function registerBootVisit(storage?: Pick<Storage, "getItem" | "setItem">): number {
+  try {
+    const targetStorage =
+      storage ??
+      (typeof window !== "undefined" ? window.localStorage : undefined);
+    if (!targetStorage) return 1;
+
+    const storedValue = targetStorage.getItem(BOOT_VISIT_STORAGE_KEY);
+    const parsed = storedValue === null ? 0 : Number(storedValue);
+    const currentCount =
+      Number.isSafeInteger(parsed) && parsed >= 0 ? parsed : 0;
+    const nextCount = Math.min(currentCount + 1, Number.MAX_SAFE_INTEGER);
+    targetStorage.setItem(BOOT_VISIT_STORAGE_KEY, String(nextCount));
+    return nextCount;
+  } catch {
+    return 1;
+  }
+}
+
+export function shouldOfferBootSkip(visitCount: number): boolean {
+  return Number.isSafeInteger(visitCount) && visitCount >= BOOT_SKIP_MINIMUM_VISITS;
+}
 
 export function getNextObservatoryBootStage(
   stage: ObservatoryBootStage,
