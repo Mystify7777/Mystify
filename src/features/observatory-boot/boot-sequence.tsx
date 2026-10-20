@@ -361,6 +361,7 @@ export function ObservatoryBootSequence({
   const [stage, setStage] = useState<ObservatoryBootStage>("INITIALIZING");
   const [visitCount, setVisitCount] = useState(1);
   const completedRef = useRef(false);
+  const completionRequestedRef = useRef(false);
   const completionCallbackRef = useRef(onComplete);
 
   useEffect(() => {

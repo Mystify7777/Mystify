@@ -48,6 +48,25 @@ export function registerBootVisit(
   }
 }
 
+/**
+ * Creates a per-document visit registrar. Keeping one registrar at module scope
+ * prevents React Strict Mode effect replay and same-page remounts from counting
+ * as separate page loads. A real reload creates a fresh module instance.
+ */
+export function createBootVisitRegistrar(
+  register: (storage?: Pick<Storage, "getItem" | "setItem">) => number =
+    registerBootVisit,
+) {
+  let registeredCount: number | null = null;
+
+  return (storage?: Pick<Storage, "getItem" | "setItem">): number => {
+    if (registeredCount === null) registeredCount = register(storage);
+    return registeredCount;
+  };
+}
+
+export const registerBootVisitForPageLoad = createBootVisitRegistrar();
+
 export function shouldOfferBootSkip(visitCount: number): boolean {
   return (
     Number.isSafeInteger(visitCount) && visitCount >= BOOT_SKIP_MINIMUM_VISITS

@@ -3,6 +3,7 @@ import {
   BOOT_SKIP_MINIMUM_VISITS,
   BOOT_VISIT_STORAGE_KEY,
   OBSERVATORY_BOOT_STAGES,
+  createBootVisitRegistrar,
   getNextObservatoryBootStage,
   getObservatoryBootDuration,
   registerBootVisit,
@@ -82,6 +83,16 @@ describe("Observatory boot state", () => {
     expect(registerBootVisit(storage)).toBe(2);
     expect(registerBootVisit(storage)).toBe(3);
     expect(storage.getItem(BOOT_VISIT_STORAGE_KEY)).toBe("3");
+  });
+
+  it("counts a page load once when registration is replayed or remounted", () => {
+    const register = vi.fn(() => 3);
+    const registerForPageLoad = createBootVisitRegistrar(register);
+
+    expect(registerForPageLoad()).toBe(3);
+    expect(registerForPageLoad()).toBe(3);
+    expect(registerForPageLoad()).toBe(3);
+    expect(register).toHaveBeenCalledTimes(1);
   });
 
   it("offers Skip only from the third eligible load", () => {
