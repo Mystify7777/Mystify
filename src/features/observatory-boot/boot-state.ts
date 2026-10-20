@@ -49,7 +49,9 @@ export function registerBootVisit(
 }
 
 export function shouldOfferBootSkip(visitCount: number): boolean {
-  return Number.isSafeInteger(visitCount) && visitCount >= BOOT_SKIP_MINIMUM_VISITS;
+  return (
+    Number.isSafeInteger(visitCount) && visitCount >= BOOT_SKIP_MINIMUM_VISITS
+  );
 }
 
 export function getNextObservatoryBootStage(

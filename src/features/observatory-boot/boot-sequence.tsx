@@ -35,7 +35,8 @@ function IdentityAnimation({
 }) {
   const expanded = stage !== "INITIALIZING";
   const tracing = stage !== "INITIALIZING";
-  const finishTrace = stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
+  const finishTrace =
+    stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
 
   return (
     <div className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]">
@@ -181,10 +182,12 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
             `translate3d(-${offsetRef.current}px, 0, 0)`;
 
           const focusCenter = offsetRef.current + viewportWidth / 2;
-          let cursor = 0;
           let nextActiveIndex = 0;
           let nearestDistance = Number.POSITIVE_INFINITY;
           const repeatedCount = greetingRefs.current.length;
+          const prefixWidths = widths.map((_, index) =>
+            widths.slice(0, index).reduce((sum, width) => sum + width, 0),
+          );
 
           for (let index = 0; index < repeatedCount; index += 1) {
             const element = greetingRefs.current[index];
@@ -194,16 +197,15 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
             const width = widths[sourceIndex] ?? element.getBoundingClientRect().width;
             const itemCenter =
               Math.floor(index / GREETINGS.length) * cycleWidth +
-              widths.slice(0, sourceIndex).reduce((sum, itemWidth) => sum + itemWidth, 0) +
+              (prefixWidths[sourceIndex] ?? 0) +
               width / 2;
-            const directDistance = Math.abs(itemCenter - focusCenter);
             const distance = Math.abs(
               ((((focusCenter - itemCenter + cycleWidth / 2) % cycleWidth) +
                 cycleWidth) %
                 cycleWidth) -
                 cycleWidth / 2,
             );
-            const nearestCycleDistance = Math.min(distance, directDistance);
+            const nearestCycleDistance = distance;
             const normalizedDistance = nearestCycleDistance / Math.max(width / 2, 1);
             const isFocused = normalizedDistance <= 1;
             const scale = isFocused
@@ -235,7 +237,6 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
               nearestDistance = nearestCycleDistance;
               nextActiveIndex = sourceIndex;
             }
-            cursor += width;
           }
 
           if (activeIndexRef.current !== nextActiveIndex) {
@@ -319,7 +320,9 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
           ))}
         </div>
       </div>
-      <p className="sr-only" aria-live="off">{GREETINGS[activeIndex]}</p>
+      <p className="sr-only" aria-live="off">
+        {GREETINGS[activeIndex]}
+      </p>
     </div>
   );
 }
