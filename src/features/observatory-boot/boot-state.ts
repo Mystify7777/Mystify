@@ -24,11 +24,12 @@ export const BOOT_VISIT_STORAGE_KEY = "mystify-observatory:boot-visits";
 export const BOOT_SKIP_MINIMUM_VISITS = 3;
 
 /**
- * Reads and increments the browser-profile load count. Storage is best-effort:
- * unavailable or malformed storage starts a safe first visit without blocking boot.
- * Tests/development can reset it by removing BOOT_VISIT_STORAGE_KEY.
+ * Increments the browser-profile page-load count. Storage is best-effort and
+ * malformed values are reset. Remove BOOT_VISIT_STORAGE_KEY to reset locally.
  */
-export function registerBootVisit(storage?: Pick<Storage, "getItem" | "setItem">): number {
+export function registerBootVisit(
+  storage?: Pick<Storage, "getItem" | "setItem">,
+): number {
   try {
     const targetStorage =
       storage ??
