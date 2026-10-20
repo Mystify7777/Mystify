@@ -20,6 +20,7 @@ const GREETINGS = [
   "你好",
   "CIAO",
 ] as const;
+const GREETING_SPEED_PX_PER_SECOND = 30;
 
 interface ObservatoryBootSequenceProps {
   onComplete: () => void;
@@ -33,7 +34,8 @@ function IdentityAnimation({
   reducedMotion: boolean;
 }) {
   const expanded = stage !== "INITIALIZING";
-  const tracing = stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
+  const tracing = stage !== "INITIALIZING";
+  const finishTrace = stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
 
   return (
     <div className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]">
@@ -42,55 +44,66 @@ function IdentityAnimation({
         className="absolute h-28 w-28 rounded-full border border-observatory-amber/70 sm:h-36 sm:w-36"
         initial={false}
         animate={{ opacity: expanded ? 0 : 1, scale: expanded ? 1.45 : 1 }}
-        transition={{ duration: reducedMotion ? 0.01 : 0.85, ease: "easeInOut" }}
-        style={{ animation: reducedMotion ? undefined : "observatory-circle-rest 1.8s ease-in-out infinite alternate" }}
+        transition={{ duration: reducedMotion ? 0.01 : 1.25, ease: "easeInOut" }}
+        style={{
+          animation: reducedMotion
+            ? undefined
+            : "observatory-circle-rest 1.8s ease-in-out infinite alternate",
+        }}
       />
 
-      <div className="relative flex items-center justify-center">
+      <div className="relative whitespace-nowrap font-serif text-5xl italic tracking-[-0.06em] sm:text-7xl">
+        <span aria-hidden="true" className="invisible">
+          Mystify
+        </span>
+
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 flex items-center text-observatory-amber"
+          style={{ opacity: expanded ? 0 : 1 }}
+        >
+          My
+        </span>
+
         <motion.span
           aria-hidden="true"
-          className="absolute whitespace-nowrap font-serif text-5xl italic tracking-[-0.06em] text-observatory-amber sm:text-7xl"
+          className="absolute inset-0 text-observatory-amber"
           initial={false}
-          animate={{ opacity: tracing ? 0.32 : 0, clipPath: tracing ? "inset(0 0 0 0)" : "inset(0 100% 0 0)" }}
-          transition={{ duration: reducedMotion ? 0.01 : 1.1, ease: "linear" }}
+          animate={{
+            opacity: expanded ? 1 : 0,
+            clipPath: expanded ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
+          }}
+          transition={{ duration: reducedMotion ? 0.01 : 1.6, ease: "easeInOut" }}
+        >
+          Mystify
+        </motion.span>
+
+        <motion.span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 text-observatory-amber"
+          initial={false}
+          animate={{
+            opacity: tracing ? 0.35 : 0,
+            clipPath: tracing ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
+          }}
+          transition={{ duration: reducedMotion ? 0.01 : 1.2, ease: "linear" }}
           style={{ filter: "blur(7px)", transform: "scale(1.045)" }}
         >
           Mystify
         </motion.span>
 
-        <div className="relative whitespace-nowrap font-serif text-5xl italic tracking-[-0.06em] sm:text-7xl">
-          <span
-            aria-hidden="true"
-            className="text-observatory-amber"
-            style={{ opacity: expanded ? 0 : 1, position: expanded ? "absolute" : "relative" }}
-          >
-            My
-          </span>
-          <motion.span
-            className="text-observatory-amber"
-            initial={false}
-            animate={{
-              opacity: expanded ? 1 : 0,
-              clipPath: expanded ? "inset(0 0 0 0)" : "inset(0 0 0 100%)",
-            }}
-            transition={{ duration: reducedMotion ? 0.01 : 1.2, ease: "easeInOut" }}
-            style={{ position: expanded ? "relative" : "absolute", left: 0 }}
-          >
-            Mystify
-          </motion.span>
-          <motion.span
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 whitespace-nowrap text-observatory-ink"
-            initial={false}
-            animate={{
-              opacity: tracing ? 1 : 0,
-              clipPath: tracing ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
-            }}
-            transition={{ duration: reducedMotion ? 0.01 : 1.1, ease: "easeInOut" }}
-          >
-            Mystify
-          </motion.span>
-        </div>
+        <motion.span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 text-observatory-ink"
+          initial={false}
+          animate={{
+            opacity: finishTrace ? 1 : 0,
+            clipPath: finishTrace ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
+          }}
+          transition={{ duration: reducedMotion ? 0.01 : 1.1, ease: "linear" }}
+        >
+          Mystify
+        </motion.span>
       </div>
     </div>
   );
@@ -98,15 +111,17 @@ function IdentityAnimation({
 
 function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
   const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const rulerRef = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState(0);
-  const [widths, setWidths] = useState<number[]>([]);
-  const [viewportWidth, setViewportWidth] = useState(0);
+  const greetingRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const frameRef = useRef<number | null>(null);
   const previousFrameTimeRef = useRef<number | null>(null);
   const offsetRef = useRef(0);
   const cycleWidthRef = useRef(0);
-  const [cycleRevision, setCycleRevision] = useState(0);
+  const viewportWidthRef = useRef(0);
+  const widthsRef = useRef<number[]>([]);
+  const activeIndexRef = useRef(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const measure = useCallback(() => {
     const viewport = viewportRef.current;
@@ -117,21 +132,15 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
       (child as HTMLElement).getBoundingClientRect().width,
     );
     const nextCycleWidth = nextWidths.reduce((sum, width) => sum + width, 0);
-    if (cycleWidthRef.current > 0 && Math.abs(cycleWidthRef.current - nextCycleWidth) > 0.25) {
-      offsetRef.current = (offsetRef.current / cycleWidthRef.current) * nextCycleWidth;
-      setOffset(offsetRef.current);
+    const oldCycleWidth = cycleWidthRef.current;
+
+    if (oldCycleWidth > 0 && nextCycleWidth > 0 && oldCycleWidth !== nextCycleWidth) {
+      offsetRef.current = (offsetRef.current / oldCycleWidth) * nextCycleWidth;
     }
-    if (Math.abs(cycleWidthRef.current - nextCycleWidth) > 0.25) {
-      setCycleRevision((revision) => revision + 1);
-    }
+
+    widthsRef.current = nextWidths;
     cycleWidthRef.current = nextCycleWidth;
-    setWidths((current) =>
-      current.length === nextWidths.length &&
-      current.every((width, index) => Math.abs(width - nextWidths[index]) < 0.25)
-        ? current
-        : nextWidths,
-    );
-    setViewportWidth(viewport.getBoundingClientRect().width);
+    viewportWidthRef.current = viewport.getBoundingClientRect().width;
   }, []);
 
   useEffect(() => {
@@ -152,19 +161,90 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
   useEffect(() => {
     if (reducedMotion || cycleWidthRef.current <= 0) return;
     let cancelled = false;
-    const pixelsPerSecond = 30;
 
     const tick = (timestamp: number) => {
       if (cancelled) return;
+
       const previous = previousFrameTimeRef.current;
       previousFrameTimeRef.current = timestamp;
       if (previous !== null) {
         const cycleWidth = cycleWidthRef.current;
-        if (cycleWidth > 0) {
-          offsetRef.current = (offsetRef.current + ((timestamp - previous) / 1000) * pixelsPerSecond) % cycleWidth;
-          setOffset(offsetRef.current);
+        const widths = widthsRef.current;
+        const viewportWidth = viewportWidthRef.current;
+
+        if (cycleWidth > 0 && trackRef.current) {
+          offsetRef.current =
+            (offsetRef.current +
+              ((timestamp - previous) / 1000) * GREETING_SPEED_PX_PER_SECOND) %
+            cycleWidth;
+          trackRef.current.style.transform =
+            `translate3d(-${offsetRef.current}px, 0, 0)`;
+
+          const focusCenter = offsetRef.current + viewportWidth / 2;
+          let cursor = 0;
+          let nextActiveIndex = 0;
+          let nearestDistance = Number.POSITIVE_INFINITY;
+          const repeatedCount = greetingRefs.current.length;
+
+          for (let index = 0; index < repeatedCount; index += 1) {
+            const element = greetingRefs.current[index];
+            if (!element) continue;
+
+            const sourceIndex = index % GREETINGS.length;
+            const width = widths[sourceIndex] ?? element.getBoundingClientRect().width;
+            const itemCenter =
+              Math.floor(index / GREETINGS.length) * cycleWidth +
+              widths.slice(0, sourceIndex).reduce((sum, itemWidth) => sum + itemWidth, 0) +
+              width / 2;
+            const directDistance = Math.abs(itemCenter - focusCenter);
+            const distance = Math.abs(
+              ((((focusCenter - itemCenter + cycleWidth / 2) % cycleWidth) +
+                cycleWidth) %
+                cycleWidth) -
+                cycleWidth / 2,
+            );
+            const nearestCycleDistance = Math.min(distance, directDistance);
+            const normalizedDistance = nearestCycleDistance / Math.max(width / 2, 1);
+            const isFocused = normalizedDistance <= 1;
+            const scale = isFocused
+              ? 1.12
+              : normalizedDistance < 2
+                ? 0.94
+                : normalizedDistance < 4
+                  ? 0.82
+                  : 0.72;
+            const opacity = isFocused
+              ? 1
+              : normalizedDistance < 2
+                ? 0.72
+                : normalizedDistance < 4
+                  ? 0.48
+                  : 0.3;
+
+            element.style.opacity = String(opacity);
+            element.style.transform = `scale(${scale})`;
+            element.style.fontWeight = isFocused ? "600" : "400";
+            element.style.color = isFocused
+              ? "var(--observatory-amber)"
+              : "var(--observatory-muted)";
+            element.style.textShadow = isFocused
+              ? "0 0 16px rgba(201,146,74,.22)"
+              : "none";
+
+            if (nearestCycleDistance < nearestDistance) {
+              nearestDistance = nearestCycleDistance;
+              nextActiveIndex = sourceIndex;
+            }
+            cursor += width;
+          }
+
+          if (activeIndexRef.current !== nextActiveIndex) {
+            activeIndexRef.current = nextActiveIndex;
+            setActiveIndex(nextActiveIndex);
+          }
         }
       }
+
       frameRef.current = window.requestAnimationFrame(tick);
     };
 
@@ -175,24 +255,9 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
       frameRef.current = null;
       previousFrameTimeRef.current = null;
     };
-  }, [cycleRevision, reducedMotion]);
+  }, [reducedMotion]);
 
-  const cycleWidth = widths.reduce((sum, width) => sum + width, 0);
-  const focusPosition = offset + viewportWidth / 2;
-  let activeIndex = 0;
-  let minimumDistance = Number.POSITIVE_INFINITY;
-  for (let index = 0; index < widths.length; index += 1) {
-    const greetingCenter = widths.slice(0, index).reduce((sum, width) => sum + width, 0) + widths[index] / 2;
-    const distance = cycleWidth > 0
-      ? Math.abs((((focusPosition - greetingCenter + cycleWidth / 2) % cycleWidth) + cycleWidth) % cycleWidth - cycleWidth / 2)
-      : Number.POSITIVE_INFINITY;
-    if (distance < minimumDistance) {
-      minimumDistance = distance;
-      activeIndex = index;
-    }
-  }
-
-  const greetingsTrack = [...GREETINGS, ...GREETINGS, ...GREETINGS];
+  const greetingTrack = [...GREETINGS, ...GREETINGS, ...GREETINGS];
 
   return (
     <div
@@ -210,45 +275,33 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
               "linear-gradient(90deg, transparent, black 18%, black 82%, transparent)",
           }}
         />
+
         <div
+          ref={trackRef}
           className="flex w-max items-center"
           style={{
-            transform: reducedMotion ? "translateX(0)" : `translate3d(-${offset}px, 0, 0)`,
+            transform: "translate3d(0, 0, 0)",
             willChange: reducedMotion ? "auto" : "transform",
           }}
           aria-hidden="true"
         >
-          {greetingsTrack.map((greeting, index) => {
-            const sourceIndex = index % GREETINGS.length;
-            const itemLeft = Math.floor(index / GREETINGS.length) * cycleWidth +
-              widths.slice(0, sourceIndex).reduce((sum, width) => sum + width, 0);
-            const itemCenter = itemLeft + (widths[sourceIndex] ?? 0) / 2;
-            const focusCenter = offset + viewportWidth / 2;
-            const directDistance = Math.abs(itemCenter - focusCenter);
-            const distance = cycleWidth > 0
-              ? Math.abs((((focusCenter - itemCenter + cycleWidth / 2) % cycleWidth) + cycleWidth) % cycleWidth - cycleWidth / 2)
-              : directDistance;
-            const normalizedDistance = distance / Math.max((widths[sourceIndex] ?? 1) / 2, 1);
-            const focused = normalizedDistance <= 1;
-            const scale = focused ? 1.12 : normalizedDistance < 2 ? 0.94 : normalizedDistance < 4 ? 0.82 : 0.72;
-            const opacity = focused ? 1 : normalizedDistance < 2 ? 0.72 : normalizedDistance < 4 ? 0.48 : 0.3;
-
-            return (
-              <span
-                key={`${greeting}-${index}`}
-                className="inline-flex shrink-0 items-center justify-center px-5 font-mono text-xs tracking-[0.14em] sm:px-7 sm:text-sm sm:tracking-[0.18em]"
-                style={{
-                  opacity,
-                  transform: `scale(${scale})`,
-                  fontWeight: focused ? 600 : 400,
-                  color: focused ? "var(--observatory-amber)" : "var(--observatory-muted)",
-                  textShadow: focused ? "0 0 16px rgba(201,146,74,.22)" : "none",
-                }}
-              >
-                {greeting}
-              </span>
-            );
-          })}
+          {greetingTrack.map((greeting, index) => (
+            <span
+              key={`${greeting}-${index}`}
+              ref={(element) => {
+                greetingRefs.current[index] = element;
+              }}
+              className="inline-flex shrink-0 items-center justify-center px-5 font-mono text-xs tracking-[0.14em] sm:px-7 sm:text-sm sm:tracking-[0.18em]"
+              style={{
+                opacity: 0.3,
+                transform: "scale(0.72)",
+                color: "var(--observatory-muted)",
+                transition: "color 100ms linear, text-shadow 100ms linear",
+              }}
+            >
+              {greeting}
+            </span>
+          ))}
         </div>
 
         <div
@@ -266,12 +319,14 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
           ))}
         </div>
       </div>
-      <p className="sr-only" aria-live="off">{GREETINGS[activeIndex] ?? GREETINGS[0]}</p>
+      <p className="sr-only" aria-live="off">{GREETINGS[activeIndex]}</p>
     </div>
   );
 }
 
-export function ObservatoryBootSequence({ onComplete }: ObservatoryBootSequenceProps) {
+export function ObservatoryBootSequence({
+  onComplete,
+}: ObservatoryBootSequenceProps) {
   const prefersReducedMotion = useReducedMotion();
   const reducedMotion = Boolean(prefersReducedMotion);
   const [stage, setStage] = useState<ObservatoryBootStage>("INITIALIZING");
