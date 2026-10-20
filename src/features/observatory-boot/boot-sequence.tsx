@@ -101,10 +101,10 @@ function IdentityAnimation({
           duration: reducedMotion ? 0.01 : 1.2,
           ease: "linear",
         }}
-          style={{
-            filter: "blur(7px)",
-            transform: "scale(1.045)",
-          }}
+        style={{
+          filter: "blur(7px)",
+          transform: "scale(1.045)",
+        }}
         >
           Mystify
         </motion.span>
@@ -199,8 +199,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
               ((timestamp - previous) / 1000) *
                 GREETING_SPEED_PX_PER_SECOND) %
             cycleWidth;
-          trackRef.current.style.transform =
-            `translate3d(-${offsetRef.current}px, 0, 0)`;
+          trackRef.current.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
 
           const focusCenter = offsetRef.current + viewportWidth / 2;
           let nextActiveIndex = 0;
@@ -219,7 +218,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
             const sourceIndex = index % GREETINGS.length;
             const width =
               widths[sourceIndex] ?? element.getBoundingClientRect().width;
-              const itemCenter =
+            const itemCenter =
               Math.floor(index / GREETINGS.length) * cycleWidth +
               (prefixWidths[sourceIndex] ?? 0) +
               width / 2;
