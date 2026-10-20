@@ -39,13 +39,18 @@ function IdentityAnimation({
     stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
 
   return (
-    <div className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]">
+    <div
+      className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]"
+    >
       <motion.div
         aria-hidden="true"
         className="absolute h-28 w-28 rounded-full border border-observatory-amber/70 sm:h-36 sm:w-36"
         initial={false}
         animate={{ opacity: expanded ? 0 : 1, scale: expanded ? 1.45 : 1 }}
-        transition={{ duration: reducedMotion ? 0.01 : 1.25, ease: "easeInOut" }}
+        transition={{
+          duration: reducedMotion ? 0.01 : 1.25,
+          ease: "easeInOut",
+        }}
         style={{
           animation: reducedMotion
             ? undefined
@@ -53,7 +58,9 @@ function IdentityAnimation({
         }}
       />
 
-      <div className="relative whitespace-nowrap font-serif text-5xl italic tracking-[-0.06em] sm:text-7xl">
+      <div
+        className="relative whitespace-nowrap font-serif text-5xl italic tracking-[-0.06em] sm:text-7xl"
+      >
         <span aria-hidden="true" className="invisible">
           Mystify
         </span>
@@ -74,7 +81,10 @@ function IdentityAnimation({
             opacity: expanded ? 1 : 0,
             clipPath: expanded ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
           }}
-          transition={{ duration: reducedMotion ? 0.01 : 1.6, ease: "easeInOut" }}
+          transition={{
+            duration: reducedMotion ? 0.01 : 1.6,
+            ease: "easeInOut",
+          }}
         >
           Mystify
         </motion.span>
@@ -87,8 +97,14 @@ function IdentityAnimation({
             opacity: tracing ? 0.35 : 0,
             clipPath: tracing ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
           }}
-          transition={{ duration: reducedMotion ? 0.01 : 1.2, ease: "linear" }}
-          style={{ filter: "blur(7px)", transform: "scale(1.045)" }}
+          transition={{
+          duration: reducedMotion ? 0.01 : 1.2,
+          ease: "linear",
+        }}
+          style={{
+            filter: "blur(7px)",
+            transform: "scale(1.045)",
+          }}
         >
           Mystify
         </motion.span>
@@ -183,7 +199,8 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
               ((timestamp - previous) / 1000) *
                 GREETING_SPEED_PX_PER_SECOND) %
             cycleWidth;
-          trackRef.current.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
+          trackRef.current.style.transform =
+            `translate3d(-${offsetRef.current}px, 0, 0)`;
 
           const focusCenter = offsetRef.current + viewportWidth / 2;
           let nextActiveIndex = 0;
