@@ -135,7 +135,11 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
     const nextCycleWidth = nextWidths.reduce((sum, width) => sum + width, 0);
     const oldCycleWidth = cycleWidthRef.current;
 
-    if (oldCycleWidth > 0 && nextCycleWidth > 0 && oldCycleWidth !== nextCycleWidth) {
+    if (
+      oldCycleWidth > 0 &&
+      nextCycleWidth > 0 &&
+      oldCycleWidth !== nextCycleWidth
+    ) {
       offsetRef.current = (offsetRef.current / oldCycleWidth) * nextCycleWidth;
     }
 
@@ -176,17 +180,19 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
         if (cycleWidth > 0 && trackRef.current) {
           offsetRef.current =
             (offsetRef.current +
-              ((timestamp - previous) / 1000) * GREETING_SPEED_PX_PER_SECOND) %
+              ((timestamp - previous) / 1000) *
+                GREETING_SPEED_PX_PER_SECOND) %
             cycleWidth;
-          trackRef.current.style.transform =
-            `translate3d(-${offsetRef.current}px, 0, 0)`;
+          trackRef.current.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
 
           const focusCenter = offsetRef.current + viewportWidth / 2;
           let nextActiveIndex = 0;
           let nearestDistance = Number.POSITIVE_INFINITY;
           const repeatedCount = greetingRefs.current.length;
           const prefixWidths = widths.map((_, index) =>
-            widths.slice(0, index).reduce((sum, width) => sum + width, 0),
+            widths
+              .slice(0, index)
+              .reduce((sum, width) => sum + width, 0),
           );
 
           for (let index = 0; index < repeatedCount; index += 1) {
@@ -194,8 +200,9 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
             if (!element) continue;
 
             const sourceIndex = index % GREETINGS.length;
-            const width = widths[sourceIndex] ?? element.getBoundingClientRect().width;
-            const itemCenter =
+            const width =
+              widths[sourceIndex] ?? element.getBoundingClientRect().width;
+              const itemCenter =
               Math.floor(index / GREETINGS.length) * cycleWidth +
               (prefixWidths[sourceIndex] ?? 0) +
               width / 2;
@@ -206,7 +213,8 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
                 cycleWidth / 2,
             );
             const nearestCycleDistance = distance;
-            const normalizedDistance = nearestCycleDistance / Math.max(width / 2, 1);
+            const normalizedDistance =
+              nearestCycleDistance / Math.max(width / 2, 1);
             const isFocused = normalizedDistance <= 1;
             const scale = isFocused
               ? 1.12
@@ -252,7 +260,9 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
     frameRef.current = window.requestAnimationFrame(tick);
     return () => {
       cancelled = true;
-      if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
       frameRef.current = null;
       previousFrameTimeRef.current = null;
     };
