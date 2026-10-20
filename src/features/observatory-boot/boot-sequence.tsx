@@ -412,7 +412,11 @@ export function ObservatoryBootSequence({
           Skip intro
         </button>
       ) : null}
-      <p className="sr-only" role="status" aria-live="polite">
+      <p
+        className="sr-only"
+        role="status"
+        aria-live="polite"
+      >
         {stage === "COMPLETE"
           ? "Observatory ready."
           : "Observatory initialization in progress."}
