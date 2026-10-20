@@ -98,13 +98,13 @@ function IdentityAnimation({
             clipPath: tracing ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
           }}
           transition={{
-          duration: reducedMotion ? 0.01 : 1.2,
-          ease: "linear",
-        }}
-        style={{
-          filter: "blur(7px)",
-          transform: "scale(1.045)",
-        }}
+            duration: reducedMotion ? 0.01 : 1.2,
+            ease: "linear",
+          }}
+          style={{
+            filter: "blur(7px)",
+            transform: "scale(1.045)",
+          }}
         >
           Mystify
         </motion.span>
@@ -412,11 +412,7 @@ export function ObservatoryBootSequence({
           Skip intro
         </button>
       ) : null}
-      <p
-        className="sr-only"
-        role="status"
-        aria-live="polite"
-      >
+      <p className="sr-only" role="status" aria-live="polite">
         {stage === "COMPLETE"
           ? "Observatory ready."
           : "Observatory initialization in progress."}
