@@ -39,7 +39,7 @@ function IdentityAnimation({
     <div className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]">
       <motion.div
         aria-hidden="true"
-        className="absolute flex h-28 w-28 items-center justify-center rounded-full border border-observatory-amber/70 sm:h-36 sm:w-36"
+        className="absolute h-28 w-28 rounded-full border border-observatory-amber/70 sm:h-36 sm:w-36"
         initial={false}
         animate={{ opacity: expanded ? 0 : 1, scale: expanded ? 1.45 : 1 }}
         transition={{ duration: reducedMotion ? 0.01 : 0.85, ease: "easeInOut" }}
@@ -102,10 +102,10 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
   const [offset, setOffset] = useState(0);
   const [widths, setWidths] = useState<number[]>([]);
   const [viewportWidth, setViewportWidth] = useState(0);
-  const animationFrameRef = useRef<number | null>(null);
-  const cycleStartRef = useRef<number | null>(null);
-  const cycleWidthRef = useRef(0);
+  const frameRef = useRef<number | null>(null);
+  const previousFrameTimeRef = useRef<number | null>(null);
   const offsetRef = useRef(0);
+  const cycleWidthRef = useRef(0);
 
   const measure = useCallback(() => {
     const viewport = viewportRef.current;
@@ -116,13 +116,19 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
       (child as HTMLElement).getBoundingClientRect().width,
     );
     cycleWidthRef.current = nextWidths.reduce((sum, width) => sum + width, 0);
-    setWidths(nextWidths);
+    setWidths((current) =>
+      current.length === nextWidths.length &&
+      current.every((width, index) => Math.abs(width - nextWidths[index]) < 0.25)
+        ? current
+        : nextWidths,
+    );
     setViewportWidth(viewport.getBoundingClientRect().width);
   }, []);
 
   useEffect(() => {
     measure();
-    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
+    const observer =
+      typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
     if (viewportRef.current) observer?.observe(viewportRef.current);
     if (rulerRef.current) observer?.observe(rulerRef.current);
     window.addEventListener("resize", measure);
@@ -141,21 +147,24 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
 
     const tick = (timestamp: number) => {
       if (cancelled) return;
-      if (cycleStartRef.current === null) cycleStartRef.current = timestamp;
-      const cycleWidth = cycleWidthRef.current;
-      if (cycleWidth > 0) {
-        offsetRef.current = (((timestamp - cycleStartRef.current) / 1000) * pixelsPerSecond) % cycleWidth;
-        setOffset(offsetRef.current);
+      const previous = previousFrameTimeRef.current;
+      previousFrameTimeRef.current = timestamp;
+      if (previous !== null) {
+        const cycleWidth = cycleWidthRef.current;
+        if (cycleWidth > 0) {
+          offsetRef.current = (offsetRef.current + ((timestamp - previous) / 1000) * pixelsPerSecond) % cycleWidth;
+          setOffset(offsetRef.current);
+        }
       }
-      animationFrameRef.current = window.requestAnimationFrame(tick);
+      frameRef.current = window.requestAnimationFrame(tick);
     };
 
-    animationFrameRef.current = window.requestAnimationFrame(tick);
+    frameRef.current = window.requestAnimationFrame(tick);
     return () => {
       cancelled = true;
-      if (animationFrameRef.current !== null) window.cancelAnimationFrame(animationFrameRef.current);
-      animationFrameRef.current = null;
-      cycleStartRef.current = null;
+      if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
+      frameRef.current = null;
+      previousFrameTimeRef.current = null;
     };
   }, [reducedMotion, viewportWidth, widths]);
 
@@ -163,19 +172,16 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
   const focusPosition = (offset + viewportWidth / 2) % (cycleWidth || 1);
   let cursor = 0;
   let activeIndex = 0;
-  let activeCenter = widths[0] ? widths[0] / 2 : 0;
   for (let index = 0; index < widths.length; index += 1) {
-    const width = widths[index];
-    if (focusPosition >= cursor && focusPosition < cursor + width) {
+    const nextCursor = cursor + widths[index];
+    if (focusPosition >= cursor && focusPosition < nextCursor) {
       activeIndex = index;
-      activeCenter = cursor + width / 2;
       break;
     }
-    cursor += width;
+    cursor = nextCursor;
   }
-  const activeOffset = focusPosition - activeCenter;
-  const activeGreeting = GREETINGS[activeIndex] ?? GREETINGS[0];
-  const repeatedGreetings = [...GREETINGS, ...GREETINGS, ...GREETINGS];
+
+  const greetingsTrack = [...GREETINGS, ...GREETINGS, ...GREETINGS];
 
   return (
     <div
@@ -187,8 +193,10 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
           className="pointer-events-none absolute inset-y-0 left-1/2 z-10 w-[min(36%,17rem)] -translate-x-1/2"
           aria-hidden="true"
           style={{
-            background: "linear-gradient(90deg, transparent, rgba(11,13,16,.30) 12%, rgba(11,13,16,.58) 50%, rgba(11,13,16,.30) 88%, transparent)",
-            maskImage: "linear-gradient(90deg, transparent, black 18%, black 82%, transparent)",
+            background:
+              "linear-gradient(90deg, transparent, rgba(11,13,16,.30) 12%, rgba(11,13,16,.58) 50%, rgba(11,13,16,.30) 88%, transparent)",
+            maskImage:
+              "linear-gradient(90deg, transparent, black 18%, black 82%, transparent)",
           }}
         />
         <div
@@ -199,18 +207,21 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
           }}
           aria-hidden="true"
         >
-          {repeatedGreetings.map((greeting, index) => {
+          {greetingsTrack.map((greeting, index) => {
             const sourceIndex = index % GREETINGS.length;
-            const position = widths.slice(0, sourceIndex).reduce((sum, width) => sum + width, 0) + widths[sourceIndex] / 2;
-            const copyBase = Math.floor(index / GREETINGS.length) * cycleWidth;
-            const itemCenter = copyBase + position;
-            let distanceInTrack = Math.abs(itemCenter - (offset + viewportWidth / 2));
-            if (cycleWidth > 0) distanceInTrack = Math.min(distanceInTrack, Math.abs(distanceInTrack - cycleWidth), Math.abs(distanceInTrack + cycleWidth));
-            const distance = Math.abs(sourceIndex - activeIndex);
-            const geometricallyFocused = distanceInTrack <= (widths[sourceIndex] ?? 0) / 2;
-            const emphasis = geometricallyFocused ? 0 : Math.min(distanceInTrack / 110, 3);
-            const scale = geometricallyFocused ? 1.12 : emphasis < 1 ? 0.96 : emphasis < 2 ? 0.82 : 0.72;
-            const opacity = geometricallyFocused ? 1 : emphasis < 1 ? 0.72 : emphasis < 2 ? 0.48 : 0.3;
+            const itemLeft = Math.floor(index / GREETINGS.length) * cycleWidth +
+              widths.slice(0, sourceIndex).reduce((sum, width) => sum + width, 0);
+            const itemCenter = itemLeft + (widths[sourceIndex] ?? 0) / 2;
+            const focusCenter = offset + viewportWidth / 2;
+            const directDistance = Math.abs(itemCenter - focusCenter);
+            const distance = cycleWidth > 0
+              ? Math.min(directDistance, Math.abs(directDistance - cycleWidth), Math.abs(directDistance + cycleWidth))
+              : directDistance;
+            const normalizedDistance = distance / Math.max((widths[sourceIndex] ?? 1) / 2, 1);
+            const focused = normalizedDistance <= 1;
+            const scale = focused ? 1.12 : normalizedDistance < 2 ? 0.94 : normalizedDistance < 4 ? 0.82 : 0.72;
+            const opacity = focused ? 1 : normalizedDistance < 2 ? 0.72 : normalizedDistance < 4 ? 0.48 : 0.3;
+
             return (
               <span
                 key={`${greeting}-${index}`}
@@ -218,9 +229,9 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
                 style={{
                   opacity,
                   transform: `scale(${scale})`,
-                  fontWeight: geometricallyFocused ? 600 : 400,
-                  color: geometricallyFocused ? "var(--observatory-amber)" : "var(--observatory-muted)",
-                  textShadow: geometricallyFocused ? "0 0 16px rgba(201,146,74,.22)" : "none",
+                  fontWeight: focused ? 600 : 400,
+                  color: focused ? "var(--observatory-amber)" : "var(--observatory-muted)",
+                  textShadow: focused ? "0 0 16px rgba(201,146,74,.22)" : "none",
                 }}
               >
                 {greeting}
@@ -229,15 +240,22 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
           })}
         </div>
 
-        <div ref={rulerRef} className="pointer-events-none absolute left-[-9999px] top-0 flex w-max opacity-0" aria-hidden="true">
+        <div
+          ref={rulerRef}
+          className="pointer-events-none absolute left-[-9999px] top-0 flex w-max opacity-0"
+          aria-hidden="true"
+        >
           {GREETINGS.map((greeting) => (
-            <span key={greeting} className="inline-flex shrink-0 items-center justify-center px-5 font-mono text-xs tracking-[0.14em] sm:px-7 sm:text-sm sm:tracking-[0.18em]">
+            <span
+              key={greeting}
+              className="inline-flex shrink-0 items-center justify-center px-5 font-mono text-xs tracking-[0.14em] sm:px-7 sm:text-sm sm:tracking-[0.18em]"
+            >
               {greeting}
             </span>
           ))}
         </div>
       </div>
-      <p className="sr-only" aria-live="off">{activeGreeting} {Math.round(activeOffset)}</p>
+      <p className="sr-only" aria-live="off">{GREETINGS[activeIndex] ?? GREETINGS[0]}</p>
     </div>
   );
 }
@@ -293,13 +311,16 @@ export function ObservatoryBootSequence({ onComplete }: ObservatoryBootSequenceP
         <button
           type="button"
           onClick={onSkip}
+          aria-label="Skip startup animation"
           className="absolute right-5 top-5 z-20 rounded-full border border-observatory-amber/40 px-4 py-2 font-mono text-xs text-observatory-ink transition-colors hover:border-observatory-amber focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-observatory-amber focus-visible:ring-offset-2 focus-visible:ring-offset-observatory-surface"
         >
           Skip intro
         </button>
       ) : null}
       <p className="sr-only" role="status" aria-live="polite">
-        {stage === "COMPLETE" ? "Observatory ready." : "Observatory initialization in progress."}
+        {stage === "COMPLETE"
+          ? "Observatory ready."
+          : "Observatory initialization in progress."}
       </p>
     </section>
   );
