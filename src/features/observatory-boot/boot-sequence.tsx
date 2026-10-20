@@ -106,6 +106,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
   const previousFrameTimeRef = useRef<number | null>(null);
   const offsetRef = useRef(0);
   const cycleWidthRef = useRef(0);
+  const [cycleRevision, setCycleRevision] = useState(0);
 
   const measure = useCallback(() => {
     const viewport = viewportRef.current;
@@ -115,7 +116,15 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
     const nextWidths = Array.from(ruler.children, (child) =>
       (child as HTMLElement).getBoundingClientRect().width,
     );
-    cycleWidthRef.current = nextWidths.reduce((sum, width) => sum + width, 0);
+    const nextCycleWidth = nextWidths.reduce((sum, width) => sum + width, 0);
+    if (cycleWidthRef.current > 0 && Math.abs(cycleWidthRef.current - nextCycleWidth) > 0.25) {
+      offsetRef.current = (offsetRef.current / cycleWidthRef.current) * nextCycleWidth;
+      setOffset(offsetRef.current);
+    }
+    if (Math.abs(cycleWidthRef.current - nextCycleWidth) > 0.25) {
+      setCycleRevision((revision) => revision + 1);
+    }
+    cycleWidthRef.current = nextCycleWidth;
     setWidths((current) =>
       current.length === nextWidths.length &&
       current.every((width, index) => Math.abs(width - nextWidths[index]) < 0.25)
@@ -166,19 +175,21 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
       frameRef.current = null;
       previousFrameTimeRef.current = null;
     };
-  }, [reducedMotion, viewportWidth, widths]);
+  }, [cycleRevision, reducedMotion]);
 
   const cycleWidth = widths.reduce((sum, width) => sum + width, 0);
-  const focusPosition = (offset + viewportWidth / 2) % (cycleWidth || 1);
-  let cursor = 0;
+  const focusPosition = offset + viewportWidth / 2;
   let activeIndex = 0;
+  let minimumDistance = Number.POSITIVE_INFINITY;
   for (let index = 0; index < widths.length; index += 1) {
-    const nextCursor = cursor + widths[index];
-    if (focusPosition >= cursor && focusPosition < nextCursor) {
+    const greetingCenter = widths.slice(0, index).reduce((sum, width) => sum + width, 0) + widths[index] / 2;
+    const distance = cycleWidth > 0
+      ? Math.abs((((focusPosition - greetingCenter + cycleWidth / 2) % cycleWidth) + cycleWidth) % cycleWidth - cycleWidth / 2)
+      : Number.POSITIVE_INFINITY;
+    if (distance < minimumDistance) {
+      minimumDistance = distance;
       activeIndex = index;
-      break;
     }
-    cursor = nextCursor;
   }
 
   const greetingsTrack = [...GREETINGS, ...GREETINGS, ...GREETINGS];
@@ -215,7 +226,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
             const focusCenter = offset + viewportWidth / 2;
             const directDistance = Math.abs(itemCenter - focusCenter);
             const distance = cycleWidth > 0
-              ? Math.min(directDistance, Math.abs(directDistance - cycleWidth), Math.abs(directDistance + cycleWidth))
+              ? Math.abs((((focusCenter - itemCenter + cycleWidth / 2) % cycleWidth) + cycleWidth) % cycleWidth - cycleWidth / 2)
               : directDistance;
             const normalizedDistance = distance / Math.max((widths[sourceIndex] ?? 1) / 2, 1);
             const focused = normalizedDistance <= 1;
