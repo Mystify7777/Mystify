@@ -46,7 +46,10 @@ function IdentityAnimation({
         aria-hidden="true"
         className="absolute h-28 w-28 rounded-full border border-observatory-amber/70 sm:h-36 sm:w-36"
         initial={false}
-        animate={{ opacity: initialized ? 0 : 1, scale: initialized ? 1.35 : 1 }}
+        animate={{
+          opacity: initialized ? 0 : 1,
+          scale: initialized ? 1.35 : 1,
+        }}
         transition={{ duration, ease: "easeInOut" }}
         style={{
           animation:
