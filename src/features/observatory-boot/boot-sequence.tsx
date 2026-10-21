@@ -34,11 +34,21 @@ function IdentityAnimation({
   stage: ObservatoryBootStage;
   reducedMotion: boolean;
 }) {
-  const initializing = stage === "INITIALIZING";
-  const morphing = stage === "MORPHING";
-  const tracing = stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
+  const drawing = stage === "MORPHING";
+  const filling = stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
   const settled = stage === "GREETING" || stage === "COMPLETE";
-  const motionDuration = reducedMotion ? 0.01 : 0.65;
+  const strokes = [
+    { id: "m", d: "M82 145 C91 113 101 74 111 55 C119 40 127 66 133 88 C138 108 142 124 147 117 C158 96 164 66 174 52 C181 42 186 58 190 80 C195 107 200 128 211 132 C219 135 226 126 233 115", delay: 0.00, duration: 0.55 },
+    { id: "y", d: "M220 112 C231 91 242 78 250 84 C260 92 247 123 241 139 C235 156 244 163 256 151 C272 135 284 105 294 87 C300 75 306 82 303 96 C298 119 284 150 276 166 C266 186 254 197 242 193", delay: 0.45, duration: 0.55 },
+    { id: "s", d: "M346 93 C333 80 313 88 311 103 C309 117 333 118 337 130 C342 145 322 156 307 147", delay: 0.88, duration: 0.42 },
+    { id: "t", d: "M365 54 C357 83 346 121 344 140 C342 157 356 160 369 145 M347 91 C362 85 377 83 389 86", delay: 1.18, duration: 0.48 },
+    { id: "i", d: "M387 108 C380 128 377 143 385 146 C393 149 400 137 405 130", delay: 1.50, duration: 0.34 },
+    { id: "idot", d: "M401 91 C403 89 405 87 406 85", delay: 1.75, duration: 0.10 },
+    { id: "f", d: "M431 54 C416 82 402 120 395 151 C390 174 386 194 373 198 C363 200 360 190 369 181 M398 105 C415 99 431 98 446 102", delay: 1.82, duration: 0.55 },
+    { id: "y2", d: "M438 113 C448 93 461 81 468 88 C477 97 462 128 455 144 C447 164 457 168 469 155 C483 140 497 111 507 91 C513 80 519 85 516 99 C511 121 498 152 487 170 C475 191 462 201 451 194", delay: 2.22, duration: 0.62 },
+  ] as const;
+  const drawComplete = filling;
+  const motionDuration = reducedMotion ? 0.01 : 0.45;
 
   return (
     <div className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]">
@@ -47,7 +57,7 @@ function IdentityAnimation({
         className="absolute h-28 w-28 rounded-full border border-observatory-amber/80 sm:h-36 sm:w-36"
         initial={false}
         animate={
-          initializing && !reducedMotion
+          stage === "INITIALIZING" && !reducedMotion
             ? {
                 opacity: [0, 0.95, 0.85, 0],
                 scale: [0.72, 1, 1.12, 1.42],
@@ -63,104 +73,69 @@ function IdentityAnimation({
         transition={{ duration: reducedMotion ? 0.01 : 0.9, times: [0, 0.24, 0.58, 1], ease: "easeInOut" }}
       />
 
-      <div
-        className="relative whitespace-nowrap text-6xl italic leading-none tracking-[-0.075em] sm:text-8xl"
-        style={{
-          fontFamily: '"Segoe Script", "Brush Script MT", "URW Chancery L", cursive',
-          fontWeight: 400,
-        }}
-      >
-        <span aria-hidden="true" className="invisible">Mystify</span>
-
-        <motion.span
-          aria-hidden="true"
-          className="absolute inset-0 flex items-center justify-center"
+      <div className="relative w-full max-w-[42rem] px-2 sm:px-0">
+        <motion.svg
+          viewBox="0 0 560 240"
+          role="img"
+          aria-label="Mystify"
+          className="h-auto w-full overflow-visible"
           initial={false}
-          animate={{ opacity: initializing ? 1 : 0, scale: initializing ? 1 : 0.88 }}
-          transition={{ duration: reducedMotion ? 0.01 : 0.22, ease: "easeOut" }}
-          style={{ color: "var(--observatory-amber)", transformOrigin: "50% 50%" }}
+          animate={{ opacity: stage === "INITIALIZING" ? 0 : 1 }}
+          transition={{ duration: reducedMotion ? 0.01 : 0.18 }}
         >
-          My
-        </motion.span>
+          <defs>
+            <filter id="mystify-signature-glow" x="-30%" y="-40%" width="160%" height="180%">
+              <feGaussianBlur stdDeviation="3.5" />
+            </filter>
+          </defs>
 
-        <motion.span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 flex items-center justify-center"
-          initial={false}
-          animate={{
-            opacity: morphing || tracing ? 1 : 0,
-            scale: morphing || tracing ? 1 : 0.58,
-          }}
-          transition={{
-            opacity: { duration: reducedMotion ? 0.01 : 0.22 },
-            scale: { duration: motionDuration, ease: [0.22, 1, 0.36, 1] },
-          }}
-          style={{
-            color: "transparent",
-            WebkitTextStroke: "1.25px var(--observatory-amber)",
-            filter: "drop-shadow(0 0 7px rgba(201,146,74,.22))",
-            transformOrigin: "50% 50%",
-          }}
-        >
-          Mystify
-        </motion.span>
-
+          {strokes.map((stroke) => (
+            <g key={stroke.id} fill="none" stroke="var(--observatory-amber)" strokeLinecap="round" strokeLinejoin="round">
+              <motion.path
+                d={stroke.d}
+                pathLength={1}
+                strokeWidth={13}
+                opacity={0.22}
+                filter="url(#mystify-signature-glow)"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{
+                  pathLength: drawComplete ? 1 : drawing ? 1 : 0,
+                  opacity: drawComplete ? (settled ? 0.12 : 0.2) : drawing ? 0.7 : 0,
+                }}
+                transition={{
+                  pathLength: { duration: reducedMotion ? 0.01 : stroke.duration, delay: reducedMotion ? 0 : stroke.delay, ease: "linear" },
+                  opacity: { duration: motionDuration },
+                }}
+              />
+              <motion.path
+                d={stroke.d}
+                pathLength={1}
+                initial={{ pathLength: 0, strokeWidth: 2.6, opacity: 0 }}
+                animate={{
+                  pathLength: drawComplete ? 1 : drawing ? 1 : 0,
+                  strokeWidth: filling ? 12 : 2.6,
+                  opacity: stage === "INITIALIZING" ? 0 : 1,
+                }}
+                transition={{
+                  pathLength: { duration: reducedMotion ? 0.01 : stroke.duration, delay: reducedMotion ? 0 : stroke.delay, ease: "linear" },
+                  strokeWidth: { duration: reducedMotion ? 0.01 : 0.38, delay: filling ? 0.04 : 0 },
+                  opacity: { duration: motionDuration },
+                }}
+              />
+            </g>
+          ))}
+        </motion.svg>
         <motion.div
           aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[145%] w-[135%] -translate-x-1/2 -translate-y-1/2"
+          className="pointer-events-none absolute inset-0 -z-10 rounded-full"
           initial={false}
-          animate={{
-            opacity: tracing ? (settled ? 0.52 : 0.9) : 0,
-            scale: tracing ? 1 : 0.78,
-          }}
-          transition={{
-            opacity: { duration: reducedMotion ? 0.01 : 0.65, ease: "easeOut" },
-            scale: { duration: motionDuration, ease: [0.22, 1, 0.36, 1] },
-          }}
+          animate={{ opacity: settled ? 0.26 : filling ? 0.5 : drawing ? 0.38 : 0 }}
+          transition={{ duration: reducedMotion ? 0.01 : 0.55, ease: "easeOut" }}
           style={{
-            background: "radial-gradient(ellipse at center, rgba(201,146,74,.2) 0%, rgba(201,146,74,.09) 34%, rgba(201,146,74,0) 72%)",
-            filter: "blur(18px)",
-            transformOrigin: "center",
+            background: "radial-gradient(ellipse at 50% 52%, rgba(201,146,74,.18) 0%, rgba(201,146,74,.07) 38%, rgba(201,146,74,0) 72%)",
+            filter: "blur(22px)",
           }}
         />
-
-        <motion.span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 flex items-center justify-center"
-          initial={false}
-          animate={{
-            opacity: tracing ? (settled ? 0.3 : 0.78) : 0,
-            scale: tracing ? 1.035 : 0.72,
-          }}
-          transition={{
-            opacity: { duration: reducedMotion ? 0.01 : 0.55, ease: "easeOut" },
-            scale: { duration: motionDuration, ease: [0.22, 1, 0.36, 1] },
-          }}
-          style={{
-            color: "transparent",
-            WebkitTextStroke: "1.25px var(--observatory-amber)",
-            filter: "drop-shadow(0 0 8px rgba(201,146,74,.48)) drop-shadow(0 0 20px rgba(201,146,74,.2))",
-            transformOrigin: "50% 50%",
-          }}
-        >
-          Mystify
-        </motion.span>
-
-        <motion.span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 flex items-center justify-center"
-          initial={false}
-          animate={{ opacity: settled ? 1 : 0, scale: settled ? 1 : 0.94 }}
-          transition={{ duration: reducedMotion ? 0.01 : 0.4, ease: "easeOut" }}
-          style={{
-            color: "transparent",
-            WebkitTextStroke: "1.25px var(--observatory-amber)",
-            filter: "drop-shadow(0 0 10px rgba(201,146,74,.25))",
-            transformOrigin: "50% 50%",
-          }}
-        >
-          Mystify
-        </motion.span>
       </div>
     </div>
   );
