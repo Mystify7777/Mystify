@@ -75,7 +75,7 @@ function IdentityAnimation({
       <div
         className="relative whitespace-nowrap text-6xl italic leading-none tracking-[-0.075em] sm:text-8xl"
         style={{
-          fontFamily: 'Georgia, "Palatino Linotype", "Book Antiqua", cursive',
+          fontFamily: '"Segoe Script", "Brush Script MT", "URW Chancery L", cursive',
           fontWeight: 400,
         }}
       >
