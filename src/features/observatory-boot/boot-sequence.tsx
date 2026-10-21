@@ -34,65 +34,99 @@ function IdentityAnimation({
   stage: ObservatoryBootStage;
   reducedMotion: boolean;
 }) {
-  const initialized = stage !== "INITIALIZING";
-  const traceStarted =
-    stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
+  const initializing = stage === "INITIALIZING";
+  const morphing = stage === "MORPHING";
+  const tracing = stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
   const settled = stage === "GREETING" || stage === "COMPLETE";
-  const duration = reducedMotion ? 0.01 : 1.15;
+  const duration = reducedMotion ? 0.01 : 0.9;
+  const insertedLetters = "ystif";
 
   return (
     <div className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]">
       <motion.div
         aria-hidden="true"
-        className="absolute h-28 w-28 rounded-full border border-observatory-amber/70 sm:h-36 sm:w-36"
+        className="absolute h-28 w-28 rounded-full border border-observatory-amber/80 sm:h-36 sm:w-36"
         initial={false}
-        animate={{
-          opacity: initialized ? 0 : 1,
-          scale: initialized ? 1.35 : 1,
-        }}
-        transition={{ duration, ease: "easeInOut" }}
-        style={{
-          animation:
-            reducedMotion || initialized
-              ? undefined
-              : "observatory-circle-rest 1.8s ease-in-out infinite alternate",
+        animate={
+          initializing && !reducedMotion
+            ? {
+                opacity: [0, 0.95, 0.85, 0],
+                scale: [0.72, 1, 1.12, 1.42],
+                boxShadow: [
+                  "0 0 0 rgba(201,146,74,0)",
+                  "0 0 14px rgba(201,146,74,.2)",
+                  "0 0 30px rgba(201,146,74,.42)",
+                  "0 0 44px rgba(201,146,74,0)",
+                ],
+              }
+            : {
+                opacity: 0,
+                scale: 1.42,
+                boxShadow: "0 0 0 rgba(201,146,74,0)",
+              }
+        }
+        transition={{
+          duration,
+          times: [0, 0.24, 0.58, 1],
+          ease: "easeInOut",
         }}
       />
 
-      <div className="relative whitespace-nowrap font-serif text-5xl italic tracking-[-0.06em] sm:text-7xl">
+      <div
+        className="relative whitespace-nowrap text-6xl italic leading-none tracking-[-0.075em] sm:text-8xl"
+        style={{
+          fontFamily: 'Georgia, "Palatino Linotype", "Book Antiqua", cursive',
+          fontWeight: 400,
+        }}
+      >
         <span aria-hidden="true" className="invisible">
           Mystify
         </span>
 
-        <span
+        <motion.span
           aria-hidden="true"
-          className="absolute inset-0 flex items-center text-observatory-amber"
-          style={{ opacity: initialized ? 0 : 1 }}
+          className="absolute inset-0 flex items-center justify-center"
+          initial={false}
+          animate={{ opacity: initializing ? 1 : 0 }}
+          transition={{ duration: reducedMotion ? 0.01 : 0.18 }}
+          style={{ color: "var(--observatory-amber)" }}
         >
           My
-        </span>
+        </motion.span>
 
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 flex items-center text-observatory-amber"
+          className="pointer-events-none absolute inset-0 flex items-center justify-center"
+          style={{
+            color: "transparent",
+            WebkitTextStroke: "1.25px var(--observatory-amber)",
+            filter: "drop-shadow(0 0 10px rgba(201,146,74,.12))",
+          }}
         >
-          {Array.from("Mystify").map((letter, index) => (
+          <span>M</span>
+          {Array.from(insertedLetters).map((letter, index) => (
             <motion.span
-              key={index}
+              key={`${letter}-${index}`}
               className="inline-block"
               initial={false}
               animate={{
-                opacity: initialized ? 1 : 0,
-                y: reducedMotion || !initialized ? 0 : [3, 0],
+                opacity: morphing || tracing ? 1 : 0,
+                y: morphing && !reducedMotion ? [5, 0] : 0,
+                scale: morphing && !reducedMotion ? [0.94, 1] : 1,
               }}
               transition={{
                 opacity: {
-                  duration: reducedMotion ? 0.01 : 0.28,
-                  delay: reducedMotion ? 0 : index * 0.11,
+                  duration: reducedMotion ? 0.01 : 0.24,
+                  delay: reducedMotion ? 0 : index * 0.1,
                 },
                 y: {
-                  duration: reducedMotion ? 0.01 : 0.28,
-                  delay: reducedMotion ? 0 : index * 0.11,
+                  duration: reducedMotion ? 0.01 : 0.3,
+                  delay: reducedMotion ? 0 : index * 0.1,
+                  ease: "easeOut",
+                },
+                scale: {
+                  duration: reducedMotion ? 0.01 : 0.3,
+                  delay: reducedMotion ? 0 : index * 0.1,
                   ease: "easeOut",
                 },
               }}
@@ -100,35 +134,88 @@ function IdentityAnimation({
               {letter}
             </motion.span>
           ))}
+          <motion.span
+            className="inline-block"
+            initial={false}
+            animate={{ opacity: morphing || tracing ? 1 : 0 }}
+            transition={{
+              duration: reducedMotion ? 0.01 : 0.24,
+              delay: reducedMotion ? 0 : 0.52,
+            }}
+          >
+            y
+          </motion.span>
         </span>
 
         <motion.span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 flex items-center text-observatory-amber"
+          className="pointer-events-none absolute inset-0 flex items-center justify-center"
           initial={false}
           animate={{
-            opacity: traceStarted ? 0.28 : 0,
-            clipPath: traceStarted ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
+            opacity: tracing ? (settled ? 0.25 : 0.78) : 0,
+            clipPath: tracing ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
           }}
           transition={{
-            duration: reducedMotion ? 0.01 : 1.25,
-            delay: reducedMotion ? 0 : 0.15,
-            ease: "linear",
+            opacity: {
+              duration: reducedMotion ? 0.01 : 0.4,
+              ease: "easeOut",
+            },
+            clipPath: {
+              duration: reducedMotion ? 0.01 : 1.35,
+              ease: "easeInOut",
+            },
           }}
-          style={{ filter: "blur(7px)", transform: "scale(1.045)" }}
+          style={{
+            color: "var(--observatory-amber)",
+            textShadow:
+              "0 0 8px rgba(201,146,74,.52), 0 0 22px rgba(201,146,74,.24)",
+          }}
         >
-          Mystify
+          <span
+            className="absolute inset-0 flex items-center justify-center"
+            style={{
+              opacity: 0.28,
+              filter: "blur(8px)",
+              transform: "translateX(-2px) scale(1.035)",
+            }}
+          >
+            Mystify
+          </span>
+          <span
+            className="absolute inset-0 flex items-center justify-center"
+            style={{
+              opacity: 0.16,
+              filter: "blur(15px)",
+              transform: "translateX(3px) scale(1.075)",
+            }}
+          >
+            Mystify
+          </span>
+          <span
+            className="relative"
+            style={{
+              color: "transparent",
+              WebkitTextStroke: "1.25px var(--observatory-amber)",
+            }}
+          >
+            Mystify
+          </span>
         </motion.span>
 
         <motion.span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 text-observatory-ink"
+          className="pointer-events-none absolute inset-0 flex items-center justify-center"
           initial={false}
           animate={{ opacity: settled ? 1 : 0 }}
           transition={{
             duration: reducedMotion ? 0.01 : 0.45,
-            delay: reducedMotion ? 0 : 0.25,
+            delay: reducedMotion ? 0 : 0.18,
             ease: "easeOut",
+          }}
+          style={{
+            color: "transparent",
+            WebkitTextStroke: "1.25px var(--observatory-amber)",
+            filter: "drop-shadow(0 0 12px rgba(201,146,74,.28))",
           }}
         >
           Mystify
@@ -164,11 +251,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
     const nextCycleWidth = nextWidths.reduce((sum, width) => sum + width, 0);
     const oldCycleWidth = cycleWidthRef.current;
 
-    if (
-      oldCycleWidth > 0 &&
-      nextCycleWidth > 0 &&
-      oldCycleWidth !== nextCycleWidth
-    ) {
+    if (oldCycleWidth > 0 && nextCycleWidth > 0 && oldCycleWidth !== nextCycleWidth) {
       offsetRef.current = (offsetRef.current / oldCycleWidth) * nextCycleWidth;
     }
 
@@ -180,9 +263,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
   useEffect(() => {
     measure();
     const observer =
-      typeof ResizeObserver === "undefined"
-        ? null
-        : new ResizeObserver(measure);
+      typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
     if (viewportRef.current) observer?.observe(viewportRef.current);
     if (rulerRef.current) observer?.observe(rulerRef.current);
     window.addEventListener("resize", measure);
@@ -258,9 +339,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
     frameRef.current = window.requestAnimationFrame(tick);
     return () => {
       cancelled = true;
-      if (frameRef.current !== null) {
-        window.cancelAnimationFrame(frameRef.current);
-      }
+      if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
       frameRef.current = null;
       previousFrameTimeRef.current = null;
     };
@@ -381,15 +460,12 @@ export function ObservatoryBootSequence({
     completeOnce();
   };
 
-  const wordmarkStage =
-    stage === "INITIALIZING" || stage === "MORPHING" ? stage : "TRACING";
-
   return (
     <section
       aria-label="Observatory initialization"
       className="relative flex min-h-[calc(100vh-2.5rem)] items-center justify-center overflow-hidden px-4 py-12"
     >
-      <IdentityAnimation stage={wordmarkStage} reducedMotion={reducedMotion} />
+      <IdentityAnimation stage={stage} reducedMotion={reducedMotion} />
       <GreetingMarquee reducedMotion={reducedMotion} />
       {shouldOfferBootSkip(visitCount) && stage !== "COMPLETE" ? (
         <button
