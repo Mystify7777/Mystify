@@ -38,16 +38,15 @@ function IdentityAnimation({
   const filling = stage === "GREETING" || stage === "COMPLETE";
   const settled = stage === "GREETING" || stage === "COMPLETE";
   const strokes = [
-    { id: "m", d: "M82 145 C91 113 101 74 111 55 C119 40 127 66 133 88 C138 108 142 124 147 117 C158 96 164 66 174 52 C181 42 186 58 190 80 C195 107 200 128 211 132 C219 135 226 126 233 115", delay: 0.00, duration: 0.55 },
-    { id: "y", d: "M220 112 C231 91 242 78 250 84 C260 92 247 123 241 139 C235 156 244 163 256 151 C272 135 284 105 294 87 C300 75 306 82 303 96 C298 119 284 150 276 166 C266 186 254 197 242 193", delay: 0.45, duration: 0.55 },
-    { id: "s", d: "M346 93 C333 80 313 88 311 103 C309 117 333 118 337 130 C342 145 322 156 307 147", delay: 0.88, duration: 0.42 },
-    { id: "t", d: "M365 54 C357 83 346 121 344 140 C342 157 356 160 369 145 M347 91 C362 85 377 83 389 86", delay: 0.94, duration: 0.38 },
-    { id: "i", d: "M387 108 C380 128 377 143 385 146 C393 149 400 137 405 130", delay: 1.18, duration: 0.28 },
-    { id: "idot", d: "M401 91 C403 89 405 87 406 85", delay: 1.38, duration: 0.08 },
-    { id: "f", d: "M431 54 C416 82 402 120 395 151 C390 174 386 194 373 198 C363 200 360 190 369 181 M398 105 C415 99 431 98 446 102", delay: 1.42, duration: 0.42 },
-    { id: "y2", d: "M438 113 C448 93 461 81 468 88 C477 97 462 128 455 144 C447 164 457 168 469 155 C483 140 497 111 507 91 C513 80 519 85 516 99 C511 121 498 152 487 170 C475 191 462 201 451 194", delay: 1.76, duration: 0.48 },
+    { id: "m", d: "M64 151 C75 119 86 79 97 58 C105 42 114 68 120 91 C126 113 130 130 137 120 C148 98 155 67 166 52 C173 42 180 59 184 82 C190 111 195 134 207 137 C216 139 224 128 232 115", delay: 0, duration: 0.52 },
+    { id: "y", d: "M218 116 C229 94 240 80 249 87 C259 95 247 125 241 142 C235 159 244 165 256 153 C271 138 283 109 293 89 C299 77 305 83 302 98 C297 121 284 151 274 169 C264 187 253 197 241 193", delay: 0.43, duration: 0.52 },
+    { id: "s", d: "M343 94 C331 82 314 88 312 102 C310 116 332 119 337 131 C343 145 324 156 309 148", delay: 0.86, duration: 0.4 },
+    { id: "t", d: "M365 56 C356 84 347 119 345 140 C343 156 356 159 369 145 M348 92 C361 87 375 85 387 88", delay: 1.13, duration: 0.42 },
+    { id: "i", d: "M390 111 C383 128 380 142 387 146 C394 149 401 138 406 130", delay: 1.46, duration: 0.28 },
+    { id: "idot", d: "M402 91 C403 89 405 87 406 85", delay: 1.68, duration: 0.08 },
+    { id: "f", d: "M431 55 C417 82 404 118 397 149 C392 171 387 192 375 197 C365 200 361 190 370 181 M399 106 C414 100 429 99 444 102", delay: 1.72, duration: 0.44 },
+    { id: "y2", d: "M438 115 C449 94 460 82 468 89 C477 98 463 128 456 145 C448 164 457 169 469 156 C483 141 497 112 507 92 C513 81 519 86 516 100 C511 122 498 153 487 171 C475 191 463 201 451 194", delay: 2.06, duration: 0.48 },
   ] as const;
-  const drawComplete = filling;
   const motionDuration = reducedMotion ? 0.01 : 0.45;
 
   return (
@@ -73,15 +72,15 @@ function IdentityAnimation({
         transition={{ duration: reducedMotion ? 0.01 : 0.9, times: [0, 0.24, 0.58, 1], ease: "easeInOut" }}
       />
 
-      <div className="relative w-full max-w-[42rem] px-2 sm:px-0">
+      <div className="relative w-full max-w-[38rem] px-2 sm:px-0">
         <motion.svg
           viewBox="0 0 560 240"
           role="img"
           aria-label="Mystify"
           className="h-auto w-full overflow-visible"
           initial={false}
-          animate={{ opacity: stage === "INITIALIZING" ? 0 : 1 }}
-          transition={{ duration: reducedMotion ? 0.01 : 0.18 }}
+          animate={{ opacity: stage === "INITIALIZING" ? 0 : 1, y: drawing ? [5, 0] : 0 }}
+          transition={{ opacity: { duration: reducedMotion ? 0.01 : 0.2 }, y: { duration: reducedMotion ? 0.01 : 0.6, ease: [0.22, 1, 0.36, 1] } }}
         >
           <defs>
             <filter id="mystify-signature-glow" x="-30%" y="-40%" width="160%" height="180%">
@@ -94,13 +93,12 @@ function IdentityAnimation({
               <motion.path
                 d={stroke.d}
                 pathLength={1}
-                strokeWidth={13}
-                opacity={0.22}
+                strokeWidth={10}
                 filter="url(#mystify-signature-glow)"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{
-                  pathLength: drawComplete ? 1 : drawing ? 1 : 0,
-                  opacity: drawComplete ? (settled ? 0.12 : 0.2) : drawing ? 0.7 : 0,
+                  pathLength: filling ? 1 : drawing ? 1 : 0,
+                  opacity: filling ? (settled ? 0.08 : 0.18) : drawing ? 0.58 : 0,
                 }}
                 transition={{
                   pathLength: { duration: reducedMotion ? 0.01 : stroke.duration, delay: reducedMotion ? 0 : stroke.delay, ease: "linear" },
@@ -110,30 +108,46 @@ function IdentityAnimation({
               <motion.path
                 d={stroke.d}
                 pathLength={1}
-                initial={{ pathLength: 0, strokeWidth: 2.6, opacity: 0 }}
+                initial={{ pathLength: 0, opacity: 0 }}
                 animate={{
-                  pathLength: drawComplete ? 1 : drawing ? 1 : 0,
-                  strokeWidth: filling ? 12 : 2.6,
-                  opacity: stage === "INITIALIZING" ? 0 : 1,
+                  pathLength: filling ? 1 : drawing ? 1 : 0,
+                  opacity: filling ? 0.6 : stage === "INITIALIZING" ? 0 : 1,
                 }}
                 transition={{
                   pathLength: { duration: reducedMotion ? 0.01 : stroke.duration, delay: reducedMotion ? 0 : stroke.delay, ease: "linear" },
-                  strokeWidth: { duration: reducedMotion ? 0.01 : 0.38, delay: filling ? 0.04 : 0 },
                   opacity: { duration: motionDuration },
                 }}
+                strokeWidth={2.4}
               />
             </g>
           ))}
+
+          <motion.text
+            x="280"
+            y="151"
+            textAnchor="middle"
+            fill="var(--observatory-amber)"
+            fontFamily='"Segoe Script", "Brush Script MT", "URW Chancery L", cursive'
+            fontSize="116"
+            fontStyle="italic"
+            letterSpacing="-5"
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: filling ? 1 : 0, scale: filling ? 1 : 0.97 }}
+            transition={{ opacity: { duration: reducedMotion ? 0.01 : 0.48, delay: reducedMotion ? 0 : 0.08 }, scale: { duration: reducedMotion ? 0.01 : 0.55, ease: [0.22, 1, 0.36, 1] } }}
+          >
+            Mystify
+          </motion.text>
         </motion.svg>
+
         <motion.div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 rounded-full"
+          className="pointer-events-none absolute inset-0 -z-10"
           initial={false}
-          animate={{ opacity: settled ? 0.26 : filling ? 0.5 : drawing ? 0.38 : 0 }}
-          transition={{ duration: reducedMotion ? 0.01 : 0.55, ease: "easeOut" }}
+          animate={{ opacity: settled ? 0.22 : filling ? 0.34 : drawing ? 0.28 : 0, scale: settled ? 1 : 0.94 }}
+          transition={{ duration: reducedMotion ? 0.01 : 0.6, ease: "easeOut" }}
           style={{
-            background: "radial-gradient(ellipse at 50% 52%, rgba(201,146,74,.18) 0%, rgba(201,146,74,.07) 38%, rgba(201,146,74,0) 72%)",
-            filter: "blur(22px)",
+            background: "radial-gradient(ellipse at 50% 54%, rgba(201,146,74,.16) 0%, rgba(201,146,74,.06) 36%, rgba(201,146,74,0) 70%)",
+            filter: "blur(18px)",
           }}
         />
       </div>
