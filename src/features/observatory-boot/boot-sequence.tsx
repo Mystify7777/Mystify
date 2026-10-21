@@ -47,7 +47,7 @@ function IdentityAnimation({
     { id: "f", d: "M431 55 C417 82 404 118 397 149 C392 171 387 192 375 197 C365 200 361 190 370 181 M399 106 C414 100 429 99 444 102", delay: 1.72, duration: 0.44 },
     { id: "y2", d: "M438 115 C449 94 460 82 468 89 C477 98 463 128 456 145 C448 164 457 169 469 156 C483 141 497 112 507 92 C513 81 519 86 516 100 C511 122 498 153 487 171 C475 191 463 201 451 194", delay: 2.06, duration: 0.48 },
   ] as const;
-  const motionDuration = reducedMotion ? 0.01 : 0.45;
+  const motionDuration = reducedMotion ? 0.01 : 0.55;
 
   return (
     <div className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]">
@@ -84,7 +84,7 @@ function IdentityAnimation({
         >
           <defs>
             <filter id="mystify-signature-glow" x="-30%" y="-40%" width="160%" height="180%">
-              <feGaussianBlur stdDeviation="3.5" />
+              <feGaussianBlur stdDeviation="2.5" />
             </filter>
           </defs>
 
@@ -98,7 +98,7 @@ function IdentityAnimation({
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{
                   pathLength: filling ? 1 : drawing ? 1 : 0,
-                  opacity: filling ? (settled ? 0.08 : 0.18) : drawing ? 0.58 : 0,
+                  opacity: filling ? 0 : drawing ? 0.42 : 0,
                 }}
                 transition={{
                   pathLength: { duration: reducedMotion ? 0.01 : stroke.duration, delay: reducedMotion ? 0 : stroke.delay, ease: "linear" },
@@ -111,7 +111,7 @@ function IdentityAnimation({
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{
                   pathLength: filling ? 1 : drawing ? 1 : 0,
-                  opacity: filling ? 0.6 : stage === "INITIALIZING" ? 0 : 1,
+                  opacity: filling ? 0 : stage === "INITIALIZING" ? 0 : 1,
                 }}
                 transition={{
                   pathLength: { duration: reducedMotion ? 0.01 : stroke.duration, delay: reducedMotion ? 0 : stroke.delay, ease: "linear" },
