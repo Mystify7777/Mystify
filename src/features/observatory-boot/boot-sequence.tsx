@@ -2,10 +2,11 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { getGreetingFocus, getGreetingPrefixWidths } from "@/features/observatory-boot/boot-geometry";
 import {
   getNextObservatoryBootStage,
   getObservatoryBootDuration,
-  registerBootVisit,
+  registerBootVisitForPageLoad,
   scheduleObservatoryBootTransition,
   shouldOfferBootSkip,
   type ObservatoryBootStage,
@@ -33,10 +34,11 @@ function IdentityAnimation({
   stage: ObservatoryBootStage;
   reducedMotion: boolean;
 }) {
-  const expanded = stage !== "INITIALIZING";
-  const tracing = stage !== "INITIALIZING";
-  const finishTrace =
+  const initialized = stage !== "INITIALIZING";
+  const traceStarted =
     stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
+  const settled = stage === "GREETING" || stage === "COMPLETE";
+  const duration = reducedMotion ? 0.01 : 1.15;
 
   return (
     <div className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]">
@@ -44,15 +46,13 @@ function IdentityAnimation({
         aria-hidden="true"
         className="absolute h-28 w-28 rounded-full border border-observatory-amber/70 sm:h-36 sm:w-36"
         initial={false}
-        animate={{ opacity: expanded ? 0 : 1, scale: expanded ? 1.45 : 1 }}
-        transition={{
-          duration: reducedMotion ? 0.01 : 1.25,
-          ease: "easeInOut",
-        }}
+        animate={{ opacity: initialized ? 0 : 1, scale: initialized ? 1.35 : 1 }}
+        transition={{ duration, ease: "easeInOut" }}
         style={{
-          animation: reducedMotion
-            ? undefined
-            : "observatory-circle-rest 1.8s ease-in-out infinite alternate",
+          animation:
+            reducedMotion || initialized
+              ? undefined
+              : "observatory-circle-rest 1.8s ease-in-out infinite alternate",
         }}
       />
 
@@ -64,43 +64,55 @@ function IdentityAnimation({
         <span
           aria-hidden="true"
           className="absolute inset-0 flex items-center text-observatory-amber"
-          style={{ opacity: expanded ? 0 : 1 }}
+          style={{ opacity: initialized ? 0 : 1 }}
         >
           My
         </span>
 
-        <motion.span
+        <span
           aria-hidden="true"
-          className="absolute inset-0 text-observatory-amber"
-          initial={false}
-          animate={{
-            opacity: expanded ? 1 : 0,
-            clipPath: expanded ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
-          }}
-          transition={{
-            duration: reducedMotion ? 0.01 : 1.6,
-            ease: "easeInOut",
-          }}
+          className="pointer-events-none absolute inset-0 flex items-center text-observatory-amber"
         >
-          Mystify
-        </motion.span>
+          {Array.from("Mystify").map((letter, index) => (
+            <motion.span
+              key={index}
+              className="inline-block"
+              initial={false}
+              animate={{
+                opacity: initialized ? 1 : 0,
+                y: reducedMotion || !initialized ? 0 : [3, 0],
+              }}
+              transition={{
+                opacity: {
+                  duration: reducedMotion ? 0.01 : 0.28,
+                  delay: reducedMotion ? 0 : index * 0.11,
+                },
+                y: {
+                  duration: reducedMotion ? 0.01 : 0.28,
+                  delay: reducedMotion ? 0 : index * 0.11,
+                  ease: "easeOut",
+                },
+              }}
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </span>
 
         <motion.span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 text-observatory-amber"
+          className="pointer-events-none absolute inset-0 flex items-center text-observatory-amber"
           initial={false}
           animate={{
-            opacity: tracing ? 0.35 : 0,
-            clipPath: tracing ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
+            opacity: traceStarted ? 0.28 : 0,
+            clipPath: traceStarted ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
           }}
           transition={{
-            duration: reducedMotion ? 0.01 : 1.2,
+            duration: reducedMotion ? 0.01 : 1.25,
+            delay: reducedMotion ? 0 : 0.15,
             ease: "linear",
           }}
-          style={{
-            filter: "blur(7px)",
-            transform: "scale(1.045)",
-          }}
+          style={{ filter: "blur(7px)", transform: "scale(1.045)" }}
         >
           Mystify
         </motion.span>
@@ -109,11 +121,12 @@ function IdentityAnimation({
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 text-observatory-ink"
           initial={false}
-          animate={{
-            opacity: finishTrace ? 1 : 0,
-            clipPath: finishTrace ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
+          animate={{ opacity: settled ? 1 : 0 }}
+          transition={{
+            duration: reducedMotion ? 0.01 : 0.45,
+            delay: reducedMotion ? 0 : 0.25,
+            ease: "easeOut",
           }}
-          transition={{ duration: reducedMotion ? 0.01 : 1.1, ease: "linear" }}
         >
           Mystify
         </motion.span>
@@ -199,62 +212,32 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
             cycleWidth;
           trackRef.current.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
 
-          const focusCenter = offsetRef.current + viewportWidth / 2;
+          const focusItems = getGreetingFocus(
+            offsetRef.current,
+            viewportWidth,
+            widths,
+            Math.ceil(greetingRefs.current.length / Math.max(widths.length, 1)),
+          );
           let nextActiveIndex = 0;
           let nearestDistance = Number.POSITIVE_INFINITY;
-          const repeatedCount = greetingRefs.current.length;
-          const prefixWidths = widths.map((_, index) =>
-            widths.slice(0, index).reduce((sum, width) => sum + width, 0),
-          );
 
-          for (let index = 0; index < repeatedCount; index += 1) {
-            const element = greetingRefs.current[index];
+          for (const focusItem of focusItems) {
+            const element = greetingRefs.current[focusItem.index];
             if (!element) continue;
 
-            const sourceIndex = index % GREETINGS.length;
-            const width =
-              widths[sourceIndex] ?? element.getBoundingClientRect().width;
-            const itemCenter =
-              Math.floor(index / GREETINGS.length) * cycleWidth +
-              (prefixWidths[sourceIndex] ?? 0) +
-              width / 2;
-            const distance = Math.abs(
-              ((((focusCenter - itemCenter + cycleWidth / 2) % cycleWidth) +
-                cycleWidth) %
-                cycleWidth) -
-                cycleWidth / 2,
-            );
-            const nearestCycleDistance = distance;
-            const normalizedDistance =
-              nearestCycleDistance / Math.max(width / 2, 1);
-            const isFocused = normalizedDistance <= 1;
-            const scale = isFocused
-              ? 1.12
-              : normalizedDistance < 2
-                ? 0.94
-                : normalizedDistance < 4
-                  ? 0.82
-                  : 0.72;
-            const opacity = isFocused
-              ? 1
-              : normalizedDistance < 2
-                ? 0.72
-                : normalizedDistance < 4
-                  ? 0.48
-                  : 0.3;
-
-            element.style.opacity = String(opacity);
-            element.style.transform = `scale(${scale})`;
-            element.style.fontWeight = isFocused ? "600" : "400";
-            element.style.color = isFocused
+            const sourceIndex = focusItem.index % GREETINGS.length;
+            element.style.opacity = String(focusItem.opacity);
+            element.style.transform = `scale(${focusItem.scale})`;
+            element.style.fontWeight = focusItem.focused ? "600" : "400";
+            element.style.color = focusItem.focused
               ? "var(--observatory-amber)"
               : "var(--observatory-muted)";
-            element.style.textShadow = isFocused
+            element.style.textShadow = focusItem.focused
               ? "0 0 16px rgba(201,146,74,.22)"
               : "none";
 
-            if (nearestCycleDistance < nearestDistance) {
-              nearestDistance = nearestCycleDistance;
+            if (focusItem.distance < nearestDistance) {
+              nearestDistance = focusItem.distance;
               nextActiveIndex = sourceIndex;
             }
           }
@@ -293,7 +276,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
           aria-hidden="true"
           style={{
             background:
-              "linear-gradient(90deg, transparent, rgba(11,13,16,.30) 12%, rgba(11,13,16,.58) 50%, rgba(11,13,16,.30) 88%, transparent)",
+              "linear-gradient(90deg, transparent, rgba(11,13,16,.12) 20%, rgba(11,13,16,.18) 50%, rgba(11,13,16,.12) 80%, transparent)",
             maskImage:
               "linear-gradient(90deg, transparent, black 18%, black 82%, transparent)",
           }}
@@ -357,7 +340,6 @@ export function ObservatoryBootSequence({
   const [stage, setStage] = useState<ObservatoryBootStage>("INITIALIZING");
   const [visitCount, setVisitCount] = useState(1);
   const completedRef = useRef(false);
-  const completionRequestedRef = useRef(false);
   const completionCallbackRef = useRef(onComplete);
 
   useEffect(() => {
@@ -365,18 +347,25 @@ export function ObservatoryBootSequence({
   }, [onComplete]);
 
   useEffect(() => {
-    setVisitCount(registerBootVisit());
+    setVisitCount(registerBootVisitForPageLoad());
   }, []);
 
   const completeOnce = useCallback(() => {
     if (completedRef.current) return;
     completedRef.current = true;
-    completionCallbackRef.current();
     setStage("COMPLETE");
   }, []);
 
   useEffect(() => {
-    if (stage === "COMPLETE" || completedRef.current) return;
+    if (stage === "COMPLETE") {
+      if (!completedRef.current) {
+        completedRef.current = true;
+        completionCallbackRef.current();
+      }
+      return;
+    }
+
+    if (completedRef.current) return;
     const nextStage = getNextObservatoryBootStage(stage);
     const duration = getObservatoryBootDuration(stage, reducedMotion);
     return scheduleObservatoryBootTransition(() => {
