@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { getGreetingFocus, getGreetingPrefixWidths } from "@/features/observatory-boot/boot-geometry";
+import { getGreetingFocus } from "@/features/observatory-boot/boot-geometry";
 import {
   getNextObservatoryBootStage,
   getObservatoryBootDuration,
