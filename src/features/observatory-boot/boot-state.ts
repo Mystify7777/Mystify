@@ -54,8 +54,9 @@ export function registerBootVisit(
  * as separate page loads. A real reload creates a fresh module instance.
  */
 export function createBootVisitRegistrar(
-  register: (storage?: Pick<Storage, "getItem" | "setItem">) => number =
-    registerBootVisit,
+  register: (
+    storage?: Pick<Storage, "getItem" | "setItem">,
+  ) => number = registerBootVisit,
 ) {
   let registeredCount: number | null = null;
 

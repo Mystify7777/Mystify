@@ -39,9 +39,7 @@ function IdentityAnimation({
     stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
 
   return (
-    <div
-      className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]"
-    >
+    <div className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]">
       <motion.div
         aria-hidden="true"
         className="absolute h-28 w-28 rounded-full border border-observatory-amber/70 sm:h-36 sm:w-36"
@@ -58,9 +56,7 @@ function IdentityAnimation({
         }}
       />
 
-      <div
-        className="relative whitespace-nowrap font-serif text-5xl italic tracking-[-0.06em] sm:text-7xl"
-      >
+      <div className="relative whitespace-nowrap font-serif text-5xl italic tracking-[-0.06em] sm:text-7xl">
         <span aria-hidden="true" className="invisible">
           Mystify
         </span>
@@ -145,8 +141,9 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
     const ruler = rulerRef.current;
     if (!viewport || !ruler) return;
 
-    const nextWidths = Array.from(ruler.children, (child) =>
-      (child as HTMLElement).getBoundingClientRect().width,
+    const nextWidths = Array.from(
+      ruler.children,
+      (child) => (child as HTMLElement).getBoundingClientRect().width,
     );
     const nextCycleWidth = nextWidths.reduce((sum, width) => sum + width, 0);
     const oldCycleWidth = cycleWidthRef.current;
@@ -167,7 +164,9 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
   useEffect(() => {
     measure();
     const observer =
-      typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
+      typeof ResizeObserver === "undefined"
+        ? null
+        : new ResizeObserver(measure);
     if (viewportRef.current) observer?.observe(viewportRef.current);
     if (rulerRef.current) observer?.observe(rulerRef.current);
     window.addEventListener("resize", measure);
@@ -196,8 +195,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
         if (cycleWidth > 0 && trackRef.current) {
           offsetRef.current =
             (offsetRef.current +
-              ((timestamp - previous) / 1000) *
-                GREETING_SPEED_PX_PER_SECOND) %
+              ((timestamp - previous) / 1000) * GREETING_SPEED_PX_PER_SECOND) %
             cycleWidth;
           trackRef.current.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
 
@@ -206,9 +204,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
           let nearestDistance = Number.POSITIVE_INFINITY;
           const repeatedCount = greetingRefs.current.length;
           const prefixWidths = widths.map((_, index) =>
-            widths
-              .slice(0, index)
-              .reduce((sum, width) => sum + width, 0),
+            widths.slice(0, index).reduce((sum, width) => sum + width, 0),
           );
 
           for (let index = 0; index < repeatedCount; index += 1) {
