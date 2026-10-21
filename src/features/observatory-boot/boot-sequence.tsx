@@ -34,18 +34,18 @@ function IdentityAnimation({
   stage: ObservatoryBootStage;
   reducedMotion: boolean;
 }) {
-  const drawing = stage === "MORPHING";
-  const filling = stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
+  const drawing = stage === "MORPHING" || stage === "TRACING";
+  const filling = stage === "GREETING" || stage === "COMPLETE";
   const settled = stage === "GREETING" || stage === "COMPLETE";
   const strokes = [
     { id: "m", d: "M82 145 C91 113 101 74 111 55 C119 40 127 66 133 88 C138 108 142 124 147 117 C158 96 164 66 174 52 C181 42 186 58 190 80 C195 107 200 128 211 132 C219 135 226 126 233 115", delay: 0.00, duration: 0.55 },
     { id: "y", d: "M220 112 C231 91 242 78 250 84 C260 92 247 123 241 139 C235 156 244 163 256 151 C272 135 284 105 294 87 C300 75 306 82 303 96 C298 119 284 150 276 166 C266 186 254 197 242 193", delay: 0.45, duration: 0.55 },
     { id: "s", d: "M346 93 C333 80 313 88 311 103 C309 117 333 118 337 130 C342 145 322 156 307 147", delay: 0.88, duration: 0.42 },
-    { id: "t", d: "M365 54 C357 83 346 121 344 140 C342 157 356 160 369 145 M347 91 C362 85 377 83 389 86", delay: 1.18, duration: 0.48 },
-    { id: "i", d: "M387 108 C380 128 377 143 385 146 C393 149 400 137 405 130", delay: 1.50, duration: 0.34 },
-    { id: "idot", d: "M401 91 C403 89 405 87 406 85", delay: 1.75, duration: 0.10 },
-    { id: "f", d: "M431 54 C416 82 402 120 395 151 C390 174 386 194 373 198 C363 200 360 190 369 181 M398 105 C415 99 431 98 446 102", delay: 1.82, duration: 0.55 },
-    { id: "y2", d: "M438 113 C448 93 461 81 468 88 C477 97 462 128 455 144 C447 164 457 168 469 155 C483 140 497 111 507 91 C513 80 519 85 516 99 C511 121 498 152 487 170 C475 191 462 201 451 194", delay: 2.22, duration: 0.62 },
+    { id: "t", d: "M365 54 C357 83 346 121 344 140 C342 157 356 160 369 145 M347 91 C362 85 377 83 389 86", delay: 0.94, duration: 0.38 },
+    { id: "i", d: "M387 108 C380 128 377 143 385 146 C393 149 400 137 405 130", delay: 1.18, duration: 0.28 },
+    { id: "idot", d: "M401 91 C403 89 405 87 406 85", delay: 1.38, duration: 0.08 },
+    { id: "f", d: "M431 54 C416 82 402 120 395 151 C390 174 386 194 373 198 C363 200 360 190 369 181 M398 105 C415 99 431 98 446 102", delay: 1.42, duration: 0.42 },
+    { id: "y2", d: "M438 113 C448 93 461 81 468 88 C477 97 462 128 455 144 C447 164 457 168 469 155 C483 140 497 111 507 91 C513 80 519 85 516 99 C511 121 498 152 487 170 C475 191 462 201 451 194", delay: 1.76, duration: 0.48 },
   ] as const;
   const drawComplete = filling;
   const motionDuration = reducedMotion ? 0.01 : 0.45;
