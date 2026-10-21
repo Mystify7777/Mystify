@@ -38,8 +38,7 @@ function IdentityAnimation({
   const morphing = stage === "MORPHING";
   const tracing = stage === "TRACING" || stage === "GREETING" || stage === "COMPLETE";
   const settled = stage === "GREETING" || stage === "COMPLETE";
-  const duration = reducedMotion ? 0.01 : 0.9;
-  const insertedLetters = "ystif";
+  const motionDuration = reducedMotion ? 0.01 : 0.65;
 
   return (
     <div className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]">
@@ -59,17 +58,9 @@ function IdentityAnimation({
                   "0 0 44px rgba(201,146,74,0)",
                 ],
               }
-            : {
-                opacity: 0,
-                scale: 1.42,
-                boxShadow: "0 0 0 rgba(201,146,74,0)",
-              }
+            : { opacity: 0, scale: 1.42, boxShadow: "0 0 0 rgba(201,146,74,0)" }
         }
-        transition={{
-          duration,
-          times: [0, 0.24, 0.58, 1],
-          ease: "easeInOut",
-        }}
+        transition={{ duration: reducedMotion ? 0.01 : 0.9, times: [0, 0.24, 0.58, 1], ease: "easeInOut" }}
       />
 
       <div
@@ -79,143 +70,93 @@ function IdentityAnimation({
           fontWeight: 400,
         }}
       >
-        <span aria-hidden="true" className="invisible">
-          Mystify
-        </span>
+        <span aria-hidden="true" className="invisible">Mystify</span>
 
         <motion.span
           aria-hidden="true"
           className="absolute inset-0 flex items-center justify-center"
           initial={false}
-          animate={{ opacity: initializing ? 1 : 0 }}
-          transition={{ duration: reducedMotion ? 0.01 : 0.18 }}
-          style={{ color: "var(--observatory-amber)" }}
+          animate={{ opacity: initializing ? 1 : 0, scale: initializing ? 1 : 0.88 }}
+          transition={{ duration: reducedMotion ? 0.01 : 0.22, ease: "easeOut" }}
+          style={{ color: "var(--observatory-amber)", transformOrigin: "50% 50%" }}
         >
           My
         </motion.span>
-
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 flex items-center justify-center"
-          style={{
-            color: "transparent",
-            WebkitTextStroke: "1.25px var(--observatory-amber)",
-            filter: "drop-shadow(0 0 10px rgba(201,146,74,.12))",
-          }}
-        >
-          <span>M</span>
-          {Array.from(insertedLetters).map((letter, index) => (
-            <motion.span
-              key={`${letter}-${index}`}
-              className="inline-block"
-              initial={false}
-              animate={{
-                opacity: morphing || tracing ? 1 : 0,
-                y: morphing && !reducedMotion ? [5, 0] : 0,
-                scale: morphing && !reducedMotion ? [0.94, 1] : 1,
-              }}
-              transition={{
-                opacity: {
-                  duration: reducedMotion ? 0.01 : 0.24,
-                  delay: reducedMotion ? 0 : index * 0.1,
-                },
-                y: {
-                  duration: reducedMotion ? 0.01 : 0.3,
-                  delay: reducedMotion ? 0 : index * 0.1,
-                  ease: "easeOut",
-                },
-                scale: {
-                  duration: reducedMotion ? 0.01 : 0.3,
-                  delay: reducedMotion ? 0 : index * 0.1,
-                  ease: "easeOut",
-                },
-              }}
-            >
-              {letter}
-            </motion.span>
-          ))}
-          <motion.span
-            className="inline-block"
-            initial={false}
-            animate={{ opacity: morphing || tracing ? 1 : 0 }}
-            transition={{
-              duration: reducedMotion ? 0.01 : 0.24,
-              delay: reducedMotion ? 0 : 0.52,
-            }}
-          >
-            y
-          </motion.span>
-        </span>
 
         <motion.span
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 flex items-center justify-center"
           initial={false}
           animate={{
-            opacity: tracing ? (settled ? 0.25 : 0.78) : 0,
-            clipPath: tracing ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
+            opacity: morphing || tracing ? 1 : 0,
+            scale: morphing || tracing ? 1 : 0.58,
           }}
           transition={{
-            opacity: {
-              duration: reducedMotion ? 0.01 : 0.4,
-              ease: "easeOut",
-            },
-            clipPath: {
-              duration: reducedMotion ? 0.01 : 1.35,
-              ease: "easeInOut",
-            },
+            opacity: { duration: reducedMotion ? 0.01 : 0.22 },
+            scale: { duration: motionDuration, ease: [0.22, 1, 0.36, 1] },
           }}
           style={{
-            color: "var(--observatory-amber)",
-            textShadow:
-              "0 0 8px rgba(201,146,74,.52), 0 0 22px rgba(201,146,74,.24)",
+            color: "transparent",
+            WebkitTextStroke: "1.25px var(--observatory-amber)",
+            filter: "drop-shadow(0 0 7px rgba(201,146,74,.22))",
+            transformOrigin: "50% 50%",
           }}
         >
-          <span
-            className="absolute inset-0 flex items-center justify-center"
-            style={{
-              opacity: 0.28,
-              filter: "blur(8px)",
-              transform: "translateX(-2px) scale(1.035)",
-            }}
-          >
-            Mystify
-          </span>
-          <span
-            className="absolute inset-0 flex items-center justify-center"
-            style={{
-              opacity: 0.16,
-              filter: "blur(15px)",
-              transform: "translateX(3px) scale(1.075)",
-            }}
-          >
-            Mystify
-          </span>
-          <span
-            className="relative"
-            style={{
-              color: "transparent",
-              WebkitTextStroke: "1.25px var(--observatory-amber)",
-            }}
-          >
-            Mystify
-          </span>
+          Mystify
+        </motion.span>
+
+        <motion.div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[145%] w-[135%] -translate-x-1/2 -translate-y-1/2"
+          initial={false}
+          animate={{
+            opacity: tracing ? (settled ? 0.52 : 0.9) : 0,
+            scale: tracing ? 1 : 0.78,
+          }}
+          transition={{
+            opacity: { duration: reducedMotion ? 0.01 : 0.65, ease: "easeOut" },
+            scale: { duration: motionDuration, ease: [0.22, 1, 0.36, 1] },
+          }}
+          style={{
+            background: "radial-gradient(ellipse at center, rgba(201,146,74,.2) 0%, rgba(201,146,74,.09) 34%, rgba(201,146,74,0) 72%)",
+            filter: "blur(18px)",
+            transformOrigin: "center",
+          }}
+        />
+
+        <motion.span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 flex items-center justify-center"
+          initial={false}
+          animate={{
+            opacity: tracing ? (settled ? 0.3 : 0.78) : 0,
+            scale: tracing ? 1.035 : 0.72,
+          }}
+          transition={{
+            opacity: { duration: reducedMotion ? 0.01 : 0.55, ease: "easeOut" },
+            scale: { duration: motionDuration, ease: [0.22, 1, 0.36, 1] },
+          }}
+          style={{
+            color: "transparent",
+            WebkitTextStroke: "1.25px var(--observatory-amber)",
+            filter: "drop-shadow(0 0 8px rgba(201,146,74,.48)) drop-shadow(0 0 20px rgba(201,146,74,.2))",
+            transformOrigin: "50% 50%",
+          }}
+        >
+          Mystify
         </motion.span>
 
         <motion.span
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 flex items-center justify-center"
           initial={false}
-          animate={{ opacity: settled ? 1 : 0 }}
-          transition={{
-            duration: reducedMotion ? 0.01 : 0.45,
-            delay: reducedMotion ? 0 : 0.18,
-            ease: "easeOut",
-          }}
+          animate={{ opacity: settled ? 1 : 0, scale: settled ? 1 : 0.94 }}
+          transition={{ duration: reducedMotion ? 0.01 : 0.4, ease: "easeOut" }}
           style={{
             color: "transparent",
             WebkitTextStroke: "1.25px var(--observatory-amber)",
-            filter: "drop-shadow(0 0 12px rgba(201,146,74,.28))",
+            filter: "drop-shadow(0 0 10px rgba(201,146,74,.25))",
+            transformOrigin: "50% 50%",
           }}
         >
           Mystify
