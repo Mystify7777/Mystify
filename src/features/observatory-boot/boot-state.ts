@@ -12,10 +12,10 @@ export const OBSERVATORY_BOOT_STAGE_DURATIONS: Record<
   ObservatoryBootStage,
   number
 > = {
-  INITIALIZING: 1700,
+  INITIALIZING: 1275,
   MORPHING: 1800,
   TRACING: 2600,
-  GREETING: 5237.5,
+  GREETING: 5325,
   COMPLETE: 0,
 };
 
