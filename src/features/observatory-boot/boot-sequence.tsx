@@ -47,7 +47,7 @@ function IdentityAnimation({
     { id: "f", d: "M431 55 C417 82 404 118 397 149 C392 171 387 192 375 197 C365 200 361 190 370 181 M399 106 C414 100 429 99 444 102", delay: 1.72, duration: 0.44 },
     { id: "y2", d: "M438 115 C449 94 460 82 468 89 C477 98 463 128 456 145 C448 164 457 169 469 156 C483 141 497 112 507 92 C513 81 519 86 516 100 C511 122 498 153 487 171 C475 191 463 201 451 194", delay: 2.06, duration: 0.48 },
   ] as const;
-  const motionDuration = reducedMotion ? 0.01 : 0.55;
+  const motionDuration = reducedMotion ? 0.01 : 0.72;
 
   return (
     <div className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]">
@@ -133,7 +133,7 @@ function IdentityAnimation({
             letterSpacing="-5"
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: filling ? 1 : 0, scale: filling ? 1 : 0.97 }}
-            transition={{ opacity: { duration: reducedMotion ? 0.01 : 0.48, delay: reducedMotion ? 0 : 0.08 }, scale: { duration: reducedMotion ? 0.01 : 0.55, ease: [0.22, 1, 0.36, 1] } }}
+            transition={{ opacity: { duration: reducedMotion ? 0.01 : 0.72, delay: reducedMotion ? 0 : 0.04 }, scale: { duration: reducedMotion ? 0.01 : 0.55, ease: [0.22, 1, 0.36, 1] } }}
           >
             Mystify
           </motion.text>
@@ -352,6 +352,7 @@ export function ObservatoryBootSequence({
   const [stage, setStage] = useState<ObservatoryBootStage>("INITIALIZING");
   const [visitCount, setVisitCount] = useState(1);
   const completedRef = useRef(false);
+  const completionNotifiedRef = useRef(false);
   const completionCallbackRef = useRef(onComplete);
 
   useEffect(() => {
@@ -370,8 +371,9 @@ export function ObservatoryBootSequence({
 
   useEffect(() => {
     if (stage === "COMPLETE") {
-      if (!completedRef.current) {
-        completedRef.current = true;
+      completedRef.current = true;
+      if (!completionNotifiedRef.current) {
+        completionNotifiedRef.current = true;
         completionCallbackRef.current();
       }
       return;
