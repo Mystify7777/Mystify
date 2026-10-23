@@ -38,14 +38,54 @@ function IdentityAnimation({
   const filling = stage === "GREETING" || stage === "COMPLETE";
   const settled = stage === "GREETING" || stage === "COMPLETE";
   const strokes = [
-    { id: "m", d: "M64 151 C75 119 86 79 97 58 C105 42 114 68 120 91 C126 113 130 130 137 120 C148 98 155 67 166 52 C173 42 180 59 184 82 C190 111 195 134 207 137 C216 139 224 128 232 115", delay: 0, duration: 0.52 },
-    { id: "y", d: "M218 116 C229 94 240 80 249 87 C259 95 247 125 241 142 C235 159 244 165 256 153 C271 138 283 109 293 89 C299 77 305 83 302 98 C297 121 284 151 274 169 C264 187 253 197 241 193", delay: 0.43, duration: 0.52 },
-    { id: "s", d: "M343 94 C331 82 314 88 312 102 C310 116 332 119 337 131 C343 145 324 156 309 148", delay: 0.86, duration: 0.4 },
-    { id: "t", d: "M365 56 C356 84 347 119 345 140 C343 156 356 159 369 145 M348 92 C361 87 375 85 387 88", delay: 1.13, duration: 0.42 },
-    { id: "i", d: "M390 111 C383 128 380 142 387 146 C394 149 401 138 406 130", delay: 1.46, duration: 0.28 },
-    { id: "idot", d: "M402 91 C403 89 405 87 406 85", delay: 1.68, duration: 0.08 },
-    { id: "f", d: "M431 55 C417 82 404 118 397 149 C392 171 387 192 375 197 C365 200 361 190 370 181 M399 106 C414 100 429 99 444 102", delay: 1.72, duration: 0.44 },
-    { id: "y2", d: "M438 115 C449 94 460 82 468 89 C477 98 463 128 456 145 C448 164 457 169 469 156 C483 141 497 112 507 92 C513 81 519 86 516 100 C511 122 498 153 487 171 C475 191 463 201 451 194", delay: 2.06, duration: 0.48 },
+    {
+      id: "m",
+      d: "M64 151 C75 119 86 79 97 58 C105 42 114 68 120 91 C126 113 130 130 137 120 C148 98 155 67 166 52 C173 42 180 59 184 82 C190 111 195 134 207 137 C216 139 224 128 232 115",
+      delay: 0,
+      duration: 0.52,
+    },
+    {
+      id: "y",
+      d: "M218 116 C229 94 240 80 249 87 C259 95 247 125 241 142 C235 159 244 165 256 153 C271 138 283 109 293 89 C299 77 305 83 302 98 C297 121 284 151 274 169 C264 187 253 197 241 193",
+      delay: 0.43,
+      duration: 0.52,
+    },
+    {
+      id: "s",
+      d: "M343 94 C331 82 314 88 312 102 C310 116 332 119 337 131 C343 145 324 156 309 148",
+      delay: 0.86,
+      duration: 0.4,
+    },
+    {
+      id: "t",
+      d: "M365 56 C356 84 347 119 345 140 C343 156 356 159 369 145 M348 92 C361 87 375 85 387 88",
+      delay: 1.13,
+      duration: 0.42,
+    },
+    {
+      id: "i",
+      d: "M390 111 C383 128 380 142 387 146 C394 149 401 138 406 130",
+      delay: 1.46,
+      duration: 0.28,
+    },
+    {
+      id: "idot",
+      d: "M402 91 C403 89 405 87 406 85",
+      delay: 1.68,
+      duration: 0.08,
+    },
+    {
+      id: "f",
+      d: "M431 55 C417 82 404 118 397 149 C392 171 387 192 375 197 C365 200 361 190 370 181 M399 106 C414 100 429 99 444 102",
+      delay: 1.72,
+      duration: 0.44,
+    },
+    {
+      id: "y2",
+      d: "M438 115 C449 94 460 82 468 89 C477 98 463 128 456 145 C448 164 457 169 469 156 C483 141 497 112 507 92 C513 81 519 86 516 100 C511 122 498 153 487 171 C475 191 463 201 451 194",
+      delay: 2.06,
+      duration: 0.48,
+    },
   ] as const;
   const motionDuration = reducedMotion ? 0.01 : 0.72;
 
@@ -77,17 +117,38 @@ function IdentityAnimation({
           aria-label="Mystify"
           className="h-auto w-full overflow-visible"
           initial={false}
-          animate={{ opacity: stage === "INITIALIZING" ? 0 : 1, y: drawing ? [5, 0] : 0 }}
-          transition={{ opacity: { duration: reducedMotion ? 0.01 : 0.2 }, y: { duration: reducedMotion ? 0.01 : 0.6, ease: [0.22, 1, 0.36, 1] } }}
+          animate={{
+            opacity: stage === "INITIALIZING" ? 0 : 1,
+            y: drawing ? [5, 0] : 0,
+          }}
+          transition={{
+            opacity: { duration: reducedMotion ? 0.01 : 0.2 },
+            y: {
+              duration: reducedMotion ? 0.01 : 0.6,
+              ease: [0.22, 1, 0.36, 1],
+            },
+          }}
         >
           <defs>
-            <filter id="mystify-signature-glow" x="-30%" y="-40%" width="160%" height="180%">
+            <filter
+              id="mystify-signature-glow"
+              x="-30%"
+              y="-40%"
+              width="160%"
+              height="180%"
+            >
               <feGaussianBlur stdDeviation="2.5" />
             </filter>
           </defs>
 
           {strokes.map((stroke) => (
-            <g key={stroke.id} fill="none" stroke="var(--observatory-amber)" strokeLinecap="round" strokeLinejoin="round">
+            <g
+              key={stroke.id}
+              fill="none"
+              stroke="var(--observatory-amber)"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <motion.path
                 d={stroke.d}
                 pathLength={1}
@@ -99,7 +160,11 @@ function IdentityAnimation({
                   opacity: filling ? 0 : drawing ? 0.42 : 0,
                 }}
                 transition={{
-                  pathLength: { duration: reducedMotion ? 0.01 : stroke.duration, delay: reducedMotion ? 0 : stroke.delay, ease: "linear" },
+                  pathLength: {
+                    duration: reducedMotion ? 0.01 : stroke.duration,
+                    delay: reducedMotion ? 0 : stroke.delay,
+                    ease: "linear",
+                  },
                   opacity: { duration: motionDuration },
                 }}
               />
@@ -112,7 +177,11 @@ function IdentityAnimation({
                   opacity: filling ? 0 : stage === "INITIALIZING" ? 0 : 1,
                 }}
                 transition={{
-                  pathLength: { duration: reducedMotion ? 0.01 : stroke.duration, delay: reducedMotion ? 0 : stroke.delay, ease: "linear" },
+                  pathLength: {
+                    duration: reducedMotion ? 0.01 : stroke.duration,
+                    delay: reducedMotion ? 0 : stroke.delay,
+                    ease: "linear",
+                  },
                   opacity: { duration: motionDuration },
                 }}
                 strokeWidth={2.4}
@@ -131,7 +200,16 @@ function IdentityAnimation({
             letterSpacing="-5"
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: filling ? 1 : 0, scale: filling ? 1 : 0.97 }}
-            transition={{ opacity: { duration: reducedMotion ? 0.01 : 0.72, delay: reducedMotion ? 0 : 0.04 }, scale: { duration: reducedMotion ? 0.01 : 0.55, ease: [0.22, 1, 0.36, 1] } }}
+            transition={{
+              opacity: {
+                duration: reducedMotion ? 0.01 : 0.72,
+                delay: reducedMotion ? 0 : 0.04,
+              },
+              scale: {
+                duration: reducedMotion ? 0.01 : 0.55,
+                ease: [0.22, 1, 0.36, 1],
+              },
+            }}
           >
             Mystify
           </motion.text>
@@ -142,7 +220,8 @@ function IdentityAnimation({
             {stage === "INITIALIZING" && "[00:00] Preparing environment..."}
             {stage === "MORPHING" && "[00:01] Establishing identity..."}
             {stage === "TRACING" && "[00:03] Tracing signature..."}
-            {stage === "GREETING" && "[00:06] Calibrating language interface..."}
+            {stage === "GREETING" &&
+              "[00:06] Calibrating language interface..."}
             {stage === "COMPLETE" && "[READY] Observatory initialized."}
           </p>
           <div
@@ -151,17 +230,43 @@ function IdentityAnimation({
             aria-label="Observatory initialization progress"
             aria-valuemin={0}
             aria-valuemax={100}
-            aria-valuenow={({ INITIALIZING: 8, MORPHING: 28, TRACING: 62, GREETING: 92, COMPLETE: 100 } as const)[stage]}
+            aria-valuenow={
+              (
+                {
+                  INITIALIZING: 8,
+                  MORPHING: 28,
+                  TRACING: 62,
+                  GREETING: 92,
+                  COMPLETE: 100,
+                } as const
+              )[stage]
+            }
           >
             <motion.div
               className="h-full origin-left rounded-full bg-observatory-amber"
               initial={false}
-              animate={{ width: `${({ INITIALIZING: 8, MORPHING: 28, TRACING: 62, GREETING: 92, COMPLETE: 100 } as const)[stage]}%` }}
-              transition={{ duration: reducedMotion ? 0.01 : 0.5, ease: "easeOut" }}
+              animate={{
+                width: `${({ INITIALIZING: 8, MORPHING: 28, TRACING: 62, GREETING: 92, COMPLETE: 100 } as const)[stage]}%`,
+              }}
+              transition={{
+                duration: reducedMotion ? 0.01 : 0.5,
+                ease: "easeOut",
+              }}
             />
           </div>
           <p className="min-w-[3.5rem] text-right tabular-nums">
-            {({ INITIALIZING: 8, MORPHING: 28, TRACING: 62, GREETING: 92, COMPLETE: 100 } as const)[stage]}%
+            {
+              (
+                {
+                  INITIALIZING: 8,
+                  MORPHING: 28,
+                  TRACING: 62,
+                  GREETING: 92,
+                  COMPLETE: 100,
+                } as const
+              )[stage]
+            }
+            %
           </p>
         </div>
 
@@ -169,10 +274,14 @@ function IdentityAnimation({
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10"
           initial={false}
-          animate={{ opacity: settled ? 0.22 : filling ? 0.34 : drawing ? 0.28 : 0, scale: settled ? 1 : 0.94 }}
+          animate={{
+            opacity: settled ? 0.22 : filling ? 0.34 : drawing ? 0.28 : 0,
+            scale: settled ? 1 : 0.94,
+          }}
           transition={{ duration: reducedMotion ? 0.01 : 0.6, ease: "easeOut" }}
           style={{
-            background: "radial-gradient(ellipse at 50% 54%, rgba(201,146,74,.16) 0%, rgba(201,146,74,.06) 36%, rgba(201,146,74,0) 70%)",
+            background:
+              "radial-gradient(ellipse at 50% 54%, rgba(201,146,74,.16) 0%, rgba(201,146,74,.06) 36%, rgba(201,146,74,0) 70%)",
             filter: "blur(18px)",
           }}
         />
@@ -207,7 +316,11 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
     const nextCycleWidth = nextWidths.reduce((sum, width) => sum + width, 0);
     const oldCycleWidth = cycleWidthRef.current;
 
-    if (oldCycleWidth > 0 && nextCycleWidth > 0 && oldCycleWidth !== nextCycleWidth) {
+    if (
+      oldCycleWidth > 0 &&
+      nextCycleWidth > 0 &&
+      oldCycleWidth !== nextCycleWidth
+    ) {
       offsetRef.current = (offsetRef.current / oldCycleWidth) * nextCycleWidth;
     }
 
@@ -219,7 +332,9 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
   useEffect(() => {
     measure();
     const observer =
-      typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
+      typeof ResizeObserver === "undefined"
+        ? null
+        : new ResizeObserver(measure);
     if (viewportRef.current) observer?.observe(viewportRef.current);
     if (rulerRef.current) observer?.observe(rulerRef.current);
     window.addEventListener("resize", measure);
@@ -295,7 +410,8 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
     frameRef.current = window.requestAnimationFrame(tick);
     return () => {
       cancelled = true;
-      if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
+      if (frameRef.current !== null)
+        window.cancelAnimationFrame(frameRef.current);
       frameRef.current = null;
       previousFrameTimeRef.current = null;
     };
