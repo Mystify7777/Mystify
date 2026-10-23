@@ -246,7 +246,9 @@ function IdentityAnimation({
               }}
             />
           </div>
-          <p className="min-w-[3.5rem] text-right tabular-nums">{Math.round(progress)}%</p>
+          <p className="min-w-[3.5rem] text-right tabular-nums">
+            {Math.round(progress)}%
+          </p>
         </div>
 
         <motion.div
@@ -308,9 +310,16 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
     cycleWidthRef.current = nextCycleWidth;
     viewportWidthRef.current = viewport.getBoundingClientRect().width;
 
-    if (!hasInitialOffsetRef.current && nextCycleWidth > 0 && nextWidths[0] > 0) {
-      const centeredHelloOffset = nextWidths[0] / 2 - viewportWidthRef.current / 2;
-      offsetRef.current = ((centeredHelloOffset % nextCycleWidth) + nextCycleWidth) % nextCycleWidth;
+    if (
+      !hasInitialOffsetRef.current &&
+      nextCycleWidth > 0 &&
+      nextWidths[0] > 0
+    ) {
+      const centeredHelloOffset =
+        nextWidths[0] / 2 - viewportWidthRef.current / 2;
+      offsetRef.current =
+        ((centeredHelloOffset % nextCycleWidth) + nextCycleWidth) %
+        nextCycleWidth;
       hasInitialOffsetRef.current = true;
     }
   }, []);
@@ -340,15 +349,22 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
     if (!viewport || !track || !firstGreeting) return;
     const viewportWidth = viewport.getBoundingClientRect().width;
     const greetingWidth = firstGreeting.getBoundingClientRect().width;
-    track.style.transform = "translate3d(" + Math.max(0, (viewportWidth - greetingWidth) / 2) + "px, 0, 0)";
+    track.style.transform =
+      "translate3d(" +
+      Math.max(0, (viewportWidth - greetingWidth) / 2) +
+      "px, 0, 0)";
     greetingRefs.current.forEach((element, index) => {
       if (!element) return;
       const focused = index === 0;
       element.style.opacity = focused ? "1" : "0.25";
       element.style.transform = "scale(" + (focused ? 1 : 0.72) + ")";
       element.style.fontWeight = focused ? "600" : "400";
-      element.style.color = focused ? "var(--observatory-amber)" : "var(--observatory-muted)";
-      element.style.textShadow = focused ? "0 0 16px rgba(201,146,74,.22)" : "none";
+      element.style.color = focused
+        ? "var(--observatory-amber)"
+        : "var(--observatory-muted)";
+      element.style.textShadow = focused
+        ? "0 0 16px rgba(201,146,74,.22)"
+        : "none";
     });
   }, [reducedMotion]);
 
@@ -521,16 +537,25 @@ export function ObservatoryBootSequence({
   useEffect(() => {
     if (stage === "COMPLETE") return;
     const stages = ["INITIALIZING", "MORPHING", "TRACING", "GREETING"] as const;
-    const durationFor = (currentStage: (typeof stages)[number]) => getObservatoryBootDuration(currentStage, reducedMotion);
-    const totalDuration = stages.reduce((total, currentStage) => total + durationFor(currentStage), 0);
-    const stageStart = stages.slice(0, stages.indexOf(stage)).reduce((total, currentStage) => total + durationFor(currentStage), 0);
+    const durationFor = (currentStage: (typeof stages)[number]) =>
+      getObservatoryBootDuration(currentStage, reducedMotion);
+    const totalDuration = stages.reduce(
+      (total, currentStage) => total + durationFor(currentStage),
+      0,
+    );
+    const stageStart = stages
+      .slice(0, stages.indexOf(stage))
+      .reduce((total, currentStage) => total + durationFor(currentStage), 0);
     const stageDuration = durationFor(stage);
     let frame = 0;
     const startedAt = performance.now();
     const updateProgress = (now: number) => {
       const elapsed = Math.min(now - startedAt, stageDuration);
-      setProgress(Math.min(99.5, ((stageStart + elapsed) / totalDuration) * 100));
-      if (elapsed < stageDuration && !completedRef.current) frame = window.requestAnimationFrame(updateProgress);
+      setProgress(
+        Math.min(99.5, ((stageStart + elapsed) / totalDuration) * 100),
+      );
+      if (elapsed < stageDuration && !completedRef.current)
+        frame = window.requestAnimationFrame(updateProgress);
     };
     frame = window.requestAnimationFrame(updateProgress);
     return () => window.cancelAnimationFrame(frame);
@@ -564,7 +589,11 @@ export function ObservatoryBootSequence({
       aria-label="Observatory initialization"
       className="relative flex min-h-[calc(100vh-2.5rem)] items-center justify-center overflow-hidden px-4 py-12"
     >
-      <IdentityAnimation stage={stage} reducedMotion={reducedMotion} progress={progress} />
+      <IdentityAnimation
+        stage={stage}
+        reducedMotion={reducedMotion}
+        progress={progress}
+      />
       <GreetingMarquee reducedMotion={reducedMotion} />
       {shouldOfferBootSkip(visitCount) && stage !== "COMPLETE" ? (
         <button
