@@ -51,26 +51,24 @@ function IdentityAnimation({
 
   return (
     <div className="relative flex min-h-[13rem] w-full items-center justify-center sm:min-h-[16rem]">
-      <motion.div
-        aria-hidden="true"
-        className="absolute h-28 w-28 rounded-full border border-observatory-amber/80 sm:h-36 sm:w-36"
-        initial={false}
-        animate={
-          stage === "INITIALIZING" && !reducedMotion
-            ? {
-                opacity: [0, 0.95, 0.85, 0],
-                scale: [0.72, 1, 1.12, 1.42],
-                boxShadow: [
-                  "0 0 0 rgba(201,146,74,0)",
-                  "0 0 14px rgba(201,146,74,.2)",
-                  "0 0 30px rgba(201,146,74,.42)",
-                  "0 0 44px rgba(201,146,74,0)",
-                ],
-              }
-            : { opacity: 0, scale: 1.42, boxShadow: "0 0 0 rgba(201,146,74,0)" }
-        }
-        transition={{ duration: reducedMotion ? 0.01 : 0.9, times: [0, 0.24, 0.58, 1], ease: "easeInOut" }}
-      />
+      {[0, 1].map((ripple) => (
+        <motion.div
+          key={ripple}
+          aria-hidden="true"
+          className="absolute h-24 w-24 rounded-full border border-observatory-amber/70 sm:h-32 sm:w-32"
+          initial={{ opacity: 0, scale: 0.35 }}
+          animate={
+            stage === "INITIALIZING" && !reducedMotion
+              ? { opacity: [0, 0.5, 0], scale: [0.35, 1.15, 2.2] }
+              : { opacity: 0, scale: 2.2 }
+          }
+          transition={{
+            duration: reducedMotion ? 0.01 : 1.35,
+            delay: reducedMotion ? 0 : ripple * 0.34,
+            ease: "easeOut",
+          }}
+        />
+      ))}
 
       <div className="relative w-full max-w-[38rem] px-2 sm:px-0">
         <motion.svg
@@ -138,6 +136,34 @@ function IdentityAnimation({
             Mystify
           </motion.text>
         </motion.svg>
+
+        <div className="mt-1 grid w-full grid-cols-[minmax(0,1fr)_minmax(5rem,0.7fr)_auto] items-center gap-3 px-1 font-mono text-[9px] tracking-wide text-observatory-amber/75 sm:mt-0 sm:grid-cols-[minmax(0,1fr)_minmax(8rem,1fr)_auto] sm:gap-5 sm:text-[11px]">
+          <p className="min-w-0 truncate" aria-live="off">
+            {stage === "INITIALIZING" && "[00:00] Preparing environment..."}
+            {stage === "MORPHING" && "[00:01] Establishing identity..."}
+            {stage === "TRACING" && "[00:03] Tracing signature..."}
+            {stage === "GREETING" && "[00:06] Calibrating language interface..."}
+            {stage === "COMPLETE" && "[READY] Observatory initialized."}
+          </p>
+          <div
+            className="h-[2px] overflow-hidden rounded-full bg-observatory-amber/15"
+            role="progressbar"
+            aria-label="Observatory initialization progress"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={({ INITIALIZING: 8, MORPHING: 28, TRACING: 62, GREETING: 92, COMPLETE: 100 } as const)[stage]}
+          >
+            <motion.div
+              className="h-full origin-left rounded-full bg-observatory-amber"
+              initial={false}
+              animate={{ width: `${({ INITIALIZING: 8, MORPHING: 28, TRACING: 62, GREETING: 92, COMPLETE: 100 } as const)[stage]}%` }}
+              transition={{ duration: reducedMotion ? 0.01 : 0.5, ease: "easeOut" }}
+            />
+          </div>
+          <p className="min-w-[3.5rem] text-right tabular-nums">
+            {({ INITIALIZING: 8, MORPHING: 28, TRACING: 62, GREETING: 92, COMPLETE: 100 } as const)[stage]}%
+          </p>
+        </div>
 
         <motion.div
           aria-hidden="true"
@@ -309,7 +335,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
               ref={(element) => {
                 greetingRefs.current[index] = element;
               }}
-              className="inline-flex shrink-0 items-center justify-center px-5 font-mono text-xs tracking-[0.14em] sm:px-7 sm:text-sm sm:tracking-[0.18em]"
+              className="inline-flex shrink-0 items-center justify-center px-5 font-mono text-sm tracking-[0.1em] sm:px-7 sm:text-base sm:tracking-[0.14em]"
               style={{
                 opacity: 0.3,
                 transform: "scale(0.72)",
@@ -330,7 +356,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
           {GREETINGS.map((greeting) => (
             <span
               key={greeting}
-              className="inline-flex shrink-0 items-center justify-center px-5 font-mono text-xs tracking-[0.14em] sm:px-7 sm:text-sm sm:tracking-[0.18em]"
+              className="inline-flex shrink-0 items-center justify-center px-5 font-mono text-sm tracking-[0.1em] sm:px-7 sm:text-base sm:tracking-[0.14em]"
             >
               {greeting}
             </span>
