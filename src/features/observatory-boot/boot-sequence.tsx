@@ -20,8 +20,10 @@ const GREETINGS = [
   "こんにちは",
   "你好",
   "CIAO",
+  "OLÁ",
+  "SALVE",
 ] as const;
-const GREETING_SPEED_PX_PER_SECOND = 30;
+const GREETING_SPEED_PX_PER_SECOND = 38;
 
 interface ObservatoryBootSequenceProps {
   onComplete: () => void;
@@ -30,9 +32,11 @@ interface ObservatoryBootSequenceProps {
 function IdentityAnimation({
   stage,
   reducedMotion,
+  progress,
 }: {
   stage: ObservatoryBootStage;
   reducedMotion: boolean;
+  progress: number;
 }) {
   const drawing = stage === "MORPHING" || stage === "TRACING";
   const filling = stage === "GREETING" || stage === "COMPLETE";
@@ -230,44 +234,19 @@ function IdentityAnimation({
             aria-label="Observatory initialization progress"
             aria-valuemin={0}
             aria-valuemax={100}
-            aria-valuenow={
-              (
-                {
-                  INITIALIZING: 8,
-                  MORPHING: 28,
-                  TRACING: 62,
-                  GREETING: 92,
-                  COMPLETE: 100,
-                } as const
-              )[stage]
-            }
+            aria-valuenow={Math.round(progress)}
           >
             <motion.div
               className="h-full origin-left rounded-full bg-observatory-amber"
               initial={false}
-              animate={{
-                width: `${({ INITIALIZING: 8, MORPHING: 28, TRACING: 62, GREETING: 92, COMPLETE: 100 } as const)[stage]}%`,
-              }}
+              animate={{ width: String(progress) + "%" }}
               transition={{
-                duration: reducedMotion ? 0.01 : 0.5,
+                duration: reducedMotion ? 0.01 : 0.08,
                 ease: "easeOut",
               }}
             />
           </div>
-          <p className="min-w-[3.5rem] text-right tabular-nums">
-            {
-              (
-                {
-                  INITIALIZING: 8,
-                  MORPHING: 28,
-                  TRACING: 62,
-                  GREETING: 92,
-                  COMPLETE: 100,
-                } as const
-              )[stage]
-            }
-            %
-          </p>
+          <p className="min-w-[3.5rem] text-right tabular-nums">{Math.round(progress)}%</p>
         </div>
 
         <motion.div
@@ -345,6 +324,26 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
       window.removeEventListener("resize", measure);
     };
   }, [measure]);
+
+  useEffect(() => {
+    if (!reducedMotion) return;
+    const viewport = viewportRef.current;
+    const track = trackRef.current;
+    const firstGreeting = greetingRefs.current[0];
+    if (!viewport || !track || !firstGreeting) return;
+    const viewportWidth = viewport.getBoundingClientRect().width;
+    const greetingWidth = firstGreeting.getBoundingClientRect().width;
+    track.style.transform = "translate3d(" + Math.max(0, (viewportWidth - greetingWidth) / 2) + "px, 0, 0)";
+    greetingRefs.current.forEach((element, index) => {
+      if (!element) return;
+      const focused = index === 0;
+      element.style.opacity = focused ? "1" : "0.25";
+      element.style.transform = "scale(" + (focused ? 1 : 0.72) + ")";
+      element.style.fontWeight = focused ? "600" : "400";
+      element.style.color = focused ? "var(--observatory-amber)" : "var(--observatory-muted)";
+      element.style.textShadow = focused ? "0 0 16px rgba(201,146,74,.22)" : "none";
+    });
+  }, [reducedMotion]);
 
   useEffect(() => {
     if (reducedMotion || cycleWidthRef.current <= 0) return;
@@ -451,7 +450,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
               ref={(element) => {
                 greetingRefs.current[index] = element;
               }}
-              className="inline-flex shrink-0 items-center justify-center px-5 font-mono text-sm tracking-[0.1em] sm:px-7 sm:text-base sm:tracking-[0.14em]"
+              className="inline-flex shrink-0 items-center justify-center px-5 font-mono text-base tracking-[0.08em] sm:px-7 sm:text-lg sm:tracking-[0.12em]"
               style={{
                 opacity: 0.3,
                 transform: "scale(0.72)",
@@ -493,6 +492,7 @@ export function ObservatoryBootSequence({
   const reducedMotion = Boolean(prefersReducedMotion);
   const [stage, setStage] = useState<ObservatoryBootStage>("INITIALIZING");
   const [visitCount, setVisitCount] = useState(1);
+  const [progress, setProgress] = useState(0);
   const completedRef = useRef(false);
   const completionNotifiedRef = useRef(false);
   const completionCallbackRef = useRef(onComplete);
@@ -510,6 +510,24 @@ export function ObservatoryBootSequence({
     completedRef.current = true;
     setStage("COMPLETE");
   }, []);
+
+  useEffect(() => {
+    if (stage === "COMPLETE") return;
+    const stages = ["INITIALIZING", "MORPHING", "TRACING", "GREETING"] as const;
+    const durationFor = (currentStage: (typeof stages)[number]) => getObservatoryBootDuration(currentStage, reducedMotion);
+    const totalDuration = stages.reduce((total, currentStage) => total + durationFor(currentStage), 0);
+    const stageStart = stages.slice(0, stages.indexOf(stage)).reduce((total, currentStage) => total + durationFor(currentStage), 0);
+    const stageDuration = durationFor(stage);
+    let frame = 0;
+    const startedAt = performance.now();
+    const updateProgress = (now: number) => {
+      const elapsed = Math.min(now - startedAt, stageDuration);
+      setProgress(Math.min(99.5, ((stageStart + elapsed) / totalDuration) * 100));
+      if (elapsed < stageDuration && !completedRef.current) frame = window.requestAnimationFrame(updateProgress);
+    };
+    frame = window.requestAnimationFrame(updateProgress);
+    return () => window.cancelAnimationFrame(frame);
+  }, [reducedMotion, stage]);
 
   useEffect(() => {
     if (stage === "COMPLETE") {
@@ -539,7 +557,7 @@ export function ObservatoryBootSequence({
       aria-label="Observatory initialization"
       className="relative flex min-h-[calc(100vh-2.5rem)] items-center justify-center overflow-hidden px-4 py-12"
     >
-      <IdentityAnimation stage={stage} reducedMotion={reducedMotion} />
+      <IdentityAnimation stage={stage} reducedMotion={reducedMotion} progress={progress} />
       <GreetingMarquee reducedMotion={reducedMotion} />
       {shouldOfferBootSkip(visitCount) && stage !== "COMPLETE" ? (
         <button
