@@ -23,7 +23,7 @@ const GREETINGS = [
   "OLÁ",
   "SALVE",
 ] as const;
-const GREETING_SPEED_PX_PER_SECOND = 38;
+const GREETING_SPEED_PX_PER_SECOND = 44;
 
 interface ObservatoryBootSequenceProps {
   onComplete: () => void;
@@ -107,7 +107,7 @@ function IdentityAnimation({
               : { opacity: 0, scale: 2.2 }
           }
           transition={{
-            duration: reducedMotion ? 0.01 : 1.35,
+            duration: reducedMotion ? 0.01 : 1.0125,
             delay: reducedMotion ? 0 : ripple * 0.34,
             ease: "easeOut",
           }}
@@ -277,6 +277,7 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
   const frameRef = useRef<number | null>(null);
   const previousFrameTimeRef = useRef<number | null>(null);
   const offsetRef = useRef(0);
+  const hasInitialOffsetRef = useRef(false);
   const cycleWidthRef = useRef(0);
   const viewportWidthRef = useRef(0);
   const widthsRef = useRef<number[]>([]);
@@ -306,6 +307,12 @@ function GreetingMarquee({ reducedMotion }: { reducedMotion: boolean }) {
     widthsRef.current = nextWidths;
     cycleWidthRef.current = nextCycleWidth;
     viewportWidthRef.current = viewport.getBoundingClientRect().width;
+
+    if (!hasInitialOffsetRef.current && nextCycleWidth > 0 && nextWidths[0] > 0) {
+      const centeredHelloOffset = nextWidths[0] / 2 - viewportWidthRef.current / 2;
+      offsetRef.current = ((centeredHelloOffset % nextCycleWidth) + nextCycleWidth) % nextCycleWidth;
+      hasInitialOffsetRef.current = true;
+    }
   }, []);
 
   useEffect(() => {
