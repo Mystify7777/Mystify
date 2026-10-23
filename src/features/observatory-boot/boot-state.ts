@@ -12,14 +12,67 @@ export const OBSERVATORY_BOOT_STAGE_DURATIONS: Record<
   ObservatoryBootStage,
   number
 > = {
-  INITIALIZING: 900,
-  MORPHING: 1100,
-  TRACING: 1400,
-  GREETING: 1800,
+  INITIALIZING: 1275,
+  MORPHING: 1800,
+  TRACING: 3500,
+  GREETING: 4425,
   COMPLETE: 0,
 };
 
 const REDUCED_MOTION_STAGE_DURATION_MS = 180;
+export const BOOT_VISIT_STORAGE_KEY = "mystify-observatory:boot-visits";
+export const BOOT_SKIP_MINIMUM_VISITS = 3;
+
+/**
+ * Increments the browser-profile page-load count. Storage is best-effort and
+ * malformed values are reset. Remove BOOT_VISIT_STORAGE_KEY to reset locally.
+ */
+export function registerBootVisit(
+  storage?: Pick<Storage, "getItem" | "setItem">,
+): number {
+  try {
+    const targetStorage =
+      storage ??
+      (typeof window !== "undefined" ? window.localStorage : undefined);
+    if (!targetStorage) return 1;
+
+    const storedValue = targetStorage.getItem(BOOT_VISIT_STORAGE_KEY);
+    const parsed = storedValue === null ? 0 : Number(storedValue);
+    const currentCount =
+      Number.isSafeInteger(parsed) && parsed >= 0 ? parsed : 0;
+    const nextCount = Math.min(currentCount + 1, Number.MAX_SAFE_INTEGER);
+    targetStorage.setItem(BOOT_VISIT_STORAGE_KEY, String(nextCount));
+    return nextCount;
+  } catch {
+    return 1;
+  }
+}
+
+/**
+ * Creates a per-document visit registrar. Keeping one registrar at module scope
+ * prevents React Strict Mode effect replay and same-page remounts from counting
+ * as separate page loads. A real reload creates a fresh module instance.
+ */
+export function createBootVisitRegistrar(
+  register: (
+    storage?: Pick<Storage, "getItem" | "setItem">,
+  ) => number = registerBootVisit,
+) {
+  let registeredCount: number | null = null;
+
+  return (storage?: Pick<Storage, "getItem" | "setItem">): number => {
+    if (registeredCount === null) registeredCount = register(storage);
+    return registeredCount;
+  };
+}
+
+export const registerBootVisitForPageLoad = createBootVisitRegistrar();
+
+export function shouldOfferBootSkip(visitCount: number): boolean {
+  return (
+    Number.isSafeInteger(visitCount) && visitCount >= BOOT_SKIP_MINIMUM_VISITS
+  );
+}
 
 export function getNextObservatoryBootStage(
   stage: ObservatoryBootStage,

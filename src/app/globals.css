@@ -41,13 +41,19 @@ a {
   background: rgba(201, 146, 74, 0.25);
 }
 
-@keyframes observatory-marquee {
-  from {
-    transform: translateX(0);
+@keyframes observatory-circle-rest {
+  0% {
+    box-shadow:
+      0 0 0 1px rgba(201, 146, 74, 0.28),
+      0 0 12px rgba(201, 146, 74, 0.16),
+      inset 0 0 12px rgba(201, 146, 74, 0.04);
   }
 
-  to {
-    transform: translateX(-50%);
+  100% {
+    box-shadow:
+      0 0 0 1px rgba(201, 146, 74, 0.48),
+      0 0 26px rgba(201, 146, 74, 0.24),
+      inset 0 0 18px rgba(201, 146, 74, 0.08);
   }
 }
 
@@ -56,5 +62,8 @@ a {
   *::before,
   *::after {
     scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
