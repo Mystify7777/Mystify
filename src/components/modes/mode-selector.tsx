@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import type { KeyboardEvent, SVGProps } from "react";
 import {
   getNextMode,
@@ -284,10 +284,8 @@ export function ModeSelector() {
     useState<ObservatoryMode>("recruiter");
   const buttonRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
-  const selectedContent: ModeGatewayContent = useMemo(
-    () => MODE_GATEWAY_CONTENT[selectedMode],
-    [selectedMode],
-  );
+  const selectedContent: ModeGatewayContent =
+    MODE_GATEWAY_CONTENT[selectedMode];
 
   const selectMode = (nextMode: ObservatoryMode) => {
     setSelectedMode(nextMode);

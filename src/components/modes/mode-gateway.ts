@@ -7,7 +7,6 @@ export const MODE_ORDER: readonly ObservatoryMode[] = [
 ];
 
 export interface ModeGatewayContent {
-  readonly label: string;
   readonly title: string;
   readonly description: string;
   readonly contextLabel: string;
@@ -17,7 +16,6 @@ export interface ModeGatewayContent {
 export const MODE_GATEWAY_CONTENT: Record<ObservatoryMode, ModeGatewayContent> =
   {
     recruiter: {
-      label: "Recruiter",
       title: "Recruiter",
       description:
         "Evaluate flagship projects, engineering decisions, and demonstrated skills.",
@@ -26,7 +24,6 @@ export const MODE_GATEWAY_CONTENT: Record<ObservatoryMode, ModeGatewayContent> =
         "A curated, high-signal view of the work, decisions, and impact.",
     },
     explorer: {
-      label: "Explorer",
       title: "Explorer",
       description:
         "Discover experiments, hidden connections, and project stories.",
@@ -35,7 +32,6 @@ export const MODE_GATEWAY_CONTENT: Record<ObservatoryMode, ModeGatewayContent> =
         "A connected view of experiments, stories, and the paths between them.",
     },
     engineer: {
-      label: "Engineer",
       title: "Engineer",
       description:
         "Inspect architecture, implementation details, and technical trade-offs.",
