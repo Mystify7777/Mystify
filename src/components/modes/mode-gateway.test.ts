@@ -27,3 +27,32 @@ describe("Observatory gateway mode model", () => {
     expect(getNextMode("recruiter", -1)).toBe("engineer");
   });
 });
+
+
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { ModeSelector } from "@/components/modes/mode-selector";
+import { useObservatoryStore } from "@/state/use-observatory-store";
+
+describe("ModeSelector rendered gateway", () => {
+  it("renders Recruiter as the default selection without activating a mode", () => {
+    useObservatoryStore.getState().clearMode();
+    const markup = renderToStaticMarkup(createElement(ModeSelector));
+
+    expect(markup).toContain('role="radiogroup"');
+    expect(markup).toContain('aria-checked="true"');
+    expect(markup).toContain("Recruiter / Evaluation Lens");
+    expect(markup).toContain("Enter Recruiter");
+    expect(useObservatoryStore.getState().mode).toBeNull();
+  });
+
+  it("renders all three perspective descriptions and radio states", () => {
+    const markup = renderToStaticMarkup(createElement(ModeSelector));
+
+    expect(markup).toContain("Evaluate flagship projects");
+    expect(markup).toContain("Discover experiments");
+    expect(markup).toContain("Inspect architecture");
+    expect(markup).toContain('aria-checked="false"');
+    expect(markup).toContain("grid-cols-[4rem_minmax(0,1fr)_1rem]");
+  });
+});

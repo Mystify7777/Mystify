@@ -217,55 +217,60 @@ function ModeCard({
       aria-checked={selected}
       tabIndex={selected ? 0 : -1}
       onClick={() => onSelect(mode)}
-      className="group relative min-h-52 rounded-observatory border bg-observatory-panel/80 p-5 text-left transition duration-observatory hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-observatory-surface sm:min-h-60 sm:p-6"
+      onKeyDown={onKeyDown}
+      className="group relative min-h-28 rounded-observatory border bg-observatory-panel/80 p-3 text-left transition duration-observatory hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-observatory-surface lg:min-h-60 lg:p-6"
       style={{
-        borderColor: selected ? accent : "rgba(255,255,255,0.1)",
+        borderColor: selected
+          ? accent
+          : mode === "recruiter"
+            ? "rgba(201,146,74,0.38)"
+            : mode === "explorer"
+              ? "rgba(155,127,212,0.38)"
+              : "rgba(0,212,255,0.38)",
         boxShadow: selected
           ? `0 0 0 1px ${accent}, 0 0 28px color-mix(in srgb, ${accent} 20%, transparent), inset 0 0 32px color-mix(in srgb, ${accent} 7%, transparent)`
           : undefined,
       }}
     >
-      <span
-        className="absolute inset-x-5 top-4 flex items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.22em] sm:inset-x-6"
-        style={{ color: selected ? accent : "var(--observatory-muted)" }}
-      >
-        <span>{content.label}</span>
-        {mode === "recruiter" ? (
+      <span className="grid grid-cols-[4rem_minmax(0,1fr)_1rem] items-center gap-3 lg:block">
+        <span
+          className="row-span-2 flex h-14 w-14 items-center justify-center lg:mx-auto lg:mt-8 lg:h-32 lg:w-full"
+          style={{ color: accent }}
+        >
+          <ModeIllustration
+            mode={mode}
+            className="h-full w-full max-w-14 transition duration-observatory group-hover:scale-[1.03] lg:max-w-32"
+          />
+        </span>
+        <span className="min-w-0 lg:mt-3 lg:block lg:text-center">
           <span
-            className="rounded-full border px-2 py-1 text-[9px] tracking-[0.16em]"
-            style={{ borderColor: accent }}
+            className="flex flex-wrap items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] lg:justify-center lg:tracking-[0.22em]"
+            style={{ color: selected ? accent : "var(--observatory-muted)" }}
           >
-            Recommended
+            <span>{content.title}</span>
+            {mode === "recruiter" ? (
+              <span
+                className="rounded-full border px-2 py-0.5 text-[8px] tracking-[0.1em] lg:py-1 lg:text-[9px] lg:tracking-[0.16em]"
+                style={{ borderColor: accent, color: accent }}
+              >
+                Recommended
+              </span>
+            ) : null}
           </span>
-        ) : null}
-      </span>
-
-      <span
-        className="mt-8 block h-28 w-full sm:h-32"
-        style={{ color: accent }}
-      >
-        <ModeIllustration
-          mode={mode}
-          className="mx-auto h-full w-full max-w-32 transition duration-observatory group-hover:scale-[1.03]"
+          <span className="mt-1 block text-sm leading-5 text-observatory-muted lg:mx-auto lg:mt-3 lg:max-w-[17rem] lg:text-center lg:leading-6">
+            {content.description}
+          </span>
+        </span>
+        <span
+          aria-hidden="true"
+          className="h-3 w-3 justify-self-end rounded-full border lg:absolute lg:bottom-5 lg:right-5"
+          style={{
+            borderColor: selected ? accent : "rgba(138,147,158,0.7)",
+            backgroundColor: selected ? accent : "transparent",
+            boxShadow: selected ? `0 0 12px ${accent}` : undefined,
+          }}
         />
       </span>
-
-      <span className="mt-3 block text-center text-xl font-medium tracking-[0.12em] text-observatory-ink">
-        {content.title}
-      </span>
-      <span className="mx-auto mt-3 block max-w-[17rem] text-center text-sm leading-6 text-observatory-muted">
-        {content.description}
-      </span>
-
-      <span
-        aria-hidden="true"
-        className="absolute bottom-4 right-4 h-3 w-3 rounded-full border sm:bottom-5 sm:right-5"
-        style={{
-          borderColor: selected ? accent : "rgba(138,147,158,0.7)",
-          backgroundColor: selected ? accent : "transparent",
-          boxShadow: selected ? `0 0 12px ${accent}` : undefined,
-        }}
-      />
       <span className="sr-only">
         {index + 1} of {MODE_ORDER.length}
       </span>
@@ -288,10 +293,7 @@ export function ModeSelector() {
     setSelectedMode(nextMode);
   };
 
-  const handleKeyDown = (
-    event: KeyboardEvent<HTMLButtonElement>,
-    index: number,
-  ) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     if (
       event.key !== "ArrowRight" &&
       event.key !== "ArrowDown" &&
@@ -307,7 +309,6 @@ export function ModeSelector() {
     const nextIndex = MODE_ORDER.indexOf(nextMode);
     setSelectedMode(nextMode);
     buttonRefs.current[nextIndex]?.focus();
-    void index;
   };
 
   return (
@@ -317,17 +318,16 @@ export function ModeSelector() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-32 h-[30rem] w-[min(72rem,120vw)] -translate-x-1/2 rounded-full border border-white/[0.045] sm:top-24"
+        className="pointer-events-none absolute left-[8%] right-[8%] top-[22rem] hidden h-px lg:block"
         style={{
-          boxShadow:
-            "0 0 0 6rem rgba(255,255,255,0.008), 0 0 0 12rem rgba(255,255,255,0.006)",
+          background:
+            "linear-gradient(90deg, transparent, rgba(201,146,74,0.30) 12%, rgba(155,127,212,0.34) 50%, rgba(0,212,255,0.30) 88%, transparent)",
         }}
       >
-        <span className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-observatory-amber/60" />
-        <span className="absolute left-[16%] top-1/2 h-1.5 w-1.5 rounded-full bg-observatory-amber/50" />
-        <span className="absolute right-[16%] top-1/2 h-1.5 w-1.5 rounded-full bg-observatory-cyan/50" />
+        <span className="absolute left-[16.66%] top-1/2 h-2 w-2 -translate-y-1/2 rounded-full border border-observatory-amber/70 bg-observatory-surface" />
+        <span className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border border-observatory-violet/80 bg-observatory-surface" />
+        <span className="absolute right-[16.66%] top-1/2 h-2 w-2 -translate-y-1/2 rounded-full border border-observatory-cyan/70 bg-observatory-surface" />
       </div>
-
       <header className="relative mx-auto max-w-3xl text-center">
         <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-observatory-muted">
           Gateway / Select Lens
@@ -347,7 +347,7 @@ export function ModeSelector() {
       <div
         role="radiogroup"
         aria-label="Observatory perspectives"
-        className="relative mt-10 grid gap-4 sm:grid-cols-3 sm:gap-5 lg:mt-12"
+        className="relative mt-10 grid gap-3 lg:mt-12 lg:grid-cols-3 lg:gap-5"
       >
         {MODE_ORDER.map((mode, index) => (
           <ModeCard
@@ -359,13 +359,12 @@ export function ModeSelector() {
             buttonRef={(element) => {
               buttonRefs.current[index] = element;
             }}
-            onKeyDown={(event) => handleKeyDown(event, index)}
+            onKeyDown={handleKeyDown}
           />
         ))}
       </div>
 
       <section
-        aria-live="polite"
         aria-labelledby="selected-perspective-heading"
         className="relative mt-5 overflow-hidden rounded-observatory border border-white/10 bg-observatory-panel/85 shadow-[0_12px_50px_rgba(0,0,0,0.28)] sm:mt-6"
       >
@@ -380,9 +379,9 @@ export function ModeSelector() {
                   : "var(--observatory-cyan)",
           }}
         />
-        <div className="grid gap-6 p-5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center sm:p-6 lg:p-7">
+        <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-5 p-5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:p-6 lg:p-7">
           <div
-            className="hidden h-20 w-20 shrink-0 items-center justify-center sm:flex"
+            className="flex h-14 w-14 shrink-0 items-center justify-center sm:h-20 sm:w-20"
             style={{
               color:
                 selectedMode === "recruiter"
@@ -418,7 +417,7 @@ export function ModeSelector() {
           <button
             type="button"
             onClick={() => setMode(selectedMode)}
-            className="min-h-12 rounded-xl border px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-observatory-surface transition duration-observatory motion-reduce:transition-none hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-observatory-panel sm:min-w-52"
+            className="col-span-2 min-h-12 w-full rounded-xl border px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-observatory-surface transition duration-observatory motion-reduce:transition-none hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-observatory-panel sm:col-span-1 sm:w-auto sm:min-w-52"
             style={{
               borderColor:
                 selectedMode === "recruiter"
