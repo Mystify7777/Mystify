@@ -32,12 +32,6 @@ describe("Observatory gateway mode model", () => {
   });
 });
 
-
-import { createElement } from "react";
-import { renderToStaticMarkup } from "react-dom/server";
-import { ModeSelector } from "@/components/modes/mode-selector";
-import { useObservatoryStore } from "@/state/use-observatory-store";
-
 describe("ModeSelector rendered gateway", () => {
   it("renders Recruiter as the default selection without activating a mode", () => {
     useObservatoryStore.getState().clearMode();
