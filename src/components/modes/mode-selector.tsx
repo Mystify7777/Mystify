@@ -76,12 +76,14 @@ function ModeCard({
   onSelect,
   index,
   buttonRef,
+  onKeyDown,
 }: {
   mode: ObservatoryMode;
   selected: boolean;
   onSelect: (mode: ObservatoryMode) => void;
   index: number;
   buttonRef: (element: HTMLButtonElement | null) => void;
+  onKeyDown: (event: KeyboardEvent<HTMLButtonElement>) => void;
 }) {
   const content = MODE_GATEWAY_CONTENT[mode];
   const accent =
@@ -237,6 +239,7 @@ export function ModeSelector() {
             buttonRef={(element) => {
               buttonRefs.current[index] = element;
             }}
+            onKeyDown={(event) => handleKeyDown(event, index)}
           />
         ))}
       </div>
@@ -295,7 +298,7 @@ export function ModeSelector() {
           <button
             type="button"
             onClick={() => setMode(selectedMode)}
-            className="min-h-12 rounded-xl border px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-observatory-surface transition duration-observatory hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-observatory-panel sm:min-w-52"
+            className="min-h-12 rounded-xl border px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-observatory-surface transition duration-observatory motion-reduce:transition-none hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-observatory-panel sm:min-w-52"
             style={{
               borderColor:
                 selectedMode === "recruiter"
