@@ -1,4 +1,8 @@
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
+import { ModeSelector } from "@/components/modes/mode-selector";
+import { useObservatoryStore } from "@/state/use-observatory-store";
 import {
   getNextMode,
   MODE_GATEWAY_CONTENT,
