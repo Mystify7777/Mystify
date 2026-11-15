@@ -31,16 +31,88 @@ function ModeIllustration({
   if (mode === "recruiter") {
     return (
       <svg {...common}>
-        <rect x="25" y="20" width="52" height="68" rx="5" stroke="currentColor" strokeWidth="2.5" />
-        <rect x="34" y="28" width="34" height="4" rx="2" fill="currentColor" opacity="0.85" />
-        <rect x="34" y="38" width="26" height="3" rx="1.5" fill="currentColor" opacity="0.55" />
-        <rect x="34" y="46" width="30" height="3" rx="1.5" fill="currentColor" opacity="0.55" />
-        <rect x="34" y="54" width="20" height="3" rx="1.5" fill="currentColor" opacity="0.55" />
-        <rect x="57" y="47" width="34" height="34" rx="5" fill="var(--observatory-surface)" stroke="currentColor" strokeWidth="2.5" />
-        <path d="M64 70V62M71 70V57M78 70V52M85 70V47" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-        <circle cx="84" cy="82" r="12" fill="var(--observatory-surface)" stroke="currentColor" strokeWidth="2.5" />
-        <path d="m78 82 4 4 7-8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M18 31V21M18 21H28M92 99h10M102 99V89" stroke="currentColor" strokeWidth="1.5" opacity="0.7" />
+        <rect
+          x="25"
+          y="20"
+          width="52"
+          height="68"
+          rx="5"
+          stroke="currentColor"
+          strokeWidth="2.5"
+        />
+        <rect
+          x="34"
+          y="28"
+          width="34"
+          height="4"
+          rx="2"
+          fill="currentColor"
+          opacity="0.85"
+        />
+        <rect
+          x="34"
+          y="38"
+          width="26"
+          height="3"
+          rx="1.5"
+          fill="currentColor"
+          opacity="0.55"
+        />
+        <rect
+          x="34"
+          y="46"
+          width="30"
+          height="3"
+          rx="1.5"
+          fill="currentColor"
+          opacity="0.55"
+        />
+        <rect
+          x="34"
+          y="54"
+          width="20"
+          height="3"
+          rx="1.5"
+          fill="currentColor"
+          opacity="0.55"
+        />
+        <rect
+          x="57"
+          y="47"
+          width="34"
+          height="34"
+          rx="5"
+          fill="var(--observatory-surface)"
+          stroke="currentColor"
+          strokeWidth="2.5"
+        />
+        <path
+          d="M64 70V62M71 70V57M78 70V52M85 70V47"
+          stroke="currentColor"
+          strokeWidth="4"
+          strokeLinecap="round"
+        />
+        <circle
+          cx="84"
+          cy="82"
+          r="12"
+          fill="var(--observatory-surface)"
+          stroke="currentColor"
+          strokeWidth="2.5"
+        />
+        <path
+          d="m78 82 4 4 7-8"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M18 31V21M18 21H28M92 99h10M102 99V89"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          opacity="0.7"
+        />
       </svg>
     );
   }
@@ -48,24 +120,68 @@ function ModeIllustration({
   if (mode === "explorer") {
     return (
       <svg {...common}>
-        <circle cx="60" cy="60" r="37" stroke="currentColor" strokeWidth="1.5" opacity="0.45" />
-        <circle cx="60" cy="60" r="25" stroke="currentColor" strokeWidth="1.5" opacity="0.7" />
+        <circle
+          cx="60"
+          cy="60"
+          r="37"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          opacity="0.45"
+        />
+        <circle
+          cx="60"
+          cy="60"
+          r="25"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          opacity="0.7"
+        />
         <circle cx="60" cy="60" r="12" stroke="currentColor" strokeWidth="2" />
-        <path d="m66 50-18 8-4 18 18-8 4-18Z" fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
+        <path
+          d="m66 50-18 8-4 18 18-8 4-18Z"
+          fill="currentColor"
+          fillOpacity="0.18"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinejoin="round"
+        />
         <circle cx="60" cy="23" r="4" fill="currentColor" />
         <circle cx="97" cy="60" r="4" fill="currentColor" />
         <circle cx="60" cy="97" r="4" fill="currentColor" />
         <circle cx="23" cy="60" r="4" fill="currentColor" />
-        <path d="M60 18V10M102 60h8M60 102v8M18 60h-8" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
+        <path
+          d="M60 18V10M102 60h8M60 102v8M18 60h-8"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          opacity="0.5"
+        />
       </svg>
     );
   }
 
   return (
     <svg {...common}>
-      <path d="m60 18 30 15-30 15-30-15 30-15Z" fill="currentColor" fillOpacity="0.16" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
-      <path d="m30 49 30 15 30-15M30 66l30 15 30-15M30 33v16M90 33v16M30 66v15M90 66v15" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
-      <path d="M50 33 46 38l5 5M70 33l4 5-5 5M53 44l14-11" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="m60 18 30 15-30 15-30-15 30-15Z"
+        fill="currentColor"
+        fillOpacity="0.16"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
+      <path
+        d="m30 49 30 15 30-15M30 66l30 15 30-15M30 33v16M90 33v16M30 66v15M90 66v15"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M50 33 46 38l5 5M70 33l4 5-5 5M53 44l14-11"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -128,7 +244,10 @@ function ModeCard({
         className="mt-8 block h-28 w-full sm:h-32"
         style={{ color: accent }}
       >
-        <ModeIllustration mode={mode} className="mx-auto h-full w-full max-w-32 transition duration-observatory group-hover:scale-[1.03]" />
+        <ModeIllustration
+          mode={mode}
+          className="mx-auto h-full w-full max-w-32 transition duration-observatory group-hover:scale-[1.03]"
+        />
       </span>
 
       <span className="mt-3 block text-center text-xl font-medium tracking-[0.12em] text-observatory-ink">
@@ -147,7 +266,9 @@ function ModeCard({
           boxShadow: selected ? `0 0 12px ${accent}` : undefined,
         }}
       />
-      <span className="sr-only">{index + 1} of {MODE_ORDER.length}</span>
+      <span className="sr-only">
+        {index + 1} of {MODE_ORDER.length}
+      </span>
     </button>
   );
 }
@@ -181,8 +302,7 @@ export function ModeSelector() {
     }
 
     event.preventDefault();
-    const isForward =
-      event.key === "ArrowRight" || event.key === "ArrowDown";
+    const isForward = event.key === "ArrowRight" || event.key === "ArrowDown";
     const nextMode = getNextMode(selectedMode, isForward ? 1 : -1);
     const nextIndex = MODE_ORDER.indexOf(nextMode);
     setSelectedMode(nextMode);
@@ -315,7 +435,9 @@ export function ModeSelector() {
             }}
           >
             Enter {selectedContent.title}
-            <span aria-hidden="true" className="ml-3 text-base">→</span>
+            <span aria-hidden="true" className="ml-3 text-base">
+              →
+            </span>
           </button>
         </div>
       </section>
